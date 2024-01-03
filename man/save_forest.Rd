@@ -13,6 +13,9 @@ save_forest(name, width = 13, height = 8)
 
 \item{height}{Height of the image}
 }
+\value{
+None
+}
 \description{
 Save a forest plot as an image
 }

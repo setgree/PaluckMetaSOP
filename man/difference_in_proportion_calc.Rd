@@ -12,10 +12,10 @@ difference_in_proportion_calc(p1, p2)
 \item{p2}{Proportion in the control group.}
 }
 \value{
-Glass's $\Delta$ value.
+Glass's ∆ value.
 }
 \description{
-This function estimates Glass's $\Delta$ based on two proportions, calculating
+This function estimates Glass's ∆ based on two proportions, calculating
 the difference between the proportions and using the square root of the control
 group's product of proportion and complement of the proportion.
 }

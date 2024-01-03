@@ -2,18 +2,25 @@ Package: PaluckMetaSOP
 Title: Standard Operating Procedures for meta-analyses by the Paluck Lab
 Version: 0.0.0.9000
 Authors@R: 
-    c(person("Seth", "Green", , "setgree@gmail.com", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0003-3909-1969")),
-           person("Pezzuto,", "John-Henry", , "johnhenrypezzuto@gmail.com",
-           role = c("aut", "cre"), comment = c(ORCID = "0000-0001-5213-4201""))
+    person("Seth", "Green", email = "setgree@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0003-3909-1969"))
+    person("Pezzuto", "John-Henry", email = "johnhenrypezzuto@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-5213-4201"))
+Maintainer: Seth Green <setgree@gmail.com>
 Description: This package and accompanying paper describe the Paluck lab's approach to meta-analysis. The paper will describe our theoretical motivations and general procedures and also introduce the accompanying package, `PaluckLabMetaSOP`, which implements some of our main ideas and procedures.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Imports:
+    broom,
+    dplyr,
+    ggplot2,
     metafor,
+    RefManageR,
+    rlang,
     sessioninfo,
+    stringr,
     tibble,
-    RefManageR, 
-    dplyr
+    tidyr
+

@@ -2,7 +2,7 @@
 % Please edit documentation in R/var_d_calc.R
 \name{var_d_calc}
 \alias{var_d_calc}
-\title{Calculate Variance of Cohen's D or Glass's $\Delta$}
+\title{Calculate Variance of Cohen's D or Glass's ∆}
 \usage{
 var_d_calc(d, n_t, n_c)
 }
@@ -14,9 +14,9 @@ var_d_calc(d, n_t, n_c)
 \item{n_c}{Control group sample size.}
 }
 \value{
-Variance of Cohen's D or Glass's $\Delta$.
+Variance of Cohen's D or Glass's ∆
 }
 \description{
-This function computes the variance of Cohen's D or Glass's $\Delta$ based on the provided effect size
+This function computes the variance of Cohen's D or Glass's ∆ based on the provided effect size
 and sample sizes, following the equation from Cooper, Hedges, and Valentine (2009).
 }

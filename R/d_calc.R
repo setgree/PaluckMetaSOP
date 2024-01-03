@@ -1,11 +1,11 @@
-#' Calculate Cohen's D or Glass's $\Delta$
+#' Calculate Cohen's D or Glass's ∆
 #'
-#' This function converts raw effect sizes into Cohen's D or Glass's $\Delta$,
+#' This function converts raw effect sizes into Cohen's D or Glass's ∆
 #' based on the measure of sample variance for standardization.
-#' 
-#' All calculations derived from Cooper, Hedges, and Valentine (2009), except  
+#'
+#' All calculations derived from Cooper, Hedges, and Valentine (2009), except
 #' for difference in proportions, which, to the best of our knowledge, Don Green
-#' came up with while we were working on _Prejudice Reduction: Progress and Challenges_. 
+#' came up with while we were working on _Prejudice Reduction: Progress and Challenges_.
 #' We elaborate more on this estimator in the paper's appendix.
 #' See https://meta-analysis.com/download/Meta-analysis%20Converting%20among%20effect%20sizes.pdf
 #' for more information on calculating effect sizes.
@@ -20,12 +20,12 @@
 #' @param n_t Treatment group sample size.
 #' @param n_c Control group sample size.
 #'
-#' @return Cohen's D or Glass's $\Delta$ value.
+#' @return Cohen's D or Glass's ∆ (Delta) value.
 #'
 d_calc <- function(stat_type, stat, sample_sd, n_t, n_c) {
   if (stat_type == "d_i_d" || stat_type == "d_i_m" || stat_type == "d_i_p" ||
       stat_type == "reg_coef") {
-    # Calculate Cohen's D or Glass's $\Delta$ based on effect size and sample standard deviation
+    # Calculate Cohen's D or Glass's ∆ based on effect size and sample standard deviation
     d <- round(stat / sample_sd, digits = 3)
   } else if (stat_type == "d") {
     # Directly use the reported change of SDs
@@ -49,6 +49,6 @@ d_calc <- function(stat_type, stat, sample_sd, n_t, n_c) {
     # Default value if stat_type is unrecognized
     d <- NA
   }
-  
+
   return(d)
 }
