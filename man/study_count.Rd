@@ -18,3 +18,6 @@ A tibble with the count of distinct observations.
 This function simplifies the process of counting the number of unique observations in a dataset
 or a subset by avoiding repetitive use of \code{summarise('N (unique)' = n_distinct(counting_var))}.
 }
+\note{
+The use of \code{.data} is part of dplyr's non-standard evaluation (NSE) and allows explicit referencing of columns within the dataset \code{dat}.
+}

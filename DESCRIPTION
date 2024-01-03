@@ -18,5 +18,5 @@ Imports:
     RefManageR,
     rlang,
     sessioninfo,
-    tibble,
-
+    tibble
+Config/testthat/edition: 3

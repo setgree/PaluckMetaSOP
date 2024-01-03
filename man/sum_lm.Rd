@@ -25,3 +25,6 @@ This function translates the output of summary(lm()) into a format that can be u
 such as \code{dat |> filter(some_var) |> sum_lm()} or \code{dat |> split(~some_var) |> map(sum_lm)},
 presenting the results in an easily transcribable table.
 }
+\note{
+\code{dat} is the default dataset name, but you can put in whatever
+}
