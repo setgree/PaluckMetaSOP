@@ -16,7 +16,7 @@ Install via `devtools::install_github("setgree/PaluckMetaSOP")`.
 For the package, I need 
 * tests (maybe)
 * double-check everything works as intended and also in a general way
-* why do some of the functions show up with tooltips and some not?
+* include JH's functions from the prejudice paper (maybe with his help)
 
 ### Paper TODOs
 
