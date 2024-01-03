@@ -12,6 +12,7 @@
 #' @return If coefs_only is TRUE, returns a rounded coefficients table; otherwise, returns the full summary.
 #' @importFrom stats lm as.formula
 #' @note `dat` is the default dataset name, but you can put in whatever
+#' @export
 
 sum_lm <- function(dataset = NULL, y = NULL, x = NULL, coefs_only = TRUE, dgts = 5) {
   if (!requireNamespace("dplyr", quietly = TRUE)) {

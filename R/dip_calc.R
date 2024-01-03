@@ -8,7 +8,7 @@
 #' @param p2 Proportion in the control group.
 #'
 #' @return Glass's ∆ value.
-#'
+#' @export
 difference_in_proportion_calc <- function(p1, p2) {
   # Calculate the difference between the proportions
   diff <- p1 - p2

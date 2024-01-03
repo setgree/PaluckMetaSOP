@@ -21,7 +21,7 @@
 #' @param n_c Control group sample size.
 #'
 #' @return Cohen's D or Glass's ∆ (Delta) value.
-#'
+#' @export
 d_calc <- function(stat_type, stat, sample_sd, n_t, n_c) {
   if (stat_type == "d_i_d" || stat_type == "d_i_m" || stat_type == "d_i_p" ||
       stat_type == "reg_coef") {

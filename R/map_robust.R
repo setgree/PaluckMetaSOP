@@ -10,7 +10,7 @@
 #'
 #' @param x The dataset or subset to perform meta-analysis on.
 #' @return A tibble/data frame with meta-analysis results.
-#'
+#' @export
 map_robust <- function(x) {
   # Perform robust meta-analysis using metafor::robust function
   result <- robust(x = rma(yi = x$d, vi = x$var_d), cluster = x$unique_study_id)

@@ -7,7 +7,7 @@
 #' @param n_t Treatment sample size.
 #' @param n_c Control group sample size.
 #' @return Variance of Cohen's D or Glass's ∆
-#'
+#' @export
 
 var_d_calc <- function(d, n_t, n_c) {
   # Calculate unstandardized variance of d
