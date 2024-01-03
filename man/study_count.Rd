@@ -2,17 +2,19 @@
 % Please edit documentation in R/study_count.R
 \name{study_count}
 \alias{study_count}
-\title{Count the Number of Studies in a Dataset or Subset}
+\title{Count the Number of Unique Observations in a Dataset or Subset}
 \usage{
-study_count(dat)
+study_count(dat, counting_var = "unique_study_id")
 }
 \arguments{
 \item{dat}{The dataset or subset.}
+
+\item{counting_var}{The variable to count unique observations (default: "unique_study_id").}
 }
 \value{
-A tibble with the count of distinct studies.
+A tibble with the count of distinct observations.
 }
 \description{
-This function simplifies the process of counting the number of studies in a dataset
-or a subset by avoiding repetitive use of \code{summarise('N (studies)' = n_distinct(unique_study_id))}.
+This function simplifies the process of counting the number of unique observations in a dataset
+or a subset by avoiding repetitive use of \code{summarise('N (unique)' = n_distinct(counting_var))}.
 }

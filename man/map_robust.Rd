@@ -6,6 +6,12 @@
 \usage{
 map_robust(x)
 }
+\arguments{
+\item{x}{The dataset or subset to perform meta-analysis on.}
+}
+\value{
+A tibble/data frame with meta-analysis results.
+}
 \description{
 This function simplifies the process of performing a robust meta-analysis on subsets of a dataset.
 The typical usage involves piping a dataset into the split/map paradigm: \code{dat |> split(~some_var) |> map(map_robust)}.
