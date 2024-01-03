@@ -7,7 +7,7 @@
 #' @return A tibble with the count of distinct studies.
 #'
 study_count <- function(dat) {
-  result <- dat %>%
+  result <- dat |>
     summarise('N (studies)' = n_distinct(unique_study_id))
   
   return(result)

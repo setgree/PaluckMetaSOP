@@ -17,7 +17,7 @@ map_robust <- function(x) {
     beta = round(result$beta, 3),
     se = round(result$se, 3),
     pval = ifelse(result$pval < 0.0001, "< 0.0001", round(result$pval, digits = 4))
-  ) %>% 
+  ) |> 
     as_tibble()
   
   return(output)
