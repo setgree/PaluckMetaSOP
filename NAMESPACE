@@ -2,12 +2,6 @@
 
 export(manage_references)
 export(write_dockerfileR)
-import(broom)
-import(dplyr)
-import(ggplot2)
-import(rlang)
-import(stringr)
-import(tidyr)
 importFrom(dplyr,n_distinct)
 importFrom(dplyr,summarise)
 importFrom(metafor,rma)

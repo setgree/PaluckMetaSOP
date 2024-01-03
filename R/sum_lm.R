@@ -11,18 +11,36 @@
 #' @param dgts Number of digits for rounding coefficients (default: 5).
 #' @return If coefs_only is TRUE, returns a rounded coefficients table; otherwise, returns the full summary.
 #' @importFrom stats lm as.formula
-sum_lm <- function(dataset = dat, y = d, x = se_d, coefs_only = TRUE, dgts = 5) {
+
+sum_lm <- function(dataset = NULL, y = NULL, x = NULL, coefs_only = TRUE, dgts = 5) {
   if (!requireNamespace("dplyr", quietly = TRUE)) {
     message("Install dplyr before you run this function.")
     return(invisible())
   }
+  if (missing(dataset)) {
+    dataset <- dat  # Replace 'dat' with the actual default dataset
+  }
 
-  y <- rlang::enquo(y)
-  x <- rlang::enquo(x)
+  if (missing(y)) {
+    if ("d" %in% colnames(dataset)) {
+      y <- rlang::sym("d")  # Replace 'd' with the actual column name
+    } else {
+      stop("Specify 'y' or make sure 'd' exists in the dataset.")
+    }
+  }
+
+  if (missing(x)) {
+    if ("se_d" %in% colnames(dataset)) {
+      x <- rlang::sym("se_d")  # Replace 'se_d' with the actual column name
+    } else {
+      stop("Specify 'x' or make sure 'se_d' exists in the dataset.")
+    }
+  }
+
 
   print_obj <- summary(lm(formula = as.formula(paste(rlang::quo_name(y), '~',
                                                      rlang::quo_name(x))),
-                          data = rlang::eval_tidy(dataset)))
+                          data = dataset))
 
   if (coefs_only) {
     return(round(print_obj$coefficients, digits = dgts))

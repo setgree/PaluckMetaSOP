@@ -4,7 +4,7 @@
 \alias{sum_lm}
 \title{Print Core Results from summary(lm()) in a Neat Table}
 \usage{
-sum_lm(dataset = dat, y = d, x = se_d, coefs_only = TRUE, dgts = 5)
+sum_lm(dataset = NULL, y = NULL, x = NULL, coefs_only = TRUE, dgts = 5)
 }
 \arguments{
 \item{dataset}{The dataset to be used for regression analysis.}
