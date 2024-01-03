@@ -7,7 +7,7 @@
 
 This paper and package document the [Paluck lab's](https://www.betsylevypaluck.com/) approach to meta-analysis. 
 
-This repo is a hybrid of a package, built with instructions in the [_R packages_](https://r-pkgs.org/) book, and a paper manuscript that uses Papaja to convert from `Rmd` -> `.tex` -> `.pdf` with equations intact. 
+This repo is a hybrid of an R package, built with instructions in the [_R packages_](https://r-pkgs.org/) book, and a paper manuscript that uses [Papaja](https://github.com/crsh/papaja) to convert from `Rmd` -> `.tex` -> `.pdf` with equations intact. 
 
 Install via `devtools::install_github("setgree/PaluckMetaSOP")`.
 
