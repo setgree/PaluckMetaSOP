@@ -24,7 +24,7 @@ manage_references <- function(dat_with_dois, bib_file = './refs.bib') {
   }
 
   # Write bibs into bib file
-  for (entry in dat_with_dois$doi){
+  for (entry in dat_with_dois$doi) {
     RefManageR::WriteBib(bib = RefManageR::GetBibEntryWithDOI(doi = entry),
                          file = bib_file,
                          append = TRUE)
