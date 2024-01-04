@@ -1,0 +1,73 @@
+---
+title             : "Standard Operating Procedures for Meta-Analysis in the Paluck Lab"
+shorttitle        : "Paluck_meta_SOP"
+
+author: 
+  - name          : "Seth Green"
+    affiliation   : "1"
+    corresponding : yes    # Define only one corresponding author
+    address       : "Kahneman-Treisman Center, Princeton University"
+    email         : "sag2212@columbia.edu"
+    role: # Contributorship roles (e.g., CRediT, https://credit.niso.org/)
+      - "Conceptualization"
+      - "Writing - Original Draft Preparation"
+      - "Writing - Review & Editing"
+  - name          : "Elizabeth Levy Paluck"
+    affiliation   : "1"
+    role:
+      - "Writing - Review & Editing"
+      - "Supervision"
+  - name          : "Roni Porat"
+    affiliation   : "2"
+    role:
+      - "Writing - Review & Editing"
+      - "Supervision"
+  
+affiliation:
+  - id            : "1"
+    institution   : "Princeton University"
+  - id            : "2"
+    institution   : "Hebrew University, Jerusalem"
+
+authornote: |
+  This work was supported by [whover supports it]
+
+
+abstract: |
+  This paper describes the motivations and procedures for meta-analyses and systematic reviews by Betsy Levy Paluck and co-authors, with reference and examples drawn from four such papers (Paluck and Green 2009, Paluck, Green, and Green 2019, Paluck et al. 2021, and Gantman et al. 2024). We first describe our conceptual aims when writing meta-analytic papers, which are to provide an 'on-ramp' to interested readers, to evaluate a literature's strengths and weaknesses, and to illuminate empirical gaps, which we intend as signposts for future researchers. Second, we describe the typical 'flow' of the papers as a whole. Third, we describe our meta-analytic procedures, detailing our default reporting structure and analytic choices and engaging with recent critiques from Slough and Tyson (2022) and Simonsohn, Simmons, and Nelson (2022). Fourth, we introduce a collection of functions we use to implement our meta-analytic choices, available as an R package. Fifth, we conclude with some open questions for meta-analysts.
+  
+  <!-- https://tinyurl.com/ybremelq -->
+  
+keywords          : "meta-analysis, standard-operating-procedures, meta-science"
+wordcount         : "X"
+
+bibliography      : "meta-sop-references.bib"
+
+floatsintext      : no
+linenumbers       : yes
+draft             : no
+mask              : no
+
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+
+classoption       : "man"
+output            : papaja::apa6_pdf
+---
+
+## Data analysis
+We used `r cite_r("meta-sop-references.bib")` for all our analyses.
+
+
+# Results
+
+# Discussion
+
+
+\newpage
+
+# References
+
+::: {#refs custom-style="Bibliography"}
+:::
