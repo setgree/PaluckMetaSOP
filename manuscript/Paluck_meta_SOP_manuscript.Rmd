@@ -1,73 +1,172 @@
 ---
-title             : "Standard Operating Procedures for Meta-Analysis in the Paluck Lab"
-shorttitle        : "Paluck_meta_SOP"
+title: "Standard Operating Procedures for Meta-Analysis in the Paluck Lab"
+shorttitle: "Paluck_meta_SOP"
 
 author: 
-  - name          : "Seth Green"
-    affiliation   : "1"
-    corresponding : yes    # Define only one corresponding author
-    address       : "Kahneman-Treisman Center, Princeton University"
-    email         : "sag2212@columbia.edu"
-    role: # Contributorship roles (e.g., CRediT, https://credit.niso.org/)
+  - name: "Seth Green"
+    affiliation: "1"
+    corresponding: yes
+    address: "Kahneman-Treisman Center, Princeton University"
+    email: "sag2212@columbia.edu"
+    role:
       - "Conceptualization"
       - "Writing - Original Draft Preparation"
       - "Writing - Review & Editing"
-  - name          : "Elizabeth Levy Paluck"
-    affiliation   : "1"
+  - name: "Elizabeth Levy Paluck"
+    affiliation: "1"
     role:
       - "Writing - Review & Editing"
       - "Supervision"
-  - name          : "Roni Porat"
-    affiliation   : "2"
+  - name: "Roni Porat"
+    affiliation: "2"
     role:
       - "Writing - Review & Editing"
       - "Supervision"
   
 affiliation:
-  - id            : "1"
-    institution   : "Princeton University"
-  - id            : "2"
-    institution   : "Hebrew University, Jerusalem"
+  - id: "1"
+    institution: "Princeton University"
+  - id: "2"
+    institution: "Hebrew University, Jerusalem"
 
 authornote: |
-  This work was supported by [whover supports it]
-
+  This work was supported by [whoever supports it]
 
 abstract: |
   This paper describes the motivations and procedures for meta-analyses and systematic reviews by Betsy Levy Paluck and co-authors, with reference and examples drawn from four such papers (Paluck and Green 2009, Paluck, Green, and Green 2019, Paluck et al. 2021, and Gantman et al. 2024). We first describe our conceptual aims when writing meta-analytic papers, which are to provide an 'on-ramp' to interested readers, to evaluate a literature's strengths and weaknesses, and to illuminate empirical gaps, which we intend as signposts for future researchers. Second, we describe the typical 'flow' of the papers as a whole. Third, we describe our meta-analytic procedures, detailing our default reporting structure and analytic choices and engaging with recent critiques from Slough and Tyson (2022) and Simonsohn, Simmons, and Nelson (2022). Fourth, we introduce a collection of functions we use to implement our meta-analytic choices, available as an R package. Fifth, we conclude with some open questions for meta-analysts.
   
-  <!-- https://tinyurl.com/ybremelq -->
-  
-keywords          : "meta-analysis, standard-operating-procedures, meta-science"
-wordcount         : "X"
+keywords: "meta-analysis, standard-operating-procedures, meta-science"
+wordcount: "X"
 
-bibliography      : "meta-sop-references.bib"
+bibliography: "meta-sop-references.bib"
 
-floatsintext      : no
-linenumbers       : yes
-draft             : no
-mask              : no
+floatsintext: no
+linenumbers: yes
+draft: no
+mask: no
 
-figurelist        : no
-tablelist         : no
-footnotelist      : no
+figurelist: no
+tablelist: no
+footnotelist: no
 
-classoption       : "man"
-output            : papaja::apa6_pdf
+classoption: "man"
+output: papaja::apa6_pdf
 ---
 
-## Data analysis
-We used `r cite_r("meta-sop-references.bib")` for all our analyses.
+##  Introduction: Meta-analysis and its critics
 
 
-# Results
 
-# Discussion
+1. Meta-analyses are common in the social sciences – cite some big ones.
+2. And yet, meta-analyses are surprisingly undertheorized.
+    1. Most of the guides for meta-analysis are aimed at medical doctors and researchers and presume that you contrast and target harmonization (Slough and Tyson 2022) – in other words, that the “X” and the “Y” in “does X influence Y?” are basically the same across studies, and the goal is just to average their results.
+        1. Sometimes that holds, e.g. [deworming](https://scholar.harvard.edu/files/kremer/files/meta-analysis_deworming_world_bank_working_paper_dec_2016.pdf) or [insecticide-treated bednets](https://www.mmv.org/sites/default/files/uploads/docs/access/SMC_Tool_Kit/publications/Meremikww-ipt-review.pdf)
+        2. But in the behavioral sciences, the inputs are probably a lot more heterogeneous, e.g. [diversity](https://psycnet.apa.org/record/2016-43598-001) [training](https://compass.onlinelibrary.wiley.com/doi/10.1111/spc3.12741?af=R) or [the](https://pubmed.ncbi.nlm.nih.gov/16737372/) [contact](https://psycnet.apa.org/record/2015-07056-001) [hypothesis](https://journals.sagepub.com/doi/abs/10.1177/1088868318762647), as are the outputs, as are the outputs, e.g. a mix of attitudinal and behavioral outcomes and sometimes totally bespoke instruments.
+        3. Looking at [the Cochrane Review](https://training.cochrane.org/handbook/current/chapter-10), we see guidelines that are thorough, but generally propose statistical solutions to what are fundamentally non-statistical sources of uncertainty. By contrast, [Simmonsohn et al. (2022)](https://www.nature.com/articles/s44159-022-00101-8) argue for _design_-based solutions. 
+    2. Over the course of 15 years and 4 systematic reviews, three with meta-analytic components, we’ve developed a distinct perspective about when to do meta-analysis, what it’s useful for, and how to do it. This article articulates that perspective. 
+        4. The Cochrane review is still the seminal text, and this piece exists in dialogue with it. 
+3. In addition to Cochrane, this piece also contributes to two burgeoning literatures:
+    3. SOPs ([https://alexandercoppock.com/Green-Lab-SOP/Green_Lab_SOP.pdf](https://alexandercoppock.com/Green-Lab-SOP/Green_Lab_SOP.pdf), [https://www.stat.berkeley.edu/~winston/sop-safety-net.pdf](https://www.stat.berkeley.edu/~winston/sop-safety-net.pdf))
+    4. Theoretical underpinnings of meta-analysis (Slough and Tyson 2022
+4. So when are meta-analyses useful? 
 
+
+## When are meta-analyses useful and value do they bring?
+
+
+###  When do we do meta-analyses?
+
+
+
+1. Our lab embarks on meta-analyses when
+    1. Big literature with heterogeneous research quality
+    5. Multiple theoretical approaches whose comparative efficacy is unknown 
+    6. Intuition that a comprehensive read through and tests for rigor will reveal collective gaps in understanding
+2. Alternatively, if someone else has already written a comprehensive review, there might be room for a focused rejoinder, i.e. Pettigrew and Tropp (2006) amalgamate everything and find large effects, whereas Paluck Green and Green (2019) look at just the best studies and find much more mixed results.
+
+
+### What purposes do they serve?
+
+
+
+1. On-ramp to unfamiliar literature (alternate metaphor: "a lobby," from Toni Morrison's introduction to Beloved), exemplified by
+    1. Contact hypothesis: what, where, why
+    2. iii. Prejudice reduction: theoretical perspectives, landmark studies
+    3. iv. Sexual violence paper: history of zeitgeist perspectives
+2. Evaluate rather than transcribe
+    4. Describe critique of transcriptive, non-evaluative work in Simonsohn et al. (2022)
+    5. We identify high points (excellent studies) and low points (widespread methodological deficiencies) 
+    6. place effect sizes in context of real-world impact whenever possible, e.g. the prejudice paper argues that $\Delta$ of 0.27 corresponds to [X] change on ANES survey
+3. Illuminate empirical gaps
+    7. As our reviews show, applying some fairly minimal quality standards quickly winnows hundreds of studies down to just a few
+    8. These studies are likely to be the  most policy-relevant, and oftentimes the 'ideal' study simply hasn't been conducted at all yet
+    9. Examples: 
+        1. Paluck and Green (2009) highlight lack of field experiments -> Paluck (2009) runs a field experiment
+        2. Paluck, Green and Green (2019) highlight lack of studies testing interracial contact among adults -> provide intellectual backdrop for Scacco and Warren (2018), Mousa (2020), and Lowe (2019) -- as well as providing theoretical underpinning for those studies' comparatively underwhelming findings
+        3. similar examples from Paluck et al. (2021)? 
+
+
+## Typical structure of Paluck lab meta-analytic papers
+
+
+
+1. Describe context and stakes of the paper (i.e. why it's important to see if these interventions 'work', or why there’s reason to doubt an established consensus)
+2. Intellectual overview of major ideas in the literature
+3. Meta-analytic search methods 
+4. Meta-analytic approach
+5. Quantitative Results
+6. Discussion, highlights and gaps
+7. Conclusion
+
+
+## Paluck lab meta-analytic procedures
+
+
+
+1. Code more than you think you're going to need
+    1. You might be interested in the lasting effects, which means recording the latest possible effect sizes, but if you record the _earliest_ possible effects, you can detect within-study decay
+2. Start big and then go small, like a funnel; i.e. meta-analyze *everything* and then zoom in on different subsets of the literature
+    2. Why meta-analyze everything?	
+        1. Slough and Tyson (2023) argue that meta-analytic estimates only make sense if there's contrast harmony, i.e. if the many studies are clearly testing some common underlying theoretical concept. In some literatures we've looked at, this pretty clearly does not hold, e.g. the average effect of a contact hypothesis field experiment for Muslims and Christians and Nigeria and a diversity training in a U.S. corporate workplace tells you the combined effect of *what* exactly? 
+        2.  Ditto with "target harmony", which is whether interventions are aimed *at* changing the same thing. For instance, does it make sense to average the effect of some intervention on self-reported attitudes and behavioral outcomes? As Gantman et al. (2023) show, these outcomes are not always well correlated, which is prima facie evidence that we don't have target harmony.
+        3. Last, integrating observational and randomized studies is often justified as supplementing high studies with high internal validity with studies with high *external* validity, but it's probably more accurate to say that you take some studies that provide unbiased estimates and then, in exchange for greater statistical precision, induce bias arising from non-statistical sources of uncertainty ([Gerber, Green and Kaplan 2004](http://www.donaldgreen.com/wp-content/uploads/2015/09/Gerber-Green-Kaplan-IllusionofLearning.pdf)).
+    3. multi-part answer.
+        4. Overall meta-analytic estimate provides a within-paper size comparison; your overall effect size is X and your effect size for the very best studies is 1/3 X, that means something.
+        5. Test for publication bias should probably look at absolutely everything
+        6. Inter-paper comparisons; Paluck, Green and Green (2019) and Paluck et al. (2021) provide estimates of about $\Delta$ = 0.3, and then Green, Smith and Mathur (forthcoming) find $\Delta$ = 0.138, which also means something.
+3. Do some serious tests for publication bias: both conventional tests (egger's test, funnel plot, $\Delta$ ~ SE), but also think through where else it might emerge, e.g. compare effect sizes in studies with and without DOIs
+4. separate the dataset into different chunks, e.g. by theory, study design, or measurement strategy, and present these meta-analytic estimates side by side
+    4. Subset enough and eventually you get to reasonable claim for contrast and mechanism harmony (Slough and Tyson 2022)
+5.  Zoom in on and carefully and analyze best studies, both in aggregate and individually
+    5. These results might be surprising, e.g. when looking solely at RCTs on perpetration outcomes (Gantman et al. 2024), slightly fewer than half are self-reported nulls.
+6. Meta-analytic defaults
+    6. Random effects: any literature we want to look at is going to have heterogeneous inputs. 
+    7. Cluster at level of study
+    8. Glass's $\Delta$ rather than Cohen's d
+    9. Difference in proportion rather than odds ratio
+        7. resurface text from appendix to Gantman et al. (2024)
+
+
+## R package: blp_meta_functions
+
+
+
+1. Functions fall into four categories
+    1. Converting studies to singular estimates of effect size, variance and standard error
+    2. Wrapper functions that distill aggregate results into the core findings and make them table-ready
+    3. plotting functions
+    4. Miscellany: reproducibility, helper functions
+
+## Conclusions: hard cases
+
+1. What do we do when a paper's results are obviously not credible? 
+    1. e.g. if they present a result that's well past possible, e.g. t-test value of 36 (one of the papers in the prejudice literature had this, and also the cost-benefit analyses in the SOSA! Intervention in the primary prevention literature)
+2. What's the right outcome to code? Often very unclear what's prime or most representative of underlying construct
+3. Others...
+4. Meta-analyses are still very useful, we think, for readers (both expert and non-expert) and future researchers. 
 
 \newpage
-
-# References
-
-::: {#refs custom-style="Bibliography"}
-:::
+```{r echo=F}
+library(papaja)
+cite_r("meta-sop-references.bib", style = "text")
+```

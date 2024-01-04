@@ -62,39 +62,6 @@
   \let\oldsubparagraph\subparagraph
   \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
-% definitions for citeproc citations
-\NewDocumentCommand\citeproctext{}{}
-\NewDocumentCommand\citeproc{mm}{%
-  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
-\makeatletter
- % allow citations to break across lines
- \let\@cite@ofmt\@firstofone
- % avoid brackets around text for \cite:
- \def\@biblabel#1{}
- \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
-\makeatother
-\newlength{\cslhangindent}
-\setlength{\cslhangindent}{1.5em}
-\newlength{\csllabelwidth}
-\setlength{\csllabelwidth}{3em}
-\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
- {\begin{list}{}{%
-  \setlength{\itemindent}{0pt}
-  \setlength{\leftmargin}{0pt}
-  \setlength{\parsep}{0pt}
-  % turn on hanging indent if param 1 is 1
-  \ifodd #1
-   \setlength{\leftmargin}{\cslhangindent}
-   \setlength{\itemindent}{-1\cslhangindent}
-  \fi
-  % set entry spacing
-  \setlength{\itemsep}{#2\baselineskip}}}
- {\end{list}}
-\usepackage{calc}
-\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
-\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 \ifLuaTeX
 \usepackage[bidi=basic]{babel}
 \else
@@ -168,7 +135,7 @@
     {}{\InnerPatchFailed}%
   }
 {}{\PatchFailed}
-\keywords{keywords\newline\indent Word count: X}
+\keywords{meta-analysis, standard-operating-procedures, meta-science\newline\indent Word count: X}
 \DeclareDelayedFloatFlavor{ThreePartTable}{table}
 \DeclareDelayedFloatFlavor{lltable}{table}
 \DeclareDelayedFloatFlavor*{longtable}{table}
@@ -189,7 +156,7 @@
   pdftitle={Standard Operating Procedures for Meta-Analysis in the Paluck Lab},
   pdfauthor={Seth Green1, Elizabeth Levy Paluck1, \& Roni Porat2},
   pdflang={en-EN},
-  pdfkeywords={keywords},
+  pdfkeywords={meta-analysis, standard-operating-procedures, meta-science},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
@@ -198,11 +165,11 @@
 \date{}
 
 
-\shorttitle{PaluckMetaSOP}
+\shorttitle{Paluck\_meta\_SOP}
 
 \authornote{
 
-This work was supported by {[}whover supports it{]}
+This work was supported by {[}whoever supports it{]}
 
 The authors made the following contributions. Seth Green: Conceptualization, Writing - Original Draft Preparation, Writing - Review \& Editing; Elizabeth Levy Paluck: Writing - Review \& Editing, Supervision; Roni Porat: Writing - Review \& Editing, Supervision.
 
@@ -221,40 +188,321 @@ This paper describes the motivations and procedures for meta-analyses and system
 \begin{document}
 \maketitle
 
-\section{Methods}\label{methods}
+\subsection{Introduction: Meta-analysis and its critics}\label{introduction-meta-analysis-and-its-critics}
 
-We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study.
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Meta-analyses are common in the social sciences -- cite some big ones.
+\item
+  And yet, meta-analyses are surprisingly undertheorized.
 
-\subsection{Participants}\label{participants}
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    Most of the guides for meta-analysis are aimed at medical doctors and researchers and presume that you contrast and target harmonization (Slough and Tyson 2022) -- in other words, that the ``X'' and the ``Y'' in ``does X influence Y?'' are basically the same across studies, and the goal is just to average their results.
 
-\subsection{Material}\label{material}
+    \begin{enumerate}
+    \def\labelenumiii{\arabic{enumiii}.}
+    \tightlist
+    \item
+      Sometimes that holds, e.g.~\href{https://scholar.harvard.edu/files/kremer/files/meta-analysis_deworming_world_bank_working_paper_dec_2016.pdf}{deworming} or \href{https://www.mmv.org/sites/default/files/uploads/docs/access/SMC_Tool_Kit/publications/Meremikww-ipt-review.pdf}{insecticide-treated bednets}
+    \item
+      But in the behavioral sciences, the inputs are probably a lot more heterogeneous, e.g.~\href{https://psycnet.apa.org/record/2016-43598-001}{diversity} \href{https://compass.onlinelibrary.wiley.com/doi/10.1111/spc3.12741?af=R}{training} or \href{https://pubmed.ncbi.nlm.nih.gov/16737372/}{the} \href{https://psycnet.apa.org/record/2015-07056-001}{contact} \href{https://journals.sagepub.com/doi/abs/10.1177/1088868318762647}{hypothesis}, as are the outputs, as are the outputs, e.g.~a mix of attitudinal and behavioral outcomes and sometimes totally bespoke instruments.
+    \item
+      Looking at \href{https://training.cochrane.org/handbook/current/chapter-10}{the Cochrane Review}, we see guidelines that are thorough, but generally propose statistical solutions to what are fundamentally non-statistical sources of uncertainty. By contrast, \href{https://www.nature.com/articles/s44159-022-00101-8}{Simmonsohn et al.~(2022)} argue for \emph{design}-based solutions.
+    \end{enumerate}
+  \item
+    Over the course of 15 years and 4 systematic reviews, three with meta-analytic components, we've developed a distinct perspective about when to do meta-analysis, what it's useful for, and how to do it. This article articulates that perspective.
 
-\subsection{Procedure}\label{procedure}
+    \begin{enumerate}
+    \def\labelenumiii{\arabic{enumiii}.}
+    \setcounter{enumiii}{3}
+    \tightlist
+    \item
+      The Cochrane review is still the seminal text, and this piece exists in dialogue with it.
+    \end{enumerate}
+  \end{enumerate}
+\item
+  In addition to Cochrane, this piece also contributes to two burgeoning literatures:
 
-\subsection{Data analysis}\label{data-analysis}
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \setcounter{enumii}{2}
+  \tightlist
+  \item
+    SOPs (\url{https://alexandercoppock.com/Green-Lab-SOP/Green_Lab_SOP.pdf}, \url{https://www.stat.berkeley.edu/~winston/sop-safety-net.pdf})
+  \item
+    Theoretical underpinnings of meta-analysis (Slough and Tyson 2022
+  \end{enumerate}
+\item
+  So when are meta-analyses useful?
+\end{enumerate}
 
-We used R (Version 4.3.1; R Core Team, 2023) and the R-packages \emph{papaja} (Version 0.1.2.9000; Aust \& Barth, 2023), and \emph{tinylabels} (Version 0.2.4; Barth, 2023) for all our analyses.
+\subsection{When are meta-analyses useful and value do they bring?}\label{when-are-meta-analyses-useful-and-value-do-they-bring}
 
-\section{Results}\label{results}
+\subsubsection{When do we do meta-analyses?}\label{when-do-we-do-meta-analyses}
 
-\section{Discussion}\label{discussion}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Our lab embarks on meta-analyses when
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    Big literature with heterogeneous research quality
+  \item
+    Multiple theoretical approaches whose comparative efficacy is unknown
+  \item
+    Intuition that a comprehensive read through and tests for rigor will reveal collective gaps in understanding
+  \end{enumerate}
+\item
+  Alternatively, if someone else has already written a comprehensive review, there might be room for a focused rejoinder, i.e.~Pettigrew and Tropp (2006) amalgamate everything and find large effects, whereas Paluck Green and Green (2019) look at just the best studies and find much more mixed results.
+\end{enumerate}
+
+\subsubsection{What purposes do they serve?}\label{what-purposes-do-they-serve}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  On-ramp to unfamiliar literature (alternate metaphor: ``a lobby,'' from Toni Morrison's introduction to Beloved), exemplified by
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    Contact hypothesis: what, where, why
+  \item
+    \begin{enumerate}
+    \def\labelenumiii{\roman{enumiii}.}
+    \setcounter{enumiii}{2}
+    \tightlist
+    \item
+      Prejudice reduction: theoretical perspectives, landmark studies
+    \end{enumerate}
+  \item
+    \begin{enumerate}
+    \def\labelenumiii{\roman{enumiii}.}
+    \setcounter{enumiii}{3}
+    \tightlist
+    \item
+      Sexual violence paper: history of zeitgeist perspectives
+    \end{enumerate}
+  \end{enumerate}
+\item
+  Evaluate rather than transcribe
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \setcounter{enumii}{3}
+  \tightlist
+  \item
+    Describe critique of transcriptive, non-evaluative work in Simonsohn et al.~(2022)
+  \item
+    We identify high points (excellent studies) and low points (widespread methodological deficiencies)
+  \item
+    place effect sizes in context of real-world impact whenever possible, e.g.~the prejudice paper argues that \(\Delta\) of 0.27 corresponds to {[}X{]} change on ANES survey
+  \end{enumerate}
+\item
+  Illuminate empirical gaps
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \setcounter{enumii}{6}
+  \tightlist
+  \item
+    As our reviews show, applying some fairly minimal quality standards quickly winnows hundreds of studies down to just a few
+  \item
+    These studies are likely to be the most policy-relevant, and oftentimes the `ideal' study simply hasn't been conducted at all yet
+  \item
+    Examples:
+
+    \begin{enumerate}
+    \def\labelenumiii{\arabic{enumiii}.}
+    \tightlist
+    \item
+      Paluck and Green (2009) highlight lack of field experiments -\textgreater{} Paluck (2009) runs a field experiment
+    \item
+      Paluck, Green and Green (2019) highlight lack of studies testing interracial contact among adults -\textgreater{} provide intellectual backdrop for Scacco and Warren (2018), Mousa (2020), and Lowe (2019) -- as well as providing theoretical underpinning for those studies' comparatively underwhelming findings
+    \item
+      similar examples from Paluck et al.~(2021)?
+    \end{enumerate}
+  \end{enumerate}
+\end{enumerate}
+
+\subsection{Typical structure of Paluck lab meta-analytic papers}\label{typical-structure-of-paluck-lab-meta-analytic-papers}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Describe context and stakes of the paper (i.e.~why it's important to see if these interventions `work', or why there's reason to doubt an established consensus)
+\item
+  Intellectual overview of major ideas in the literature
+\item
+  Meta-analytic search methods
+\item
+  Meta-analytic approach
+\item
+  Quantitative Results
+\item
+  Discussion, highlights and gaps
+\item
+  Conclusion
+\end{enumerate}
+
+\subsection{Paluck lab meta-analytic procedures}\label{paluck-lab-meta-analytic-procedures}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Code more than you think you're going to need
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    You might be interested in the lasting effects, which means recording the latest possible effect sizes, but if you record the \emph{earliest} possible effects, you can detect within-study decay
+  \end{enumerate}
+\item
+  Start big and then go small, like a funnel; i.e.~meta-analyze \emph{everything} and then zoom in on different subsets of the literature
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \setcounter{enumii}{1}
+  \tightlist
+  \item
+    Why meta-analyze everything?
+
+    \begin{enumerate}
+    \def\labelenumiii{\arabic{enumiii}.}
+    \tightlist
+    \item
+      Slough and Tyson (2023) argue that meta-analytic estimates only make sense if there's contrast harmony, i.e.~if the many studies are clearly testing some common underlying theoretical concept. In some literatures we've looked at, this pretty clearly does not hold, e.g.~the average effect of a contact hypothesis field experiment for Muslims and Christians and Nigeria and a diversity training in a U.S. corporate workplace tells you the combined effect of \emph{what} exactly?
+    \item
+      Ditto with ``target harmony'', which is whether interventions are aimed \emph{at} changing the same thing. For instance, does it make sense to average the effect of some intervention on self-reported attitudes and behavioral outcomes? As Gantman et al.~(2023) show, these outcomes are not always well correlated, which is prima facie evidence that we don't have target harmony.
+    \item
+      Last, integrating observational and randomized studies is often justified as supplementing high studies with high internal validity with studies with high \emph{external} validity, but it's probably more accurate to say that you take some studies that provide unbiased estimates and then, in exchange for greater statistical precision, induce bias arising from non-statistical sources of uncertainty (\href{http://www.donaldgreen.com/wp-content/uploads/2015/09/Gerber-Green-Kaplan-IllusionofLearning.pdf}{Gerber, Green and Kaplan 2004}).
+    \end{enumerate}
+  \item
+    multi-part answer.
+
+    \begin{enumerate}
+    \def\labelenumiii{\arabic{enumiii}.}
+    \setcounter{enumiii}{3}
+    \tightlist
+    \item
+      Overall meta-analytic estimate provides a within-paper size comparison; your overall effect size is X and your effect size for the very best studies is 1/3 X, that means something.
+    \item
+      Test for publication bias should probably look at absolutely everything
+    \item
+      Inter-paper comparisons; Paluck, Green and Green (2019) and Paluck et al.~(2021) provide estimates of about \(\Delta\) = 0.3, and then Green, Smith and Mathur (forthcoming) find \(\Delta\) = 0.138, which also means something.
+    \end{enumerate}
+  \end{enumerate}
+\item
+  Do some serious tests for publication bias: both conventional tests (egger's test, funnel plot, \(\Delta\) \textasciitilde{} SE), but also think through where else it might emerge, e.g.~compare effect sizes in studies with and without DOIs
+\item
+  separate the dataset into different chunks, e.g.~by theory, study design, or measurement strategy, and present these meta-analytic estimates side by side
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \setcounter{enumii}{3}
+  \tightlist
+  \item
+    Subset enough and eventually you get to reasonable claim for contrast and mechanism harmony (Slough and Tyson 2022)
+  \end{enumerate}
+\item
+  Zoom in on and carefully and analyze best studies, both in aggregate and individually
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \setcounter{enumii}{4}
+  \tightlist
+  \item
+    These results might be surprising, e.g.~when looking solely at RCTs on perpetration outcomes (Gantman et al.~2024), slightly fewer than half are self-reported nulls.
+  \end{enumerate}
+\item
+  Meta-analytic defaults
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \setcounter{enumii}{5}
+  \tightlist
+  \item
+    Random effects: any literature we want to look at is going to have heterogeneous inputs.
+  \item
+    Cluster at level of study
+  \item
+    Glass's \(\Delta\) rather than Cohen's d
+  \item
+    Difference in proportion rather than odds ratio
+
+    \begin{enumerate}
+    \def\labelenumiii{\arabic{enumiii}.}
+    \setcounter{enumiii}{6}
+    \tightlist
+    \item
+      resurface text from appendix to Gantman et al.~(2024)
+    \end{enumerate}
+  \end{enumerate}
+\end{enumerate}
+
+\subsection{R package: blp\_meta\_functions}\label{r-package-blp_meta_functions}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Functions fall into four categories
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    Converting studies to singular estimates of effect size, variance and standard error
+  \item
+    Wrapper functions that distill aggregate results into the core findings and make them table-ready
+  \item
+    plotting functions
+  \item
+    Miscellany: reproducibility, helper functions
+  \end{enumerate}
+\end{enumerate}
+
+\subsection{Conclusions: hard cases}\label{conclusions-hard-cases}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  What do we do when a paper's results are obviously not credible?
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    e.g.~if they present a result that's well past possible, e.g.~t-test value of 36 (one of the papers in the prejudice literature had this, and also the cost-benefit analyses in the SOSA! Intervention in the primary prevention literature)
+  \end{enumerate}
+\item
+  What's the right outcome to code? Often very unclear what's prime or most representative of underlying construct
+\item
+  Others\ldots{}
+\item
+  Meta-analyses are still very useful, we think, for readers (both expert and non-expert) and future researchers.
+\end{enumerate}
 
 \newpage
 
-\section{References}\label{references}
-
-\phantomsection\label{refs}
-\begin{CSLReferences}{1}{0}
-\bibitem[\citeproctext]{ref-R-papaja}
-Aust, F., \& Barth, M. (2023). \emph{{papaja}: {Prepare} reproducible {APA} journal articles with {R Markdown}}. Retrieved from \url{https://github.com/crsh/papaja}
-
-\bibitem[\citeproctext]{ref-R-tinylabels}
-Barth, M. (2023). \emph{{tinylabels}: Lightweight variable labels}. Retrieved from \url{https://cran.r-project.org/package=tinylabels}
-
-\bibitem[\citeproctext]{ref-R-base}
-R Core Team. (2023). \emph{R: A language and environment for statistical computing}. Vienna, Austria: R Foundation for Statistical Computing. Retrieved from \url{https://www.R-project.org/}
-
-\end{CSLReferences}
+\begin{verbatim}
+## [1] "R [Version 4.3.1\\; @R-base] and the R-packages *papaja* [Version 0.1.2.9000\\; @R-papaja], and *tinylabels* [Version 0.2.4\\; @R-tinylabels]"
+\end{verbatim}
 
 
 \end{document}
