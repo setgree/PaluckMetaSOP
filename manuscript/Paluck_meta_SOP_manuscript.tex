@@ -62,6 +62,39 @@
   \let\oldsubparagraph\subparagraph
   \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 \ifLuaTeX
 \usepackage[bidi=basic]{babel}
 \else
@@ -180,7 +213,7 @@ Correspondence concerning this article should be addressed to Seth Green, Kahnem
 \affiliation{\vspace{0.5cm}\textsuperscript{1} Princeton University\\\textsuperscript{2} Hebrew University, Jerusalem}
 
 \abstract{%
-This paper describes the motivations and procedures for meta-analyses and systematic reviews by Betsy Levy Paluck and co-authors, with reference and examples drawn from four such papers (Paluck and Green 2009, Paluck, Green, and Green 2019, Paluck et al.~2021, and Gantman et al.~2024). We first describe our conceptual aims when writing meta-analytic papers, which are to provide an `on-ramp' to interested readers, to evaluate a literature's strengths and weaknesses, and to illuminate empirical gaps, which we intend as signposts for future researchers. Second, we describe the typical `flow' of the papers as a whole. Third, we describe our meta-analytic procedures, detailing our default reporting structure and analytic choices and engaging with recent critiques from Slough and Tyson (2022) and Simonsohn, Simmons, and Nelson (2022). Fourth, we introduce a collection of functions we use to implement our meta-analytic choices, available as an R package. Fifth, we conclude with some open questions for meta-analysts.
+This paper describes the motivations and procedures for meta-analyses by Betsy Levy Paluck and co-authors, with reference and examples drawn from four such papers (Paluck, Green, and Green 2019, Paluck et al.~2021, and Gantman et al.~2024). We first describe our conceptual aims when writing meta-analytic papers, which are to provide an `on-ramp' to interested readers, to evaluate a literature's strengths and weaknesses, and to illuminate empirical gaps, which we intend as signposts for future researchers. Second, we describe the typical `flow' of the papers as a whole. Third, we describe our meta-analytic procedures, detailing our default reporting structure and analytic choices and engaging with recent critiques from Slough and Tyson (2022) and Simonsohn, Simmons, and Nelson (2022). Fourth, we introduce a collection of functions we use to implement our meta-analytic choices, available as an R package. Fifth, we conclude with some open questions for meta-analysts.
 }
 
 
@@ -189,6 +222,58 @@ This paper describes the motivations and procedures for meta-analyses and system
 \maketitle
 
 \subsection{Introduction: Meta-analysis and its critics}\label{introduction-meta-analysis-and-its-critics}
+
+\begin{itemize}
+\item
+  Since the term was first coined in 1976 (Glass, 1976), meta-analysis has come to be understood as a crucial tool for synthesizing evidence in the medical and natural sciences (citation)
+\item
+  core idea, as a 1990 NYT article put put it, is to allow researchers ``to draw more reliable inferences or new conclusions from the combined results than from smaller studies that may be inconclusive individually'' (Altman, 1990)
+\item
+  labeled as controversial in that article, but the examples are all from medicine. then \href{https://www.nytimes.com/2012/10/16/science/stanford-organic-food-study-and-vagaries-of-meta-analyses.html}{debated vigorously in 2012}
+\item
+  take an excellent conventional meta-analysis, e.g. Meremikwu, Donegan, Sinclair, Esu, and Oringanje (2012). This study looks at Intermittent Preventive Treatment for malaria in seven trials, with 12,589 subjects,all of which ``were conducted in West Africa, and six of seven trials were restricted to children aged less than 5 years.'' The study finds that IPT leads to significant reductions in both malaria cases and severe malaria cases, ``a small reduction in all‐cause mortality,'' and that ``drug‐related adverse events, if they occur, are probably rare.''
+\item
+  Note four qualities of this meta-analysis:
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    All RCTs
+  \item
+    Singular,cohesive treatment
+  \item
+    Seven different draws from a common population
+  \item
+    Coherent, commonly measured outcomes that clearly represent key quantities of interest
+  \end{enumerate}
+\end{itemize}
+
+In the past 20 years, meta-analysis has become much more common in the social sciences and in psychological science in particular. But if we look at some prominent ones, we might say that these conditions of the ``ideal'' meta-analysis don't really hold.
+1. Methodological diversity (Pettigrew and Tropp 2006 integrate studies of widely different designs)
+2. Very diverse treatments (\url{https://psycnet.apa.org/record/2016-43598-001})
+3. Diverse settings (cite example)
+4. Broad array of outcome measures (Paluck et al.~2020)
+
+Recent papers have raised the possibility that the core assumptions of meta-analysis are often not met in contemporary work.
+
+Slough and Tyson (2022) argue that two core conditions are necessary for meta-analysis to make sense: contrast and target harmonization\ldots{}
+
+Meanwhile, Simonsohn et al (SSN). argue\ldots{}
+
+These critiques register deeply with us because we are authors and collaborators on three recent meta-analyses, two of which strive to be comprehensive and therefore are arguably do not meet the assumptions laid out by Slough and Tyson and are guilty of the sins identified by SSN.
+
+So does meta-analysis still \emph{work} under these conditions? Is there something cogent and meaningful here?
+
+We say yes, we still think meta-analysis can be useful even if the underlying literatures do not meet the ideal conditions of a medical literature, with the qualification that meta-analytic estimates need to be presented and contextualized appropriately. We urge researchers not to throw the baby out with the bathwater -- as always, all models are wrong, but we think this one is useful.
+
+This article outlines how we make our meta-analyses useful, and to whom. We start by identifying what makes a literature a good candidate for meta-analysis, our overarching purposes when we write one, and who we write such pieces for. We then describe our typical paper structure for a meta-analysis; our default analytic choices; and an R package, \texttt{PaluckMetaSOP}, that implements our defaults and helps aids our writing process. We conclude with some open questions and hard cases
+
+this piece also contributes to two burgeoning literatures:
+SOPs (\url{https://alexandercoppock.com/Green-Lab-SOP/Green_Lab_SOP.pdf}, \url{https://www.stat.berkeley.edu/~winston/sop-safety-net.pdf}) + ones Don cited
+establishing theoretical underpinnings of meta-analysis (Slough and Tyson, SSN)
+
+\paragraph{Notes}\label{notes}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -215,7 +300,7 @@ This paper describes the motivations and procedures for meta-analyses and system
       Looking at \href{https://training.cochrane.org/handbook/current/chapter-10}{the Cochrane Review}, we see guidelines that are thorough, but generally propose statistical solutions to what are fundamentally non-statistical sources of uncertainty. By contrast, \href{https://www.nature.com/articles/s44159-022-00101-8}{Simmonsohn et al.~(2022)} argue for \emph{design}-based solutions.
     \end{enumerate}
   \item
-    Over the course of 15 years and 4 systematic reviews, three with meta-analytic components, we've developed a distinct perspective about when to do meta-analysis, what it's useful for, and how to do it. This article articulates that perspective.
+    Over the course of 8 years and three meta-analyses, we've developed a distinct perspective about when to do meta-analysis, what it's useful for, and how to do it. This article articulates that perspective.
 
     \begin{enumerate}
     \def\labelenumiii{\arabic{enumiii}.}
@@ -327,20 +412,25 @@ This paper describes the motivations and procedures for meta-analyses and system
     \def\labelenumiii{\arabic{enumiii}.}
     \tightlist
     \item
-      Paluck and Green (2009) highlight lack of field experiments -\textgreater{} Paluck (2009) runs a field experiment
-    \item
       Paluck, Green and Green (2019) highlight lack of studies testing interracial contact among adults -\textgreater{} provide intellectual backdrop for Scacco and Warren (2018), Mousa (2020), and Lowe (2019) -- as well as providing theoretical underpinning for those studies' comparatively underwhelming findings
+      2 similar examples from Paluck et al.~(2021)?
     \item
-      similar examples from Paluck et al.~(2021)?
+      (arguably a systematic review suffices for this)
     \end{enumerate}
   \end{enumerate}
 \end{enumerate}
 
-\subsection{Typical structure of Paluck lab meta-analytic papers}\label{typical-structure-of-paluck-lab-meta-analytic-papers}
+\subsubsection{Who are they for?}\label{who-are-they-for}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\tightlist
+\item
+  researchers, especially folks trying to figure out where they can have the most impact
+\item
+  policymakers and funders who want a critical review of a literature
+\item
+  any interested reader. Our metas tend to be about big, important subjects that people are thinking about.
+  \#\# Typical structure of Paluck lab meta-analytic papers
 \item
   Describe context and stakes of the paper (i.e.~why it's important to see if these interventions `work', or why there's reason to doubt an established consensus)
 \item
@@ -500,9 +590,18 @@ This paper describes the motivations and procedures for meta-analyses and system
 
 \newpage
 
-\begin{verbatim}
-## [1] "R [Version 4.3.1\\; @R-base] and the R-packages *papaja* [Version 0.1.2.9000\\; @R-papaja], and *tinylabels* [Version 0.2.4\\; @R-tinylabels]"
-\end{verbatim}
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-altman1990}
+Altman, L. K. (1990). New method of analyzing health data stirs debate. \emph{New York Times}, 31.
+
+\bibitem[\citeproctext]{ref-glass1976}
+Glass, G. V. (1976). Primary, secondary, and meta-analysis of research. \emph{Educational Researcher}, \emph{5}(10), 3--8.
+
+\bibitem[\citeproctext]{ref-meremikwu2012}
+Meremikwu, M. M., Donegan, S., Sinclair, D., Esu, E., \& Oringanje, C. (2012). Intermittent preventive treatment for malaria in children living in areas with seasonal transmission. \emph{Cochrane Database of Systematic Reviews}, (2).
+
+\end{CSLReferences}
 
 
 \end{document}
