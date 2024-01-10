@@ -17,6 +17,11 @@ For the package, I need
 * tests (maybe)
 * double-check everything works as intended and also in a general way
 * include JH's functions from the prejudice paper (maybe with his help)
+* `Warning message: In body(fun) : argument is not a function`
+* `> install(); Skipping 6 packages not available: tibble, sessioninfo, rlang, RefManageR, metafor, dplyr`
+* upload Tar file to 'releases' page? as release 0.01 or something
+
+
 
 ### Paper TODOs
 
@@ -24,3 +29,4 @@ For the package, I need
 * document it accordingly
 * figure out an automated/easy way to collaborate with authros who prefer overleaf or github
 * convert to Quarto? 
+
