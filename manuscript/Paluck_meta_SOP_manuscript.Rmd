@@ -55,6 +55,8 @@ output: papaja::apa6_pdf
 
 ##  Introduction: Meta-analysis and its critics
 
+What purposes do meta-analyses serve above and beyond those met by systematic reviews? Judging by recent papers in social psychology (P&T 2006, Daryl Bem piece, psychological bulletin), 
+
 - Since the term was first coined in 1976 [@glass1976], meta-analysis has come to be understood as a crucial tool for synthesizing evidence in the medical and natural sciences (citation)
 
 - core idea, as a 1990 NYT article put put it, is to allow researchers "to draw more reliable inferences or new conclusions from the combined results than from smaller studies that may be inconclusive individually" [@altman1990]
