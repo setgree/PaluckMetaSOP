@@ -53,28 +53,33 @@ classoption: "man"
 output: papaja::apa6_pdf
 ---
 
-##  Introduction: Meta-analysis and its critics
+##  Introduction: Synthesizing meta-analysis and meta-science
 
-What purposes do meta-analyses serve above and beyond those met by systematic reviews? Judging by recent papers in social psychology (P&T 2006, Daryl Bem piece, psychological bulletin), 
+What purposes do meta-analyses serve above and beyond those met by systematic reviews? Judging by recent papers in social psychology [@pettigrew2006, @bem2012, @powerpose psychological bulletin], the answer is to bolster and validate existing findings through aggregation. By pooling findings from many studies, researchers furnish meta-analytic estimates that are typically heartening to a literature's boosters by dint of their statistical precision and suggestion of broad applicability across settings. Such papers often have a valedictory quality to them: they provide leading practitioners a chance to survey the body of work they've helped inspire, highlight the strength of the evidence for their subfield's central tenets, and suggest future research directions that assume those tenets are no longer in need of further testing.
+
+Meanwhile, a parallel movement in psychology has begun to implement the findings and suggestions of the open science [@nosek2012] and meta-science (whatever cite) into both study designs [@whatever] and literature reviews [@whatever]. Some of those reviews provide quantitative assessments of meta-scientific quantitites, for instance, what percentage of a subset of papers are computationally reproducible [@objels2020] or consistent with open data standards [@whatever]. In some sense, these estimates are meta-analytic, but they aren't meta-analyses in the conventional sense of pooling existing findings into average effects [@glass1976, @cochrane, something else]. In tone, these papers are often much more critical than meta-analyses are, and they are often written by outsiders or newcomers to an academic field rather than leading experts. Thus, though they share part of their name, the meta-analytic and meta-scientific tradition generally bring very different starting assumptions, use different tools, and are fundamentally aimed at different audiences: 
+
+At the Paluck lab, we seek to synthesize these two approaches by writing meta-analyses that are fundamentally meta-scientific. Over the course of four systematic reviews, three with meta-analytic components [@paluck2009, @paluck2019, @paluck2020, @gantman2024], we've developed and honed somewhat idiosyncratic beliefs about where and when a meta-analysis is useful, how to structure our meta-analytic arguments, and default specifications. This paper articulates those beliefs, and aims to illuminate how  meta-analysis might become a standard part of the meta-scientist's toolkit. 
+
+### Meta-analysis at 50: from social to medical science and back again
 
 - Since the term was first coined in 1976 [@glass1976], meta-analysis has come to be understood as a crucial tool for synthesizing evidence in the medical and natural sciences (citation)
 
 - core idea, as a 1990 NYT article put put it, is to allow researchers "to draw more reliable inferences or new conclusions from the combined results than from smaller studies that may be inconclusive individually" [@altman1990]
 - labeled as controversial in that article, but the examples are all from medicine. then [debated vigorously in 2012](https://www.nytimes.com/2012/10/16/science/stanford-organic-food-study-and-vagaries-of-meta-analyses.html)
-
 - take an excellent conventional meta-analysis, e.g. @meremikwu2012. This study looks at Intermittent Preventive Treatment for malaria in seven trials, with  12,589 subjects,all of which  "were conducted in West Africa, and six of seven trials were restricted to children aged less than 5 years." The study finds that IPT leads to significant reductions in both malaria cases and severe malaria cases, "a small reduction in all‐cause mortality," and that "drug‐related adverse events, if they occur, are probably rare." 
 - Note four qualities of this meta-analysis:
     1. All RCTs
     2. Singular,cohesive treatment
     3. Seven different draws from a common population
     4. Coherent, commonly measured outcomes that clearly represent key quantities of interest
-    
 In the past 20 years, meta-analysis has become much more common in the social sciences and in psychological science in particular.  But if we look at some prominent ones, we might say that these conditions of the "ideal" meta-analysis don't really hold. 
     1. Methodological diversity (Pettigrew and Tropp 2006 integrate studies of widely different designs)
     2. Very diverse treatments (https://psycnet.apa.org/record/2016-43598-001)
     3. Diverse settings (cite example)
     4. Broad array of outcome measures (Paluck et al. 2020)
     
+### Contemporary 
 Recent papers have raised the possibility that the core assumptions of meta-analysis are often not met in contemporary work.
 
 Slough and Tyson (2022) argue that two core conditions are necessary for meta-analysis to make sense: contrast and target harmonization...
