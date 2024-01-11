@@ -1,5 +1,5 @@
 ---
-title: "Standard Operating Procedures for Meta-Analysis in the Paluck Lab"
+title: "Towards meta-scientific meta-analyses: standard operating procedures for systematic reviews in the Paluck Lab"
 shorttitle: "Paluck_meta_SOP"
 
 author: 
@@ -33,10 +33,10 @@ authornote: |
   This work was supported by [whoever supports it]
 
 abstract: |
-  This paper describes the motivations and procedures for meta-analyses by Betsy Levy Paluck and co-authors, with reference and examples drawn from four such papers (Paluck, Green, and Green 2019, Paluck et al. 2021, and Gantman et al. 2024). We first describe our conceptual aims when writing meta-analytic papers, which are to provide an 'on-ramp' to interested readers, to evaluate a literature's strengths and weaknesses, and to illuminate empirical gaps, which we intend as signposts for future researchers. Second, we describe the typical 'flow' of the papers as a whole. Third, we describe our meta-analytic procedures, detailing our default reporting structure and analytic choices and engaging with recent critiques from Slough and Tyson (2022) and Simonsohn, Simmons, and Nelson (2022). Fourth, we introduce a collection of functions we use to implement our meta-analytic choices, available as an R package. Fifth, we conclude with some open questions for meta-analysts.
+  This paper describes the motivations and procedures for meta-analyses by Betsy Levy Paluck and co-authors, with reference and examples drawn from three such papers (Paluck, Green, and Green 2019, Paluck et al. 2021, and Gantman et al. 2024). We first describe our conceptual aims when writing meta-analytic papers, which are to provide an 'on-ramp' to interested readers, to evaluate a literature's strengths and weaknesses, and to illuminate empirical gaps, which we intend as signposts for future researchers. Second, we describe the typical 'flow' of the papers as a whole. Third, we describe our meta-analytic procedures, detailing our default reporting structure and analytic choices and engaging with recent critiques from Slough and Tyson (2022) and Simonsohn, Simmons, and Nelson (2022). Fourth, we introduce a collection of functions we use to implement our meta-analytic choices, available as an R package. Fifth, we conclude with some open questions for meta-analysts.
   
 keywords: "meta-analysis, standard-operating-procedures, meta-science"
-wordcount: "1762"
+wordcount: "2119"
 
 bibliography: "meta-sop-references.bib"
 
@@ -61,6 +61,8 @@ Meanwhile, a parallel movement in psychology has begun to implement the findings
 
 At the Paluck lab, we seek to synthesize these two approaches by writing meta-analyses that are fundamentally meta-scientific. Over the course of four systematic reviews, three with meta-analytic components [@paluck2009, @paluck2019, @paluck2020, @gantman2024], we've developed and honed somewhat idiosyncratic beliefs about where and when a meta-analysis is useful, how to structure our meta-analytic arguments, and default specifications. This paper articulates those beliefs, and aims to illuminate how  meta-analysis might become a standard part of the meta-scientist's toolkit. 
 
+In short, we believe that meta-analyses are useful for evaluating the strengths and weaknesses of large, heterogeneous literatures, especailly those that bring mutliple theoretical perspectives to bear. They can also be useful for providing focused, critical re-examination of a literature's main findings as a contrast to previous credulous reviews. While some critics have argued that core assumptions about homogeneity across experimental contrasts and outcomes are necessary for the standard meta-analytic model to hold [@slough2022], we think that meta-analyses can still be useful when these conditions aren't met; in such cases, meta-analytic estimates should be treated as _descriptive_ rather than _causal_ inferences. Moreover, we see value in contrasting all-inclusive estimates, which are fundamentally descriptive, to more rigorous, focused estimates, which come about by imposing additional structure on which studies and outcomes are pooled and which are fundamentally causal. The contrasts in magnitude and precision between these two approaches are often startling and illuminating.
+
 ### Meta-analysis at 50: from social to medical science and back again
 
 - Since the term was first coined in 1976 [@glass1976], meta-analysis has come to be understood as a crucial tool for synthesizing evidence in the medical and natural sciences (citation)
@@ -79,25 +81,33 @@ In the past 20 years, meta-analysis has become much more common in the social sc
     3. Diverse settings (cite example)
     4. Broad array of outcome measures (Paluck et al. 2020)
     
-### Contemporary 
+### Contemporary criticisms of meta-analysis from meta-scientists
 Recent papers have raised the possibility that the core assumptions of meta-analysis are often not met in contemporary work.
 
 Slough and Tyson (2022) argue that two core conditions are necessary for meta-analysis to make sense: contrast and target harmonization...
 
 Meanwhile, Simonsohn et al (SSN). argue...
 
-These critiques register deeply with us because we are authors and collaborators on three recent meta-analyses, two of which strive to be comprehensive and therefore are arguably do not meet the assumptions laid out by Slough and Tyson and are guilty of the sins identified by SSN.
+These critiques register deeply with us because of our three recent meta-analyses, two strive to be comprehensive and therefore arguably do not meet the assumptions laid out by Slough and Tyson and are guilty of the sins identified by SSN (though SSN also identify one of papers as exemplary)
 
 So does meta-analysis still _work_ under these conditions? Is there something cogent and meaningful here? 
+
+### All models are wrong, but this one is still useful 
 
 We say yes, we still think meta-analysis can be useful even if the underlying literatures do not meet the ideal conditions of a medical literature, with the qualification that meta-analytic estimates need to be presented and  contextualized appropriately. We urge researchers not to throw the baby out with the bathwater -- as always, all models are wrong, but we think this one is useful. 
 
 This article outlines how we make our meta-analyses useful, and to whom. We start by identifying what makes a literature a good candidate for meta-analysis, our overarching purposes when we write one, and who we write such pieces for. We then describe our typical paper structure for a meta-analysis; our default analytic choices; and an R package, `PaluckMetaSOP`, that implements our defaults and helps aids our writing process. We conclude with some open questions and hard cases
 
-this piece also contributes to two burgeoning literatures:
+[where does this go] this piece also contributes to two burgeoning literatures:
     SOPs ([https://alexandercoppock.com/Green-Lab-SOP/Green_Lab_SOP.pdf](https://alexandercoppock.com/Green-Lab-SOP/Green_Lab_SOP.pdf), [https://www.stat.berkeley.edu/~winston/sop-safety-net.pdf](https://www.stat.berkeley.edu/~winston/sop-safety-net.pdf)) + ones Don cited
-    establishing theoretical underpinnings of meta-analysis (Slough and Tyson, SSN)
-    
+    establishing theoretical underpinnings of meta-analysis (Slough and Tyson, SSN, Gechter and Meager)
+
+#### The remainder of this paper, and what this paper is not
+- Paper
+
+- What this paper is not: the Cochrane review
+        4. The Cochrane review is still the seminal text, and this piece exists in dialogue with it. 
+
 #### Notes
     
 1. Meta-analyses are common in the social sciences – cite some big ones.
@@ -107,10 +117,7 @@ this piece also contributes to two burgeoning literatures:
         2. But in the behavioral sciences, the inputs are probably a lot more heterogeneous, e.g. [diversity](https://psycnet.apa.org/record/2016-43598-001) [training](https://compass.onlinelibrary.wiley.com/doi/10.1111/spc3.12741?af=R) or [the](https://pubmed.ncbi.nlm.nih.gov/16737372/) [contact](https://psycnet.apa.org/record/2015-07056-001) [hypothesis](https://journals.sagepub.com/doi/abs/10.1177/1088868318762647), as are the outputs, as are the outputs, e.g. a mix of attitudinal and behavioral outcomes and sometimes totally bespoke instruments.
         3. Looking at [the Cochrane Review](https://training.cochrane.org/handbook/current/chapter-10), we see guidelines that are thorough, but generally propose statistical solutions to what are fundamentally non-statistical sources of uncertainty. By contrast, [Simmonsohn et al. (2022)](https://www.nature.com/articles/s44159-022-00101-8) argue for _design_-based solutions. 
     2. Over the course of 8 years and three meta-analyses, we’ve developed a distinct perspective about when to do meta-analysis, what it’s useful for, and how to do it. This article articulates that perspective. 
-        4. The Cochrane review is still the seminal text, and this piece exists in dialogue with it. 
-3. In addition to Cochrane, this piece also contributes to two burgeoning literatures:
     3. SOPs ([https://alexandercoppock.com/Green-Lab-SOP/Green_Lab_SOP.pdf](https://alexandercoppock.com/Green-Lab-SOP/Green_Lab_SOP.pdf), [https://www.stat.berkeley.edu/~winston/sop-safety-net.pdf](https://www.stat.berkeley.edu/~winston/sop-safety-net.pdf))
-    4. Theoretical underpinnings of meta-analysis (Slough and Tyson 2022
 4. So when are meta-analyses useful? 
 
 
