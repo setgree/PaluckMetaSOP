@@ -20,6 +20,7 @@ For the package, I need
 * `Warning message: In body(fun) : argument is not a function`
 * `> install(); Skipping 6 packages not available: tibble, sessioninfo, rlang, RefManageR, metafor, dplyr`
 * upload Tar file to 'releases' page? as release 0.01 or something
+* properly integrate new data into functions (use as example in every function and then build vignette from that) -- see [this commit](https://github.com/setgree/PaluckMetaSOP/commit/fbd3901af39d456e0fbe09aa272d0f39156ca656) for details
 
 
 
