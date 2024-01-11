@@ -168,7 +168,7 @@
     {}{\InnerPatchFailed}%
   }
 {}{\PatchFailed}
-\keywords{meta-analysis, standard-operating-procedures, meta-science\newline\indent Word count: 2119}
+\keywords{meta-analysis, standard-operating-procedures, meta-science\newline\indent Word count: 2338}
 \DeclareDelayedFloatFlavor{ThreePartTable}{table}
 \DeclareDelayedFloatFlavor{lltable}{table}
 \DeclareDelayedFloatFlavor*{longtable}{table}
@@ -213,7 +213,7 @@ Correspondence concerning this article should be addressed to Seth Green, Kahnem
 \affiliation{\vspace{0.5cm}\textsuperscript{1} Princeton University\\\textsuperscript{2} Hebrew University, Jerusalem}
 
 \abstract{%
-This paper describes the motivations and procedures for meta-analyses by Betsy Levy Paluck and co-authors, with reference and examples drawn from three such papers (Paluck, Green, and Green 2019, Paluck et al.~2021, and Gantman et al.~2024). We first describe our conceptual aims when writing meta-analytic papers, which are to provide an `on-ramp' to interested readers, to evaluate a literature's strengths and weaknesses, and to illuminate empirical gaps, which we intend as signposts for future researchers. Second, we describe the typical `flow' of the papers as a whole. Third, we describe our meta-analytic procedures, detailing our default reporting structure and analytic choices and engaging with recent critiques from Slough and Tyson (2022) and Simonsohn, Simmons, and Nelson (2022). Fourth, we introduce a collection of functions we use to implement our meta-analytic choices, available as an R package. Fifth, we conclude with some open questions for meta-analysts.
+This paper describes the motivations and procedures for meta-analyses by Betsy Levy Paluck and co-authors, with reference and examples drawn from three such papers (Paluck, Green, and Green 2019, Paluck et al.~2021, and Porat et al.~2024). We first describe our conceptual aims when writing meta-analytic papers, which are to provide an `on-ramp' to interested readers, to evaluate a literature's strengths and weaknesses, and to illuminate empirical gaps, which we intend as signposts for future researchers. Second, we describe the typical `flow' of the papers as a whole. Third, we describe our meta-analytic procedures, detailing our default reporting structure and analytic choices and engaging with recent critiques from Slough and Tyson (2022) and Simonsohn, Simmons, and Nelson (2022). Fourth, we introduce a collection of functions we use to implement our meta-analytic choices, available as an R package. Fifth, we conclude with some open questions for meta-analysts.
 }
 
 
@@ -225,13 +225,14 @@ This paper describes the motivations and procedures for meta-analyses by Betsy L
 
 What purposes do meta-analyses serve above and beyond those met by systematic reviews? Judging by recent papers in social psychology Bezrukova, Spell, Perry, \& Jehn (2016), the answer is to bolster and validate existing findings through aggregation. By pooling findings from many studies, researchers furnish meta-analytic estimates that are typically heartening to a literature's boosters by dint of their statistical precision and suggestion of broad applicability across settings. Such papers often have a valedictory quality to them: they provide leading practitioners a chance to survey the body of work they've helped inspire, highlight the strength of the evidence for their subfield's central tenets, and suggest future research directions that assume those tenets are no longer in need of further testing.
 
-Meanwhile, a parallel movement in psychology has begun to implement the findings and suggestions of the open science (Nosek, 2015) and meta-science (Schooler, 2014) movements into study designs (Ferguson et al., 2023), journal policies (Hardwicke \& Vazire, 2023), and literature reviews (Hardwicke et al., 2018). Some of those reviews provide quantitative assessments of meta-scientific quantitites, for instance, what percentage of a subset of papers are computationally reproducible (\textbf{objels2020?}) or consistent with open data standards (Hardwicke et al., 2021). In some sense, these estimates are meta-analytic, but they aren't meta-analyses in the conventional sense of pooling existing findings into weighted average effects (\textbf{cochrane?}). In tone, these papers are often much more critical than meta-analyses are, and they are often written by outsiders or newcomers to an academic field rather than leading experts. Thus, though they share part of their name, the meta-analytic and meta-scientific tradition generally bring very different starting assumptions, use different tools, and are fundamentally aimed at different audiences:
+Meanwhile, a parallel movement in psychology has begun to implement the findings and suggestions of the open science (Nosek, 2015) and meta-science (Schooler, 2014) movements into study designs (Ferguson et al., 2023), journal policies (Hardwicke \& Vazire, 2023), and literature reviews (Hardwicke et al., 2018). Some of those reviews provide quantitative assessments of meta-scientific quantitites, for instance, what percentage of a subset of papers are computationally reproducible (Obels, Lakens, Coles, Gottfried, \& Green, 2020) or consistent with open data standards (Hardwicke et al., 2021). In some sense, these estimates are meta-analytic, but they aren't meta-analyses in the conventional sense of pooling existing findings into weighted average effects Cooper, Hedges, \& Valentine (2019). In tone, these papers are often much more critical than meta-analyses are, and they are often written by outsiders or newcomers to an academic field rather than leading experts. Thus, though they share part of their name, the meta-analytic and meta-scientific tradition generally bring very different starting assumptions, use different tools, and are fundamentally written by and aimed at different audiences: from insider to insiders vs.~outsiders to everyone.
 
-At the Paluck lab, we seek to synthesize these two approaches by writing meta-analyses that are fundamentally meta-scientific. Over the course of four systematic reviews, three with meta-analytic components (\textbf{gantman2024?}), we've developed and honed somewhat idiosyncratic beliefs about where and when a meta-analysis is useful, how to structure our meta-analytic arguments, and default specifications. This paper articulates those beliefs, and aims to illuminate how meta-analysis might become a standard part of the meta-scientist's toolkit.
+At the Paluck lab, we seek to synthesize these two approaches by writing meta-analyses that are fundamentally meta-scientific. Over the course of four systematic reviews, three with meta-analytic components Porat, Gantman, Paluck, Green, \& Pezzuto (2024), we've developed and honed somewhat idiosyncratic beliefs about where and when a meta-analysis is useful, how to structure our meta-analytic arguments, and default specifications. This paper articulates those beliefs, and aims to illuminate how meta-analysis might become a standard part of the meta-scientist's toolkit.
 
-We believe that meta-analyses are useful for evaluating the strengths and weaknesses of large, heterogeneous literatures, especially those that bring multiple theoretical perspectives to bear. They can also be useful for providing focused re-examination of a literature's main findings as a contrast to previous credulous reviews. Contrary to those who argue that core assumptions about homogeneity across experimental contrasts and outcomes are necessary for the standard meta-analytic model to hold (\textbf{slough2022?}), we think that meta-analyses can still be useful when these conditions aren't met; in such cases, meta-analytic estimates should be treated as \emph{descriptive} rather than \emph{causal} inferences. Moreover, we see value in contrasting all-inclusive estimates, which are fundamentally descriptive, to more rigorous, focused estimates, which come about by imposing additional structure on which studies and outcomes are pooled and which are fundamentally causal. The contrasts in magnitude and precision between these two approaches are often startling and illuminating.
+First, we describe the conditions when a meta-analysis adds something above and beyond a systematic review. We believe that meta-analyses are useful for evaluating the strengths and weaknesses of large, heterogeneous literatures, especially those that bring multiple theoretical perspectives to bear. They can also be useful for providing focused re-examination of a literature's main findings as a contrast to previous credulous reviews. Contrary to critics who argue that core assumptions about homogeneity across experimental contrasts and outcomes are necessary for the standard meta-analytic model to hold (Slough \& Tyson, 2023), we think that comprehensive, heterogeneous meta-analyses can still be useful when these conditions aren't met; in such cases, meta-analytic estimates should be treated as \emph{descriptive} rather than \emph{causal} inferences. Moreover, we see value in contrasting all-inclusive estimates, which are fundamentally descriptive, to more rigorous, focused estimates, which come about by imposing additional structure on which studies and outcomes are pooled and which are fundamentally causal. The contrasts in magnitude and precision between these two approaches are often startling and illuminating.
 
-\subsubsection{Meta-analysis at 50: from social to medical science and back again}\label{meta-analysis-at-50-from-social-to-medical-science-and-back-again}
+Next, we describe the typical structure of the meta-analysis sections of our papers. In general, we start by describing the main ideas and trends in a literature to provide interested readers with an `onramp' into a literature's major findings and concerns. We then describe our search processes and meta-analytic methods. We present our meta-analytic findings in our `results' section. These analyses are structured to start big and go small, meaning that we first present meta-analytic estimates, as well as tests for publication bias, in the entire literature, and then hone in on key quantities of interest from smaller subsets of the data. For instance, we might test the overall effects within randomized controlled trials on behavioral and attitudinal outcomes separately or difference in effect sizes by target of prejudice reduction (e.g.~recorded reductions in antigay prejudice vs.~ethnic prejudice). Further tests will depend on the literature, but our final tests tend to probe differences in effect size by some marker of study quality, e.g.~the presence of a pre-analysis plan, or the relationship between effect sizes within studies, e.g.~if attitudinal changes tends to predict behavioral changes.
+\#\#\# Meta-analysis at 50: from social to medical science and back again
 
 \begin{itemize}
 \item
@@ -272,9 +273,9 @@ We believe that meta-analyses are useful for evaluating the strengths and weakne
 
 Recent papers have raised the possibility that the core assumptions of meta-analysis are often not met in contemporary work.
 
-Slough and Tyson (2022) argue that two core conditions are necessary for meta-analysis to make sense: contrast and target harmonization\ldots{}
+Slough and Tyson (2023) argue that two core conditions are necessary for meta-analysis to make sense: contrast and target harmonization\ldots{}
 
-Meanwhile, Simonsohn et al (SSN). argue\ldots{}
+Meanwhile, Simonsohn, Simmons, and Nelson (2022). argue\ldots{}
 
 These critiques register deeply with us because of our three recent meta-analyses, two strive to be comprehensive and therefore arguably do not meet the assumptions laid out by Slough and Tyson and are guilty of the sins identified by SSN (though SSN also identify one of papers as exemplary)
 
@@ -487,7 +488,7 @@ also munger 2023
     \item
       Slough and Tyson (2023) argue that meta-analytic estimates only make sense if there's contrast harmony, i.e.~if the many studies are clearly testing some common underlying theoretical concept. In some literatures we've looked at, this pretty clearly does not hold, e.g.~the average effect of a contact hypothesis field experiment for Muslims and Christians and Nigeria and a diversity training in a U.S. corporate workplace tells you the combined effect of \emph{what} exactly?
     \item
-      Ditto with ``target harmony'', which is whether interventions are aimed \emph{at} changing the same thing. For instance, does it make sense to average the effect of some intervention on self-reported attitudes and behavioral outcomes? As Gantman et al.~(2023) show, these outcomes are not always well correlated, which is prima facie evidence that we don't have target harmony.
+      Ditto with ``target harmony'', which is whether interventions are aimed \emph{at} changing the same thing. For instance, does it make sense to average the effect of some intervention on self-reported attitudes and behavioral outcomes? As Porat et al. (2024) show, these outcomes are not always well correlated, which is prima facie evidence that we don't have target harmony.
     \item
       Last, integrating observational and randomized studies is often justified as supplementing high studies with high internal validity with studies with high \emph{external} validity, but it's probably more accurate to say that you take some studies that provide unbiased estimates and then, in exchange for greater statistical precision, induce bias arising from non-statistical sources of uncertainty (\href{http://www.donaldgreen.com/wp-content/uploads/2015/09/Gerber-Green-Kaplan-IllusionofLearning.pdf}{Gerber, Green and Kaplan 2004}).
     \end{enumerate}
@@ -526,7 +527,7 @@ also munger 2023
   \setcounter{enumii}{4}
   \tightlist
   \item
-    These results might be surprising, e.g.~when looking solely at RCTs on perpetration outcomes (Gantman et al.~2024), slightly fewer than half are self-reported nulls.
+    These results might be surprising, e.g.~when looking solely at RCTs on perpetration outcomes (Porat et al., 2024), slightly fewer than half are self-reported nulls.
   \end{enumerate}
 \item
   Meta-analytic defaults
@@ -549,7 +550,7 @@ also munger 2023
     \setcounter{enumiii}{6}
     \tightlist
     \item
-      resurface text from appendix to Gantman et al.~(2024)
+      resurface text from appendix to Porat et al.~(2024)
     \end{enumerate}
   \end{enumerate}
 \end{enumerate}
@@ -611,11 +612,20 @@ Bem, D., Tressoldi, P., Rabeyron, T., \& Duggan, M. (2015). Feeling the future: 
 \bibitem[\citeproctext]{ref-bezrukova2016}
 Bezrukova, K., Spell, C. S., Perry, J. L., \& Jehn, K. A. (2016). A meta-analytical integration of over 40 years of research on diversity training evaluation. \emph{Psychological Bulletin}, \emph{142}(11), 1227.
 
+\bibitem[\citeproctext]{ref-cooper2019}
+Cooper, H., Hedges, L. V., \& Valentine, J. C. (2019). \emph{The handbook of research synthesis and meta-analysis}. Russell Sage Foundation.
+
+\bibitem[\citeproctext]{ref-cuddy2018}
+Cuddy, A. J., Schultz, S. J., \& Fosse, N. E. (2018). P-curving a more comprehensive body of research on postural feedback reveals clear evidential value for power-posing effects: Reply to simmons and simonsohn (2017). \emph{Psychological Science}, \emph{29}(4), 656--666.
+
 \bibitem[\citeproctext]{ref-ferguson2023}
 Ferguson, J., Littman, R., Christensen, G., Paluck, E. L., Swanson, N., Wang, Z., \ldots{} Pezzuto, J.-H. (2023). Survey of open science practices and attitudes in the social sciences. \emph{Nature Communications}, \emph{14}(1), 5401.
 
 \bibitem[\citeproctext]{ref-glass1976}
 Glass, G. V. (1976). Primary, secondary, and meta-analysis of research. \emph{Educational Researcher}, \emph{5}(10), 3--8.
+
+\bibitem[\citeproctext]{ref-glass1977}
+Glass, G. V. (1977). 9: Integrating findings: The meta-analysis of research. \emph{Review of Research in Education}, \emph{5}(1), 351--379.
 
 \bibitem[\citeproctext]{ref-hardwicke2021}
 Hardwicke, T. E., Bohn, M., MacDonald, K., Hembacher, E., Nuijten, M. B., Peloquin, B. N., \ldots{} Frank, M. C. (2021). Analytic reproducibility in articles receiving open data badges at the journal psychological science: An observational study. \emph{Royal Society Open Science}, \emph{8}(1), 201494.
@@ -626,17 +636,41 @@ Hardwicke, T. E., Mathur, M. B., MacDonald, K., Nilsonne, G., Banks, G. C., Kidw
 \bibitem[\citeproctext]{ref-hardwicke2023transparency}
 Hardwicke, T. E., \& Vazire, S. (2023). Transparency is now the default at psychological science. SAGE Publications Sage CA: Los Angeles, CA.
 
+\bibitem[\citeproctext]{ref-kleinstauber1996}
+Kleinstäuber, M., Witthöft, M., Steffanowski, A., Van Marwijk, H., Hiller, W., \& Lambert, M. J. (1996). \emph{Cochrane database of systematic reviews}.
+
 \bibitem[\citeproctext]{ref-meremikwu2012}
 Meremikwu, M. M., Donegan, S., Sinclair, D., Esu, E., \& Oringanje, C. (2012). Intermittent preventive treatment for malaria in children living in areas with seasonal transmission. \emph{Cochrane Database of Systematic Reviews}, (2).
 
 \bibitem[\citeproctext]{ref-nosek2015}
 Nosek, A., B. A. (2015). Promoting an open research culture. \emph{Science}, \emph{348}(6242), 1422--1425.
 
+\bibitem[\citeproctext]{ref-obels2020}
+Obels, P., Lakens, D., Coles, N. A., Gottfried, J., \& Green, S. A. (2020). Analysis of open data and computational reproducibility in registered reports in psychology. \emph{Advances in Methods and Practices in Psychological Science}, \emph{3}(2), 229--237.
+
+\bibitem[\citeproctext]{ref-paluck2009}
+Paluck, E. L., \& Green, D. P. (2009). Prejudice reduction: What works? A review and assessment of research and practice. \emph{Annual Review of Psychology}, \emph{60}, 339--367.
+
+\bibitem[\citeproctext]{ref-paluck2019}
+Paluck, E. L., Green, S. A., \& Green, D. P. (2019). The contact hypothesis re-evaluated. \emph{Behavioural Public Policy}, \emph{3}(2), 129--158.
+
+\bibitem[\citeproctext]{ref-paluck2021}
+Paluck, E. L., Porat, R., Clark, C. S., \& Green, D. P. (2021). Prejudice reduction: Progress and challenges. \emph{Annual Review of Psychology}, \emph{72}, 533--560.
+
 \bibitem[\citeproctext]{ref-pettigrew2006}
 Pettigrew, T. F., \& Tropp, L. R. (2006). A meta-analytic test of intergroup contact theory. \emph{Journal of Personality and Social Psychology}, \emph{90}(5), 751.
 
+\bibitem[\citeproctext]{ref-porat2024}
+Porat, R., Gantman, A., Paluck, E. L., Green, S. A., \& Pezzuto, J.-H. (2024). Preventing sexual violence -- a behavioral problem without a behaviorally-informed solution. \emph{Psychological Science in the Public Interest}, \emph{25}(1), 1--30.
+
 \bibitem[\citeproctext]{ref-schooler2014}
 Schooler, J. W. (2014). Metascience could rescue the {``replication crisis.''} \emph{Nature}, \emph{515}(7525), 9--9.
+
+\bibitem[\citeproctext]{ref-simonsohn2022}
+Simonsohn, U., Simmons, J., \& Nelson, L. D. (2022). Above averaging in literature reviews. \emph{Nature Reviews Psychology}, \emph{1}(10), 551--552.
+
+\bibitem[\citeproctext]{ref-slough2023}
+Slough, T., \& Tyson, S. A. (2023). External validity and meta-analysis. \emph{American Journal of Political Science}, \emph{67}(2), 440--455.
 
 \end{CSLReferences}
 
