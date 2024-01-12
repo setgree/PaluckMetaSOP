@@ -1,0 +1,38 @@
+### Meta-analysis at 50: from social to medical science and back again
+
+- Since the term was first coined in 1976 [@glass1976], meta-analysis has come to be understood as a crucial tool for synthesizing evidence in the medical and natural sciences (citation)
+
+- core idea, as a 1990 NYT article put put it, is to allow researchers "to draw more reliable inferences or new conclusions from the combined results than from smaller studies that may be inconclusive individually" [@altman1990]
+- labeled as controversial in that article, but the examples are all from medicine. then [debated vigorously in 2012](https://www.nytimes.com/2012/10/16/science/stanford-organic-food-study-and-vagaries-of-meta-analyses.html)
+- take an excellent conventional meta-analysis, e.g. @meremikwu2012. This study looks at Intermittent Preventive Treatment for malaria in seven trials, with  12,589 subjects,all of which  "were conducted in West Africa, and six of seven trials were restricted to children aged less than 5 years." The study finds that IPT leads to significant reductions in both malaria cases and severe malaria cases, "a small reduction in all‐cause mortality," and that "drug‐related adverse events, if they occur, are probably rare."
+- Note four qualities of this meta-analysis:
+    1. All RCTs
+    2. Singular,cohesive treatment
+    3. Seven different draws from a common population
+    4. Coherent, commonly measured outcomes that clearly represent key quantities of interest
+In the past 20 years, meta-analysis has become much more common in the social sciences and in psychological science in particular.  But if we look at some prominent ones, we might say that these conditions of the "ideal" meta-analysis don't really hold.
+    1. Methodological diversity (Pettigrew and Tropp 2006 integrate studies of widely different designs)
+    2. Very diverse treatments (https://psycnet.apa.org/record/2016-43598-001)
+    3. Diverse settings (cite example)
+    4. Broad array of outcome measures (Paluck et al. 2020)
+
+#### Notes
+
+1. Meta-analyses are common in the social sciences – cite some big ones.
+2. And yet, meta-analyses are surprisingly undertheorized.
+    1. Most of the guides for meta-analysis are aimed at medical doctors and researchers and presume that you contrast and target harmonization (Slough and Tyson 2022) – in other words, that the “X” and the “Y” in “does X influence Y?” are basically the same across studies, and the goal is just to average their results.
+        1. Sometimes that holds, e.g. [deworming](https://scholar.harvard.edu/files/kremer/files/meta-analysis_deworming_world_bank_working_paper_dec_2016.pdf) or [insecticide-treated bednets](https://www.mmv.org/sites/default/files/uploads/docs/access/SMC_Tool_Kit/publications/Meremikww-ipt-review.pdf)
+        2. But in the behavioral sciences, the inputs are probably a lot more heterogeneous, e.g. [diversity](https://psycnet.apa.org/record/2016-43598-001) [training](https://compass.onlinelibrary.wiley.com/doi/10.1111/spc3.12741?af=R) or [the](https://pubmed.ncbi.nlm.nih.gov/16737372/) [contact](https://psycnet.apa.org/record/2015-07056-001) [hypothesis](https://journals.sagepub.com/doi/abs/10.1177/1088868318762647), as are the outputs, as are the outputs, e.g. a mix of attitudinal and behavioral outcomes and sometimes totally bespoke instruments.
+        3. Looking at [the Cochrane Review](https://training.cochrane.org/handbook/current/chapter-10), we see guidelines that are thorough, but generally propose statistical solutions to what are fundamentally non-statistical sources of uncertainty. By contrast, [Simmonsohn et al. (2022)](https://www.nature.com/articles/s44159-022-00101-8) argue for _design_-based solutions.
+    2. Over the course of 8 years and three meta-analyses, we’ve developed a distinct perspective about when to do meta-analysis, what it’s useful for, and how to do it. This article articulates that perspective.
+    3. SOPs ([https://alexandercoppock.com/Green-Lab-SOP/Green_Lab_SOP.pdf](https://alexandercoppock.com/Green-Lab-SOP/Green_Lab_SOP.pdf), [https://www.stat.berkeley.edu/~winston/sop-safety-net.pdf](https://www.stat.berkeley.edu/~winston/sop-safety-net.pdf))
+4. So when are meta-analyses useful?
+
+
+\newpage
+```{r echo=F, include=F}
+library(papaja)
+cite_r("meta-sop-references.bib", style = "text")
+# https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html
+# for more on citation
+```
