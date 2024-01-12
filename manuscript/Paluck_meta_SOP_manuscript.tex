@@ -168,7 +168,7 @@
     {}{\InnerPatchFailed}%
   }
 {}{\PatchFailed}
-\keywords{meta-analysis, standard-operating-procedures, meta-science\newline\indent Word count: 2600}
+\keywords{meta-analysis, standard-operating-procedures, meta-science\newline\indent Word count: 2240}
 \DeclareDelayedFloatFlavor{ThreePartTable}{table}
 \DeclareDelayedFloatFlavor{lltable}{table}
 \DeclareDelayedFloatFlavor*{longtable}{table}
@@ -225,7 +225,7 @@ This paper describes the motivations and procedures for meta-analyses by Betsy L
 
 What purposes do meta-analyses serve above and beyond those met by systematic reviews? Judging by recent papers in social psychology Bezrukova, Spell, Perry, \& Jehn (2016), the answer is to bolster and validate existing findings through aggregation. By pooling findings from many studies, researchers furnish meta-analytic estimates that are typically heartening to a literature's boosters by dint of their statistical precision and suggestion of broad applicability across settings. Such papers often have a valedictory quality to them: they provide leading practitioners a chance to survey the body of work they've helped inspire, highlight the strength of the evidence for their subfield's central tenets, and suggest future research directions that assume those tenets are no longer in need of further testing.
 
-Meanwhile, a parallel movement in psychology has begun to implement the findings and suggestions of the open science (Nosek, 2015) and meta-science (Schooler, 2014) movements into study designs (Ferguson et al., 2023), journal policies (Hardwicke \& Vazire, 2023), and literature reviews (Hardwicke et al., 2018). Some of those reviews provide quantitative assessments of meta-scientific quantitites, for instance, what percentage of a subset of papers are computationally reproducible (Obels, Lakens, Coles, Gottfried, \& Green, 2020) or consistent with open data standards (Hardwicke et al., 2021). In some sense, these estimates are meta-analytic, but they aren't meta-analyses in the conventional sense of pooling existing findings into weighted average effects Cooper, Hedges, \& Valentine (2019). In tone, these papers are often much more critical than meta-analyses are, and they are often written by outsiders or newcomers to an academic field rather than leading experts. Thus, though they share part of their name, the meta-analytic and meta-scientific tradition generally bring very different starting assumptions, use different tools, and are fundamentally written by and aimed at different audiences: from insider to insiders vs.~outsiders to everyone.
+Meanwhile, a parallel movement in psychology has begun to implement the findings and suggestions of the open science (Nosek, 2015) and meta-science (Schooler, 2014) movements into study designs (Ferguson et al., 2023), journal policies (Hardwicke \& Vazire, 2023), and literature reviews (Hardwicke et al., 2018). Some of those reviews provide quantitative assessments of meta-scientific quantitites, for instance, what percentage of a subset of papers are computationally reproducible (Obels, Lakens, Coles, Gottfried, \& Green, 2020) or consistent with open data standards (Hardwicke et al., 2021). In some sense, these estimates are meta-analytic, but they aren't meta-analyses in the conventional sense of pooling existing findings into weighted average effects Cooper, Hedges, \& Valentine (2019). In tone, these papers are often much more critical than meta-analyses are, and they are often written by outsiders or newcomers to an academic field rather than leading experts. {[}ADDITIONAL SENTENCE ABOUT BEING EVALUATIVE RATHER THAN TRANSCRIPTIVE AND HOW THAT PROVIDES AN ACCESS POINT TO INTERESTED READERS{]} Thus, though they share part of their name, the meta-analytic and meta-scientific tradition generally bring very different starting assumptions, use different tools, and are fundamentally written by and aimed at different audiences: from insider to insiders vs.~outsiders to everyone.
 
 At the Paluck lab, we seek to synthesize these two approaches by writing meta-analyses that are fundamentally meta-scientific. Over the course of four systematic reviews, three with meta-analytic components Porat, Gantman, Paluck, Green, \& Pezzuto (2024), we've developed and honed somewhat idiosyncratic beliefs about where and when a meta-analysis is useful, how to structure our meta-analytic arguments, and default specifications. This paper articulates those beliefs, and aims to illuminate how meta-analysis might become a standard part of the meta-scientist's toolkit.
 
@@ -235,9 +235,15 @@ Next, we describe the typical structure of the meta-analysis sections of our pap
 
 Third, we detail our meta-analytic defaults. For instance, we use a random effects model (as implemented by the \texttt{metafor} package in R (Viechtbauer, 2010)) rather than a fixed effects (sometimes called an equal effects) model where we cluster at the level of an individual study. Further, we prefer Glass's \(\Delta\) to Cohen's \emph{d} so as to avoid an additional assumption about the effects of treatment on the underlying distribution. Here, we also detail a novel estimator for converting difference in proportion
 
+Third, we detail our meta-analytic defaults. For instance, we use a random effects model (as implemented by the \texttt{metafor} package in R (Viechtbauer, 2010)) rather than a fixed effects (sometimes called an equal effects) model where we cluster at the level of an individual study. Further, we prefer Glass's \(\Delta\) to Cohen's \emph{d} so as to avoid an additional assumption about the effects of treatment on the underlying distribution. Here, we also detail a novel estimator for converting difference in proportion to an effect size that has some desirable properties relative to the conventional conversion from an odds ratio (Gomila, 2021).
+
 Fourth, we introduce an R package, \texttt{PaluckMetaSOP}, that contains functions to help us quickly and efficiently perform meta-analyses. We describe the main categories of function and provide brief usage examples.
 
-Finally, we conclude by
+Finally, we conclude by\ldots{}
+
+Intersection of a few literatures\ldots{}
+
+This paper is not a comprehensive overview of how to do meta-analysis. See Cochrane Review for general; Cooper Hedges and Valentine for effect sizes; Experimentology ch 18 and Lakens ch 20 for hands-on guides;
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -560,6 +566,9 @@ Ferguson, J., Littman, R., Christensen, G., Paluck, E. L., Swanson, N., Wang, Z.
 
 \bibitem[\citeproctext]{ref-glass1977}
 Glass, G. V. (1977). 9: Integrating findings: The meta-analysis of research. \emph{Review of Research in Education}, \emph{5}(1), 351--379.
+
+\bibitem[\citeproctext]{ref-gomila2021}
+Gomila, R. (2021). Logistic or linear? Estimating causal effects of experimental treatments on binary outcomes using regression analysis. \emph{Journal of Experimental Psychology: General}, \emph{150}(4), 700.
 
 \bibitem[\citeproctext]{ref-hardwicke2021}
 Hardwicke, T. E., Bohn, M., MacDonald, K., Hembacher, E., Nuijten, M. B., Peloquin, B. N., \ldots{} Frank, M. C. (2021). Analytic reproducibility in articles receiving open data badges at the journal psychological science: An observational study. \emph{Royal Society Open Science}, \emph{8}(1), 201494.
