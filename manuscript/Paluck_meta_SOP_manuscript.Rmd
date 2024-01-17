@@ -69,7 +69,7 @@ Third, we detail our meta-analytic defaults. For instance, we use a random effec
 
 Fourth, we introduce an R package, `PaluckMetaSOP`, that contains functions to help us quickly and efficiently perform meta-analyses. We describe the main categories of function and provide brief usage examples.
 
-Finally, we conclude by...
+Finally, we conclude by noting some open questions that we are still working on. For instance, [pre-analysis plans, which outcome, indirect indicators of study quality like t = 36 or whatever]
 
 Intersection of a few literatures...
 
