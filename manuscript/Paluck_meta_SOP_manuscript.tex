@@ -168,7 +168,7 @@
     {}{\InnerPatchFailed}%
   }
 {}{\PatchFailed}
-\keywords{meta-analysis, standard-operating-procedures, meta-science\newline\indent Word count: 2647}
+\keywords{meta-analysis, standard-operating-procedures, meta-science\newline\indent Word count: 2538}
 \DeclareDelayedFloatFlavor{ThreePartTable}{table}
 \DeclareDelayedFloatFlavor{lltable}{table}
 \DeclareDelayedFloatFlavor*{longtable}{table}
@@ -237,17 +237,19 @@ Third, we detail our meta-analytic defaults. For instance, we use a random effec
 
 Fourth, we introduce an R package, \texttt{PaluckMetaSOP}, that contains functions to help us quickly and efficiently perform meta-analyses. We describe the main categories of function and provide brief usage examples.
 
-Finally, we conclude by noting some open questions for meta-scientific meta-analyses. Fundamentally, we find that meta-analyses are both \emph{data-driven} and \emph{hypothesis\_driven}, meaning that while we tend to begin these research projects with a sense of what's true and what's interesting, in practice, the most interesting questions tend to emerge after reading and coding many studies, i.e.~after data collection has begun. This can make task like writing a pre-analysis plan, or pre-specifying which outcomes we'llf focus on, tricky. Last, we discuss the difficulty of integrating indirect cues of study quality, e.g.~obviously mistaken or implausible statistical results on one end or special care to reproducibility on the other, into our analyses in a principled way.
+Finally, we conclude by noting some open questions for meta-scientific meta-analyses. While we tend to begin meta-analytic projects with a sense of what's true and what's interesting, in practice, the most incisive questions often emerge after reading and coding studies, i.e.~after data collection has begun. In other words, meta-analyses are both \emph{hypothesis\_driven} (re: deductive) and \emph{data-driven} (re: inductive); However, typical checks on researcher degrees of freedom assume a hypothesis-driven framework. This introduces complications to the process of ``tying one's hands to the mast'' tasks (Elster, 1977), such as writing a pre-analysis plan and pre-specifying which outcomes to focus on. We detail how we've dealt with such issues so far and how we think to improve going forward. Last, we discuss the difficulty of integrating indirect cues of study quality, e.g.~obviously mistaken statistical results or special attention devoted to reproducibility, into our analyses in a principled way.
 
 This paper is most closely in dialogue with two recent papers that attempt to put meta-analysis on firmer theoretical footing. Slough and Tyson (2023) ``highlight the dangers of conflating conceptual differences across studies with statistical sources of variation'' (p.~29). Their paper argues that for studies to ``identify the same empirical target'' (p.~1), they must have fundamentally \emph{harmonized} contrasts and measurement strategies, i.e.~the ``substantive comparison across studies is the same'' and ``the outcome of interest is the same and it is measured in the same way'' (p.~2). Absent these conditions, meta-analytic results might not be ``meaningful and interpretable'' (p.~2). Contrary to conventional approaches to improving the accuracy of meta-analyses, a lack of target equivalence cannot be ``solved solely with statistical techniques'' (p.~23). Rather, it is more likely to be achieved through ``design or inclusion criteria'' (p.~2). We agree that an internally and externally valid causal meta-analytic estimate requires harmonization of contrasts and outcomes (as well as a high degree of internal validity within constituent studies). However, we also think that meta-analytic estimates which do \emph{not} meet these conditions \textemdash e.g.~those that combine results from many different designs, or whose diverse outcomes bear an unknown relationship to the true outcome of interest \textemdash can still be useful and informative if interpreted and framed correctly. We think that when a literature without clear harmony of the independent and dependent variables is a case where the underlying model might be ``wrong'' but still useful.
 
-The other paper we look to is Simonsohn, Simmons, and Nelson (2022, should we include)
+The other paper we look to is Simonsohn, Simmons, and Nelson (2022), who argue that while the typical meta-analysis in social psychology aims ``to be comprehensive, results-focused and transcriptive,'' this aim is ``misguided, leading to uninterpretable results that misrepresent research literatures.'' First, they argue that a desire for comprehensiveness typically leads the meta-analyst to average ``studies of the highest quality'' with ``studies that lack internal validity or external validity, which are obtained using incorrect statistical techniques, or studies where results seem to arise from methodological artefacts.'' This procedure, they argue, is misguided, and produces results that are ``virtually guaranteed to lack a meaningful interpretation,'' despite their putative statistical precision. Second, the authors encourage meta-analysts to focus on studies' designs, rather than just their results, to provide ``readers with information that they can use to evaluate'' the quality of a research literature for themselves. Rather than describing every study, meta-analysts ``can succinctly describe and summarize common design failures\ldots and provide detailed descriptions only of the studies they deem most important or compelling.'' This advice ties closely to their last enjoinder to meta-analysts: to evaluate rather than to transcribe, i.e., detail the evidence from the very best studies, identify common methodological shortcomings of the literature as a whole, and, finally, ``discuss what open questions remain and what kinds of evidence would help answer those questions.''
 
-Beyond these guiding contributions, our current paper also contributes to a small, growing literature of Standard Operating Procedures --
+Our meta-analyses share these goals (and Paluck et al. (2021) is cited therein as a ``selective, design-focused, and evaluative'' meta-analysis). Moreover, the authors note that typical guides to meta-analysis ``briefly mention validity concerns but provide little guidance as to how to carry out quality control;'' one of the aims of this paper is to provide such guidance. However, as mentioned above, we part ways from this paper in that we believe comprehensive meta-analytic estimates still have a place in the meta-scientist's toolkit, so long as those estimates are ascribed descriptive rather than causal meaning and are used to contextualize further, more selective analyses.
 
-Last, Munger
+Our paper is a hybrid of conceptual work and granular guidance to researchers. In the latter respect, this paper builds on a tradition of Standard Operating Procedures in the behavioral and medical sciences. Most of these papers are written to standardize practices at the level of a class of research, e.g.~clinical trials (Rapport et al., 2013) or medical procedures (Wallace et al., 2015); Lakens (2023) provides guidance for deviating from pre-analysis plans. However, to our knowledge, just one previous paper in the behavioral sciences describe's a \emph{lab's} approach to a particular research task (Lin \& Green, 2016); this paper builds closely on that one and was partly inspired by it. We hope to see more papers in this vein describing lab- or department-based approaches to research.
 
-This paper is not a comprehensive overview of how to do meta-analysis. See Cochrane Review for general; Cooper Hedges and Valentine for effect sizes; Experimentology ch 18 and Lakens ch 20 for hands-on guides;
+Last, this paper is spiritually kin to papers that attempt to integrate particular practices into the field of meta-science {[}munger{]}
+
+One final note before we begin: this paper is not intended as a comprehensive overview of how to do meta-analysis. See Cochrane Review for general; Cooper Hedges and Valentine for effect sizes; Experimentology ch 18 and Lakens ch 20 for hands-on guides.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -550,6 +552,9 @@ Cooper, H., Hedges, L. V., \& Valentine, J. C. (2019). \emph{The handbook of res
 \bibitem[\citeproctext]{ref-cuddy2018}
 Cuddy, A. J., Schultz, S. J., \& Fosse, N. E. (2018). P-curving a more comprehensive body of research on postural feedback reveals clear evidential value for power-posing effects: Reply to simmons and simonsohn (2017). \emph{Psychological Science}, \emph{29}(4), 656--666.
 
+\bibitem[\citeproctext]{ref-elster1977}
+Elster, J. (1977). Ulysses and the sirens: A theory of imperfect rationality. \emph{Social Science Information}, \emph{16}(5), 469--526.
+
 \bibitem[\citeproctext]{ref-ferguson2023}
 Ferguson, J., Littman, R., Christensen, G., Paluck, E. L., Swanson, N., Wang, Z., \ldots{} Pezzuto, J.-H. (2023). Survey of open science practices and attitudes in the social sciences. \emph{Nature Communications}, \emph{14}(1), 5401.
 
@@ -570,6 +575,12 @@ Hardwicke, T. E., \& Vazire, S. (2023). Transparency is now the default at psych
 
 \bibitem[\citeproctext]{ref-kleinstauber1996}
 Kleinstäuber, M., Witthöft, M., Steffanowski, A., Van Marwijk, H., Hiller, W., \& Lambert, M. J. (1996). \emph{Cochrane database of systematic reviews}.
+
+\bibitem[\citeproctext]{ref-lakens2023}
+Lakens, D. (2023). \emph{When and how to deviate from a preregistration}. \url{https://doi.org/10.31234/osf.io/ha29k}.
+
+\bibitem[\citeproctext]{ref-lin2016}
+Lin, W., \& Green, D. P. (2016). Standard operating procedures: A safety net for pre-analysis plans. \emph{PS: Political Science \& Politics}, \emph{49}(3), 495--500.
 
 \bibitem[\citeproctext]{ref-nosek2015}
 Nosek, A., B. A. (2015). Promoting an open research culture. \emph{Science}, \emph{348}(6242), 1422--1425.
@@ -592,6 +603,9 @@ Pettigrew, T. F., \& Tropp, L. R. (2006). A meta-analytic test of intergroup con
 \bibitem[\citeproctext]{ref-porat2024}
 Porat, R., Gantman, A., Paluck, E. L., Green, S. A., \& Pezzuto, J.-H. (2024). Preventing sexual violence -- a behavioral problem without a behaviorally-informed solution. \emph{Psychological Science in the Public Interest}, \emph{25}(1), 1--30.
 
+\bibitem[\citeproctext]{ref-rapport2013}
+Rapport, F., Storey, M., Porter, A., Snooks, H., Jones, K., Peconi, J., et al.others. (2013). Qualitative research within trials: Developing a standard operating procedure for a clinical trials unit. \emph{Trials}, \emph{14}(1), 1--8.
+
 \bibitem[\citeproctext]{ref-schooler2014}
 Schooler, J. W. (2014). Metascience could rescue the {``replication crisis.''} \emph{Nature}, \emph{515}(7525), 9--9.
 
@@ -603,6 +617,9 @@ Slough, T., \& Tyson, S. A. (2023). External validity and meta-analysis. \emph{A
 
 \bibitem[\citeproctext]{ref-viechtbauer2010}
 Viechtbauer, W. (2010). Conducting meta-analyses in r with the metafor package. \emph{Journal of Statistical Software}, \emph{36}, 1--48.
+
+\bibitem[\citeproctext]{ref-wallace2015}
+Wallace, M., Hamesch, K., Lunova, M., Kim, Y., Weiskirchen, R., Strnad, P., \& Friedman, S. (2015). Standard operating procedures in experimental liver research: Thioacetamide model in mice and rats. \emph{Laboratory Animals}, \emph{49}(1\_suppl), 21--29.
 
 \end{CSLReferences}
 
