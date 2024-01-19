@@ -36,7 +36,7 @@ abstract: |
   This paper describes the motivations and procedures for meta-analyses by Betsy Levy Paluck and co-authors, with reference to and examples drawn from three such papers (Paluck, Green, and Green 2019, Paluck et al. 2020, and Porat et al. 2024). We first describe our conceptual aims when writing meta-analytic papers, which are to provide an 'on-ramp' to interested readers, to evaluate a literature's strengths and weaknesses, and to illuminate empirical gaps, which we intend as signposts for future researchers. Second, we describe the typical 'flow' of the papers as a whole. Third, we describe our meta-analytic procedures, detailing our default reporting structure and analytic choices and engaging with recent critiques from Slough and Tyson (2022) and Simonsohn, Simmons, and Nelson (2022). Fourth, we introduce a collection of functions we use to implement our meta-analytic choices, available as an R package. Fifth, we conclude with some open questions for meta-analysts.
   
 keywords: "meta-analysis, standard-operating-procedures, meta-science"
-wordcount: "2647"
+wordcount: "2538"
 
 bibliography: "meta-sop-references.bib"
 
@@ -71,19 +71,19 @@ Fourth, we introduce an R package, `PaluckMetaSOP`, that contains functions to h
 
 Finally, we conclude by noting some open questions for meta-scientific meta-analyses. Fundamentally, we find that meta-analyses are both _data-driven_ and _hypothesis_driven_, meaning that while we tend to begin these research projects with a sense of what's true and what's interesting, in practice, the most interesting questions tend to emerge after reading and coding many studies, i.e. after data collection has begun. This can make task like writing a pre-analysis plan, or pre-specifying which outcomes we'llf focus on, tricky. Last, we discuss the difficulty of integrating indirect cues of study quality, e.g. obviously mistaken or implausible statistical results on one end or special care to reproducibility on the other, into our analyses in a principled way. 
 
-This article sits at the intersection of several small, emerging literatures. The first literature, which this paper sits most closely in dialogue with, attempts to put meta-analysis on firmer theoretical footing and provide practical guidance in the behavioral sciences. @slough2023 "highlight the dangers of conflating conceptual differences across studies with statistical sources of variation" (p. 29). Their paper argues that for studies to have target equivalence, "meaning they identify the same empirical target" (p. 1), they must have fundamentally _harmonized_ contrasts and measurement strategies, i.e. the "substantive comparison across studies is the same" and "the outcome of interest is the same and it is measured in the same way" (p. 2). Absent these conditions, meta-analytic results might not be "meaningful and interpretable" (p. 2), and further, this issue cannot be "solved solely with statistical techniques" (p. 23). Rather, they are more likely to be achieved through "design or inclusion criteria" (p. 2). We agree that an internally and externally valid causal meta-analytic estimate requires harmonization of contrasts and outcomes, and a high degree of internal validity within constituent studies. However, we also think that meta-analytic estimates which do _not_ meet these conditions \textemdash e.g. those that combine results from many different designs, or whose diverse outcomes bear an unknown relationship to the true outcome of interest \textemdash can still be useful and informative if interpreted and framed correctly. This current paper is
+This paper is most closely in dialogue with two recent papers that attempt to put meta-analysis on firmer theoretical footing. @slough2023 "highlight the dangers of conflating conceptual differences across studies with statistical sources of variation" (p. 29). Their paper argues that for studies to "identify the same empirical target" (p. 1), they must have fundamentally _harmonized_ contrasts and measurement strategies, i.e. the "substantive comparison across studies is the same" and "the outcome of interest is the same and it is measured in the same way" (p. 2). Absent these conditions, meta-analytic results might not be "meaningful and interpretable" (p. 2). Contrary to conventional approaches to improving the accuracy of meta-analyses, a lack of target equivalence cannot be "solved solely with statistical techniques" (p. 23). Rather, it is more likely to be achieved through "design or inclusion criteria" (p. 2). We agree that an internally and externally valid causal meta-analytic estimate requires harmonization of contrasts and outcomes (as well as a high degree of internal validity within constituent studies). However, we also think that meta-analytic estimates which do _not_ meet these conditions \textemdash e.g. those that combine results from many different designs, or whose diverse outcomes bear an unknown relationship to the true outcome of interest \textemdash can still be useful and informative if interpreted and framed correctly. We think that when a literature without clear harmony of the independent and dependent variables is a case where the underlying model might be "wrong" but still useful.
 
-The other paper we look to in this microliterature is @simonsohn2022
+The other paper we look to is @simonsohn2022 [should we include ]
+
+Beyond these guiding contributions, our current paper also contributes to a small, growing literature of Standard Operating Procedures -- 
+
+Last, Munger 
 
 This paper is not a comprehensive overview of how to do meta-analysis. See Cochrane Review for general; Cooper Hedges and Valentine for effect sizes; Experimentology ch 18 and Lakens ch 20 for hands-on guides; 
 
 
    7. Cluster at level of study
     8. Glass's $\Delta$ rather than Cohen's d
-### Contemporary criticisms of meta-analysis from meta-scientists
-Recent papers have raised the possibility that the core assumptions of meta-analysis are often not met in contemporary work.
-
-@slough2023 argue that two core conditions are necessary for meta-analysis to make sense: contrast and target harmonization...
 
 Meanwhile, @simonsohn2022. argue...
 
@@ -93,8 +93,6 @@ So does meta-analysis still _work_ under these conditions? Is there something co
 
 ### All models are wrong, but this one is still useful 
 
-We say yes, we still think meta-analysis can be useful even if the underlying literatures do not meet the ideal conditions of a medical literature, with the qualification that meta-analytic estimates need to be presented and  contextualized appropriately. We urge researchers not to throw the baby out with the bathwater -- as always, all models are wrong, but we think this one is useful. 
-
 This article outlines how we make our meta-analyses useful, and to whom. We start by identifying what makes a literature a good candidate for meta-analysis, our overarching purposes when we write one, and who we write such pieces for. We then describe our typical paper structure for a meta-analysis; our default analytic choices; and an R package, `PaluckMetaSOP`, that implements our defaults and helps aids our writing process. We conclude with some open questions and hard cases
 
 [where does this go] this piece also contributes to two burgeoning literatures:
@@ -102,11 +100,6 @@ This article outlines how we make our meta-analyses useful, and to whom. We star
     establishing theoretical underpinnings of meta-analysis (Slough and Tyson, SSN, Gechter and Meager)
 also munger 2023
 - metaketas (slough et al) and psych science accelerator? Those pieces are meta but in a different way.
-#### The remainder of this paper, and what this paper is not
-- Paper
-
-- What this paper is not: the Cochrane review
-        4. The Cochrane review is still the seminal text, and this piece exists in dialogue with it. 
 
 ## When are meta-analyses useful and value do they bring?
 
