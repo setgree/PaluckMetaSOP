@@ -36,3 +36,13 @@ cite_r("meta-sop-references.bib", style = "text")
 # https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html
 # for more on citation
 ```
+
+   7. Cluster at level of study
+    8. Glass's $\Delta$ rather than Cohen's d
+
+These critiques register deeply with us because of our three recent meta-analyses, two strive to be comprehensive and therefore arguably do not meet the assumptions laid out by Slough and Tyson and are guilty of the sins identified by SSN (though SSN also identify one of papers as exemplary)
+
+So does meta-analysis still _work_ under these conditions? Is there something cogent and meaningful here?
+
+
+### All models are wrong, but this one is still useful
