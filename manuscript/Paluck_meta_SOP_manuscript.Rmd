@@ -79,7 +79,7 @@ Our meta-analyses share these goals (and @paluck2021 is cited therein for being 
 
 Our paper is a hybrid of a conceptual analysis of meta-analyses in general and a play-by-play of how we write them. On the latter front, this paper builds on a tradition of Standard Operating Procedures (SOPs) in the behavioral and medical sciences [@rapport2013; @wallace2015; @lakens2023]. In particular, we seek to build on the Green Lab at Columbia's SOP for deviating from a pre-analysis plan [@lin2016]. Like that paper, this paper is not intended as a comprehensive guide to the task in question \textemdash see @cochrane and @cooper2019 for textbook-length treatments of meta-analysis, and @frank2023 [chapter whatever], lakens 2019 (chapter whatever) and Slough and Tyson (fortochoming, chapter whatever) for modern treatments of the subject aimed at social scientists. Rather, we articulate our lab's admittedly idiosyncratic approach to a task that many research groups embark on. We hope this will  prove interesting and informative, but not definitive: we expect readers to adapt and expand our guidelines to meet their own needs. In general, we hope to see more labs publish papers about how they produce knowledge.'
 
-We now detail our conceptual approach to meta-analyses.
+We now detail our conceptual aims when we write meta-analyses.
 
 ## Meta-analyses: when, how and for whom
 
