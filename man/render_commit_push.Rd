@@ -7,7 +7,7 @@
 render_commit_push(commit_message)
 }
 \arguments{
-\item{commit_message}{A character string specifying the commit message.}
+\item{commit_message}{A commit message}
 }
 \value{
 None

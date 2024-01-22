@@ -3,7 +3,7 @@
 #' This function renders (knits) an R Markdown document, performs a Git
 #' commit with a provided commit message, and pushes the changes to the remote repository.
 #'
-#' @param commit_message A character string specifying the commit message.
+#' @param commit_message A commit message
 #' @importFrom rmarkdown render
 #' @importFrom git2r repository add commit push
 #' @importFrom here here
