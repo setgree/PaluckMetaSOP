@@ -79,15 +79,20 @@ The other paper in this vein we look to is @simonsohn2022, who argue that while 
 
 Our meta-analyses share these goals (and @paluck2021 is cited therein for being "selective, design-focused, and evaluative"). Moreover, the authors note that typical guides to meta-analysis "briefly mention validity concerns but provide little guidance as to how to carry out quality control;" one of the aims of this paper is to provide such guidance. However, as mentioned above, we part ways from this paper in that we believe comprehensive meta-analytic estimates still have a place in the meta-scientist's toolkit, so long as those estimates are ascribed descriptive rather than causal meaning and are used to contextualize further, more selective analyses. 
 
-Our paper is a hybrid of a conceptual analysis of meta-analyses in general and a report on how we in particular write them. On the latter front, this paper builds on a tradition of Standard Operating Procedures (SOPs) in the behavioral and medical sciences [@rapport2013; @wallace2015; @lakens2023]. In particular, we look to @lin2016, which details how the Green lab at Columbia sets "default practices to guide decisions when issues arise that were not anticipated in" pre-analysis plans. Like that paper, this article is not intended as a comprehensive guide to the task in question \textemdash see @cumpston2019 and @cooper2019 for textbook-length treatments of meta-analysis, and @frank2024, chapter 16, @lakens2022, chapter 11 and Slough and Tyson (fortochoming), chapter 5 for modern treatments of the subject aimed at social scientists. Rather, we articulate our lab's admittedly idiosyncratic approach to a task that many research groups embark on. We hope this will  prove interesting and informative, but not definitive: we expect readers to adapt and expand our guidelines to meet their own needs. In general, we hope to see more labs publish papers about how they produce knowledge.
+Our paper is a hybrid of a conceptual analysis of meta-analyses in general and a report on how we in particular write them. On the latter front, this paper builds on a tradition of Standard Operating Procedures (SOPs) in the behavioral and medical sciences [@rapport2013; @wallace2015; @lakens2023]. In particular, we look to @lin2016, which details how the Green lab at Columbia sets "default practices to guide decisions when issues arise that were not anticipated in" pre-analysis plans. Like that paper, this article is not intended as a comprehensive guide to the task in question \textemdash see @cumpston2019 and @cooper2019 for textbook-length treatments of meta-analysis, and @frank2024, chapter 16, @lakens2022, chapter 11 and Slough and Tyson (forthcoming), chapter 5 for modern treatments of the subject aimed at social scientists. Rather, we articulate our lab's admittedly idiosyncratic approach to a task that many research groups embark on. We hope this will  prove interesting and informative, but not definitive: we expect readers to adapt and expand our guidelines to meet their own needs. In general, we hope to see more labs publish papers about how they produce knowledge.
 
 We now detail our conceptual aims when we write meta-analyses.
 
 ## Meta-analyses: when, how and for whom
 
-The main goals of our meta-analysis are the goals of any systematic review: to evaluate a body of knowledge for its strengths, weaknesses, central findings, open questions and empirical limitations. We write for any reader who is interested in the underlying question, but generally aim for a non-specialist audience. In our experience, some of the best contributions to a given literature often come from people outside the core field (e.g. @mousa2020,  @boisjoly2006, frank2024)
 
-###  When do we write meta-analyses?
+### Our overarching agenda
+The main goals of our meta-analysis are the goals of any systematic review: to evaluate a body of knowledge for its strengths, weaknesses, central findings, open questions and empirical limitations. We write broadly for any reader who is interested in the underlying question, but generally aim for a non-specialist audience. In our experience, a literature's most noteworthy contributions often come from researchers outside the core field (e.g. @mousa2020,  @boisjoly2006, or @scacco2018 for the contact hypothesis, @munger2017 for anti-prejudice work, or @haushofer2019 for violence against women), which is why we aim to give outsiders an overview of a literature's main preoccupations and conclusions. The theoretical and empirical gaps unearthed by meta-analysis are also signposts to ourselves about where future empirical work will be most valuable. 
+
+
+
+
+###  The tradeoff between comprehensiveness and narrow, focused reviews
 
 1. Our lab embarks on meta-analyses when
     1. Big literature with heterogeneous research quality
@@ -96,12 +101,24 @@ The main goals of our meta-analysis are the goals of any systematic review: to e
 2. Alternatively, if someone else has already written a comprehensive review, there might be room for a focused rejoinder, i.e. Pettigrew and Tropp (2006) amalgamate everything and find large effects, whereas Paluck Green and Green (2019) look at just the best studies and find much more mixed results.
 
 ### What purposes do they serve?
-1. On-ramp to unfamiliar literature (alternate metaphor: "a lobby," from Toni Morrison's introduction to Beloved), exemplified by
+### Who are they for?
+1. researchers, especially folks trying to figure out where they can have the most impact
+2. policymakers and funders who want a critical review of a literature
+3. any interested reader. Our metas tend to be about big, important subjects that people are thinking about. 
+## Typical structure of Paluck lab meta-analytic papers
+1. Describe context and stakes of the paper (i.e. why it's important to see if these interventions 'work', or why there’s reason to doubt an established consensus)
+2. Intellectual overview of major ideas in the literature
+3. descriptive statistics and/or qualitative overview about the database
     1. Contact hypothesis: what, where, why
     2. iii. Prejudice reduction: theoretical perspectives, landmark studies
     3. iv. Sexual violence paper: history of zeitgeist perspectives
 2. Evaluate rather than transcribe
-    4. Describe critique of transcriptive, non-evaluative work in Simonsohn et al. (2022)
+
+4. Meta-analytic search methods 
+5. Meta-analytic approach6
+6. Quantitative Results
+7. Discussion, highlights and gaps
+        4. Describe critique of transcriptive, non-evaluative work in Simonsohn et al. (2022)
     5. We identify high points (excellent studies) and low points (widespread methodological deficiencies) 
     6. place effect sizes in context of real-world impact whenever possible, e.g. the prejudice paper argues that $\Delta$ of 0.27 corresponds to [X] change on ANES survey
 3. Illuminate empirical gaps
@@ -112,18 +129,7 @@ The main goals of our meta-analysis are the goals of any systematic review: to e
         2 similar examples from Paluck et al. (2021)? 
         3. (arguably a systematic review suffices for this)
 
-### Who are they for?
-1. researchers, especially folks trying to figure out where they can have the most impact
-2. policymakers and funders who want a critical review of a literature
-3. any interested reader. Our metas tend to be about big, important subjects that people are thinking about. 
-## Typical structure of Paluck lab meta-analytic papers
-1. Describe context and stakes of the paper (i.e. why it's important to see if these interventions 'work', or why there’s reason to doubt an established consensus)
-2. Intellectual overview of major ideas in the literature
-3. Meta-analytic search methods 
-4. Meta-analytic approach
-5. Quantitative Results
-6. Discussion, highlights and gaps
-7. Conclusion
+8. Conclusion
 ## Paluck lab meta-analytic procedures
 1. Code more than you think you're going to need
     1. You might be interested in the lasting effects, which means recording the latest possible effect sizes, but if you record the _earliest_ possible effects, you can detect within-study decay
