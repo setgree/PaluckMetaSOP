@@ -13,6 +13,7 @@ sum_tab(data, var_name)
 }
 \value{
 A table showing the frequency of each unique value in the specified variable.
+#'
 }
 \description{
 This function generates a frequency table for a specific variable in a dataset.
@@ -20,9 +21,4 @@ This function generates a frequency table for a specific variable in a dataset.
 \details{
 It uses enquo() to capture the unquoted variable name and !! to unquote it
 within the function.
-}
-\examples{
-# Assume `my_data` is a data frame containing a column named "theory"
-my_data |> sum_tab(theory)
-
 }

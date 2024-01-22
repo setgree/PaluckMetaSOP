@@ -47,7 +47,3 @@ render_commit_push <- function(commit_message) {
   # Step 4: Git push
   git2r::push(repo)
 }
-
-# Example usage
-commit_message <- "Update R Markdown document"
-render_commit_push(commit_message)

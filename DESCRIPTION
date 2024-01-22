@@ -14,9 +14,12 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Imports:
     dplyr,
+    git2r,
+    here,
     metafor,
     RefManageR,
     rlang,
+    rmarkdown,
     sessioninfo,
     tibble
 Config/testthat/edition: 3
