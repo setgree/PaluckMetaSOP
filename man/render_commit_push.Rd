@@ -4,7 +4,7 @@
 \alias{render_commit_push}
 \title{Render, commit, and push changes for an R Markdown document}
 \usage{
-render_commit_push(commit_message)
+render_commit_push(commit_message = "update manuscript")
 }
 \arguments{
 \item{commit_message}{A commit message}

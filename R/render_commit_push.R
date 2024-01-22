@@ -20,11 +20,8 @@ render_commit_push <- function(commit_message = "update manuscript") {
     stop("No R Markdown files found in the project.")
   }
 
-  # Use the first found R Markdown file
-  rmd_file <- rmd_files[1]
-
-  # Step 2: Render (knit) the R Markdown document
-  rmarkdown::render(rmd_file)
+  # Step 2: Render (knit) the R Markdown document(s)
+  lapply(rmd_files, rmarkdown::render)
 
   # Step 3: Git commit
   system("git add ./*")
