@@ -36,7 +36,7 @@ abstract: |
   This paper describes the motivations and procedures for meta-analyses by Betsy Levy Paluck and co-authors, with reference to and examples drawn from three such papers (Paluck, Green, and Green 2019, Paluck et al. 2020, and Porat et al. 2024). We first describe our conceptual aims when writing meta-analytic papers, which are to provide an 'on-ramp' to interested readers, to evaluate a literature's strengths and weaknesses, and to illuminate empirical gaps, which we intend as signposts for future researchers. Second, we describe the typical 'flow' of the papers as a whole. Third, we describe our meta-analytic procedures, detailing our default reporting structure and analytic choices and engaging with recent critiques from Slough and Tyson (2022) and Simonsohn, Simmons, and Nelson (2022). Fourth, we introduce a collection of functions we use to implement our meta-analytic choices, available as an R package. Fifth, we conclude with some open questions for meta-analysts.
   
 keywords: "meta-analysis, standard-operating-procedures, meta-science"
-wordcount: "2910"
+wordcount: "3095"
 
 bibliography: "meta-sop-references.bib"
 
@@ -85,11 +85,20 @@ We now detail our conceptual aims when we write meta-analyses.
 
 ## Meta-analyses: when, how and for whom
 
-
 ### Our overarching agenda
-The main goals of our meta-analysis are the goals of any systematic review: to evaluate a body of knowledge for its strengths, weaknesses, central findings, open questions and empirical limitations. We write broadly for any reader who is interested in the underlying question, but generally aim for a non-specialist audience. In our experience, a literature's most noteworthy contributions often come from researchers outside the core field (e.g. @mousa2020,  @boisjoly2006, or @scacco2018 for the contact hypothesis, @munger2017 for anti-prejudice work, or @haushofer2019 for violence against women), which is why we aim to give outsiders an overview of a literature's main preoccupations and conclusions. The theoretical and empirical gaps unearthed by meta-analysis are also signposts to ourselves about where future empirical work will be most valuable. 
+The main goals of our meta-analysis are the goals of any systematic review: to evaluate a body of knowledge for its strengths, weaknesses, central findings, open questions and empirical limitations. We write broadly for any reader who is interested in the underlying question, but generally aim for a non-specialist audience. In our experience, a literature's most noteworthy contributions often come from researchers outside the core field (e.g. @mousa2020,  @boisjoly2006, or @scacco2018 for the contact hypothesis, @munger2017 for anti-prejudice work, or @haushofer2019 for violence against women); to such researchers, we aim to provide signposts, in the form of unearthed, widespread empirical gaps and theoretical limitations, about where future empirical work will be most valuable. 
 
+In general, large, heterogeneous literatures, especially those with multiple theoretical perspectives, are good candidates for meta-analysis. In such cases, a meta-analysis might provide a useful contribution simply by dividing a literature into its constituent parts. For example, @paluck2021 categorizes 418 experiments published between 2007 and 2019 and organizes them into thirteen theoretical approaches and twelve categories of prejudice targeted. Simply identifying this heterogeneity of approaches and outcomes, along with describing a few constituent studies from the major theoretical strands in detail, helps the reader evaluate a literature's major findings for herself. In this particular case, a reader might reasonably wonder: is an extended contact intervention [@shamoa2023] similar enough to a diversity training [@chang2019] that you can pool the effects together into something that coherently reflects the effects of a class of intervention? Likewise, does intervention that aims to change political attitudes towards the rights of trans persons [@broockman2016] shed light on what might reduce tensions between castes in India [@lowe2021]? These questions come down to beliefs, and, as @slough2023 argue, cannot be resolved with statistics. A comprehensive and well-organized review is an indispensable tool for clarifying which questions to ask in the first place.
 
+We also encourage authors not to be discouraged from writing meta-analyses even if the subject has previously, even many times, been systematically reviewed and quantitatively analyzed. First, in our experience, simply reproducing the analyses of previous meta-analyses verbatim might generate surprises. For example, Pettigrew & Troop's landmark meta-analysis -@pettigrew2006 identified 515 studies and 36 "true experiments" (p. 759) on intergroup contact; however, when we took a look at these papers for ourselves, we found that many "did not have over-time outcome measures, were mislabeled as randomly assigned, did not feature 'actual face-to-face interaction' or did not have a non-contact control group," and we were ultimately "left with eight research reports comprising nine experiments" [@paluck2019, p. 136]. Second, 
+
+four reasons to not take other metas for granted
+1) you redo their stats and find different stuff
+2) temporal validity
+3) incompleteness 
+4) non-quantitative outcomes
+Many previous systematic reviews ? Not a problem
+    actually be careful to replicate
 
 
 ###  The tradeoff between comprehensiveness and narrow, focused reviews
