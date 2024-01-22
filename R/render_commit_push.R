@@ -6,7 +6,7 @@
 #' @param commit_message A character string specifying the commit message.
 #' @importFrom rmarkdown render
 #' @importFrom git2r repository add commit push
-#' @import here
+#' @importFrom here here
 #' @return None
 #' @examples
 #' \dontrun{
@@ -14,16 +14,8 @@
 #' }
 #' @export
 render_commit_push <- function(commit_message) {
-  # Load required libraries
-  rmarkdown::render
-  git2r::repository
-  git2r::add
-  git2r::commit
-  git2r::push
-  here::here
-
   # Step 1: Find R Markdown files in the project directory and subdirectories
-  rmd_files <- list.files(path = here(), pattern = "\\.Rmd$", recursive = TRUE, full.names = TRUE)
+  rmd_files <- list.files(path = here::here(), pattern = "\\.Rmd$", recursive = TRUE, full.names = TRUE)
 
   if (length(rmd_files) == 0) {
     stop("No R Markdown files found in the project.")
