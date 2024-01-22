@@ -18,6 +18,6 @@ commit with a provided commit message, and pushes the changes to the remote repo
 }
 \examples{
 \dontrun{
-render_commit_push("Update R Markdown document")
+render_commit_push("Update manuscript")
 }
 }

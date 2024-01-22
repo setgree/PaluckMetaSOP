@@ -9,10 +9,10 @@
 #' @return None
 #' @examples
 #' \dontrun{
-#' render_commit_push("Update R Markdown document")
+#' render_commit_push("Update manuscript")
 #' }
 #' @export
-render_commit_push <- function(commit_message) {
+render_commit_push <- function(commit_message = "update manuscript") {
   # Step 1: Find R Markdown files in the project directory and subdirectories
   rmd_files <- list.files(path = here::here(), pattern = "\\.Rmd$", recursive = TRUE, full.names = TRUE)
 
