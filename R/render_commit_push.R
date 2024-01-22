@@ -5,7 +5,6 @@
 #'
 #' @param commit_message A commit message
 #' @importFrom rmarkdown render
-#' @importFrom git2r repository add commit push
 #' @importFrom here here
 #' @return None
 #' @examples
@@ -28,14 +27,9 @@ render_commit_push <- function(commit_message) {
   rmarkdown::render(rmd_file)
 
   # Step 3: Git commit
-  repo <- git2r::repository()  # Automatically uses the working directory as the repository path
-
-  # Stage all changes
-  git2r::add(repo, path = ".")
-
-  # Commit with the provided message
-  git2r::commit(repo, message = commit_message)
+  system("git add ./*")
+  system(paste("git commit -m", shQuote(commit_message)))
 
   # Step 4: Git push
-  git2r::push(repo)
+  system("git push")
 }
