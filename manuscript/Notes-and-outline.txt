@@ -46,3 +46,5 @@ So does meta-analysis still _work_ under these conditions? Is there something co
 
 
 ### All models are wrong, but this one is still useful
+
+This evidence suggests, we think, that the paradigm on which this literature is based \textemdash myths about sexual violence cause sexual violence, so changing the myths should reduce the violence \textemdash does not seem to hold. This would not have been possible without quantitative assessment.
