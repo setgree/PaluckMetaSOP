@@ -1,3 +1,76 @@
+Standard Operating Procedures for Meta-Analysis in the Paluck Lab
+
+By Seth Ariel Green, Roni Porat, and Betsy Levy Paluck
+
+Abstract: this paper describes the motivations and procedures for meta-analyses and systematic reviews by Betsy Levy Paluck and co-authors, with reference and examples drawn from four such papers (Paluck and Green 2009, Paluck, Green, and Green 2019, Paluck et al. 2021, and Gantman et al. 2024). We first describe our conceptual aims when writing meta-analytic papers, which are to provide an 'on-ramp' to interested readers, to evaluate a literature's strengths and weaknesses, and to illuminate empirical gaps, which we intend as signposts for future researchers. Second, we describe the typical 'flow' of the papers as a whole. Third, we describe our meta-analytic procedures, detailing our default reporting structure and analytic choices and engaging with recent critiques from Slough and Tyson (2023) and Simonsohn, Simmons, and Nelson (2022). Fourth, we introduce a collection of functions we use to implement our meta-analytic choices, available as an R package. Fifth, we conclude with some open questions for meta-analysts.
+
+
+1: Introduction: when are (comprehensive) meta-analyses useful?
+	A. Big literature with heterogeneous research quality
+	B. Multiple theoretical approaches whose comparative efficacy is unknown 
+	C. Intuition that a comprehensive read through and tests for rigor will reveal collective gaps in understanding
+2. Our meta-analytic aims
+	A. On-ramp to unfamiliar literature
+		i. Alternate metaphor: "a lobby" (Toni Morrison's introduction to Beloved)
+		ii. Contact hypothesis: what, where, why
+		iii. Prejudice reduction: theoretical perspectives, landmark studies
+		iv. Sexual violence paper: history of zeitgeist perspectives
+	B. Evaluate rather than transcribe
+		i. Describe critique of transcriptive, non-evaluative work in Simonsohn et al. (2022)
+		ii. Highlight high points (excellent studies) and low points (widespread methodological deficiencies) 
+		iii. place effect sizes in context of real-world impact whenever possible
+			a. Prejudice paper: Delta of X corresponds to Y change on Z survey
+	C. Illuminate empirical gaps
+		i. As these papers show, applying some fairly minimal quality standards quickly winnows hundreds of studies down to just a few
+		ii. These studies are likely to be the  most policy-relevant, and oftentimes the 'ideal' study simply hasn't been conducted at all yet
+		iii. Examples: 
+			a. Paluck and Green (2009) highlight lack of field experiments -> Paluck (2009) runs a field experiment
+			b. Paluck, Green and Green (2019) highlights lack of studies testing interracial contact among adults -> provides intellectual backdrop for Scacco and Warren (2018), Mousa (2020), and Lowe (2019) -- as well as providing theoretical underpinning for those studies' comparatively underwhelming findings
+			c. similar examples from Paluck et al. (2021)? 
+3. Typical structure of Paluck lab meta-analytic papers
+	A. Describe context and stakes of the paper (i.e. why it's important to see if these interventions 'work')
+	B. Intellectual overview of major ideas in the literature
+	C. Meta-analytic search methods 
+	D. Meta-analytic approach
+	E. Quantitative Results
+	F. Discussion, highlights and gaps
+	G. Conclusion
+4. Paluck lab meta-analytic procedures
+	A. Code more than you think you're going to need
+	B. Start big and go small, i.e. meta-analyze *everything* and then zoom in on different subsets of the literature
+		i. Why meta-analyze everything?	
+			a. Slough and Tyson (2023) argue that meta-analytic estimates only make sense if there's mechanism harmony, i.e. if the many studies are clearly testing some common underlying theoretical concept. In some literatures we've looked at, this pretty clearly does not hold, e.g. the average effect of a contact hypothesis field experiment for Muslims and Christians and Nigeria  and a diversity training in a U.S. corporate workplace tells you the median effect of *what* exactly? 
+			b. Ditto with "target harmony", which is whether interventions are aimed *at* changing the same thing. For instance, does it make sense to average the effect of some intervention on self-reported attitudes and behavioral outcomes? As Gantman et al. (2023) shows, these outcomes are not always well correlated, which is prima facie evidence that we don't have target harmony.
+			c. Last, integrating observational and randomized studies is often justified as supplementing high studies with high internal validity with studies with high *external* validity, but it's probably more accurate to say that you take some studies that provide unbiased estimates and then, for in exchange for greater statistical precision, you induce bias arising from non-statistical sources of uncertainty that's impossible to quantify (Kaplan Green and Gerber 2002).
+		ii: multi-part answer
+			a. Overall meta-analytic estimate provides a within-paper size comparison; your overall effect size is X and your effect size for the very best studies is 1/3 X, that means something.
+			b. Test for publication bias should probably look at absolutely everything
+			c. Inter-paper comparisons; Paluck, Green and Green (2019) and Paluck et al. (2021) provide estimates of about ∆ = 0.3, and then Green, Smith and Mathur (forthcoming) find ∆ 0.138, that also means something.
+	C. Do some serious tests for publication bias: both conventional tests (egger's test, funnel plot, ∆ ~ SE), but also think through where else it might emerge
+	D. separate the dataset into different chunks, e.g. by theory, study design, or measurement strategy, and present overall meta-analytic estimates side by side
+		i. Subset enough and eventually you get to reasonable claim for target and mechanism harmony
+	E. zoom in on and carefully and analyze best studies, both in aggregate and individually
+		i. These results might be surprising, e.g. when looking solely at RCTs on perpetration outcomes (Gantman et al. 2024), slightly fewer than half are self-reported nulls.
+	F. Meta-analytic defaults
+		i. Random effects: any literature we want to look at is going to have heterogeneous inputs. 
+		ii. Cluster at level of study
+		iii. Glass's ∆ rather than Cohen's d
+		iv. Difference in proportion rather than odds ratio
+			a. resurface text from appendix to Gantman et al. (2024)
+5. R package: blp_meta_functions
+	A. Functions fall into four categories
+		i. Converting studies to singular estimates of effect size, variance and standard error
+		ii. Wrapper functions that distill aggregate results into the core findings and make them table-ready
+		iii. plotting functions
+		iv. Miscellany: reproducibility, helper functions
+6. Conclusions: hard cases
+	A. What do we do when a paper's results are obviously not credible? 
+		i. e.g. if they present a result that's well past possible, e.g. t-test value of 36
+	B. What's the right outcome to code? Often very unclear what's prime or most representative of underlying construct
+	C. Others...
+	D. Still very useful we think for readers (both expert and non-expert) and future researchers. 
+
+
 ### Meta-analysis at 50: from social to medical science and back again
 
 - Since the term was first coined in 1976 [@glass1976], meta-analysis has come to be understood as a crucial tool for synthesizing evidence in the medical and natural sciences (citation)
