@@ -98,10 +98,12 @@ We turn now to a discussion of these two approaches to meta-analysis.
 
 @slough2023 and @simonsohn2022 have raised trenchant critiques about whether the typical meta-analytic estimate is meaningful. Both papers argue for the use of inclusion criteria in study selection \textemdash Slough and Tyson to assure harmonization of the independent and dependent variables, and Simmons et al. to prevent mixing "studies of the highest quality" with "studies that lack internal validity." 
 
-Of our three meta-analyses, @paluck2019 most closely hews to this model of inquiry by looking solely at randomized controlled trials where intergroup contact was the treatment variable and where there was at least a day of delay between the commencement of treatment and outcome measurement. (Admittedly we could have tightened our study even further by looking for harmonized dependent variables, but given the diversity of outcomes we found, that would have effectively precluded meta-analysis.) Our subsequent two meta-analyses [@paluck2021; @porat2024], however, are much more clearly at risk of the kinds of incoherence that recent critics identify. Both studies:
+Of our three meta-analyses, @paluck2019 most closely hews to this model of inquiry. That paper looked solely at randomized controlled trials where intergroup contact was the treatment variable and where there was at least a day of delay between the commencement of treatment and outcome measurement. (Admittedly we could have tightened our study even further by looking for harmonized dependent variables, but given the diversity of outcomes we found, that would have effectively precluded meta-analysis.) Our subsequent two meta-analyses [@paluck2021; @porat2024], however, are much more clearly at risk of the kinds of incoherence that recent critics identify. Both studies:
   1. include a mixture of experiments, quasi-experiments, and observational designs (so long as there was a control group with pre- and post-treatment outcomes);
-  2. combine papers that are drawing from vastly different theoretical traditions, and therefore cannot clearly be integrated coherently (e.g., within the sexual violence literature, a building-based intervention that induced "higher levels of faculty/security presence in safe/unsafe 'hot spots' mapped by students" [@taylor2013], and a module of peer-based consent training on a college campus)
-  3. 
+  2. combine papers that are drawing from vastly different theoretical traditions, e.g., within the sexual violence literature, a building-based intervention comprising "higher levels of faculty/security presence in safe/unsafe 'hot spots' mapped by students" [@taylor2013], and a module of peer-based consent training on a college campus [@crane2017], which are not obviously testing the same thing
+  3. mixed widely divergent dependent variables, e.g. again with the sexual violence literature, where we coded the Sexual Experiences Survey [@koss1982, @koss1985] for behavioral outcomes and the Illinois Rape Myth Acceptance Scale [@thelan2022] for ideas-based outcomes when they were available, but the nearest substitute when they weren't. 
+  
+
 
 
 
