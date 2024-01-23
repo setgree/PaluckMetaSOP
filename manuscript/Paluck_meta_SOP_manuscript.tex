@@ -467,35 +467,19 @@ However, a more focused meta-analysis can still be a very useful contribution, e
 
 A classic paper on meta-analysis defines the procedure as ``a statistical analysis which combines or integrates the results of several independent clinical trials considered by the analyst to be `combinable'\,'' (p.~XXX). Our (non-systematic) review of prior meta-analyses reveals a surprising dearth of attention to how much theoretical work is being done by the phrase ``considered by the analyst to be `combinable.'\,'' Simonsohn et al. (2022) argue that researchers who ``uncritically'' aggregate results from all available studies, as part of an ``active effort to eliminate publication bias\ldots might instead amplify the bias from poor research design and execution.'' We agree with this assessment, but would instead frame it as one of three central instances of a bias-variance tradeoff afflicting meta-analayses. By combining studies with non-comparable designs, interventions, and outcomes, researchers give readers the impression of remarkable precision (re: reduced variance) but at the expense of introducing non-statistical sources of uncertainty (re: bias) on all three fronts. Only by acknowledging these tradeoffs head-on, and devising interpretations and techniques for dealing with them, can we successfully integrate the parallel tracks of meta-analysis and meta-science.
 
-More broadly, this paper seeks to answer two questions: what are we aiming to do when we do meta-analysis, and how do we do it? We that that we've answered these questions to some extent, but many open questions remain. To us, the most pressing boil down to a lack of clarity about whether meta-analyses are or are not hypothesis-driven. Other meta-analyses in the social sciences are clearly aimed at validating a pre-existing hypothesis. Ours, however, are more exploratory, and as befitting our meta-scientific framework, are more aimed at evaluating a literature's credibility. While we might start with some general hypotheses \textemdash e.g.~that a social psychology literature from the 2000s is likely to show evidence of selection pressures for statistical significance \textemdash we also develop many of our most important questions after reading papers, which, in the context of writing a meta-analysis, means after data collection has begun.
+More broadly, this paper seeks to answer two questions: what are we aiming to do when we do meta-analysis, and how do we do it? We that that we've answered these questions to some extent, but many open questions remain. To us, the most pressing boil down to a lack of clarity about whether meta-analyses are or are not hypothesis-driven. Other meta-analyses in the social sciences are clearly aimed at validating a pre-existing hypothesis. Ours, however, are more exploratory, and as befitting our meta-scientific framework, are more aimed at evaluating a literature's credibility. While we might start with some general hypotheses \textemdash e.g.~that a social psychology literature from the 2000s is likely to show evidence of selection pressures for statistical significance \textemdash we also develop many of our most important questions after reading papers, which, in the context of writing a meta-analysis, means after data collection has begun. In other words, our meta-analyses are both inductive and deductive inquiries.
 
-This makes writing a pre-analysis plan challenging. To illustrate, consider
+This makes writing a pre-analysis plan challenging. Consider a mistake we made while composing the pre-analysis plan for Porat et al. (2024). Because we are accustomed to social psychology literatures, we registered the analysis that we would ``Evaluate the overall effect size of behavioral outcomes for all of the studies in the dataset, both in the short- and in the long-term.'' The idea was to measure if effects of interventions attenuate over time, which is a serious concern in psychology. However, what we failed to think through is that while some behavioral outcomes in the sexual violence literature could be measured immediately (e.g.~whether someone volunteers for a campus rape education organization (Gillies, 1997)), most behavioral outcomes in the sexual violence literature need time to accumulate. The Sexual Experiences Survey (SES) measures incidents of sexual violence in a given time period, and an SES administered at the end of a semester was essentially guaranteed to have more incidents than one given immediately after an intervention concluded. This only became clear to us after we began reading papers (though someone more expert than we are could have seen it coming).
 
-\begin{itemize}
-\tightlist
-\item
-  A lot of checks on RDF assume hypothesis driven framework. They are difficult to integrate into our papers.
-\end{itemize}
+The way we resolved this was to make sure that we included, either in the paper or in an appendix, every single pre-registered analysis, even when they were not especially informative. Moving forward, we aim to have pre-specified analysis code run on simulated data (Blair, Cooper, Coppock, \& Humphreys, 2019; Broockman \& Kalla, 2016). However, this is still a work in progress at our lab.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  What do we do when a paper's results are obviously not credible?
+Second, we sometimes encounter methodological errors, or simple implausibilities, in the literature that are difficult to integrate into formal inclusion and exclusion criteria. Should we exclude a study because it has an implausibly \emph{large} effect size, e.g.~a t-test value of 36? (One study in the prejudice reduction literature did.) What about errors in the text, or obvious discrepancies between results reported in the text and those in a table? What about a lack of transparent reporting that leads to our spending hours guessing a study's true effects? Each of these is information about a study's true quality; as Simonsohn et al. (2022) argue, excluding these studies would be ``kind of meritocratic screening of research'' that we ``engage in when performing virtually every other task in {[}our{]} professional research lives.''
 
-  \begin{enumerate}
-  \def\labelenumii{\arabic{enumii}.}
-  \tightlist
-  \item
-    e.g.~if they present a result that's well past possible, e.g.~t-test value of 36 (one of the papers in the prejudice literature had this, and also the cost-benefit analyses in the SOSA! Intervention in the primary prevention literature)
-  \end{enumerate}
-\item
-  What's the right outcome to code? Often very unclear what's prime or most representative of underlying construct
-\item
-  Others\ldots{}
-\item
-  Meta-analyses are still very useful, we think, for readers (both expert and non-expert) and future researchers.
-\end{enumerate}
+There are clearly no easy answers to this problem, and we've developed general guidelines as we've progressed. One is that cluster RCTs with fewer than 10 clusters in total are so underpowered that they are effectively quasi-experiments, and we code them as such. Another is that we do not code studies where we need to eyeball a figure to assess effect sizes: researchers must tell us flat out how big an effect was. Likewise, we do not include ``the results were significant'' or simply ``p \textless{} .05.'' However, if authors tell us that a result was ``null'' or ``not significant'' but do not tell us anything more, we set the result to be \emph{d} = 0.01. These rules are not perfect, but ultimately, we need policies that balance type I errors (including a study we shouldn't) and type II errors (excluding studies we should have included). Like research itself, we suspect that this task is not perfectible.
+
+Last, there is a great deal of subjectivity in figuring out what outcomes to code. For Porat et al. (2024), we found relative homogeneity of dependent variables, but not so for Paluck et al. (2019) or Paluck et al. (2021). In the end,this has always been a judgment call, but as we continue writing meta-analyses, we hope to develop principled, general guidelines for this kind of analytic choice.
+
+These open questions notwithstanding, we think meta-analyses can be useful, informative, and a pleasure to write and read. We hope to see them become a standard part of the meta-scientist's toolkit, and likewise for all meta-analyses to become a little more meta-scientific.
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
@@ -507,6 +491,9 @@ Bem, D., Tressoldi, P., Rabeyron, T., \& Duggan, M. (2015). Feeling the future: 
 
 \bibitem[\citeproctext]{ref-bezrukova2016}
 Bezrukova, K., Spell, C. S., Perry, J. L., \& Jehn, K. A. (2016). A meta-analytical integration of over 40 years of research on diversity training evaluation. \emph{Psychological Bulletin}, \emph{142}(11), 1227.
+
+\bibitem[\citeproctext]{ref-blair2019}
+Blair, G., Cooper, J., Coppock, A., \& Humphreys, M. (2019). Declaring and diagnosing research designs. \emph{American Political Science Review}, \emph{113}(3), 838--859.
 
 \bibitem[\citeproctext]{ref-boisjoly2006}
 Boisjoly, J., Duncan, G. J., Kremer, M., Levy, D. M., \& Eccles, J. (2006). Empathy or antipathy? The impact of diversity. \emph{American Economic Review}, \emph{96}(5), 1890--1905.
@@ -546,6 +533,9 @@ Frank, M. C., Braginsky, M., Cachia, J., Coles, N., Hardwicke, T. E., Hawkins, R
 
 \bibitem[\citeproctext]{ref-gawronski2019}
 Gawronski, B. (2019). Six lessons for a cogent science of implicit bias and its criticism. \emph{Perspectives on Psychological Science}, \emph{14}(4), 574--595.
+
+\bibitem[\citeproctext]{ref-gillies1997}
+Gillies, R. A. (1997). \emph{Providing direct counter-arguments to challenge male audiences' attitudes toward rape}. University of Missouri-Columbia.
 
 \bibitem[\citeproctext]{ref-glass1977}
 Glass, G. V. (1977). 9: Integrating findings: The meta-analysis of research. \emph{Review of Research in Education}, \emph{5}(1), 351--379.
