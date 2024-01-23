@@ -269,24 +269,36 @@ We also encourage authors not to be discouraged from writing meta-analyses of su
 
 The aims we articulated above could all be met by a non-quantitative systematic review. However, We think that meta-analysis can help illuminate several meta-scientific inferences.
 
-The first and most obvious is publication bias. Classical approaches to assessing publication bias in meta-analysis are ``based on the fact that precision in estimating the underlying treatment effect will increase as the sample size of component studies increases'' (Egger, Smith, Schneider, \& Minder, 1997). The funnel plot detects publication bias under the assumption that smaller, more imprecisely estimated studies that produce null or backlash results are more likely to be shelved than large, precisely estimated studies that produce the same. (The underlying theory of researcher behavior seems to be a kind of widespread acceptance of the sunk cost fallacy \textemdash that once you've invested the kind of time and energy that a large, rigorous study requires, you'll push through to publication even if you'd put the results back in the `file drawer' (Rosenthal, 1979) if you'd put less work in.) This class of methods wouldn't be possible without effect size and
+The first is publication bias. Classical approaches to assessing publication bias in meta-analysis are ``based on the fact that precision in estimating the underlying treatment effect will increase as the sample size of component studies increases'' (Egger, Smith, Schneider, \& Minder, 1997). The funnel plot detects publication bias under the assumption that smaller, more imprecisely estimated studies that produce null or backlash results are more likely to be shelved than large, precisely estimated studies that produce the same. (The underlying theory of researcher behavior seems to be a kind of widespread acceptance of the sunk cost fallacy \textemdash that once you've invested the kind of time and energy that a large, rigorous study requires, you'll push through to publication even if you'd put the results back in the `file drawer' (Rosenthal, 1979) if you'd put less work in.) Alternatively, one can simply plot the relationship between effect size and standard error, as we did in Paluck et al. (2019), where the strong positive relationship between the two suggested that ``a very large study would be expected to produce a minuscule \emph{increase} in prejudice.'' This class of methods requires estimates of effect size and variance for each study. Further, estimates of publication bias can be interesting \emph{between} metas, for instance, the evidence of publication bias that we found in our 2019 and 2021 papers but did not find in Porat et al. (2024), which drew more from public health perspectives and departments than did the previous two papers. This kind of evidence can shed light on whether (and how) the credibility revolution is taking hold across disciplines \textemdash a meta-meta-scientific inference.
 
-Second, heterogeneity across across classes of DV and IV
+Second, quantitative estimates allow for head-to-head tests of efficacy across different classes of interventions. For example, Paluck et al. (2021) estimated that the ``20 experiments testing antibias, multicultural, and moral education programs'' have an average effect size of \emph{d} = 0.30, compared to \emph{d} = 0.43 for 12 entertainment interventions. This does not necessarily mean that entertainment interventions reduce prejudice more effectively than antibias trainiings do \textemdash there are many confounding differences between these two categories of study \textemdash but the differences do tell the reader something about how effectively people in different disciplines are manipulating the key quantity of interest in their own estimation.
 
-Third, help address concerns about validity
+Third, differences in effect size between classes of outcomes can be revealing. There is a dramatic example of this in Porat et al. (2024), which finds an overall meta-analytic effect of \(\Delta\) = 0.28, but just \(\Delta\) = 0.071 for behavioral outcomes vs.~\(\Delta\) = 0.366 for ideas-based results. In this particular case, we further tested whether changes in ideas predicted changes in behaviors in studies that measured both, and found a disappointing lack of correlation between the two. This evidence suggests, we think, that the paradigm on which this literature is based \textemdash myths about sexual violence cause sexual violence, so changing the myths should reduce the violence \textemdash does not seem to hold. This would not have been possible without quantitative assessment.
 
-Finally, though we don't ascribe any particular meaning to small differences in estimated effect sizes (i.e.~), large differences \emph{between literatures} are often illuminating.
+Fourth, relationships between effect and study quality, measured in a variety of ways, are often illuminating. Paluck et al. (2019), for instance, found that studies with pre-analysis plans had an average effect size of 0.016, vs.~0.451 for everything else. This is not a well-identified estimate of the `effect' of pre-analysis plans \textemdash pre-analysis plans were not randomly assigned, and many other things varied between these studies \textemdash but it is at least a `hoop test' (Collier, 2011) for the hypothesis that p-hacking is a problem in the contact hypothesis literature. Likewise, Paluck et al. (2021) found a highly significant relationship between meta-analytic effect size and sample sizes, with the smallest quintile of studies producing an average effect of \emph{d} = 0.61 vs \emph{d} = 0.19 for the largest quintile. This is, again, not a well-identified test of the `effect' of larger samples, but it does suggest that the literature's ``results are not robust to the most basic assessments of study quality'' (p.~149).
+
+Finally, quantitative estimates allow for assessing differences in effect size between literatures. In general, we don't ascribe any particular meaning to small differences in estimated effect size \textemdash the difference between d = 0.3 vs d = 0.28 might mean something in some disciplines, but given the prevalence of measurement error in the fields we've analyzed (Schmidt \& Hunter, 1996), we would call this difference insignificant., However, \emph{large} differences between literatures raise some interesting questions. The three metas discussed in this paper all found overall effect sizes between 0.28 and 0.357: a relatively small range, whereas Green, Mathur, and Smith (2024), which sets relatively stringent inclusion criteria for both independent and dependent variables, finds an average effect size of 0.131 of intereventions intended to reduce consumption of meat and animal products. Again, this is not a well-identified effect; these literatures are different across many dimensions. But the difference in effect sizes between a narrow, selective meta-analysis and its bigger siblings suggests that something interesting is happening.
+
+We now turn to the pros and cons of these two different approaches in more detail.
 
 \subsection{The tradeoff between comprehensiveness and narrow, focused reviews}\label{the-tradeoff-between-comprehensiveness-and-narrow-focused-reviews}
 
 Slough and Tyson (2023) and Simonsohn et al. (2022) have raised trenchant critiques about whether the typical meta-analytic estimate is meaningful. Both papers argue that meta-analyses should be more selective in what papers they include \textemdash Slough and Tyson to assure harmonization of the independent and dependent variables, and Simmons et al.~to prevent mixing ``studies of the highest quality'' with ``studies that lack internal validity.''
 
 Of our three meta-analyses, Paluck et al. (2019) most closely hews to this model of inquiry. That paper looked solely at randomized controlled trials where intergroup contact was the treatment variable and where there was at least a day of delay between the commencement of treatment and outcome measurement. (Admittedly we could have tightened our study even further by looking for harmonized dependent variables, but given the diversity of outcomes we found, that would have effectively precluded meta-analysis.) Our subsequent two meta-analyses (Paluck et al., 2021; Porat et al., 2024), are much more clearly at risk of the kinds of incoherence that recent critics identify. Both studies:
-1. include a mixture of experiments, quasi-experiments, and observational designs (so long as there was a control group with pre- and post-treatment outcomes);
-2. combine papers that are drawing from vastly different theoretical traditions, e.g., within the sexual violence literature, a building-based intervention comprising ``higher levels of faculty/security presence in safe/unsafe `hot spots' mapped by students'' (Taylor, Stein, Mumford, \& Woods, 2013), and a module of peer-based consent training on a college campus (Crane, 2017);
-3. mixed dependent variables, e.g.~again in the sexual violence literature, we coded the Sexual Experiences Survey Koss \& Gidycz (1985) for behavioral outcomes and the Illinois Rape Myth Acceptance Scale (Thelan \& Meadows, 2022) for ideas-based outcomes when they were available, but the nearest substitutes for each, in our assessment, when they weren't.
 
-\subsubsection{What does a meta-analysis bring above and beyond a literature review?}\label{what-does-a-meta-analysis-bring-above-and-beyond-a-literature-review}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  include a mixture of experiments, quasi-experiments, and observational designs (so long as there was a control group with pre- and post-treatment outcomes);
+\item
+  combine papers that are drawing from vastly different theoretical traditions, e.g., within the sexual violence literature, a building-based intervention comprising ``higher levels of faculty/security presence in safe/unsafe `hot spots' mapped by students'' (Taylor, Stein, Mumford, \& Woods, 2013), and a module of peer-based consent training on a college campus (Crane, 2017);
+\item
+  mixed dependent variables, e.g.~again in the sexual violence literature, we coded the Sexual Experiences Survey Koss \& Gidycz (1985) for behavioral outcomes and the Illinois Rape Myth Acceptance Scale (Thelan \& Meadows, 2022) for ideas-based outcomes when they were available, but the nearest substitutes for each, in our assessment, when they weren't.
+\end{enumerate}
+
+Fundamentally, though we haven't seen it portrayed in these terms, each of these is a bias-variance trade-off. Conventional meta-analyses consistently resolve this trade-off in favor of reduced variance with only minimal attention to attendant bias.
 
 \subsection{Typical structure of Paluck lab meta-analytic papers}\label{typical-structure-of-paluck-lab-meta-analytic-papers}
 
@@ -522,6 +534,9 @@ Broockman, D., \& Kalla, J. (2016). Durably reducing transphobia: A field experi
 \bibitem[\citeproctext]{ref-chang2019}
 Chang, E. H., Milkman, K. L., Gromet, D. M., Rebele, R. W., Massey, C., Duckworth, A. L., \& Grant, A. M. (2019). The mixed effects of online diversity training. \emph{Proceedings of the National Academy of Sciences}, \emph{116}(16), 7778--7783.
 
+\bibitem[\citeproctext]{ref-collier2011}
+Collier, D. (2011). Understanding process tracing. \emph{PS: Political Science \& Politics}, \emph{44}(4), 823--830.
+
 \bibitem[\citeproctext]{ref-cooper2019}
 Cooper, H., Hedges, L. V., \& Valentine, J. C. (2019). \emph{The handbook of research synthesis and meta-analysis}. Russell Sage Foundation.
 
@@ -557,6 +572,9 @@ Gomila, R. (2021). Logistic or linear? Estimating causal effects of experimental
 
 \bibitem[\citeproctext]{ref-greco2013}
 Greco, T., Zangrillo, A., Biondi-Zoccai, G., \& Landoni, G. (2013). Meta-analysis: Pitfalls and hints. \emph{Heart, Lung and Vessels}, \emph{5}(4), 219.
+
+\bibitem[\citeproctext]{ref-green2024}
+Green, S. A., Mathur, M., \& Smith, B. (2024). \emph{Environmental \& health appeals are the most effective vegan outreach strategies}.
 
 \bibitem[\citeproctext]{ref-hardwicke2021}
 Hardwicke, T. E., Bohn, M., MacDonald, K., Hembacher, E., Nuijten, M. B., Peloquin, B. N., \ldots{} Frank, M. C. (2021). Analytic reproducibility in articles receiving open data badges at the journal psychological science: An observational study. \emph{Royal Society Open Science}, \emph{8}(1), 201494.
@@ -641,6 +659,9 @@ Samii, C. (2016). Causal empiricism in quantitative research. \emph{The Journal 
 
 \bibitem[\citeproctext]{ref-scacco2018}
 Scacco, A., \& Warren, S. S. (2018). Can social contact reduce prejudice and discrimination? Evidence from a field experiment in nigeria. \emph{American Political Science Review}, \emph{112}(3), 654--677.
+
+\bibitem[\citeproctext]{ref-schmidt1996}
+Schmidt, F. L., \& Hunter, J. E. (1996). Measurement error in psychological research: Lessons from 26 research scenarios. \emph{Psychological Methods}, \emph{1}(2), 199.
 
 \bibitem[\citeproctext]{ref-schooler2014}
 Schooler, J. W. (2014). Metascience could rescue the {``replication crisis.''} \emph{Nature}, \emph{515}(7525), 9--9.
