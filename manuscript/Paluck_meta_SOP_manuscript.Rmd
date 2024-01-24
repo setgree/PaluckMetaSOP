@@ -129,11 +129,13 @@ We take a different tack: to remove the assumption that a pooled meta-analytic e
 #### The case for inclusive and comprehensive meta-analyses
 We think there is value in inclusive searches and analyses, even if the resulting pooled estimate is not causal. First, the pooled estimate provides a benchmark for all subsequent analyses, including those with sufficient internal validity and harmonization of treatments and outcomes to be plausibly causal. For example, the pooled effect observed in @porat2024 is $\Delta$ = 0.28, but just 0.086 for perpetration outcomes with randomized designs; of the 28 studies meeting these stricter inclusion criteria, 16 self-reported null results. We think this gap between the superficially encouraging results of the literature as a whole and the bleaker results of the best studies looking at the most crucial outcome in the primary prevention literature is a call to action to researchers. Whatever solace they take in the putative effects of the entire literature should be weighed against the scant evidence of change on perpetration outcomes. The contrast helps build the intuition that the literature is in need of a change of direction.
 
-Second, how well different outcomes are harmonized or not is, in some cases, measurable. In @porat2024, we find overall random effects estimates of $\Delta$ = 0.071 for behavioral outcomes and $\Delta$ = 0.366 for ideas-based results. We further tested whether changes in ideas predicted changes in behaviors in studies that measured both, and found a disappointing lack of correlation between the two. This suggests that these classes of outcomes are not fundamentally assessing the same theoretical quantity, and that the paradigm on which this literature is based \textemdash myths about sexual violence cause sexual violence, so changing the myths should reduce the violence \textemdash does not seem to hold. Here, it made more sense to *test* for harmonization than to assume it did or did not exist. Even in cases where such analyses aren't viable, researchers can still meta-analyze subsets of the data based on class of dependent variable and present the results side by side. 
+Second, coding more studies leads to more precise estimates of publication bias.
 
-Third, coding a wide variety of interventions allows for subsequent analyses to focus on the effects of particular interventions, or classes of intervention, and comparing them. Again, the overall meta-analytic estimate provides a backdrop to these more focused analyses.
+Third, how well different outcomes are harmonized or not is, in some cases, measurable. In @porat2024, we find overall random effects estimates of $\Delta$ = 0.071 for behavioral outcomes and $\Delta$ = 0.366 for ideas-based results. We further tested whether changes in ideas predicted changes in behaviors in studies that measured both, and found a disappointing lack of correlation between the two. This suggests that these classes of outcomes are not fundamentally assessing the same theoretical quantity, and that the paradigm on which this literature is based \textemdash myths about sexual violence cause sexual violence, so changing the myths should reduce the violence \textemdash does not seem to hold. Here, it made more sense to *test* for harmonization than to assume it did or did not exist. Even in cases where such analyses aren't viable, researchers can still meta-analyze subsets of the data based on class of dependent variable and present the results side by side. 
 
-Fourth, starting from a precise estimate, gleaned from hundreds of studies, and then moving to a much higher quality but sparser dataset of the very best studies is an effective narrative device. Consider the contrast provided by @pettigrew2006 and @paluck2019. The former paper observes that across hundreds of studies comprising hundreds of thousands of people, contact typically reduces prejudice. The latter paper, however, notes that as of 2018, there had been zero evaluations of interracial contact in adults that had both random assignment and a delay of at least a single day between the beginning of treatment and outcome measurement. In other words, some essential basic research was missing. The putative solidity of the first claim makes the second all the more startling.
+Fourth, coding a wide variety of interventions allows for subsequent analyses to focus on the effects of particular interventions, or classes of intervention, and comparing them. Again, the overall meta-analytic estimate provides a backdrop to these more focused analyses.
+
+Fifth, starting from a precise estimate, gleaned from hundreds of studies, and then moving to a much higher quality but sparser dataset of the very best studies is an effective narrative device. Consider the contrast provided by @pettigrew2006 and @paluck2019. The former paper observes that across hundreds of studies comprising hundreds of thousands of people, contact typically reduces prejudice. The latter paper, however, notes that as of 2018, there had been zero evaluations of interracial contact in adults that had both random assignment and a delay of at least a single day between the beginning of treatment and outcome measurement. In other words, some essential basic research was missing. The putative solidity of the first claim makes the second all the more startling.
 
 In sum, we see value to identifying, coding, and heterogeneous estimates from study designs, interventions, and outcomes. However, a focused meta-analysis with strict inclusion criteria can also have appreciable impact on the field. So when is one strategy or the other appropriate?
 
@@ -145,17 +147,26 @@ We now turn to the pragmatic sections of our paper, where we detail the typical 
 
 ## Default structure and analytic choices for Paluck lab meta-analytic papers
 
-We do not expect anything in this section to be groundbreaking or especially interesting. However, we think there is pedagogical value in explicitly sharing a lab's approach to a class of paper. We hope to see more papers in this veins as a way of identifying and disseminating best practices.
+We do not expect anything in this section to be groundbreaking or especially interesting. However, we think there is pedagogical value in explicitly sharing a lab's approach to a class of paper. We hope to see more papers in this veins as a way of identifying and disseminating best practices. We also note that each paper was tailored to its venue and there is some variation between papers about where each of the following sections occurs. 
 
 ### How our meta-analyses typically unfold
-First, our meta-analyses' introductions describe the context and stakes of the paper.
+our meta-analyses' introductions describe the context and stakes of the paper. @paluck2019 and @porat2024 cover the major theoretical developments in their respective literatures, whereas @paluck2021 describes the need for an update on the major developments since a previous review [@paluck2009]. @porat2024 focuses particularly on 'zeitgeist' studies and ideas, which we think works nicely as a framing device for subsequent quantitative analyses, especially if some of those zeitgeist notions are revealed to have a surprising lack of evidence for efficacy.
 
-1.  Describe context and stakes of the paper (i.e. why it's important to see if these interventions 'work', or why there is reason to doubt an established consensus)
-2.  Intellectual overview of major ideas in the literature
-3.  descriptive statistics and/or qualitative overview about the database
-    1.  Contact hypothesis: what, where, why
-    2.  Prejudice reduction: theoretical perspectives, landmark studies
-    3.  Sexual violence paper: history of zeitgeist perspectives
+We then typically provide details about our database of studies and how we assembled it. These sections are pretty stanndard for meta-analyses, e.g. including our PRISMA diagrams [@moher2009], search terms, where and when our studies took place, and criteria for study collection.
+
+Next, we detail our meta-analytic methods. These sections are not intended as exhaustive treatments of meta-analysis, but rather to detail a few important choices, e.g. how we selected dependent variables [@paluck2019], our contrasts between overall results and those from "studies with reasonably good statistical precision" [@paluck2021, p. 14.7], and how readers can access our original datasets and reproduce our analyses (all three papers). 
+
+Next, we come to the main course: our meta-analyses. These sections are tailored to their literatures, and so follow distinct paths. However, we can describe a few general guiding principles.
+
+First, we typically start big and then go small, meaning we start by meta-analyzing everything and then zoom in on different subsets of the literature. As we argued above, we think that starting big is an effective framing device for our more focused analyses. We typically follow this with various tests for publication bias, e.g. a plot of effect sizes by standard errors, a statistical summary of the relationship between the two, and tests for systematic differences in effect sizes found in published or unpublished studies.
+
+Our more focused analyses typically apply the "split-apply-combine" framework for data analysis [@wickham2011]. For instance, in a literature with randomized controlled trials, quasi-experiments, and observational designs, as well as a mix of attitudinal and behavioral outcomes, we might  present a 3 by 2 table where each subset of study design + outcome strategy gets its own meta-analytic estimate [table 2 in @porat2024]. Alternatively, in a literature with many similar but distinct quantities of interest, e.g. racial/ethnic prejudice vs. prejudice against LGBTQ+ people vs. prejudice against people with physical and mental disabilities, we would present the meta-analytic effects within each subset of data. The overall goals  of these sub-analyses are, first, to see where empirical gaps remain, e.g. important literature subsets that are sparsely filled or empty, and second, to create data subsets that have sufficient contrast measurement harmonization to have a plausibly causal interpretation (though we did not frame the issue this way in any of the three meta-analyses discussed in this paper because we didn't encounter the terminology in @slough2023 before we wrote them).
+
+Finally,  measurement and contrast harmonized
+
+
+
+Our more focused analyses 
 4.  Evaluate rather than transcribe
 5.  Meta-analytic search methods
 6.  Meta-analytic approach6
@@ -168,14 +179,9 @@ First, our meta-analyses' introductions describe the context and stakes of the p
         a.  Paluck, Green and Green (2019) highlight lack of studies testing interracial contact among adults -\> provide intellectual backdrop for Scacco and Warren (2018), Mousa (2020), and Lowe (2019) -- as well as providing theoretical underpinning for those studies' comparatively underwhelming findings
 9.  Conclusion
 
-For instance, in a literature with randomized controlled trials, quasi-experiments, and observational designs, as well as a mix of attitudinal and behavioral outcomes, we might first present an overall meta-analytic effect, and then present a 3 by 2 table where each subset of study design + outcome strategy gets its own meta-analytic estimate. Alternatively, in a literature with many similar but distinct quantities of interest, e.g. racial/ethnic prejudice vs. prejudice against LGBTQ+ people vs. prejudice against people with physical and mental disabilities, we would present the meta-analytic effects within each subset of data.
+
 ### Paluck lab meta-analytic procedures
 
-1.  Code more than you think you're going to need
-    1.  You might be interested in the lasting effects, which means recording the latest possible effect sizes, but if you record the *earliest* possible effects, you can detect within-study decay
-2.  Start big and then go small, like a funnel; i.e. meta-analyze *everything* and then zoom in on different subsets of the literature 5. Test for publication bias should probably look at absolutely everything 6. Inter-paper comparisons; Paluck, Green and Green (2019) and Paluck et al. (2021) provide estimates of about $\Delta$ = 0.3, and then Green, Smith and Mathur (forthcoming) find $\Delta$ = 0.138, which also means something.
-3.  Do some serious tests for publication bias: both conventional tests (egger's test, funnel plot, $\Delta$ \~ SE), but also think through where else it might emerge, e.g. compare effect sizes in studies with and without DOIs
-4.  separate the dataset into different chunks, e.g. by theory, study design, or measurement strategy, and present these meta-analytic estimates side by side
     1.  Subset enough and eventually you get to reasonable claim for contrast and mechanism harmony (Slough and Tyson 2022)
 5.  Zoom in on and carefully and analyze best studies, both in aggregate and individually
     1.  These results might be surprising, e.g. when looking solely at RCTs on perpetration outcomes [@porat2024], slightly fewer than half are self-reported nulls.
