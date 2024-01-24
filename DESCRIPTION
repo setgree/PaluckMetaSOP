@@ -1,6 +1,6 @@
 Package: PaluckMetaSOP
 Title: Standard Operating Procedures for meta-analyses by the Paluck Lab
-Version: 0.0.0.9000
+Version: 0.1
 Authors@R: 
     person("Seth", "Green", email = "setgree@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-3909-1969"))
@@ -15,6 +15,7 @@ RoxygenNote: 7.2.3
 Imports:
     dplyr,
     here,
+    knitr,
     metafor,
     RefManageR,
     rlang,
