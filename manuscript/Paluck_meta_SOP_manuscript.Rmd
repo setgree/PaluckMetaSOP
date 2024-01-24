@@ -36,7 +36,7 @@ abstract: |
   This paper describes the motivations and procedures for meta-analyses by Betsy Levy Paluck and co-authors, with reference to and examples drawn from three such papers (Paluck, Green, and Green 2019, Paluck et al. 2020, and Porat et al. 2024). We first describe our conceptual aims when writing meta-analytic papers, which are to provide an 'on-ramp' to interested readers, to evaluate a literature's strengths and weaknesses, and to illuminate empirical gaps, which we intend as signposts for future researchers. Second, we describe the typical 'flow' of the papers as a whole. Third, we describe our meta-analytic procedures, detailing our default reporting structure and analytic choices and engaging with recent critiques from Slough and Tyson (2022) and Simonsohn, Simmons, and Nelson (2022). Fourth, we introduce a collection of functions we use to implement our meta-analytic choices, available as an R package. Fifth, we conclude with some open questions for meta-analysts.
   
 keywords: "meta-analysis, standard-operating-procedures, meta-science"
-wordcount: "6357"
+wordcount: "6428"
 
 bibliography: "meta-sop-references.bib"
 
