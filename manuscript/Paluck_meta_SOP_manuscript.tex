@@ -245,15 +245,15 @@ This paper also builds on a tradition of Standard Operating Procedures (SOPs) in
 
 \subsubsection{The remainder of this paper}\label{the-remainder-of-this-paper}
 
-This paper is a hybrid of a conceptual analysis of meta-analyses in general and a report on how we in particular write them. The first section articulates our general approach to meta-analysis. The second describes our typical approach to writing meta-analytic papers. The third details our meta-analytic defaults and introduces an R packaege, \texttt{PaluckMetaSOP}, that implements them and helps us write papers. Our conclusion recaps and notes some open questions for our lab.
+This paper is a hybrid of a conceptual analysis of meta-analyses in general and a report on how we in particular write them. The first section articulates our general approach to meta-analysis. The second describes our typical approach to writing meta-analytic papers. The third details our meta-analytic defaults and introduces an R packaege that implements them and helps us write papers. Our conclusion recaps and notes some open questions for our lab.
 
 First, we describe our conceptual approach to meta-analysis. We believe that meta-analyses are useful for evaluating the strengths and weaknesses of large, heterogeneous literatures, especially those that bring multiple theoretical perspectives to bear. We further believe that condensing each study down to a point estimate (or cluster of estimates) and associated variance(s) can furnish useful meta-scientific quantities. We also detail our thinking about the trade-off between, on the one hand, comprehensive but potentially biased meta-analyses and, on the other, narrower quantitative reviews that set strict inclusion criteria around study designs, interventions, and/or dependent variables. Our general thought is that comprehensive meta-analyses are especially valuable contributions if framed and interpreted correctly, but that selective, narrow meta-analyses can still be useful and interesting. In particular, we see value in contrasting all-inclusive estimates, which are fundamentally descriptive, to more rigorous, focused estimates, which, if they reflect strict selection criteria, are more plausibly causal. The within-paper contrast in magnitude and precision between these two approaches is often startling and illuminating.
 
 Second, we describe the default structure and analytic defaults for our quantitative reviews. Our papers explain the main ideas and trends in a literature, our search processes and meta-analytic methods, meta-analytic findings,a nd a review of open questions. Our quantitative analyses are structured to start big and go small. We first present meta-analytic estimates and tests for publication bias for the entire literature and then hone in on key quantities of interest from smaller subsets of the data. Our concluding investigations tend to probe differences in effect size by some marker of study quality, e.g.~the presence of a pre-analysis plan or sample size.
 
-Third, we detail our meta-analytic defaults, e.g.~a preference for Glass's \(\Delta\) over Cohen's \emph{d}, random effects over fixed effects estimates, and clustering our standard errors at the level of a study (as opposed to a paper or a team of authors). Here, we also detail a novel estimator for converting difference in proportion to an effect size. We then introduce an R package, \texttt{PaluckMetaSOP}, that contains functions to help us quickly and efficiently perform meta-analyses.
+Third, we detail our meta-analytic defaults, e.g.~a preference for Glass's \(\Delta\) over Cohen's \emph{d}, random effects over fixed effects estimates, and clustering our standard errors at the level of a study (as opposed to a paper or a team of authors). Here, we also detail a novel estimator for converting a difference in proportion outcome to a standardized effect size. We then introduce an R package, \texttt{PaluckMetaSOP}, that contains functions to help us quickly and efficiently perform meta-analyses.
 
-Fourth and finally, we conclude by noting some open questions for meta-scientific meta-analyses. While we tend to begin meta-analytic projects with a sense of what's true and what's interesting, in practice, the most incisive questions often emerge after reading and coding studies, i.e.~after data collection has begun. In other words, meta-analyses are both \emph{hypothesis\_driven} (re: deductive) and \emph{data-driven} (re: inductive); However, typical checks on researcher degrees of freedom assume a hypothesis-driven framework. This makes it tricky to ``tie one's hands to the mast'' (Elster, 1977), e.g., by writing a detailed pre-analysis plan and pre-specifying which outcomes to focus on. Last, we discuss the difficulty of integrating indirect cues of study quality, e.g.~obviously mistaken statistical results or special attention devoted to reproducibility, into our analyses in a principled way.
+Fourth and finally, we conclude with some open questions for meta-scientific meta-analyses. While we tend to begin meta-analytic projects with a sense of what's true and what's interesting, in practice, the most incisive questions often emerge after reading and coding studies, i.e.~after data collection has begun. In other words, meta-analyses are both hypothesis-driven (deductive) and data-driven (inductive). However, typical checks on researcher degrees of freedom (Gelman \& Loken, 2013; Simonsohn, Nelson, \& Simmons, 2014) assume a hypothesis-driven framework. This makes it tricky to ``tie one's hands to the mast'' (Elster, 1977), e.g., by writing a detailed pre-analysis plan and pre-specifying which outcomes to focus on. Last, we discuss the difficulty of integrating indirect cues of study quality, such as statistical mistakes (a negative signal) or special attention devoted to reproducibility (a positive one), into our analyses in a principled way.
 
 We now detail our conceptual aims when we write meta-analyses.
 
@@ -452,6 +452,9 @@ Frank, M. C., Braginsky, M., Cachia, J., Coles, N., Hardwicke, T. E., Hawkins, R
 \bibitem[\citeproctext]{ref-gawronski2019}
 Gawronski, B. (2019). Six lessons for a cogent science of implicit bias and its criticism. \emph{Perspectives on Psychological Science}, \emph{14}(4), 574--595.
 
+\bibitem[\citeproctext]{ref-gelman2013}
+Gelman, A., \& Loken, E. (2013). The garden of forking paths: Why multiple comparisons can be a problem, even when there is no {``fishing expedition''} or {``p-hacking''} and the research hypothesis was posited ahead of time. \emph{Department of Statistics, Columbia University}, \emph{348}, 1--17.
+
 \bibitem[\citeproctext]{ref-gillies1997}
 Gillies, R. A. (1997). \emph{Providing direct counter-arguments to challenge male audiences' attitudes toward rape}. University of Missouri-Columbia.
 
@@ -568,6 +571,9 @@ Sears, D. O., \& Henry, P. J. (2003). The origins of symbolic racism. \emph{Jour
 
 \bibitem[\citeproctext]{ref-shamoa2023}
 Shamoa-Nir, L., \& Razpurker-Apfeld, I. (2023). Can you imagine this? Imagined contact as a strategy to promote positive intergroup relations. \emph{Frontiers in Psychology}, \emph{14}.
+
+\bibitem[\citeproctext]{ref-simonsohn2014}
+Simonsohn, U., Nelson, L. D., \& Simmons, J. P. (2014). P-curve: A key to the file-drawer. \emph{Journal of Experimental Psychology: General}, \emph{143}(2), 534.
 
 \bibitem[\citeproctext]{ref-simonsohn2022}
 Simonsohn, U., Simmons, J., \& Nelson, L. D. (2022). Above averaging in literature reviews. \emph{Nature Reviews Psychology}, \emph{1}(10), 551--552.
