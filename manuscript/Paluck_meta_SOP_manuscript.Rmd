@@ -23,7 +23,7 @@ author:
  
 affiliation:
   - id: "1"
-    institution: "Kahneman Treisman Center, Princeton University"
+    institution: "Kahneman-Treisman Center, Princeton University"
   - id: "2"
     institution: "Princeton University "
   - id: "3"
@@ -53,7 +53,7 @@ classoption: "man"
 output: papaja::apa6_pdf
 ---
 
-## Introduction: An unexpectged gap between meta-analysis and meta-science
+## Introduction: Bridging the gap between meta-analysis and meta-science
 
 What purposes do meta-analyses serve above and beyond those accomplished by systematic reviews? Judging by recent papers in social psychology [@pettigrew2006; @bem2015; @cuddy2018; @bezrukova2016], the answer is to bolster and validate existing findings through aggregation. By pooling findings from many studies, researchers furnish meta-analytic estimates that are typically heartening to a literature's boosters because they are statistically precise and drawn from diverse settings, which gives readers the impression of durable, widely applicable findings. Such papers often have a valedictory quality to them: they provide leading practitioners a chance to survey the body of work they've helped inspire, highlight the strength of the evidence for their subfield's central tenets, and suggest future research directions that assume those tenets are no longer in need of testing.
 
@@ -63,7 +63,7 @@ Some meta-scientific reviews quantitatively assess collective outcomes, for inst
 
 At the Paluck lab, we seek to synthesize these two approaches by writing meta-analyses that are fundamentally meta-scientific. Whil writing three such papers [@paluck2009; @paluck2019; @paluck2021; @porat2024], we've developed distinct beliefs about where and when a meta-analysis is useful, how to structure such papers, and which specifications are sensible defaults. This paper articulates those beliefs, and aims to illuminate how meta-analysis might become a standard component of the meta-scientific toolkit.
 
-### Bridging the gap between meta-analytic theory and Standard Operating Procedures 
+### Implementing meta-analytic theory with Standard Operating Procedures 
 
 A healthy literature has interrogated meta-analytic methods, noting common pitfalls [@greco2013], statistical errors [@kadlec2023], and practical limitations, e.g. a widespread lack of reproducibility [@lakens2017]. This paper sits in that tradition, but is a bit of an offshoot in that we are not attempting to correct statistical or practical mistakes in meta-analyses, but rather articulate what it is that we are trying to do when we write them. In this regard, this paper is closely in dialogue with two recent contributions that attempt to put meta-analysis on firmer theoretical footing.
 
