@@ -53,7 +53,7 @@ classoption: "man"
 output: papaja::apa6_pdf
 ---
 
-## Introduction: Bridging the gap between meta-analysis and meta-science
+# Introduction: Bridging the gap between meta-analysis and meta-science
 
 What purposes do meta-analyses serve above and beyond those accomplished by systematic reviews? Judging by recent papers in social psychology [@pettigrew2006; @bem2015; @cuddy2018; @bezrukova2016], the answer is to bolster and validate existing findings through aggregation. By pooling findings from many studies, researchers furnish meta-analytic estimates that are typically heartening to a literature's boosters because they are statistically precise and drawn from diverse settings, which gives readers the impression of durable, widely applicable findings. Such papers often have a valedictory quality to them: they provide leading practitioners a chance to survey the body of work they've helped inspire, highlight the strength of the evidence for their subfield's central tenets, and suggest future research directions that assume those tenets are no longer in need of testing.
 
@@ -63,7 +63,7 @@ Some meta-scientific reviews quantitatively assess collective outcomes, for inst
 
 At the Paluck lab, we seek to synthesize these two approaches by writing meta-analyses that are fundamentally meta-scientific. While writing three such papers [@paluck2009; @paluck2019; @paluck2021; @porat2024], we've developed distinct beliefs about where and when a meta-analysis is useful, how to structure such papers, and which specifications are sensible defaults. This paper articulates those beliefs, and aims to illuminate how meta-analysis might become a standard component of the meta-scientific toolkit.
 
-### Implementing meta-analytic theory with Standard Operating Procedures 
+## Implementing meta-analytic theory with Standard Operating Procedures 
 
 A healthy literature has interrogated meta-analytic methods, noting common pitfalls [@greco2013], statistical errors [@kadlec2023], and practical limitations, e.g. a widespread lack of reproducibility [@lakens2017]. This paper sits in that tradition, but is a bit of an offshoot in that we are not attempting to correct statistical or practical mistakes in meta-analyses, but rather articulate what it is that we are trying to do when we write them. In this regard, this paper is closely in dialogue with two recent contributions that attempt to put meta-analysis on firmer theoretical footing.
 
@@ -77,7 +77,7 @@ Our meta-analyses share these goals, and the authors cite @paluck2021 as an exam
 
 This paper also builds on a tradition of Standard Operating Procedures (SOPs) in the behavioral and medical sciences [@rapport2013; @wallace2015; @lakens2023]. In particular, we look to @lin2016, which details how the Green lab at Columbia sets "default practices to guide decisions when issues arise that were not anticipated" in pre-analysis plans. Like that paper, this article is not intended as a comprehensive guide to the task in question \textemdash see @cumpston2019 and @cooper2019 for textbook-length treatments of meta-analysis, and @frank2024, chapter 16, and @lakens2022, chapter 11 for hands-on guides. Rather, we articulate our lab's approach to this class of paper. We hope this will prove interesting and informative, but not definitive: we expect readers to adapt and expand our guidelines to meet their own needs. We hope to see more labs publish papers about how they produce knowledge.
 
-### The remainder of this paper
+## The remainder of this paper
 
 This paper is a hybrid of a conceptual analysis of meta-analyses in general and a report on how we in particular write them. The first section articulates our general approach to meta-analysis. The second describes our typical approach to writing meta-analytic papers. The third details our meta-analytic defaults and introduces an R packaege that implements them and helps us write papers. Our conclusion recaps and notes some open questions for our lab.
 
@@ -91,7 +91,7 @@ Fourth and finally, we conclude with some open questions for meta-scientific met
 
 We now detail our conceptual aims when we write meta-analyses.
 
-## The purposes and contributions of meta-analysis
+# The purposes and contributions of meta-analysis
 
 The main goals of our meta-analysis are the goals of any systematic review: to evaluate a body of knowledge for its strengths, weaknesses, central findings, open questions and empirical limitations. We write broadly for any reader who is interested in the underlying question, but generally aim for a non-specialist audience. In our experience, a literature's most noteworthy contributions often come from researchers outside the core field (e.g. @mousa2020, @boisjoly2006, or @scacco2018 for the contact hypothesis, @munger2017 for anti-prejudice work, or @haushofer2019 for violence against women); to such researchers, we aim to provide signposts, in the form of unearthed, widespread empirical gaps and theoretical limitations, about where future empirical work will be most valuable. We also believe that funders and policymakers will benefit from systematic, critical reviews that do not take subject matter expertise for granted.
 
@@ -105,7 +105,7 @@ Third, as the credibility revolution spreads across the social sciences [@angris
 
 Fourth, even in fields with many systematic reviews, there's still often an open lane for a paper that's laser-focused on the findings of the best, most policy-relevant research [@paluck2019] or that's both comprehensive and quantitative. For instance, while reviewing prior papers on sexual violence for @porat2024, we found no theoretically comprehensive reviews that also had meta-analyses: all quantitative reviews were focused on smaller subsets of the literature. 
 
-### Why meta-analysis and not just a systematic review?
+## Why meta-analysis and not just a systematic review?
 
 While the aims we articulated above could generally be met by a non-quantitative systematic review, meta-analysis is essential for assessing several meta-scientific outcomes.
 
@@ -119,9 +119,9 @@ Third, relationships between effect and study quality, measured in a variety of 
 
 Fourth, quantitative estimates allow for assessing differences in effect size between literatures. We don't ascribe any particular meaning to small differences in estimated effect size \textemdash the difference between d = 0.3 vs d = 0.28 might mean something in some disciplines, but given the prevalence of measurement error in the fields we've analyzed [@schmidt1996; @cook2002], we would call this difference substantively insignificant. However, *large* differences between literatures and approaches raise some interesting questions. The three meta-analyses discussed in this paper all found overall effect sizes between 0.28 and 0.357: a relatively small range. By contrast, @green2024 look at interventions intended to reduce consumption of meat and animal products, while also setting some relatively strict inclusion criteria, and an average effect size of 0.131. This gap suggests some systematic differences between these literatures, measurement strategies, and researchers that are worth exploring.
 
-### The trade-off between comprehensiveness and narrow, focused reviews
+## The trade-off between comprehensiveness and narrow, focused reviews
 
-#### Addressing contemporary criticisms by relaxing the causality assumption
+### Addressing contemporary criticisms by relaxing the causality assumption
 @slough2023 and @simonsohn2022 have raised trenchant critiques about whether the typical meta-analytic estimate is meaningful. Both papers argue that meta-analyses should be more selective in what papers they include \textemdash @slough2023 to assure harmonization of the independent and dependent variables, and @simonsohn2022 to prevent mixing "studies of the highest quality" with "studies that lack internal validity" (p. XXX). 
 
 Of our three meta-analyses, @paluck2019 most closely hews to this model of inquiry. That paper looked solely at randomized controlled trials where intergroup contact was the treatment variable and where there was at least a day of delay between the commencement of treatment and outcome measurement. (Admittedly we could have tightened our study even further by looking for harmonized dependent variables, but given the diversity of outcomes we found, that would have effectively precluded meta-analysis.) Our subsequent two meta-analyses [@paluck2021; @porat2024], are much more clearly at risk of the kinds of incoherence that recent critics identify. Both studies include a mixture of experiments, quasi-experiments, and observational designs (so long as there was a control group with pre- and post-treatment outcomes); combine papers that are drawing from vastly different theoretical traditions; and mix divergent dependent variables.
@@ -136,7 +136,7 @@ We take a different tack: we drop the assumption that a pooled meta-analytic eff
 
 We were not as clear about the distinction between descriptive and causal analyses as we should have been in our three previous meta-analyses. Our thinking on this matter has evolved over time and we aim to be clearer in future papers.
 
-#### The case for inclusive and comprehensive meta-analyses
+### The case for inclusive and comprehensive meta-analyses
 We think there is value in inclusive searches and analyses, even if the resulting pooled estimate is not causal. First, the pooled estimate provides a benchmark for all subsequent analyses, including those with sufficient internal validity and harmonization of treatments and outcomes to be plausibly causal. For example, the pooled effect observed in @porat2024 is 0.28, but just 0.086 for perpetration outcomes with randomized designs; of the 28 studies meeting these stricter inclusion criteria, 16 self-reported null results. This gap between, on the one hand, the superficially encouraging results of the literature as a whole and, on the other, the bleaker results from the best studies looking at the most crucial outcome, is a call to action to researchers. The contrast helps build the intuition that the literature's theoretical approaches are in need of a change of direction.
 
 Second, coding more studies leads to more representative estimates of publication bias.
@@ -155,11 +155,11 @@ However, a more focused meta-analysis can still be a very useful contribution, e
 
 We now turn to the pragmatic section of our paper, where we detail the typical structure of our meta-analytic papers, our analytic defaults, and an R package that implements those defaults. 
 
-## Default structure and analytic choices for Paluck lab meta-analytic papers
+# Default structure and analytic choices for Paluck lab meta-analytic papers
 
 We do not expect anything in this section to be groundbreaking or novel. However, we think there is pedagogical value in explicitly sharing a lab's approach to a class of paper. (Caveat that each paper was tailored to its venue and there is some variation between papers about where each of the following sections occurs.)
 
-### How our meta-analyses typically unfold
+## How our meta-analyses typically unfold
 
 Our meta-analyses' introductions describe the context and stakes of the paper. @paluck2019 and @porat2024 cover the major theoretical developments in their respective literatures, whereas @paluck2021 describes the need for an update on the major developments since a previous review [@paluck2009]. @porat2024 focuses particularly on 'zeitgeist' studies and ideas, which we think works nicely as a framing device for subsequent quantitative analyses, especially if some of those zeitgeist notions are revealed to have a surprising lack of evidence for their efficacy.
 
@@ -181,7 +181,7 @@ This typically concludes our meta-analytic sections, at which point we move to a
 
 Further, because our meta-analyses tend to produce comparatively equivocal evidence for the efficacy of research programs, they provide an intellectual backdrop to researchers who find inconclusive or null results. For example, @scacco2018 and @mousa2020 ran landmark contact hypothesis papers that found much less salubrious effects than the literature's boosters might have expected; we hope that the analyses in @paluck2019 helped make these results seem more legible, and less like statistical anomalies, to readers.
 
-### Default meta-analytic procedures in Paluck lab
+## Default meta-analytic procedures in Paluck lab
 
 Our meta-analytic procedures vary somewhat between papers. However, a few guuding principles have held constant, and we've also developed some techniques that we think are helpful for solving methodological issues.
 
@@ -193,6 +193,7 @@ When converting event outcomes, e.g. how often a sample of people reports perpet
 
 In terms of aggregating studies for meta-analysis, we default to random effects estimates rather than fixed effects; in the heterogeneous literatures we analyze, there is likely no singular "true" effect size for which we are searching, but rather a variety of true effect sizes moderated by populations, conditions, and intervention strategies. We cluster standard errors at the level of study, rather than paper or team of authors or lab group, because we assume that the bulk of correlation between outcomes takes place within studies. 
 
+### Implementation with an R package
 We have written a collection of functions to help implement these defaults, and write papers that use them, called `PaluckMetaSOP.` It is available at <http://www.github.com/setgree/PaluckMetaSOP>. Its functions fall into three categories.
 
 First, we wrote functions to convert unstandardized effect sizes into standardized mean differences. `d_calc.R` takes statistical results, sample sizes, a measure of standard deviation, and a class of statistical test and returns an SMD. `var_d_calc.R` does the same thing for estimates of variance and standard error. `dip_calc` is a helper function that does so for difference in proportions estimates.
@@ -203,7 +204,7 @@ Finally, we have functions that make writing meta-analysis papers easier. This p
 
 Please see the package's vignette on <http://www.github.com/setgree/PaluckMetaSOP> for detailed usage instructions with reference to a demonstrative subset of the data from @paluck2021. 
 
-## Conclusions: hard cases
+# Conclusions: hard cases
 
 A classic paper on meta-analysis defines the procedure as "a statistical analysis which combines or integrates the results of several independent clinical trials considered by the analyst to be ‘combinable'" (p. XXX). Our (non-systematic) review of prior meta-analyses reveals a surprising dearth of attention to how much theoretical work is being done by the phrase "considered by the analyst to be 'combinable.'" @simonsohn2022 argue that researchers who "uncritically" aggregate results from all available studies, as part of an "active effort to eliminate publication bias...might instead amplify the bias from poor research design and execution" (p. XXX). We agree with this assessment, but would instead frame it as one of three crucial bias-variance trade-offs facing meta-analysts. By combining studies with non-comparable designs, interventions, and outcomes, researchers give readers the impression of remarkable precision (re: reduced variance) but at the expense of introducing non-statistical sources of uncertainty (re: bias) on all three fronts. Only by acknowledging these trade-offs head-on, and devising techniques for dealing with them, can we write meta-analyses that are fundamentally incredulous, evaluative, and careful about causal inference: in a word, meta-scientific. 
 
@@ -221,4 +222,4 @@ Last, there is a great deal of subjectivity in figuring out what outcomes to cod
 
 These open questions notwithstanding, we think meta-analyses can be useful, informative, and a pleasure to write and read. We hope to see them become a standard part of the meta-scientist's toolkit, and likewise for all meta-analyses to become more meta-scientific.
 
-## References
+# References
