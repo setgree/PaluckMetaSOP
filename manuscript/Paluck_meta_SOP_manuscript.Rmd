@@ -4,6 +4,7 @@ shorttitle: "Paluck_meta_SOP"
 
 author:
   - name: "Seth Green"
+    affiliation: "1"
     address: "Kahneman-Treisman Center, Princeton University"
     email: "sag2212@columbia.edu"
     role:
@@ -36,12 +37,12 @@ abstract: |
  This paper describes the motivations and procedures for meta-analyses by Betsy Levy Paluck and co-authors, with reference to and examples drawn from three such papers [@paluck2019; @paluck2021; @porat2024]. We first describe our conceptual aims when writing meta-analytic papers, noting where we think quantitative reviews add value and how we think through the trade-off between comprehensive and selective inclusion criteria. Second, we describe the typical 'flow' of the papers as a whole. Third, we describe our meta-analytic procedures, detailing our default analytic choices and introducing an R package that implements those choices. We conclude with some open questions for meta-analysts.
  
 keywords: "meta-analysis, standard-operating-procedures, meta-science"
-wordcount: "7409"
+wordcount: "7364"
 
 bibliography: "meta-sop-references.bib"
 
 floatsintext: no
-linenumbers: yes
+linenumbers: no
 draft: no
 mask: no
 
@@ -49,7 +50,7 @@ figurelist: no
 tablelist: no
 footnotelist: no
 
-classoption: "man"
+class: "jou"
 output: papaja::apa6_pdf
 ---
 
@@ -128,7 +129,7 @@ Of our three meta-analyses, @paluck2019 most closely hews to this model of inqui
 
 Each of these is a bias-variance trade-off. Conventional meta-analyses consistently resolve this trade-off in favor of reduced variance with only minimal attention to concordant bias. When this challenge *is* discussed, it's typically framed in terms of a desirable trade between internal and external validity: what's lost in terms of unbiased causal inference is appropriately compensated for by gains in knowledge about the diversity of settings in which a treatment works. (See @mathur2022 for discussion.)
 
-We do not find this argument persuasive. As @thye2000 puts it, "if there are doubts or questions about whether a relationship is real or spurious, then whether or not the finding applies to other settings is irrelevant" (p. 1303). There is a reasonable counterargument that if randomized controlled trials and quasi-experimental/observational designs tend to yield roughly equivalent effect sizes, this would ameliorate concerns about potential confounders or reverse causality in the observational literature. (Indeed, @pettigrew2006 argue this, but as mentioned above, when we re-examined the assembled RCTs, we found them much too scant to say anything definitive.)
+We do not find this argument persuasive. As @thye2000 puts it, "if there are doubts or questions about whether a relationship is real or spurious, then whether or not the finding applies to other settings is irrelevant" (p. 1303). There is a reasonable counterargument that if randomized controlled trials and quasi-experimental or observational designs tend to yield roughly equivalent effect sizes, this would ameliorate concerns about potential confounders or reverse causality in the observational literature. (Indeed, @pettigrew2006 argue this, but as mentioned above, when we re-examined the assembled RCTs, we found them much too scant to say anything definitive.)
 
 Either way, this does not address potential bias introduced by non-harmonized treatments and outcomes. The threat there is not from confounders, but the much more conceptual problem that it simply doesn't make sense to pool what's being pooled. Consider the sexual violence literature, which includes, for instance, a building-based intervention comprising "higher levels of faculty/security presence in safe/unsafe 'hot spots' mapped by students" [@taylor2013], and a module of peer-based consent training on a college campus [@crane2017]. When you average these two things, what does the resulting quantity signify? Ascribing a causal meaning to that average \textemdash saying that both interventions are tests of the same core ideas, just in different settings \textemdash requires some strong additional assumptions. Likewise with dependent variables; in that paper, we coded the Sexual Experiences Survey [@koss1982, @koss1985] for behavioral outcomes and the Illinois Rape Myth Acceptance Scale [@thelan2022] for ideas-based outcomes when they were available, but the nearest substitutes for each, in our assessment, when they weren't. What additional assumptions do we need to argue that these multitudinous outcomes are coherently integrable?
 

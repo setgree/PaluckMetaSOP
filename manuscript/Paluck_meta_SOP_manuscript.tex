@@ -3,7 +3,7 @@
 \PassOptionsToPackage{hyphens}{url}
 %
 \documentclass[
-  man]{apa6}
+  ,jou]{apa6}
 \usepackage{amsmath,amssymb}
 \usepackage{iftex}
 \ifPDFTeX
@@ -168,16 +168,10 @@
     {}{\InnerPatchFailed}%
   }
 {}{\PatchFailed}
-\keywords{meta-analysis, standard-operating-procedures, meta-science\newline\indent Word count: 7409}
-\DeclareDelayedFloatFlavor{ThreePartTable}{table}
-\DeclareDelayedFloatFlavor{lltable}{table}
-\DeclareDelayedFloatFlavor*{longtable}{table}
-\makeatletter
-\renewcommand{\efloat@iwrite}[1]{\immediate\expandafter\protected@write\csname efloat@post#1\endcsname{}}
-\makeatother
-\usepackage{lineno}
+\keywords{meta-analysis, standard-operating-procedures, meta-science\newline\indent Word count: 7364}
+\usepackage{dblfloatfix}
 
-\linenumbers
+
 \usepackage{csquotes}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
@@ -187,14 +181,14 @@
 \urlstyle{same}
 \hypersetup{
   pdftitle={Towards meta-scientific meta-analyses: standard operating procedures for meta-analysis in the Paluck Lab},
-  pdfauthor={Seth Green, Elizabeth Levy Paluck2, \& Roni Porat3},
+  pdfauthor={Seth Green1, Elizabeth Levy Paluck2, \& Roni Porat3},
   pdflang={en-EN},
   pdfkeywords={meta-analysis, standard-operating-procedures, meta-science},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
 \title{Towards meta-scientific meta-analyses: standard operating procedures for meta-analysis in the Paluck Lab}
-\author{Seth Green\textsuperscript{}, Elizabeth Levy Paluck\textsuperscript{2}, \& Roni Porat\textsuperscript{3}}
+\author{Seth Green\textsuperscript{1}, Elizabeth Levy Paluck\textsuperscript{2}, \& Roni Porat\textsuperscript{3}}
 \date{}
 
 
@@ -295,7 +289,7 @@ Of our three meta-analyses, Paluck et al. (2019) most closely hews to this model
 
 Each of these is a bias-variance trade-off. Conventional meta-analyses consistently resolve this trade-off in favor of reduced variance with only minimal attention to concordant bias. When this challenge \emph{is} discussed, it's typically framed in terms of a desirable trade between internal and external validity: what's lost in terms of unbiased causal inference is appropriately compensated for by gains in knowledge about the diversity of settings in which a treatment works. (See Mathur and VanderWeele (2022) for discussion.)
 
-We do not find this argument persuasive. As Thye (2000) puts it, ``if there are doubts or questions about whether a relationship is real or spurious, then whether or not the finding applies to other settings is irrelevant'' (p.~1303). There is a reasonable counterargument that if randomized controlled trials and quasi-experimental/observational designs tend to yield roughly equivalent effect sizes, this would ameliorate concerns about potential confounders or reverse causality in the observational literature. (Indeed, Pettigrew and Tropp (2006) argue this, but as mentioned above, when we re-examined the assembled RCTs, we found them much too scant to say anything definitive.)
+We do not find this argument persuasive. As Thye (2000) puts it, ``if there are doubts or questions about whether a relationship is real or spurious, then whether or not the finding applies to other settings is irrelevant'' (p.~1303). There is a reasonable counterargument that if randomized controlled trials and quasi-experimental or observational designs tend to yield roughly equivalent effect sizes, this would ameliorate concerns about potential confounders or reverse causality in the observational literature. (Indeed, Pettigrew and Tropp (2006) argue this, but as mentioned above, when we re-examined the assembled RCTs, we found them much too scant to say anything definitive.)
 
 Either way, this does not address potential bias introduced by non-harmonized treatments and outcomes. The threat there is not from confounders, but the much more conceptual problem that it simply doesn't make sense to pool what's being pooled. Consider the sexual violence literature, which includes, for instance, a building-based intervention comprising ``higher levels of faculty/security presence in safe/unsafe `hot spots' mapped by students'' (Taylor, Stein, Mumford, \& Woods, 2013), and a module of peer-based consent training on a college campus (Crane, 2017). When you average these two things, what does the resulting quantity signify? Ascribing a causal meaning to that average \textemdash saying that both interventions are tests of the same core ideas, just in different settings \textemdash requires some strong additional assumptions. Likewise with dependent variables; in that paper, we coded the Sexual Experiences Survey Koss \& Gidycz (1985) for behavioral outcomes and the Illinois Rape Myth Acceptance Scale (Thelan \& Meadows, 2022) for ideas-based outcomes when they were available, but the nearest substitutes for each, in our assessment, when they weren't. What additional assumptions do we need to argue that these multitudinous outcomes are coherently integrable?
 
