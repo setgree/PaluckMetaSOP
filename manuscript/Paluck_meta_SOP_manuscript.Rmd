@@ -3,7 +3,7 @@ title: "Towards meta-scientific meta-analyses: standard operating procedures for
 shorttitle: "Paluck_meta_SOP"
 
 author:
-  - name: "Seth Green"
+  - name: "Seth A. Green"
     affiliation: "1"
     address: "Kahneman-Treisman Center, Princeton University"
     email: "sag2212@columbia.edu"
