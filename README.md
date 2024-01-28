@@ -25,6 +25,5 @@ For the package, I need
 
 ### Paper TODOs
 
-* Write the paper
-* document it accordingly
+* Await feedback from collaborators and early reviewers
 * figure out an automated/easy way to collaborate with authors who prefer overleaf or github
