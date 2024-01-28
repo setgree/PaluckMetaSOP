@@ -168,7 +168,7 @@
     {}{\InnerPatchFailed}%
   }
 {}{\PatchFailed}
-\keywords{meta-analysis, standard-operating-procedures, meta-science\newline\indent Word count: 7366}
+\keywords{meta-analysis, standard-operating-procedures, meta-science\newline\indent Word count: 7415}
 \usepackage{dblfloatfix}
 
 
@@ -196,7 +196,7 @@
 
 \authornote{
 
-This work was supported by {[}whoever supports it{]}
+This work was supported by {[}whoever supports it{]}. Thanks to Tara Slouth, Don Green, and Alix Winter for valuable comments on an early draft.
 
 The authors made the following contributions. Seth A. Green: Conceptualization, Writing - Original Draft Preparation, Writing - Review \& Editing; Elizabeth Levy Paluck: Writing - Review \& Editing, Supervision; Roni Porat: Writing - Review \& Editing, Supervision.
 
@@ -205,7 +205,7 @@ The authors made the following contributions. Seth A. Green: Conceptualization, 
 \affiliation{\vspace{0.5cm}\textsuperscript{1} Kahneman-Treisman Center, Princeton University\\\textsuperscript{2} Princeton University\\\textsuperscript{3} Hebrew University, Jerusalem}
 
 \abstract{%
-This paper describes the motivations and procedures for meta-analyses by Betsy Levy Paluck and co-authors, with reference to and examples drawn from three such papers (Paluck, Green, \& Green, 2019; Paluck, Porat, Clark, \& Green, 2021; Porat, Gantman, Paluck, Green, \& Pezzuto, 2024). We first describe our conceptual aims when writing meta-analytic papers, noting where we think quantitative reviews add value and how we think through the trade-off between comprehensive and selective inclusion criteria. Second, we describe the typical `flow' of the papers as a whole. Third, we describe our meta-analytic procedures, detailing our default analytic choices and introducing an R package that implements those choices. We conclude with some open questions for meta-analysts.
+This paper describes the motivations and procedures for meta-analyses by Betsy Levy Paluck and co-authors, with reference to and examples drawn from three such papers (Paluck, Green, \& Green, 2019; Paluck, Porat, Clark, \& Green, 2021; Porat, Gantman, Paluck, Green, \& Pezzuto, 2024). We first describe our conceptual aims when writing meta-analytic papers, noting where we think quantitative reviews add value and how we think through the trade-off between comprehensive and selective inclusion criteria. Second, we describe the typical `flow' of the papers as a whole, with special attention to how we frame and order any quantitative analyses. Third, we describe our meta-analytic procedures, detailing our default analytic choices and introducing an R package that implements those choices. These `Standard Operating Procedures' are intended as a guide to a handful of especially thorny meta-analytic issues. We conclude with some open questions for meta-analysts.
 }
 
 
@@ -235,7 +235,9 @@ The other paper in this vein we look to is Simonsohn, Simmons, and Nelson (2022)
 
 Our meta-analyses share these goals, and the authors cite Paluck et al. (2021) as an example of a meta-analysis that is ``selective, design-focused, and evaluative'' (p.~XXX). However, as mentioned above, we part ways from this paper in that we believe comprehensive meta-analytic estimates still have a place in the meta-scientist's toolkit, so long as those estimates are ascribed non-causal meaning and are used to contextualize more selective analyses.
 
-This paper also builds on a tradition of Standard Operating Procedures (SOPs) in the behavioral and medical sciences (D. Lakens, 2023; Rapport et al., 2013; Wallace et al., 2015). In particular, we look to Lin and Green (2016), which details how the Green lab at Columbia sets ``default practices to guide decisions when issues arise that were not anticipated'' in pre-analysis plans. Like that paper, this article is not intended as a comprehensive guide to the task in question \textemdash see Cumpston et al. (2019) and Cooper et al. (2019) for textbook-length treatments of meta-analysis, and Frank et al. (2024), chapter 16, and Daniel Lakens (2022), chapter 11 for hands-on guides. Rather, we articulate our lab's approach to this class of paper. We hope this will prove interesting and informative, but not definitive: we expect readers to adapt and expand our guidelines to meet their own needs. We hope to see more labs publish papers about how they produce knowledge.
+This paper also builds on a tradition of Standard Operating Procedures (SOPs) in the behavioral and medical sciences (D. Lakens, 2023; Rapport et al., 2013; Wallace et al., 2015). In particular, we look to Lin and Green (2016), which details how the Green lab at Columbia sets ``default practices to guide decisions when issues arise that were not anticipated'' in pre-analysis plans.
+
+Like that paper, this article is not intended as a comprehensive guide. Specifically, we do not cover identifying an interesting question where aggregating results from many studies will be a useful estimation strategy or searching for those studies (see Cumpston et al. (2019) and Cooper et al. (2019) for textbook-length treatments of these questions). Instead, we describe how we tackle a few especially thorny issues relating to coding studies and aggregating their results. Most of this paper is about aggregation. Our default procedures are designed to help readers evaluate a body of research for themselves. We hope this will prove interesting and informative to other labs, but not definitive: we expect readers to adapt and expand our guidelines to meet their own needs. (See also Frank et al. (2024), chapter 16 and Daniel Lakens (2022), chapter 11 for hands-on guides to meta-analysis with examples in \texttt{R}.)
 
 \subsection{The remainder of this paper}\label{the-remainder-of-this-paper}
 
