@@ -34,7 +34,7 @@ abstract: |
  This paper describes the motivations and procedures for meta-analyses by Betsy Levy Paluck and co-authors, with reference to and examples drawn from three such papers [@paluck2019; @paluck2021; @porat2024]. We first describe our conceptual aims when writing meta-analytic papers, noting where we think quantitative reviews add value and how we think through the trade-off between comprehensive and selective inclusion criteria. Second, we describe the typical 'flow' of the papers as a whole, with special attention to how we frame and order any quantitative analyses.  Third, we describe our meta-analytic procedures, detailing our default analytic choices and introducing an R package that implements those choices. These 'Standard Operating Procedures' are intended as a guide to a handful of especially thorny meta-analytic issues. We conclude with some open questions for meta-analysts.
  
 keywords: "meta-analysis, standard-operating-procedures, meta-science"
-wordcount: "7477"
+wordcount: "7508"
 bibliography: "meta-sop-references.bib"
 floatsintext: no
 linenumbers: no
@@ -155,6 +155,8 @@ In sum, we see value in identifying, coding, and heterogeneous estimates from st
 We favor comprehensive meta-analyses if resources allow. On the one hand, these projects are much larger undertakings: @porat2024 took six years, five authors, and a team of RAs, whereas @paluck2019 was basically written in a summer by three people (although identifying the universe of relevant studies was partly accomplished during other projects). On the other hand, comprehensive meta-analyses help authors develop, and then impart to readers, a truly thorough understanding of the literature. For "The Leading Approach to Reducing Sexual Violence" in @porat2024, there was simply no substitute for reading hundreds of studies. (We'd also add that quantitative coding studies is a kind of enforcement mechanism for reading a paper closely.) Further, a more focused analysis of the very best studies can be encompassed within a comprehensive meta-analysis: the dataset assembled in @paluck2021 could (hypothetically) be filtered to reproduce the dataset of @paluck2019 precisely, but the reverse is not true.
 
 However, a more focused meta-analysis can still be a very useful contribution, especially as a rejoinder to prior credulous reviews. We recommend that such papers choose inclusion criteria that select for validity on three fronts: design, contrast, and measurement. For example, @green2024 loos solely at estimates from randomized controlled trials that 1) measure MAP directly 2) at least a single day after treatment was administered with 3) at least 25 subjects in treatment and control (or 10 clusters for cluster-randomized trials). This has the pragmatic benefit of winnowing a literature with literally thousands of studies down to a few dozen, which makes for a much more tractable analysis and paper-writing process. 
+
+Alternatively, researchers might split the difference between these approaches by conducting a theoretically comprehensive literature review, coding data from every study, but only meta-analyzing research that meets the paper's inclusion criteria.
 
 We now turn to the pragmatic section of our paper, where we detail the typical structure of our meta-analytic papers, our analytic defaults, and an R package that implements those defaults. 
 
