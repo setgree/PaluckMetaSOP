@@ -217,15 +217,15 @@ This paper describes the motivations and procedures for meta-analyses by Betsy L
 
 What purposes do meta-analyses serve above and beyond those accomplished by systematic reviews? Judging by recent papers in social psychology (Bem, Tressoldi, Rabeyron, \& Duggan, 2015; Bezrukova, Spell, Perry, \& Jehn, 2016; Cuddy, Schultz, \& Fosse, 2018; Pettigrew \& Tropp, 2006), the answer is to bolster and validate existing findings through aggregation. By pooling findings from many studies, researchers furnish meta-analytic estimates that are statistically precise and drawn from diverse settings, giving readers the impression of durable, robust findings. Such papers often have a valedictory quality to them: they provide leading practitioners a chance to survey the body of work they've helped inspire, highlight the strength of the evidence for their subfield's central tenets, and suggest future research directions that assume those tenets are no longer in need of testing.
 
-Meanwhile, a parallel movement in psychology has begun to implement the recommendations of the open science (Nosek, 2015) and meta-science (Schooler, 2014) movements into study designs (Ferguson et al., 2023), journal policies (Hardwicke \& Vazire, 2023), and literature reviews (Hardwicke et al., 2018). Broadly speaking, meta-scientific papers aim to assess whether a literature's findings are credible. While meta-analyses seek to combine results, taken more or less at face value, meta-science papers, by contrast, ask whether the designs, analyses and implementations within a literature license its authors' inferences.
+Meanwhile, a parallel movement in psychology has begun to implement the recommendations of the open science (Nosek, 2015) and meta-science (Schooler, 2014) movements into study designs (Ferguson et al., 2023), journal policies (Hardwicke \& Vazire, 2023), and literature reviews (Hardwicke et al., 2018). Broadly speaking, meta-science is a set of practices, as well as ``an evolving scientific discipline,'' aiming to ``evaluate and improve research practices;'' instead of theorizing ``about biases (e.g., publication bias, reporting bias, selection bias, confounding, etc.),'' meta-scientists ``examine them across multiple studies'' and ``think about ways to prevent or correct them (Ioannidis, Fanelli, Dunne, \& Goodman, 2015).
 
-Some meta-scientific reviews quantitatively assess collective outcomes, for instance, what percentage of a subset of papers are computationally reproducible (Obels, Lakens, Coles, Gottfried, \& Green, 2020) or consistent with open data standards (Hardwicke et al., 2021). In one sense, these estimates are `meta-analytic,' but they aren't meta-analyses in the conventional sense of pooling existing findings into weighted average effects (Cooper, Hedges, \& Valentine, 2019; Glass, 1977; Kleinstäuber et al., 1996). In tone, meta-science papers are often much more critical than meta-analyses are, and they are often written by outsiders or newcomers to an academic field who appear more motivated to interrogate than to validate. Thus, their similar names notwithstanding, meta-analytic and meta-scientific papers in social psychology typically have radically different perspectives, assumptions, and goals.
+Many meta-scientific papers quantitatively assess collective outcomes, for instance, what percentage of a subset of papers are computationally reproducible (Obels, Lakens, Coles, Gottfried, \& Green, 2020) or consistent with open data standards (Hardwicke et al., 2021). In one sense, these estimates are `meta-analytic,' but they aren't meta-analyses in the conventional sense of pooling existing findings into weighted average effects (Cooper, Hedges, \& Valentine, 2019; Glass, 1977; Kleinstäuber et al., 1996). Likewise, while most meta-analyses attempt to assess publication bias (Sutton, 2009; Thornton \& Lee, 2000), which is a fundamentally meta-scientific quantity, the remainder of their analyses typically take the internal validity of the field's findings for granted. We also observe that meta-science papers are much more likely to be written by outsiders or newcomers to a field, and to adopt a much more critical tone, than we see in the typical meta-analysis. Thus, their similar names notwithstanding, meta-analytic and meta-scientific papers in social psychology typically have radically different perspectives, assumptions, and goals.
 
 At the Paluck lab, we seek to synthesize these two approaches by writing meta-analyses that are fundamentally meta-scientific. While writing three such papers (Paluck \& Green, 2009; Paluck et al., 2019, 2021; Porat et al., 2024), we've developed distinct beliefs about when a meta-analysis is useful, how to structure such papers, and which specifications are sensible defaults. This paper articulates those beliefs, and aims to illuminate how meta-analysis might become a standard component of the meta-scientific toolkit.
 
 \subsection{Implementing meta-analytic theory with Standard Operating Procedures}\label{implementing-meta-analytic-theory-with-standard-operating-procedures}
 
-A healthy literature has interrogated meta-analytic methods, noting common pitfalls (Greco, Zangrillo, Biondi-Zoccai, \& Landoni, 2013), statistical errors (Kadlec, Sainani, \& Nimphius, 2023), and practical limitations, e.g.~a widespread lack of reproducibility (Daniel Lakens et al., 2017) or data availability (\textbf{CITE?}). This paper sits in that tradition, but is a bit of an offshoot in that we are not attempting to correct statistical or practical mistakes in meta-analyses, but rather articulate what it is that we are trying to do when we write them. In this regard, this paper is closely in dialogue with two recent contributions that attempt to put meta-analysis on firmer theoretical footing.
+A healthy literature has interrogated meta-analytic methods, noting common pitfalls (Greco, Zangrillo, Biondi-Zoccai, \& Landoni, 2013), statistical errors (Kadlec, Sainani, \& Nimphius, 2023), and practical limitations, e.g.~a widespread lack of reproducibility (Daniel Lakens et al., 2017) or data availability (López-Nicolás et al., 2024). This paper sits in that tradition, but is a bit of an offshoot in that we are not attempting to correct statistical or practical mistakes in meta-analyses, but rather articulate what it is that we are trying to do when we write them. In this regard, this paper is closely in dialogue with two recent contributions that attempt to put meta-analysis on firmer theoretical footing.
 
 Slough and Tyson (2023) ``highlight the dangers of conflating conceptual differences across studies with statistical sources of variation'' (p.~29). They argue that for studies to have target equivalence (the property of identifying ``the same estimand'' (p.~1)), they must have fundamentally \emph{harmonized} contrasts and measurement strategies: the ``substantive comparison across studies is the same'' and ``the outcome of interest is the same and it is measured in the same way'' (p.~2). Absent these conditions, meta-analytic results might not be ``meaningful and interpretable'' (p.~2). Further, target equivalence cannot be achieved ``solely with statistical techniques'' (p.~23); it is a property, rather, of appropriate ``design or inclusion criteria'' (p.~2).
 
@@ -292,8 +292,7 @@ We wish to emphasize that these are \emph{not} well-identified estimates of the 
 \subsubsection{Robustness to differences in measurement strategy}\label{robustness-to-differences-in-measurement-strategy}
 
 Fourth, quantitative estimates allow for assessing differences in effect size between outcomes and how they're measured. This can be interesting both within literatures and across them. The three meta-analyses discussed in this paper mostly measure attitudes, and their overall effect sizes all fall between 0.28 and 0.357: a relatively small range. However, for Porat et al. (2024), the key quantity of interest \textemdash sexual violence \textemdash is fundamentally a behavioral problem. There, our results are discouraging: pooled effect sizes of just 0.033 for perpetration outcomes and 0.046 for victimization, neither of which is statistically significant.\footnote{Likewise, Green, Mathur, and Smith (2024) look at interventions intended to reduce consumption of meat and animal products and only meta-analyze direct measures of what people eat \textemdash rather than what they think, feel or intend to do about what they eat \textemdash and find an average effect size of 0.131.} {[}SENTENCE ON DELAY IN OUTCOMES FOR PALUCK 2021{]}
-
-\subsection{The trade-off between comprehensiveness and narrow, focused reviews}\label{the-trade-off-between-comprehensiveness-and-narrow-focused-reviews}
+\#\# The trade-off between comprehensiveness and narrow, focused reviews
 
 \subsubsection{Addressing contemporary criticisms by relaxing the causality assumption}\label{addressing-contemporary-criticisms-by-relaxing-the-causality-assumption}
 
@@ -327,7 +326,7 @@ In sum, we see value in identifying, coding, and meta-analyzing heterogeneous es
 
 We favor comprehensive meta-analyses if resources allow. On the one hand, these projects are much larger undertakings: Porat et al. (2024) took six years, five authors, and a team of RAs, whereas Paluck et al. (2019) was basically written in a summer by three people (although identifying the universe of relevant studies was partly accomplished during other projects). On the other hand, comprehensive meta-analyses help authors develop, and then impart to readers, a truly thorough understanding of the literature. For ``The Leading Approach to Reducing Sexual Violence'' in Porat et al. (2024), there was simply no substitute for reading hundreds of studies. (We'd also add that quantitative coding studies is a kind of enforcement mechanism for reading a paper closely.) Further, a more focused analysis of the very best studies can be encompassed within a comprehensive meta-analysis: the dataset assembled in Paluck et al. (2021) could (hypothetically) be filtered to reproduce the dataset of Paluck et al. (2019) precisely, but the reverse is not true.
 
-However, a more focused meta-analysis can still be a very useful contribution, especially as a rejoinder to prior credulous reviews. We recommend that such papers choose inclusion criteria that select for validity on three fronts: design, contrast, and measurement. For example, Green et al. (2024) loos solely at estimates from randomized controlled trials that 1) measure MAP directly 2) at least a single day after treatment was administered with 3) at least 25 subjects in treatment and control (or 10 clusters for cluster-randomized trials). This has the pragmatic benefit of winnowing a literature with literally thousands of studies down to a few dozen, which makes for a much more tractable analysis and paper-writing process.
+However, a more focused meta-analysis can still be a very useful contribution, especially as a rejoinder to prior credulous reviews. We recommend that such papers choose inclusion criteria that select for validity on three fronts: design, contrast, and measurement. For example, Green et al. (2024) loos solely at estimates from randomized controlled trials that 1) measure the core outcome directly 2) at least a single day after treatment was administered with 3) at least 25 subjects in treatment and control (or 10 clusters for cluster-randomized trials). This has the pragmatic benefit of winnowing a literature with literally thousands of studies down to a few dozen, which makes for a much more tractable analysis and paper-writing process.
 
 Alternatively, researchers might split the difference between these approaches by conducting a theoretically comprehensive literature review, coding data from every study, but only meta-analyzing research that meets the paper's inclusion criteria.
 
@@ -502,6 +501,9 @@ Harrer, M., Cuijpers, P., Furukawa, T., \& Ebert, D. (2021). \emph{Doing meta-an
 \bibitem[\citeproctext]{ref-haushofer2019}
 Haushofer, J., Ringdal, C., Shapiro, J. P., \& Wang, X. Y. (2019). \emph{Income changes and intimate partner violence: Evidence from unconditional cash transfers in kenya}. National Bureau of Economic Research.
 
+\bibitem[\citeproctext]{ref-ioannidis2015}
+Ioannidis, J. P., Fanelli, D., Dunne, D. D., \& Goodman, S. N. (2015). Meta-research: Evaluation and improvement of research methods and practices. \emph{PLoS Biology}, \emph{13}(10), e1002264.
+
 \bibitem[\citeproctext]{ref-kadlec2023}
 Kadlec, D., Sainani, K. L., \& Nimphius, S. (2023). With great power comes great responsibility: Common errors in meta-analyses and meta-regressions in strength \& conditioning research. \emph{Sports Medicine}, \emph{53}(2), 313--325.
 
@@ -525,6 +527,9 @@ Lakens, Daniel, LeBel, E., Page-Gould, E., Assen, M. van, Spellman, B., Schönbr
 
 \bibitem[\citeproctext]{ref-lin2016}
 Lin, W., \& Green, D. P. (2016). Standard operating procedures: A safety net for pre-analysis plans. \emph{PS: Political Science \& Politics}, \emph{49}(3), 495--500.
+
+\bibitem[\citeproctext]{ref-lopez2024}
+López-Nicolás, R., Lakens, D., López-López, J. A., Rubio-Aparicio, M., Sandoval-Lentisco, A., López-Ibáñez, C., \ldots{} Sánchez-Meca, J. (2024). Reproducibility of published meta-analyses on clinical-psychological interventions. \emph{Advances in Methods and Practices in Psychological Science}, \emph{7}(1), 25152459231202929.
 
 \bibitem[\citeproctext]{ref-lowe2021}
 Lowe, M. (2021). Types of contact: A field experiment on collaborative and adversarial caste integration. \emph{American Economic Review}, \emph{111}(6), 1807--1844.
@@ -604,11 +609,17 @@ Simonsohn, U., Simmons, J., \& Nelson, L. D. (2022). Above averaging in literatu
 \bibitem[\citeproctext]{ref-slough2023}
 Slough, T., \& Tyson, S. A. (2023). External validity and meta-analysis. \emph{American Journal of Political Science}, \emph{67}(2), 440--455.
 
+\bibitem[\citeproctext]{ref-sutton2009}
+Sutton, A. J. (2009). Publication bias. \emph{The Handbook of Research Synthesis and Meta-Analysis}, \emph{2}, 435--452.
+
 \bibitem[\citeproctext]{ref-taylor2013}
 Taylor, B. G., Stein, N. D., Mumford, E. A., \& Woods, D. (2013). Shifting boundaries: An experimental evaluation of a dating violence prevention program in middle schools. \emph{Prevention Science}, \emph{14}(1), 64--76.
 
 \bibitem[\citeproctext]{ref-thelan2022}
 Thelan, A. R., \& Meadows, E. A. (2022). The illinois rape myth acceptance scale---subtle version: Using an adapted measure to understand the declining rates of rape myth acceptance. \emph{Journal of Interpersonal Violence}, \emph{37}(19-20), NP17807--NP17833.
+
+\bibitem[\citeproctext]{ref-thornton2000}
+Thornton, A., \& Lee, P. (2000). Publication bias in meta-analysis: Its causes and consequences. \emph{Journal of Clinical Epidemiology}, \emph{53}(2), 207--216.
 
 \bibitem[\citeproctext]{ref-thye2000}
 Thye, S. R. (2000). Reliability in experimental sociology. \emph{Social Forces}, \emph{78}(4), 1277--1309.
