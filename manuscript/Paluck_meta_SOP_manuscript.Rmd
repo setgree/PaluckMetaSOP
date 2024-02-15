@@ -56,7 +56,7 @@ source('./R/render_commit_push.R')
 rcp <- render_commit_push
 ```
 
-# Introduction: Bridging the gap between meta-analysis and meta-science
+# Introduction: bridging the gap between meta-analysis and meta-science
 
 What purposes do meta-analyses serve above and beyond those accomplished by systematic reviews? Judging by recent papers in social psychology [@pettigrew2006; @bem2015; @cuddy2018; @bezrukova2016], the answer is to bolster and validate existing findings through aggregation. By pooling findings from many studies, researchers furnish meta-analytic estimates that are statistically precise and drawn from diverse settings, giving readers the impression of durable, robust findings. Such papers often have a valedictory quality to them: they provide leading practitioners a chance to survey the body of work they've helped inspire, highlight the strength of the evidence for their subfield's central tenets, and suggest future research directions that assume those tenets are no longer in need of testing.
 
