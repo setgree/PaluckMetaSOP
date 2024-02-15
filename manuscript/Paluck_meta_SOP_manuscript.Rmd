@@ -35,7 +35,7 @@ abstract: |
  This paper describes the motivations and procedures for meta-analyses by Betsy Levy Paluck and co-authors, with reference to and examples drawn from three such papers [@paluck2019; @paluck2021; @porat2024]. We first describe our overall aims for meta-analysis, and how we think through recent trenchant critiques from @slough2023 and @simonsohn2022. Second, we describe the tradeoff between selective and comprehensive meta-analyses, arguing in favor of comprehensive reviews if resources allow. Third, we describe the typical 'flow' of the papers as a whole. Fourth, we describe our meta-analytic procedures, detailing our default analytic choices and introducing an R package that implements those choices. These 'Standard Operating Procedures' are intended as a guide to a handful of especially thorny meta-analytic issues. We conclude with some open questions for meta-analysts.
 
 keywords: "meta-analysis, standard-operating-procedures, meta-science"
-wordcount: "6266"
+wordcount: "6276"
 bibliography: "meta-sop-references.bib"
 floatsintext: no
 linenumbers: no
