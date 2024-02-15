@@ -137,3 +137,4 @@ We see a variety of responses to these challenges in the literature. @lemmer2015
 
 These approaches are reasonable on their face; as always, however, the devil is in the details.
 The threat there is not from confounders, but the much more conceptual problem that it simply doesn't make sense to pool what's being pooled.
+Estimates of publication bias can also be interesting between meta-analyses. For instance, we found strong evidence of publication bias in @paluck2019 and @paluck2021 but not in @porat2024, which drew more from public health perspectives and departments than did the previous two papers. This kind of finding sheds light on whether, and along which dimensions, the credibility revolution is taking hold across disciplines.
