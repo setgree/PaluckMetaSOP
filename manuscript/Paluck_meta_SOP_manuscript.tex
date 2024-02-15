@@ -168,7 +168,7 @@
     {}{\InnerPatchFailed}%
   }
 {}{\PatchFailed}
-\keywords{meta-analysis, standard-operating-procedures, meta-science\newline\indent Word count: 6258}
+\keywords{meta-analysis, standard-operating-procedures, meta-science\newline\indent Word count: 6266}
 \usepackage{dblfloatfix}
 
 
@@ -311,7 +311,7 @@ We now turn to the pragmatic section of our paper, where we detail the typical s
 
 \section{Default structure and analytic choices for Paluck lab meta-analytic papers}\label{default-structure-and-analytic-choices-for-paluck-lab-meta-analytic-papers}
 
-We do not expect anything in this section to be groundbreaking or novel. However, we think there is pedagogical value in explicitly sharing a lab's approach to a class of paper. (Caveat that each paper was tailored to its venue and there is some variation between papers about where each of the following sections occurs.)
+We do not expect anything in this section to be groundbreaking or novel. However, we think there is pedagogical value in explicitly sharing a lab's approach to a class of paper. (Caveat that each paper was tailored to its venue and there is some variation between them about where the following sections occur.)
 
 \subsection{How our meta-analyses typically unfold}\label{how-our-meta-analyses-typically-unfold}
 
@@ -343,7 +343,7 @@ We prefer Glass's \(\Delta\) to Cohen's \emph{d}. The difference is that \(\Delt
 
 When converting event outcomes, e.g.~how often a sample of people reports perpetrating some behavior, to Glass's \(\Delta\), we treat each event as draws from a Bernoulli distribution whose variance is \(p (1-p)\) and whose standard deviation is \(\sqrt{p(1-p)}\). If some event occurred in 15 out of 100 people in the control group and 10 out of 100 people in the treatment group, our estimate of Glass's \(\Delta\) = \(\frac{.1 - .15}{\sqrt{.15 * .85}} = -0.14\). We think this estimator has some desirable theoretical properties relative to conventional methods of converting odds ratios or log odds ratios to SMDs (Gomila, 2021); we elaborate more on this in an appendix to Porat et al. (2024).
 
-In terms of aggregating studies for meta-analysis, we default to random effects estimates rather than fixed effects; in the heterogeneous literatures we analyze, there is likely no singular ``true'' effect size for which we are searching, but rather a variety of true effect sizes moderated by populations, conditions, and intervention strategies. We cluster standard errors at the level of study, rather than paper or team of authors or lab group, because we assume that the bulk of correlation between outcomes takes place within studies.
+In terms of aggregating studies for meta-analysis, we default to random effects estimates rather than fixed effects (sometimes, and probably more accurately, called ``equal effects'' (Viechtbauer, 2010)); in the heterogeneous literatures we analyze, there is likely no singular ``true'' effect size for which we are searching, but rather a variety of true effect sizes moderated by populations, conditions, and intervention strategies. We cluster standard errors at the level of study, rather than paper or team of authors or lab group, because we assume that the bulk of correlation between outcomes takes place within studies.
 
 \subsubsection{Implementation with an R package}\label{implementation-with-an-r-package}
 

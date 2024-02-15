@@ -35,7 +35,7 @@ abstract: |
  This paper describes the motivations and procedures for meta-analyses by Betsy Levy Paluck and co-authors, with reference to and examples drawn from three such papers [@paluck2019; @paluck2021; @porat2024]. We first describe our overall aims for meta-analysis, and how we think through recent trenchant critiques from @slough2023 and @simonsohn2022. Second, we describe the tradeoff between selective and comprehensive meta-analyses, arguing in favor of comprehensive reviews if resources allow. Third, we describe the typical 'flow' of the papers as a whole. Fourth, we describe our meta-analytic procedures, detailing our default analytic choices and introducing an R package that implements those choices. These 'Standard Operating Procedures' are intended as a guide to a handful of especially thorny meta-analytic issues. We conclude with some open questions for meta-analysts.
 
 keywords: "meta-analysis, standard-operating-procedures, meta-science"
-wordcount: "6258"
+wordcount: "6266"
 bibliography: "meta-sop-references.bib"
 floatsintext: no
 linenumbers: no
@@ -150,7 +150,7 @@ We now turn to the pragmatic section of our paper, where we detail the typical s
 
 # Default structure and analytic choices for Paluck lab meta-analytic papers
 
-We do not expect anything in this section to be groundbreaking or novel. However, we think there is pedagogical value in explicitly sharing a lab's approach to a class of paper. (Caveat that each paper was tailored to its venue and there is some variation between papers about where each of the following sections occurs.)
+We do not expect anything in this section to be groundbreaking or novel. However, we think there is pedagogical value in explicitly sharing a lab's approach to a class of paper. (Caveat that each paper was tailored to its venue and there is some variation between them about where the following sections occur.)
 
 ## How our meta-analyses typically unfold
 
@@ -182,7 +182,7 @@ We prefer Glass's $\Delta$ to Cohen's _d_. The difference is that $\Delta$ stand
 
 When converting event outcomes, e.g. how often a sample of people reports perpetrating some behavior, to Glass's $\Delta$, we treat each event as draws from a Bernoulli distribution whose variance is $p (1-p)$ and whose standard deviation is $\sqrt{p(1-p)}$. If some event occurred in 15 out of 100 people in the control group and 10 out of 100 people in the treatment group, our estimate of Glass's $\Delta$ = $\frac{.1 - .15}{\sqrt{.15 * .85}} = -0.14$. We think this estimator has some desirable theoretical properties relative to conventional methods of converting odds ratios or log odds ratios to SMDs [@gomila2021]; we elaborate more on this in an appendix to @porat2024. 
 
-In terms of aggregating studies for meta-analysis, we default to random effects estimates rather than fixed effects; in the heterogeneous literatures we analyze, there is likely no singular "true" effect size for which we are searching, but rather a variety of true effect sizes moderated by populations, conditions, and intervention strategies. We cluster standard errors at the level of study, rather than paper or team of authors or lab group, because we assume that the bulk of correlation between outcomes takes place within studies. 
+In terms of aggregating studies for meta-analysis, we default to random effects estimates rather than fixed effects (sometimes, and probably more accurately, called "equal effects" [@viechtbauer2010]); in the heterogeneous literatures we analyze, there is likely no singular "true" effect size for which we are searching, but rather a variety of true effect sizes moderated by populations, conditions, and intervention strategies. We cluster standard errors at the level of study, rather than paper or team of authors or lab group, because we assume that the bulk of correlation between outcomes takes place within studies. 
 
 ### Implementation with an R package
 We have written a collection of functions to help implement these defaults, and write papers that use them, called `PaluckMetaSOP.` It is available at <http://www.github.com/setgree/PaluckMetaSOP>. Its functions fall into three categories.
@@ -191,7 +191,7 @@ First, we wrote functions to convert unstandardized effect sizes into standardiz
 
 Next we have functions that help us report meta-analytic results. `map_robust.R` is a wrapper around the core meta-analytic functions in the `metafor` package [@viechtbauer2010] that integrates well into the `purrr` package from `tidyverse` [@wickham2019], and therefore helps us implement the split-apply-combine framework [@wickham2011]. `study_count.R`, `sum_lm.R` and `sum_tab.R` do the same for existing functions that count the studies in subsets, compute and report linear regression results, and report frequency tables. 
 
-Finally, we have functions that make writing meta-analysis papers easier. This paper was drafted as an Rmarkdown file using the `papaja` package [@R-papaja], and we've written some additional functions that, for instance, combine Rmarkdown rendering, `git add` and `git push` into a single command; convert DOIs to a bibliography; and record a computational environment as a Dockerfile [@moreau2023].
+Finally, we have functions that make writing meta-analysis papers easier. This paper was drafted as an Rmarkdown file using the `papaja` package [@R-papaja], and we've written some additional functions that, for instance, combine Rmarkdown rendering, `git add` and `git push` into a single command; convert DOIs to a bibliography; and record a computational environment as a Dockerfile [@moreau2023]. 
 
 Please see the package's vignette on <http://www.github.com/setgree/PaluckMetaSOP> for detailed usage instructions with reference to a demonstrative subset of the data from @paluck2021. 
 
