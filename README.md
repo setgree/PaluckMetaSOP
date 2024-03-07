@@ -5,13 +5,15 @@
 
 This package documents the [Paluck lab's](https://www.betsylevypaluck.com/) approach to meta-analysis. 
 
-It's an R package, built with instructions in the [_R packages_](https://r-pkgs.org/) book, accompanying a forthcoming paper.  
+It was built with instructions in the [_R packages_](https://r-pkgs.org/) book and accompanies a forthcoming paper.  
 
 Install via `devtools::install_github("setgree/PaluckMetaSOP")`.
 
-### Package TODOs
 
-For the package, I need 
+### Package TODOs
+I need to write two vignettes: one to explain every function with reference to the contact data, and one to show how we translate papers into effect sizes (using our d_calc function, but also going into detail about how we read and code papers). 
+
+Other miscellaneous agenda:
 * tests (maybe)
 * double-check everything works as intended and also in a general way
 * include JH's functions from the prejudice paper (maybe with his help)
