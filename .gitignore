@@ -2,3 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
+paper/
+.DS_Store
+manuscript/
