@@ -14,13 +14,9 @@
 #' @note `dat` is the default dataset name, but you can put in whatever
 #' @export
 
-sum_lm <- function(dataset = NULL, y = NULL, x = NULL, coefs_only = TRUE, dgts = 5) {
-  if (!requireNamespace("dplyr", quietly = TRUE)) {
-    message("Install dplyr before you run this function.")
-    return(invisible())
-  }
+sum_lm <- function(dataset, y = NULL, x = NULL, coefs_only = TRUE, dgts = 5) {
   if (missing(dataset)) {
-    dataset <- dat  # Replace 'dat' with the actual default dataset
+    stop("dataset argument is missing.")
   }
 
   if (missing(y)) {
@@ -39,9 +35,7 @@ sum_lm <- function(dataset = NULL, y = NULL, x = NULL, coefs_only = TRUE, dgts =
     }
   }
 
-
-  print_obj <- summary(lm(formula = as.formula(paste(rlang::quo_name(y), '~',
-                                                     rlang::quo_name(x))),
+  print_obj <- summary(lm(formula = as.formula(paste(rlang::quo_name(y), '~', rlang::quo_name(x))),
                           data = dataset))
 
   if (coefs_only) {

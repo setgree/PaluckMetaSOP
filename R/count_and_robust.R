@@ -20,12 +20,6 @@ count_and_robust <- function(data) {
   # Perform the robust analysis
   robust_data <- map_robust(data)
 
-  # Check if 'N_unique' column exists in robust_data and remove it if present
-  # TODO: double-check why I put this in, it might serve no purpose
-  if ("N_unique" %in% names(robust_data)) {
-    robust_data <- robust_data |> dplyr::select(-N_unique)
-  }
-
   # Bind the columns together
   result <- bind_cols(study_count_data, robust_data)
 
