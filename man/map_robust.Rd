@@ -13,7 +13,14 @@ map_robust(x)
 A tibble/data frame with meta-analysis results.
 }
 \description{
-This function simplifies the process of performing a robust meta-analysis on subsets of a dataset.
-The typical usage involves piping a dataset into the split/map paradigm: \code{dat |> split(~some_var) |> map(map_robust)}.
-Alternatively, \code{dat |> map_robust()} can also be used.
+Performs robust meta-analysis on either data subsets or the whole dataset..
+Its intended usage is in in context of the  split/map & pipes paradigm:
+\code{dat |> split(~some_var) |> map(map_robust)}.
+}
+\details{
+\code{dat |> map_robust()} will return the meta-analytic estimate for the whole dataset.
+
+NOTE: If there is only one study in a cluster, this function will
+just reproduce that study's meta-analytic estimate verbatim. This is good for
+some circumstances but not others. Adapt to your needs.
 }

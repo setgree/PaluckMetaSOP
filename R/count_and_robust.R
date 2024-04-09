@@ -3,7 +3,6 @@
 #' This helper function combines the functionality of counting unique observations and
 #' performing a robust meta-analysis on a dataset. It is designed to streamline the process
 #' of obtaining both counts and meta-analysis results for subsets of a dataset.
-#'
 #' The function utilizes the `study_count` function to count the number of unique observations,
 #' and the `map_robust` function to perform a robust meta-analysis on the given dataset.
 #'
@@ -15,9 +14,20 @@
 #' @importFrom knitr kable
 #' @export
 count_and_robust <- function(data) {
-  # Combine the results of counting unique observations and performing robust meta-analysis
-  result <- bind_cols(study_count(data), map_robust(data)) |>
-    kable('markdown')
+  # Get the study count
+  study_count_data <- study_count(data)
+
+  # Perform the robust analysis
+  robust_data <- map_robust(data)
+
+  # Check if 'N_unique' column exists in robust_data and remove it if present
+  # TODO: double-check why I put this in, it might serve no purpose
+  if ("N_unique" %in% names(robust_data)) {
+    robust_data <- robust_data |> dplyr::select(-N_unique)
+  }
+
+  # Bind the columns together
+  result <- bind_cols(study_count_data, robust_data)
 
   return(result)
 }

@@ -4,17 +4,19 @@
 \alias{render_commit_push}
 \title{Render, commit, and push changes for an R Markdown document}
 \usage{
-render_commit_push(commit_message = "update manuscript")
+render_commit_push(commit_message = "update manuscript", skip_push = TRUE)
 }
 \arguments{
 \item{commit_message}{A commit message}
+
+\item{skip_push}{Logical indicating whether to skip the Git push step. Default is TRUE.}
 }
 \value{
 None
 }
 \description{
 This function renders (knits) an R Markdown document, performs a Git
-commit with a provided commit message, and pushes the changes to the remote repository.
+commit with a provided commit message, and optionally pushes the changes to the remote repository.
 }
 \examples{
 \dontrun{

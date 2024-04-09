@@ -8,10 +8,8 @@ d_calc(stat_type, stat, sample_sd, n_t, n_c)
 }
 \arguments{
 \item{stat_type}{Category of statistical result reported or derived from the paper.
-Possible values: "d_i_d" (difference in differences), "d_i_m" (difference in means),
-"d_i_p" (difference in proportions), "d" (reporting of change of SDs in text),
-"unspecified null", "reg_coef" (regression coefficient), "t_test" (t test),
-"f_test" (f test), "odds_ratio" (odds ratio), "log_odds_ratio" (log odds ratio).}
+Possible values include "d_i_d", "d_i_m", "d_i_p", "d", "unspecified null",
+"reg_coef", "t_test", "f_test", "odds_ratio", "log_odds_ratio".}
 
 \item{stat}{Unstandardized effect size.}
 

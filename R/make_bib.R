@@ -8,6 +8,7 @@
 #' @param bib_file The file path to the BibTeX file
 #' @return A list of functions to manage BibTeX entries
 #' @export
+
 manage_references <- function(dat_with_dois, bib_file = './refs.bib') {
   # Check for required packages
   missing_packages <- character(0)

@@ -7,7 +7,7 @@ Authors@R:
     person("Pezzuto", "John-Henry", email = "johnhenrypezzuto@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-5213-4201"))
 Maintainer: Seth Green <setgree@gmail.com>
-Description: This package and accompanying paper describe the Paluck lab's approach to meta-analysis. The paper will describe our theoretical motivations and general procedures and also introduce the accompanying package, `PaluckLabMetaSOP`, which implements some of our main ideas and procedures.
+Description: This package implements the Paluck lab's approach to meta-analysis.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

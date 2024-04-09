@@ -8,6 +8,7 @@
 #' @return A tibble with the count of distinct observations.
 #' @importFrom dplyr summarise n_distinct
 #' @note The use of `.data` is part of dplyr's non-standard evaluation (NSE) and allows explicit referencing of columns within the dataset `dat`.
+#' @export
 study_count <- function(dat, counting_var = "unique_study_id") {
   result <- dat |>
     dplyr::summarise(`N (unique)` = dplyr::n_distinct(.data[[counting_var]]))
