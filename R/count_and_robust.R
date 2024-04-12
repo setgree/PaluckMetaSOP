@@ -10,8 +10,7 @@
 #' @return A tibble with the count of distinct observations and meta-analysis results.
 #'   The tibble includes columns for unique observation count, beta coefficient, standard error (se),
 #'   and p-value for the meta-analysis.
-#' @importFrom dplyr bind_cols
-#' @importFrom knitr kable
+#' @importFrom dplyr bind_cols select
 #' @export
 count_and_robust <- function(data) {
   # Get the study count
@@ -19,6 +18,12 @@ count_and_robust <- function(data) {
 
   # Perform the robust analysis
   robust_data <- map_robust(data)
+
+  # Check if 'N_unique' column exists in robust_data and remove it if present
+  if ("N_unique" %in% names(robust_data)) {
+    robust_data <- robust_data |> select(-N_unique)
+  }
+
 
   # Bind the columns together
   result <- bind_cols(study_count_data, robust_data)

@@ -4,10 +4,10 @@
 \alias{study_count}
 \title{Count the Number of Unique Observations in a Dataset or Subset}
 \usage{
-study_count(dat, counting_var = "unique_study_id")
+study_count(dataset, counting_var = "unique_study_id")
 }
 \arguments{
-\item{dat}{The dataset or subset.}
+\item{dataset}{The dataset or subset.}
 
 \item{counting_var}{The variable to count unique observations (default: "unique_study_id").}
 }
@@ -17,7 +17,4 @@ A tibble with the count of distinct observations.
 \description{
 This function simplifies the process of counting the number of unique observations in a dataset
 or a subset by avoiding repetitive use of \code{summarise('N (unique)' = n_distinct(counting_var))}.
-}
-\note{
-The use of \code{.data} is part of dplyr's non-standard evaluation (NSE) and allows explicit referencing of columns within the dataset \code{dat}.
 }
