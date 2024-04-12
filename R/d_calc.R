@@ -18,10 +18,32 @@
 #' @return Cohen's D or Glass's ∆ (Delta) value.
 #'
 #' @export
+#'
+#' @examples
+#' Example: Calculate d for a study that provides difference in means results
+#' difference_in_means_result <- d_calc(stat_type = "d_i_m", stat = 1, sample_sd = 0.3)
+#' Example: Calculate d for a study that provides an F-test
+#' f_test_result <- d_calc(stat_type = "f_test", stat = 1, n_t = 50, n_c = 40)
+#' Example: use mapply to calculate d from rows in dataset
+#'
+#' dat <- PaluckMetaSOP::contact_data
+#' first remove d column to prevent duplicates
+#' dat |> select(-d) |> mutate(d = mapply(
+#' FUN = d_calc,
+#' stat_type = statistic,
+#' stat =  unstand,
+#' sample_sd = sd_c,
+#' n_t = n_t,
+#' n_c = n_c))
+#' NOTE TO REVISIT THIS LAST EXAMPLE BC of standardized reg coef
+
 
 d_calc <- function(stat_type, stat, sample_sd, n_t, n_c) {
   # Calculate Cohen's D or Glass's $\Delta$ based on effect size and sample SD
-  if (stat_type == "d_i_d" || stat_type == "d_i_m" || stat_type == "reg_coef" ||
+  if (stat_type == "d_i_d" ||
+      stat_type == "d_i_m" ||
+      stat_type == "reg_coef" ||
+      stat_type == "regression" ||
       stat_type == "beta") {
     d <- round(stat / sample_sd, digits = 3)
   } else if (stat_type == "d") {
@@ -31,10 +53,13 @@ d_calc <- function(stat_type, stat, sample_sd, n_t, n_c) {
              stat_type == "unspecified null") {
     # Set an 'unspecified null' result to a default small value
     d <- 0.01
-  } else if (stat_type == "t_test") {
+  } else if (stat_type == "t_test" ||
+             stat_type == "T-test") {
     # Calculate Cohen's D for t test
     d <- round(stat * sqrt((n_t + n_c) / (n_t * n_c)), digits = 3)
-  } else if (stat_type == "f_test") {
+  } else if (stat_type == "f_test" ||
+             stat_type == "F-test" ||
+             stat_type == "F") {
     # Calculate Cohen's D for f test
     d <- round(sqrt((stat * (n_t + n_c)) / (n_t * n_c)), digits = 3)
   } else if (stat_type == "odds_ratio") {
