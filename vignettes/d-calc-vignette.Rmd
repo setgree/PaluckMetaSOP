@@ -1,5 +1,5 @@
 ---
-title: "d-calc-vignette"
+title: "d_calc: converting studies into d or ∆ estimates"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{d-calc-vignette}
@@ -7,12 +7,24 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
+## Introduction
+This vignette explains and demonstrates the `d_calc.R` and `var_d_calc.R` functions. 
+
+`d_calc` is a calculator that converts a study's results into an estimate of a standardized mean effect, typically called `d` or ∆ (Delta); `var_d_calc` provides estimates of the variance and standard error to accompany that first estimate. These variables are the foundation of a meta-analysis.
+
+Our functions mostly implement equations from [Cooper, Hedges, and Valentine (2009)](https://www.scholars.northwestern.edu/en/publications/the-handbook-of-research-synthesis-and-meta-analysis-2nd-edition), particularly chapters 12 and 13, which cover standardized mean effect sizes. In one case (the difference in proportions estimator), we depart from those equations, which we'll explain when we get to it.
+
+This vignette is not an exhaustive overview of why, how and when to convert a study into a single point estimate -- see Cooper, Hedges, and Valentine for that. Instead, we show you how we've used these in the past to make meta-analyses go more smoothly. 
+
+Most of our examples will be from [The Contact Hypothesis Re-evaluated](https://doi.org/10.1017/bpp.2018.25), with a few examples drawn from [Preventing Sexual Violence —A Behavioral Problem Without a Behaviorally-Informed Solution](https://osf.io/preprints/psyarxiv/xgbzj).
+
+### The core parameters:
+`d_calc` takes in 4-5 inputs:
+* `stat_type`, which is the kind of statistical information a study presents results as
+`stat`, which is the value of that stat_type (e.g. F = 1.0 or reg_coef (regression coefficient) = 0.2)
+* `sample_sd`, which is an estimate of the standard deviation of the dependent variable, drawn either from the entire sample (for cohen's d) or from the control group (for Glass's ∆). This parameter will not be necessary if the stat_type already conveys information about the variance (F-test, t-test, or `d`);
+* n_t`,  the sample size for the treatment group;
+* `n_c`, the sample size for the control group. 
 
 ```{r setup}
 library(PaluckMetaSOP)
