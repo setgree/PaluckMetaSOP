@@ -7,6 +7,22 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+
+### Converting a study into an SMD
+
+#The big picture
+
+### what's an SMD? 
+
+### WHy is it important
+
+### Best case scenario -- stated plainly
+
+### harder use cases 
+
+### a novel estimator
+
+### how we use it in practice
 ## Introduction
 This vignette explains and demonstrates the `d_calc.R` and `var_d_calc.R` functions. 
 
@@ -28,8 +44,15 @@ This vignette first defines the functions' necessary inputs; then works through 
 * n_t`,  the sample size for the treatment group;
 * `n_c`, the sample size for the control group. 
 
-`d_calc` then returns
+`d_calc` then returns a single number, which corresponds to cohen's `d` or Glass's ∆ depending on what `sample_sd` you provided.
 
+`var_d_calc` takes as input:
+
+* d, typically the output of `d_calc`;
+* `n_t`,  the sample size for the treatment group;
+* `n_c`, the sample size for the control group. 
+
+We'll now work through each of the possible values of `stat_type`
 ```{r setup}
 library(PaluckMetaSOP)
 ```
