@@ -7,8 +7,6 @@
 #' for difference in proportions, which, to the best of our knowledge, Don Green
 #' came up with while we were working on _Prejudice Reduction: Progress and Challenges_.
 #' We elaborate more on this estimator in the paper's appendix.
-#' See https://meta-analysis.com/download/Meta-analysis%20Converting%20among%20effect%20sizes.pdf
-#' for more information on calculating effect sizes.
 #'
 #' @param stat_type Category of statistical result reported or derived from the paper.
 #' Possible values include "d_i_d", "d_i_m", "d_i_p", "d", "unspecified null",
