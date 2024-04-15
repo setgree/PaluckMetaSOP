@@ -9,8 +9,8 @@
 #' We elaborate more on this estimator in the paper's appendix.
 #'
 #' @param stat_type Category of statistical result reported or derived from the paper.
-#' Possible values include "d_i_d", "d_i_m", "d_i_p", "d", "unspecified null",
-#' "reg_coef", "t_test", "f_test", "odds_ratio", "log_odds_ratio".
+#' Possible values are "d", "d_i_d", "d_i_m", "d_i_p", "f_test", "log_odds_ratio",
+#' "odds_ratio", "reg_coef", "s_m_d", "t_test", "unspecified null".
 #' @param stat Unstandardized effect size.
 #' @param sample_sd Standard deviation of the relevant sample (preferably of the control group).
 #' @param n_t Treatment group sample size.

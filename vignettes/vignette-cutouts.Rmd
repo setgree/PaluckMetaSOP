@@ -1,0 +1,43 @@
+---
+title: "vignette-cutouts"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{vignette-cutouts}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(PaluckMetaSOP)
+```
+
+This vignette explains and demonstrates the `d_calc.R` and `var_d_calc.R` functions.
+
+`d_calc` is a calculator that converts a study's results into an estimate of a standardized mean effect, typically called `d` or ∆ (Delta); `var_d_calc` provides estimates of the variance of ∆. These variables are the foundation of a meta-analysis.
+
+This vignette is not an exhaustive overview of why, how and when to convert a study into a single point estimate -- see Cooper, Hedges, and Valentine for that. Instead, we show you how we've used these in the past to make meta-analyses go more smoothly.
+
+Most of our examples will be from [The Contact Hypothesis Re-evaluated](https://doi.org/10.1017/bpp.2018.25), with a few examples drawn from [Preventing Sexual Violence —A Behavioral Problem Without a Behaviorally-Informed Solution](https://osf.io/preprints/psyarxiv/xgbzj).
+
+This vignette first defines the functions' necessary inputs; then works through examples of each type of statistical information that `d_calc` is designed to interpret; then provides two examples of how to incorporate these functions into your workflow.
+
+### The core parameters:
+
+`d_calc` takes in between 2-5 inputs, depending on the value of the first input: \* `stat_type`, the type of statistical information that a study's results are reported as; `stat`, the value of that stat_type (e.g. F = 1.0 or reg_coef (regression coefficient) = 0.2); \* `sample_sd`, which is an estimate of the standard deviation of the dependent variable, drawn either from the entire sample (for cohen's d) or from the control group (for Glass's ∆). This parameter will not be necessary if the stat_type already conveys information about the variance (F-test, t-test, or `d`); `n_t`, the sample size for the treatment group; and `n_c`, the sample size for the control group.
+
+`d_calc` then returns a single number, which corresponds to Cohen's `d` or Glass's ∆ depending on what `sample_sd` you provided.
+
+`var_d_calc` takes as input:
+
+-   d, typically the output of `d_calc`;
+-   `n_t`, the sample size for the treatment group;
+-   `n_c`, the sample size for the control group.
+
+We'll now work through each of the possible values of `stat_type`
