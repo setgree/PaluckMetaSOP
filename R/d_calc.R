@@ -47,7 +47,8 @@ d_calc <- function(stat_type, stat, sample_sd, n_t, n_c) {
       stat_type == "regression" ||
       stat_type == "beta") {
     d <- round(stat / sample_sd, digits = 3)
-  } else if (stat_type == "d") {
+  } else if (stat_type == "d" ||
+             stat_type == "s_m_d") {
     # Directly use the reported change of SDs
     d <- stat
   } else if (stat_type == "unspecified_null" ||
