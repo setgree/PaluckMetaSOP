@@ -20,22 +20,23 @@
 #' @export
 #'
 #' @examples
-#' Example: Calculate d for a study that provides difference in means results
-#' difference_in_means_result <- d_calc(stat_type = "d_i_m", stat = 1, sample_sd = 0.3)
-#' Example: Calculate d for a study that provides an F-test
-#' f_test_result <- d_calc(stat_type = "f_test", stat = 1, n_t = 50, n_c = 40)
-#' Example: use mapply to calculate d from rows in dataset
-#'
-#' dat <- PaluckMetaSOP::contact_data
-#' first remove d column to prevent duplicates
-#' dat |> select(-d) |> mutate(d = mapply(
-#' FUN = d_calc,
-#' stat_type = statistic,
-#' stat =  unstand,
-#' sample_sd = sd_c,
-#' n_t = n_t,
-#' n_c = n_c))
-#' NOTE TO REVISIT THIS LAST EXAMPLE BC of standardized reg coef
+#' \dontrun{
+#' # Example: Calculate d for a study that provides difference in means results
+#' # difference_in_means_result <- d_calc(stat_type = "d_i_m", stat = 1, sample_sd = 0.3)
+#' # Example: Calculate d for a study that provides an F-test
+#' # f_test_result <- d_calc(stat_type = "f_test", stat = 1, n_t = 50, n_c = 40)
+#' # Example: Use mapply to calculate d from rows in dataset
+#' # dat <- PaluckMetaSOP::contact_data
+#' # first remove d column to prevent duplicates
+#' # dat |> select(-d) |> mutate(d = mapply(
+#' # FUN = d_calc,
+#' # stat_type = statistic,
+#' # stat =  unstand,
+#' # sample_sd = sd_c,
+#' # n_t = n_t,
+#' # n_c = n_c))
+#' # NOTE TO REVISIT THIS LAST EXAMPLE BC of standardized reg coef
+#' }
 
 
 d_calc <- function(stat_type, stat, sample_sd, n_t, n_c) {

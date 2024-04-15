@@ -15,7 +15,6 @@ RoxygenNote: 7.3.1
 Imports:
     dplyr,
     here,
-    knitr,
     metafor,
     RefManageR,
     rlang,
@@ -26,4 +25,5 @@ Config/testthat/edition: 3
 Depends: 
     R (>= 4.1)
 LazyData: true
+Suggests: knitr
 VignetteBuilder: knitr

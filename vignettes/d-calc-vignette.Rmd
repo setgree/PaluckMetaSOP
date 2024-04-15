@@ -7,52 +7,84 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+# Converting a study into a point estimate and its variance
 
-### Converting a study into an SMD
+## Introduction: the big picture
 
-#The big picture
+This vignette is about translating a given study's results into meta-analyzable terms, i.e. converting its statistical results to an estimated standardized mean difference. The introduction places that step in its place in the flow of a typical meta-analysis and explain why we need such a step. If you're already familiar with Cohen's d/Glass's ∆ and why we use them, you can skip to the next section.
 
-### what's an SMD? 
+### A meta-analysis is a six step process.
+
+1)  Identify a causal question of the form: "what is the effect of X on Y?" where combining results from many papers will be useful.
+
+    1)  For instance, you might want to assess scope condition under which an effect can be expected; identify cross-study moderators that predict population- or setting-level effects that can be expected to strengthen or weaken effects; or put multiple theoretical approaches head to head to see which one works best.
+
+    2)  The alternative to a meta-analysis, for assessing the relationship between X and Y, is to run an experiment (or otherwise well-identified study) on that relationship; but a meta-analysis can also be very helpful in figuring out what that experiment should look like.
+
+2)  Decide which papers shed light on that question.
+
+    1)  In practice this means operationalizing X and Y, which might not be straightforward: does imagined contact count as contact? What exactly is prejudice, and how do we measure it?
+
+    2)  It also means setting inclusion criteria related to, e.g., internal validity, measurement error, or population. For instance, your meta-analysis might be focused only on the results of [policy-relevant randomized controlled trials](https://www.cambridge.org/core/journals/behavioural-public-policy/article/contact-hypothesis-reevaluated/142C913E7FA9E121277B29E994124EC5), a [particular class of dependent variable](https://osf.io/a7g95/), or the effects of [sexual violence prevention programs on college campuses](https://www.jahonline.org/article/S1054-139X(23)00117-9/abstract).
+
+3)  Gather and read all such papers (re: conduct a systematic search).
+
+4)  Condense each study's results to a single point estimate, or a cluster of point estimates, and associated variance(s).
+
+5)  Aggregate those estimates into a pooled average effect and any relevant subgroup effects.
+
+6)  Write up your results.
+
+This vignette works through step 4: condensing a study's results to a point estimate and associated variance. It uses examples (mostly) from [*The contact hypothesis re-evaluated*](https://doi.org/10.1017/bpp.2018.25)to illustrate, and introduces two functions from `PaluckMetaSOP` that make this easier: `d_calc.R` and `var_d_calc.R`.
+
+You might be wondering: why is a translation step necessary at all? Why can't you just record the results that the papers present? In some contexts you might be able to, particularly in medicine. If you're studying, say, [the effects of bed nets on malaria](https://www.cochrane.org/CD000363/INFECTN_insecticide-treated-nets-preventing-malaria), it's possible that all studies in the sample will present key results on the exact same scales, and in ways that any reader can make sense of: malaria cases, severe malaria cases, deaths, etc. In that situation, it probably *does* make sense to just record exactly what the authors do, and then meta-analyze that.
+
+This is not the case in the Paluck Lab's meta-analyses. Our outcomes are typically harder to measure, like prejudice, and there is no typic
+
+### Cohen's d vs Glass's ∆
+
+### The problem of heterogeneous measurement strategies
+
+### what's an SMD?
 
 ### WHy is it important
 
 ### Best case scenario -- stated plainly
 
-### harder use cases 
+### harder use cases
 
 ### a novel estimator
 
 ### how we use it in practice
+
 ## Introduction
-This vignette explains and demonstrates the `d_calc.R` and `var_d_calc.R` functions. 
+
+This vignette explains and demonstrates the `d_calc.R` and `var_d_calc.R` functions.
 
 `d_calc` is a calculator that converts a study's results into an estimate of a standardized mean effect, typically called `d` or ∆ (Delta); `var_d_calc` provides estimates of the variance and standard error to accompany that first estimate. These variables are the foundation of a meta-analysis.
 
 Our functions mostly implement equations from [Cooper, Hedges, and Valentine (2009)](https://www.scholars.northwestern.edu/en/publications/the-handbook-of-research-synthesis-and-meta-analysis-2nd-edition), particularly chapters 12 and 13, which cover standardized mean effect sizes. In one case (the difference in proportions estimator), we depart from those equations, which we'll explain when we get to it.
 
-This vignette is not an exhaustive overview of why, how and when to convert a study into a single point estimate -- see Cooper, Hedges, and Valentine for that. Instead, we show you how we've used these in the past to make meta-analyses go more smoothly. 
+This vignette is not an exhaustive overview of why, how and when to convert a study into a single point estimate -- see Cooper, Hedges, and Valentine for that. Instead, we show you how we've used these in the past to make meta-analyses go more smoothly.
 
 Most of our examples will be from [The Contact Hypothesis Re-evaluated](https://doi.org/10.1017/bpp.2018.25), with a few examples drawn from [Preventing Sexual Violence —A Behavioral Problem Without a Behaviorally-Informed Solution](https://osf.io/preprints/psyarxiv/xgbzj).
 
 This vignette first defines the functions' necessary inputs; then works through examples of each type of statistical information that `d_calc` is designed to interpret; then provides two examples of how to incorporate these functions into your workflow.
 
 ### The core parameters:
-`d_calc` takes in between 2-5 inputs, depending on the value of the first input:
-* `stat_type`, the type of statistical information that a study's results are reported as;
-`stat`, the value of that stat_type (e.g. F = 1.0 or reg_coef (regression coefficient) = 0.2);
-* `sample_sd`, which is an estimate of the standard deviation of the dependent variable, drawn either from the entire sample (for cohen's d) or from the control group (for Glass's ∆). This parameter will not be necessary if the stat_type already conveys information about the variance (F-test, t-test, or `d`);
-* n_t`,  the sample size for the treatment group;
-* `n_c`, the sample size for the control group. 
+
+`d_calc` takes in between 2-5 inputs, depending on the value of the first input: \* `stat_type`, the type of statistical information that a study's results are reported as; `stat`, the value of that stat_type (e.g. F = 1.0 or reg_coef (regression coefficient) = 0.2); \* `sample_sd`, which is an estimate of the standard deviation of the dependent variable, drawn either from the entire sample (for cohen's d) or from the control group (for Glass's ∆). This parameter will not be necessary if the stat_type already conveys information about the variance (F-test, t-test, or `d`); \* n_t`,  the sample size for the treatment group; *`n_c\`, the sample size for the control group.
 
 `d_calc` then returns a single number, which corresponds to cohen's `d` or Glass's ∆ depending on what `sample_sd` you provided.
 
 `var_d_calc` takes as input:
 
-* d, typically the output of `d_calc`;
-* `n_t`,  the sample size for the treatment group;
-* `n_c`, the sample size for the control group. 
+-   d, typically the output of `d_calc`;
+-   `n_t`, the sample size for the treatment group;
+-   `n_c`, the sample size for the control group.
 
 We'll now work through each of the possible values of `stat_type`
+
 ```{r setup}
 library(PaluckMetaSOP)
 ```
