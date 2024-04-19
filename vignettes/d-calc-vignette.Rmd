@@ -143,13 +143,45 @@ Converting these to SMD via code, we get:
 
 ### Conversion formulas
 
-Sometimes, papers report summary statistics that require more complex conversions to SMD estimates.
+Sometimes, papers report summary statistics that require more complex conversions to SMD estimates. [Cooper, Hedges, and Valentine (2009)](https://www.scholars.northwestern.edu/en/publications/the-handbook-of-research-synthesis-and-meta-analysis-2nd-edition) provide formulas for converting t-tests, F-tests, log odds ratios, and odds ratios into SMDs.
 
-#### a novel estimator for difference in proportions
+**t-test:** Study X presented the following results:
 
-We try to avoid converting odds ratios or log odds ratios to SMDs. As Gomilla (2021) writes,
+which we convert to an SMD estimate via
 
-### What if you have nothing besides "efffects were not significant" or "there was no observed effect?"
+$d = t * \sqrt\frac{n_t + n_c}{n_t * n_c}$
+
+as code...\
+
+**F-test** (check what's capitalized and what's not?)
+
+Study Y presented the following results
+
+which we converted to an SMD estimate via
+
+$d = \sqrt{F * \frac{n_t + n_c}{n_t * n_c}}$
+
+as code...
+
+Finally, **log odds ratios** can be converted to SMDs via
+
+] $OR * \sqrt{\frac{3}{pi}}$
+
+and **odds ratios** can be converted to SMDs via
+
+$log(OR) * \sqrt{\frac{3}{pi}}$
+
+However, try to avoid converting odds ratios or log odds ratios to SMDs whenever possible. As Gomilla (2021) writes, any give odds ratio can correspond to multiple possible effect sizes depending on the variance of the dependent variable. As a solution to this, while we were working on Prejudice Reduction: Progress and Challenges, Donald P. Green proposed a solution that treats those proportions as draws form a Bernoulli distribution and calculates variance and SD accordingly
+
+(The following is lifted more or less verbatim from the appendix to [Preventing Sexual Violence —A Behavioral Problem Without a Behaviorally-Informed Solution](https://osf.io/preprints/psyarxiv/xgbzj).)
+
+### a novel estimator for difference in proportions
+
+...stuff from appendix, might need to redo this
+
+### Unspecified nulls
+
+What if you have nothing besides "efffects were not significant" or "there was no observed effect?"
 
 For [The Contact Hypothesis Re-evaluated](https://doi.org/10.1017/bpp.2018.25), we had one study (whatever it was called YEAR) that didn't report its results with enough precision for us to say anything besides "there was a null effect." This seems to be a convention in some fields — if the results weren't statistically significant, report them with no statistical information. At the time, we dealt with this by including the study in what's called a vote counting procedure that tallies up statistically significant positive, statistically significant negative, and null results. Over the course of subsequent papers, however, we decided to start setting all of these cases to d = 0.01 so we can include them in our meta-analysis. You could set the null to 0.0, or 0.001, or anything that substantively communicates "there was no effect" and get basically the same result.
 
@@ -169,45 +201,20 @@ Let's work through some hard cases.
 
 ## how we use `d_calc` and `var_d_calc` in practice
 
-When we wrote [The Contact Hypothesis Re-evaluated](https://doi.org/10.1017/bpp.2018.25), I (Seth) recorded every use of `d_calc` and `var_d_calc` for every study in a script, and then copied pasted the resulting values into our final dataset. That script looked like this:
+When we wrote [The Contact Hypothesis Re-evaluated](https://doi.org/10.1017/bpp.2018.25), we recorded every use of `d_calc` and `var_d_calc` for every study in a script, and then copied pasted the resulting values into our final dataset. That script looked like this:
 
 ```{r d_and_var_d_script, eval=F}
 
 
 ```
 
-For our next two meta-analyses — Prejudice Reduction: Progress and Challenges and [Preventing Sexual Violence —A Behavioral Problem Without a Behaviorally-Informed Solution](https://osf.io/preprints/psyarxiv/xgbzj) — we incorporated `d_calc` and `var_d_calc` into our analysis scripts, This is a simplified version of our script:
+For our next two meta-analyses — Prejudice Reduction: Progress and Challenges and [Preventing Sexual Violence —A Behavioral Problem Without a Behaviorally-Informed Solution](https://osf.io/preprints/psyarxiv/xgbzj) — we incorporated `d_calc` and `var_d_calc` directly into our analysis scripts. Here is a version of that script applied to the contact hypothesis data:
 
 ```{r sv_d_var_d_se_d_creation_script, eval=F}
 
 library(dplyr)
 
-dat <- dat |>
-    mutate(d = mapply(
-          FUN = d_calc,
-          stat_type = eff_type,
-          stat =  u_s_d,
-          sample_sd = ctrl_sd,
-          n_t = n_t_post,
-          n_c = n_c_post),
-        var_d = mapply(
-          FUN = var_d_calc,
-          d = d,
-          n_t = n_t_post,
-          n_c = n_c_post)) |> 
-    mutate(se_d = sqrt(var_d))
-
-```
-
-And this produces three new variables: `d`, `var_d`, and `se_d`. (The actual process was a bit more complicated owing to peculiarities in how we coded Ns for cluster-assigned vs individually assigned studies and a few other data-specific quirks, but this is the general idea.)
-
-Here's the same script applied to this package's dataset:
-
-```{r contact_d_se_var, eval=F}
-dat <- PaluckMetaSOP::contact_data
-
-library(dplyr)
-dat_with_new_ds <-  dat |> 
+dat_with_new_ds <-  PaluckMetaSOP::contact_data |> 
   select(-c(d, se_d, var_d)) |>  # delete vars and then reproduce them
   mutate(d = mapply(
           FUN = d_calc,
@@ -222,9 +229,8 @@ dat_with_new_ds <-  dat |>
           n_t = n_t,
           n_c = n_c)) |> 
     mutate(se_d = sqrt(var_d))
-# fix all the NAs! lot of dataset editing left to do
+# TODO: fix all the NAs! lot of dataset editing left to do
 
 ```
 
-This approach will ultimately save the meta-analyst a fair bit of time and make more of their analysis computationally reproducible.
-
+This script uses variables in the dataset as inputs for our two custom functions (and the built-in `sqrt` function) and creates three variables: `d`, `var_d`, and `se_d`. This approach will ultimately save the meta-analyst a fair bit of time and make more of their workflow computationally reproducible.
