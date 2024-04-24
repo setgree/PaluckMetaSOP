@@ -111,9 +111,13 @@ Some papers present results that make calculating ∆ easy.
 
 ![](images/DiTullio-results.png)
 
-We took "CONCEPT--MENTALLY RETARDED WORKERS" to be the dependent variable that best captured attitudes towards the outgroup.[^1] $$M_1 = 5.708$$; $$M_2 = 3.0789$$; and $$SD_ctrl = 1.0381$$. $$SMD = \frac{5.708 - 3.0789}{1.0381} = 2.533$$
+We took "CONCEPT--MENTALLY RETARDED WORKERS" to be the dependent variable that best captured attitudes towards the outgroup.[^1] $$M_1 = 5.708$$; $$M_2 = 3.0789$$; and $$SD_C = 1.0381$$.
 
 [^1]: This step can be tricky because some papers present many outcomes that are all plausible measures of the true quantity of interest. Whenever possible, we advise pre-specifying which outcomes or categories of outcome to code before you start collecting data. But in situations like this, the meta-analyst needs to make a judgment call about which outcome is substantively closest to the true quantity of interest. Alternatively, you can average all measures together, or record them all separately. For the Contact Hypothesis Re-Evaluated, we took one dependent variable per study.
+
+Therefore,
+
+$$SMD = \frac{5.708 - 3.0789}{1.0381} = 2.533$$
 
 In code:
 
@@ -121,17 +125,19 @@ In code:
 
 Its variance is
 
-`ditullio_variance <- var_d_calc(d =``DiTullio_results``, n_t = 38, n_c = 38)`.
+`ditullio_variance <- var_d_calc(d =``DiTullio_results``, n_t = 38, n_c = 38)`
 
 And its standard error is
 
 `ditullio_se <- sqrt(ditullio_variance)`
 
-(By the way, ∆ = 2.533 is a very large effect size**.** Most effect sizes across all meta-analyses we've written as a lab are between -1 and 1.)
+Two notes about this effect size. First, you'll see a "what" column in our dataset that, for this study, says "Table 4.9 (p. 79)." This is a signpost — both for the meta-analyst, her co-authors, and for any interested readers — about which statistics you've converted into ∆. We highly recommend that you record signposts like this when you're recording data.
+
+Second, ∆ = 2.533 is a very large effect size**.** Most effect sizes across all meta-analyses we've written as a lab are between -1 and 1.
 
 **difference in differences:** Some studies present the mean outcomes for each group at both baseline and posttest. Here is table X from Dessel (2010):
 
-In these cases, we subtract the baseline values from the posttest values for both treatment and control, and divide the resulting difference by the SD of the control group at baseline. This procedure creates more precise estimates of the mean difference between groups by controlling for underlying differences betweent the treatment and control groups.
+In these cases, we subtract the baseline values from the posttest values for both treatment and control, and divide the resulting difference by the SD of the control group at baseline. This procedure creates more precise estimates of the mean difference between groups by controlling for baseline differences between the two groups.
 
 In code:
 
