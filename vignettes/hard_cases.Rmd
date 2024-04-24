@@ -1,0 +1,12 @@
+---
+title: "Hard cases: non-standard conversions of studies into SMDs"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Hard cases: non-standard conversions of studies into SMDs}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+The 'proper' way to convert statistical results into ∆ is a topic of debate among researchers. In practice, we find the differences between different estimation strategies to be not especially meaningful, and the equations we use in these functions have served us well through three papers. However, for each paper, there have been some hard cases that required some bespoke solutions. We discuss these more in a separate vignette.
+
+In general, we make all available efforts to figure out a "good enough" estimate of ∆, but if we really can't figure something out, we'll omit it or just include the study as part of a vote counting procedure (a tally of statistically significant positive, statistically significant negative, and null results).

@@ -21,31 +21,21 @@ TCHR's supplementary materials are available on the [OSF](https://osf.io/ttpvy/?
 
 An SMD is the difference in average outcomes between the treatment and control groups divided by the standard deviation (SD) of the outcome.
 
-$$\Delta = \frac{M_1-M_2}{SD}$$
+$$SMD = \frac{M_1-M_2}{SD}$$
 
-We calculate SMD with `d_calc`.
+See [this page from the Cochrane Collaboration](https://handbook-5-1.cochrane.org/chapter_9/9_2_3_2_the_standardized_mean_difference.htm) for more discussion.
 
-Once you have a study's SMD, you calculate its variance using `var_d_calc`. This tells you how precise your estimate is. The standard error (SE) of your SMD is the square root of its variance.
+We calculate SMD with `d_calc` and its variance using `var_d_calc`. The standard error (SE) of your SMD is the square root of its variance. A vector of SMDs and and a vector of SEs are the core components of meta-analysis.
 
-A vector of SMDs and and a vector of SEs are the core components of meta-analysis.
-
-### 1.2 d vs ∆
-
-There are two basic ways to standardize your SMD. If you divide $M_1 - M_2$ by the $SD$ of the entire sample, your estimator is called [Cohen's d](https://resources.nu.edu/statsresources/cohensd). If you use an estimated $SD$ from just the control group, you get [Glass's ∆](https://www.statisticshowto.com/glasss-delta/) (Delta). The Paluck lab generally prefers Glass's ∆ because we're interested in the efficacy of interventions relative to the population's baseline state. (n the rest of this vignette, we'll use ∆ as our symbol for SMD.
-
-When the SD of the control group isn't available but the SD of the entire population is, we use the SD of the entire population. When neither is available, or can't be figured out from a paper's results, we have a problem.
-
-### 1.2 Estimating SMD can be hard because of how studies report their results
-
-Some studies plainly report $M_1$, $M_2$, and $SD$, which makes calculating ∆ easy. Others report statistical summaries, which then need to be converted into ∆ using a variety of formulas. `d_calc` implements a selection of these formulas drawn from chapters 12 and 13 of [Cooper, Hedges, and Valentine (2009)](https://www.scholars.northwestern.edu/en/publications/the-handbook-of-research-synthesis-and-meta-analysis-2nd-edition).
+Some studies plainly report $M_1$, $M_2$, and $SD$, which makes calculating your SMD easy. Others report statistical summaries, which then need to be converted into ∆ using a variety of formulas. `d_calc` implements a selection of these formulas drawn from chapters 12 and 13 of [Cooper, Hedges, and Valentine (2009)](https://www.scholars.northwestern.edu/en/publications/the-handbook-of-research-synthesis-and-meta-analysis-2nd-edition).
 
 In one case — the difference in proportions estimator — we depart from those equations, which we'll explain in section 3.2.4 of this vignette.
 
-The 'proper' way to convert statistical results into ∆ is a topic of debate among researchers. In practice, we find the differences between different estimation strategies to be not especially meaningful, and the equations we use in these functions have served us well through three papers. However, for each paper, there have been some hard cases that required some bespoke solutions. We discuss these more in a separate vignette.
+### 1.2 d vs ∆
 
-In general, we make all available efforts to figure out a "good enough" estimate of ∆, but if we really can't figure something out, we'll omit it or just include the study as part of a [vote counting procedure](https://handbook-5-1.cochrane.org/chapter_9/9_4_11_use_of_vote_counting_for_meta_analysis.htm) (a tally of statistically significant positive, statistically significant negative, and null results).
+There are two basic ways to standardize your SMD. If you divide $M_1 - M_2$ by the $SD$ of the entire sample, your estimator is called [Cohen's d](https://resources.nu.edu/statsresources/cohensd). If you use an estimated $SD$ from just the control group, you get [Glass's ∆](https://www.statisticshowto.com/glasss-delta/) (Delta). The Paluck lab generally prefers Glass's ∆ because we're interested in the efficacy of interventions relative to the population's baseline state. In the rest of this vignette, we'll use ∆ as our symbol for SMD.
 
-See [this page on SMDs](https://handbook-5-1.cochrane.org/chapter_9/9_2_3_2_the_standardized_mean_difference.htm) from the Cochrane collaboration, as well as the [`escalc` documentation](https://wviechtb.github.io/metafor/reference/escalc.html) from the `metafor` package, for further reading.
+When the SD of the control group isn't available but the SD of the entire population is, we use the SD of the entire population. When neither is available, or can't be figured out from a paper's results, we have a problem. We discuss this more in a separate vignette.
 
 ## 2 `d_calc` and `var_d_calc`
 
@@ -295,3 +285,9 @@ dat_with_new_ds <-  PaluckMetaSOP::contact_data |>
 This script uses variables in the dataset as inputs for our two custom functions and returns a dataset with `d`, `var_d`, and `se_d`.
 
 This approach will ultimately save you a fair bit of time, reduce a possible source of user error by eliminating the copy and paste step, and make a larger portion of your workflow computationally reproducible.
+
+## Further reading:
+
+See [this page on SMDs](https://handbook-5-1.cochrane.org/chapter_9/9_2_3_2_the_standardized_mean_difference.htm) from the Cochrane collaboration and the `escalc`[ documentation](https://wviechtb.github.io/metafor/reference/escalc.html) from the `metafor` package for more information and discussion.
+
+## 
