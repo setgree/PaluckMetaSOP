@@ -1,5 +1,5 @@
 ---
-title: "d_calc: converting studies into d or ∆ estimates"
+title: "Converting a study into a point estimate, variance, and standard error"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{d-calc-vignette}
@@ -7,35 +7,41 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-# Converting a study into a point estimate and its variance
-
 ## 1 Introduction
 
-This vignette explains how to use the `d_calc` and `var_d_calc` functions to convert a study's results into an estimate of standardized mean difference (SMD) and its associated variance. We demonstrate with examples from our prior meta-analyses — mostly [The Contact Hypothesis Re-evaluated](https://doi.org/10.1017/bpp.2018.25), with a few examples drawn from [Preventing Sexual Violence —A Behavioral Problem Without a Behaviorally-Informed Solution](https://osf.io/preprints/psyarxiv/xgbzj).
+This vignette explains how to use the `d_calc` and `var_d_calc` functions to convert a study's results into an estimate of standardized mean difference (SMD), along with its associated variance and standard error.
 
-The contact hypothesis meta-analytic dataset is included, with small modifications, in this package as `PaluckMetaSOP::contact_data`. That paper's supplementary materials are available on the [OSF](https://osf.io/ttpvy/?view_only=https://osf.io/ttpvy/?view_only=) and in a reproducible & executable format on [Code Ocean](https://codeocean.com/capsule/8235972/tree/v7).
+We demonstrate with examples from our prior meta-analyses — mostly [The Contact Hypothesis Re-evaluated](https://doi.org/10.1017/bpp.2018.25), with a few examples drawn from [Preventing Sexual Violence —A Behavioral Problem Without a Behaviorally-Informed Solution](https://osf.io/preprints/psyarxiv/xgbzj).
+
+The contact hypothesis meta-analytic dataset is included, with small modifications, in this package as `PaluckMetaSOP::contact_data`. That paper's supplementary materials are available on the [OSF](https://osf.io/ttpvy/?view_only=https://osf.io/ttpvy/?view_only=) and in a reproducible and executable format on [Code Ocean](https://codeocean.com/capsule/8235972/tree/v7).
 
 ### 1.1 Standardized Mean Difference and Variance
 
 An SMD is the difference in average outcomes between the treatment and control groups divided by the standard deviation (SD) of the outcome.
 
-$$SMD = \frac{M_1-M_2}{SD}$$
+$$\Delta = \frac{M_1-M_2}{SD}$$
 
 We calculate SMD with `d_calc`.
 
-Once you have a study's SMD, you calculate its variance using `var_d_calc`. This tells you how precise your estimate is. The standard error (SE) of your SMD is the square root of its variance. A vector of SMDs and and a vector of SEs are the core components of meta-analysis.
+Once you have a study's SMD, you calculate its variance using `var_d_calc`. This tells you how precise your estimate is. The standard error (SE) of your SMD is the square root of its variance.
 
-There are two basic ways to standardize your SMD. If you divide $$M_1 - M_2$$ by the SD of the entire sample, your estimator is called [Cohen's d](https://resources.nu.edu/statsresources/cohensd). If you use an estimated SD from just the control group, you get [Glass's ∆](https://www.statisticshowto.com/glasss-delta/) (Delta). The Paluck lab generally prefers Glass's ∆ because we're interested in the efficacy of interventions relative to the population's baseline state. (In the rest of this vignette, we'll use ∆ as a stand-in for SMD.) When the SD of the control group isn't available but the SD of the entire population is, we use the SD of the entire population. When neither is available, or can't be figured out from a paper's results, we have a problem.
+A vector of SMDs and and a vector of SEs are the core components of meta-analysis.
+
+There are two basic ways to standardize your SMD. If you divide $M_1 - M_2$ by the $SD$ of the entire sample, your estimator is called [Cohen's d](https://resources.nu.edu/statsresources/cohensd). If you use an estimated $SD$ from just the control group, you get [Glass's ∆](https://www.statisticshowto.com/glasss-delta/) (Delta). The Paluck lab generally prefers Glass's ∆ because we're interested in the efficacy of interventions relative to the population's baseline state. (n the rest of this vignette, we'll use ∆ as our symbol for SMD.
+
+When the SD of the control group isn't available but the SD of the entire population is, we use the SD of the entire population. When neither is available, or can't be figured out from a paper's results, we have a problem.
 
 ### 1.2 Estimating SMD can be hard because of how studies report their results.
 
 Some studies plainly report $M_1$, $M_2$, and $SD$, which makes calculating ∆ easy. Others report statistical summaries, which then need to be converted into ∆ using a variety of formulas. `d_calc` implements a selection of these formulas drawn from chapters 12 and 13 of [Cooper, Hedges, and Valentine (2009)](https://www.scholars.northwestern.edu/en/publications/the-handbook-of-research-synthesis-and-meta-analysis-2nd-edition).
 
-In one case — the difference in proportions estimator — we depart from those equations, which we'll explain when in section XXX of this vignette.
+In one case — the difference in proportions estimator — we depart from those equations, which we'll explain in section XXX of this vignette.
 
-The 'proper' way to convert statistical results into ∆ is a topic of debate among researchers. In some cases, our conversion formulas are going to imperfectly capture the true ∆ because 1) we don't have access to the raw data and 2) the reported results don't convey the underlying distribution of outcomes. Ior instance, if results are only reported via multivariate regression, Some of the variance might be accounted for by control variables.
+The 'proper' way to convert statistical results into ∆ is a topic of debate among researchers. In some cases, our conversion formulas are going to imperfectly capture the true ∆ because 1) we don't have access to the raw data and 2) the reported results don't convey the underlying distribution of outcomes. For instance, if we only have the results of a multivariate regression, some of the variance might be accounted for by control variables, which will throw off our estimate of the distribution of outcomes in the population.
 
-The meta-analyst faces a trade-off here. On the one hand, you can discard all such studies, or exclude them from your main analyses, and limit your analysis to studies that make your job easy. On the other, you can use imperfect and potentially biased estimation procedures that nevertheless capture something *directionally* important about an intervention's effects. In general, we make all available efforts to figure out a "good enough" estimate of ∆, but if we really can't figure something out, we'll omit it or just include the study as part of a vote counting procedure.
+The meta-analyst faces a trade-off here. On the one hand, you can discard all such studies, or exclude them from your main analyses, and limit your analysis to studies that make your job easy. On the other, you can use imperfect and potentially biased estimation procedures that nevertheless capture something *directionally* important about an intervention's effects.
+
+In general, we make all available efforts to figure out a "good enough" estimate of ∆, but if we really can't figure something out, we'll omit it or just include the study as part of a vote counting procedure.
 
 See [this page on SMDs](https://handbook-5-1.cochrane.org/chapter_9/9_2_3_2_the_standardized_mean_difference.htm) from the Cochrane collaboration for further reading, as well as the [`escalc` documentation](https://wviechtb.github.io/metafor/reference/escalc.html) from the `metafor` package for a statistical treatment of effect sizes.
 
@@ -45,11 +51,11 @@ We now explain the `d_calc` and `var_d_calc` functions in general, and then show
 
 ### 2.1 `d_calc`
 
-`d_calc` is a function that takes (up to) five parameters and returns an estimate of either d or ∆ (depending on what you standardize by). The first two parameters are essential, and the next three are necessary depending on the value of the first parameter.
+`d_calc` is a function that takes (up to) five parameters and returns an estimate of either d or ∆, depending on what you standardize by. The first two parameters are essential, and the next three are necessary depending on the value of the first parameter.
 
 The five parameters are:
 
--   1: `stat_type` , where you put the kind of statistical results you're converting into SMD. its possible values are:
+-   1: `stat_type` , where you put the kind of statistical results you're converting into ∆. its possible values are:
 
     -   `d` or `s_m_d`, for when a paper provides its own estimate of d/∆/SMD.
 
@@ -105,89 +111,145 @@ $\sigma^2 = g^2 * \sigma^2_1$
 
 ## 3. Calculating $\Delta$ and $\sigma^2$ in practice
 
-Some papers present results that make calculating ∆ easy.
+### 3.1 The easy cases: d_i_m, d_i_d, and simple regression coeffcients
 
-**difference in means**: here is table 4.9 (p. 76) from [DiTullio (1982)](https://www.proquest.com/docview/303259182), a study of workplace integration programs aimed at reducing prejudice towards people with developmental disabilities:
+#### **3.1.1 d_i_m (difference in means)**: 
 
-![](images/DiTullio-results.png)
+Here is table 4.9 (p. 76) from [DiTullio (1982)](https://www.proquest.com/docview/303259182), a study of workplace integration programs aimed at reducing prejudice towards people with developmental disabilities:
 
-We took "CONCEPT--MENTALLY RETARDED WORKERS" to be the dependent variable that best captured attitudes towards the outgroup.[^1] $$M_1 = 5.708$$; $$M_2 = 3.0789$$; and $$SD_C = 1.0381$$.
+![](images/DiTullio-results.png){width="500"}
 
-[^1]: This step can be tricky because some papers present many outcomes that are all plausible measures of the true quantity of interest. Whenever possible, we advise pre-specifying which outcomes or categories of outcome to code before you start collecting data. But in situations like this, the meta-analyst needs to make a judgment call about which outcome is substantively closest to the true quantity of interest. Alternatively, you can average all measures together, or record them all separately. For the Contact Hypothesis Re-Evaluated, we took one dependent variable per study.
+We took "CONCEPT--MENTALLY RETARDED WORKERS" to be the dependent variable that best captured attitudes towards the outgroup.[^1] $M_1 = 5.708$; $M_2 = 3.0789$; and $SD_C = 1.0381$.
+
+[^1]: This step can be tricky because some papers present many outcomes that are all plausible measures of the true quantity of interest. Whenever possible, we advise pre-specifying which outcomes or categories of outcome to code before you start collecting data. But in situations like this, the meta-analyst needs to make a judgment call about which outcome is substantively closest to the true quantity of interest. Alternatively, you can average all measures together, or record them all separately. For [The Contact Hypothesis Re-Evaluated](https://doi.org/10.1017/bpp.2018.25), we took one dependent variable per study.
 
 Therefore,
 
-$$SMD = \frac{5.708 - 3.0789}{1.0381} = 2.533$$
+$$\Delta = \frac{5.708 - 3.0789}{1.0381} = 2.533$$
+
+Here is code to calculate ∆, variance, and SE:
+
+```         
+DiTullio_results <- d_calc(stat_type = "d_i_m", stat = 5.708 - 3.0798, sample_sd = 1.0381)
+
+ditullio_variance <- var_d_calc(d = DiTullio_results, n_t = 38, n_c = 38)
+
+ditullio_se <- sqrt(ditullio_variance)
+```
+
+Two notes about this effect size. First, you'll see a "what" column in our dataset that, for this study, says "Table 4.9 (p. 79)." This is a signpost for any interested readers about where in the paper to find the statistics you've converted into ∆, variance, and SE. Your future self will thank you for recording signposts like this!
+
+Second, ∆ = 2.533 is a very large effect size**.** Most effect sizes we've looked at have been between -1 and 1.
+
+**3.1.2 d_i_d (difference in differences):**
+
+Some studies present the mean outcomes for each group at both baseline and posttest. [Clunies-Ross & O'Meara (1989)](https://aps.onlinelibrary.wiley.com/doi/abs/10.1080/00050068908259566) tested an "attitude change programme" comprised of "controlled vicarious contact with peers with disabilities, disability simulations, and success oriented group experiences" (p. 271). Here is table 1 (p. 279):
+
+![](images/Clunies-school-A-results.png){width="500"}
+
+In these cases, we subtract the baseline values from the posttest values for both treatment and control, and divide the resulting difference by the SD of the control group at baseline. This procedure creates more precise estimates because it controls for baseline differences between the two groups.
+
+$$
+∆ = \frac{(111.1-92.7)-(102.9-99.4)}{28.28} = 0.5268741
+$$
+
+This was for school A, and we repeated the same process for school B as a separate effect size estimate.
 
 In code:
 
-`DiTullio_results <- d_calc(stat_type = "d_i_m", stat = 5.708 - 3.0798, sample_sd = 1.0381)`
+```         
+dessel_school_a_effects <- d_calc(stat_type = "d_i_d", stat = (111.1-92.7)-(102.9-99.4), sample_sd = 28.28)
 
-Its variance is
+dessel_school_a_var <- var_d_calc(d = dessel_school_a_effects, n_t = 15, n_c = 15)
 
-`ditullio_variance <- var_d_calc(d =``DiTullio_results``, n_t = 38, n_c = 38)`
+dessel__school_a_se <- sqrt(dessel_school_a_var)
+```
 
-And its standard error is
+#### **3.1.3 Regression coefficient (beta):**
 
-`ditullio_se <- sqrt(ditullio_variance)`
+In a bivariate regression of the relationship between treatment status and outcome, the $\beta$ coefficient is is equivalent to the difference in means between the groups. Calculating the SD from a regression table can be tricky, but some studies report both $\beta$ and the standard deviation for the outcome.
 
-Two notes about this effect size. First, you'll see a "what" column in our dataset that, for this study, says "Table 4.9 (p. 79)." This is a signpost — both for the meta-analyst, her co-authors, and for any interested readers — about which statistics you've converted into ∆. We highly recommend that you record signposts like this when you're recording data.
+[Boisjoly et al. (2006)](https://www.aeaweb.org/articles?id=10.1257/aer.96.5.1890) which tested the effects of being randomly assigned a black or other race roommate on four measures of political and social attitudes for white college students. Here is Appendix table 1 (p. 1903):\
 
-Second, ∆ = 2.533 is a very large effect size**.** Most effect sizes across all meta-analyses we've written as a lab are between -1 and 1.
+![](images/boisjoly-sd-results.png){width="500"}
 
-**difference in differences:** Some studies present the mean outcomes for each group at both baseline and posttest. Here is table X from Dessel (2010):
+Here, for the main dependent variable ("Affirmative action in college admissions should be abolished (reversed)"), we have the SD for the entire population of white students who were randomly assigned roommates (1.073) rather than just the control group. For this study, our SMD estimate is going to be Cohen's d rather than Glass's ∆.
 
-In these cases, we subtract the baseline values from the posttest values for both treatment and control, and divide the resulting difference by the SD of the control group at baseline. This procedure creates more precise estimates of the mean difference between groups by controlling for baseline differences between the two groups.
+In lieu of a difference in means, we have linear regression coefficients from table 3 (p. 1899), column 3:
+
+![](images/boisjoly-reg-results.png){width="500"}
+
+The authors tell us the size of the treatment and control groups on p. 1895: "of the 1,278 white respondents, 35 were assigned at least one black roommate, 98 were assigned at least one Asian roommate, 40 were assigned at least one Hispanic roommate, and 69 were assigned at least one “other race” roommate. The rest were assigned white roommates."
+
+We then calculated two separate SMDs, one corresponding to the effect of white students' being assigned a black roommate and one for white students' being assigned "any other minority roommate:"
+
+```         
+# Ns
+black_roommate_treatment_n <- 35
+other_minority_treatment_n <- 98 + 40 + 69 # 207
+boisjoly_n_c <- 1278 - 35 - 98 - 40 - 69 # 1036
+
+# black roommates
+Bois_d_black_roommates <- d_calc(stat_type = "reg_coef", stat = .366, sample_sd = 1.074)
+Bois_var_black_roomamtes <- var_d_calc(d = Bois_d_black_roommates, 
+                                       n_t = black_roommate_treatment_n, 
+                                       n_c = boisjoly_n_c)
+Bois_se_black_roommates <- sqrt(Bois_var_black_roomamtes)
+
+# other minority roommates
+Bois_d_other_roommates <- d_calc(stat_type = "reg_coef", stat = .032, sample_sd = 1.074)
+Bois_var_other_roomamtes <- var_d_calc(d = Bois_d_black_roommates, 
+                                       n_t = other_minority_treatment_n, 
+                                       n_c = boisjoly_n_c)
+Bois_se_other_roommates <- sqrt(Bois_var_other_roomamtes)
+```
+
+### 3.2 Conversion statistical summaries into SMDs
+
+Sometimes, papers report summary statistics that require more complex conversions. [Cooper, Hedges, and Valentine (2009)](https://www.scholars.northwestern.edu/en/publications/the-handbook-of-research-synthesis-and-meta-analysis-2nd-edition) provide formulas for converting t-tests, F-tests, log odds ratios, and odds ratios into ∆. Here we'll show a t-test *The Contact Hypothesis Re-evaluated*. However, instead of presenting odds ratios and log odds ratios examples, we'll introduce our novel estimator for converting differences in proportions to ∆ and why we prefer it.
+
+#### 3.2.1 t-test
+
+[Camargo, Stinebrickner, and Stinebrickner (2010)](https://doi.org/10.1086/653831) also study the effects of interracial roommate assignments, but in the special environment of Berea college, a tuition-free college in Kentucky that abjures the use of roommate questionnaires when assigning roommates. (Boisjoly et al., by contrast, worked with the admissions office of the studied school to control for all non-random determinants of roommate assignment.)
+
+Table 11 (p. 882) presents the following results on friendship composition over time:
+
+![](images/camargo-results.png)
+
+We take the latest possible result (Middle of Third Year) and include the roommate assigned in first year (in a world where roommate assignment reduces prejudice, we would expect to see this partly manifesting as likelihood of white students' still being friends with their initially assigned black roommates). So our `stat` is `t = -3.705`, which we convert to an SMD estimate via $d = t * \sqrt\frac{n_t + n_c}{n_t * n_c}$. We take our Ns from that table as well: `n_t = 44` and `n_c = 214`.
 
 In code:
 
-`dessel_effects <- d_calc(stat_type = "d_i_d", stat = (YT_1-YT_0) - (Y0_1 - Y0_2), sample_sd = SD)`
+```         
+Camargo_d <- d_calc(stat_type = "t_test", stat = 3.705, 
+                                n_t = 44, n_c = 214)
+                                
+camargo_var <- var_d_calc(d = Camargo_d, n_t = 44, n_c = 214)
 
-(The equations for variance and standard error don't vary between types of statistical results, so we'll omit them from this point on.)
+camargo_se <- sqrt(camargo_var)
+```
 
-**regression coefficient/beta:**
+#### 3.2.1 F-test
 
-In a bivariate (CHECK THIS) regression of the relationship between treatment status and outcome, the $\beta$ coefficient is is equivalent to the difference in means between the groups. Calculating the SD from a regression table can be tricky, but some studies report both $\beta$ and the standard deviation for the outcome. Here are tables X and Y from Marmaros (2006):
-
-Converting these to SMD via code, we get:
-
-`marmaros_effects <- d_calc(stat_type = "beta", stat = whatever, sample_sd = whatever)`
-
-### Conversion formulas
-
-Sometimes, papers report summary statistics that require more complex conversions to SMD estimates. [Cooper, Hedges, and Valentine (2009)](https://www.scholars.northwestern.edu/en/publications/the-handbook-of-research-synthesis-and-meta-analysis-2nd-edition) provide formulas for converting t-tests, F-tests, log odds ratios, and odds ratios into SMDs.
-
-**t-test:** Study X presented the following results:
-
-which we convert to an SMD estimate via
-
-$d = t * \sqrt\frac{n_t + n_c}{n_t * n_c}$
-
-as code...\
-
-**F-test** (check what's capitalized and what's not?)
-
-Study Y presented the following results
-
-which we converted to an SMD estimate via
+When we are comparing two variances, the F testis equivalent to the square of the t-test. The conversion formula is the same as that which converts a t-test to ∆, except with the F inside the square root:
 
 $d = \sqrt{F * \frac{n_t + n_c}{n_t * n_c}}$
 
-as code...
+#### 3.2.4 log odds ratios and odds ratios
 
 Finally, **log odds ratios** can be converted to SMDs via
 
-] $OR * \sqrt{\frac{3}{pi}}$
+$OR * \sqrt{\frac{3}{pi}}$
 
 and **odds ratios** can be converted to SMDs via
 
 $log(OR) * \sqrt{\frac{3}{pi}}$
 
-However, try to avoid converting odds ratios or log odds ratios to SMDs whenever possible. As Gomilla (2021) writes, any give odds ratio can correspond to multiple possible effect sizes depending on the variance of the dependent variable. As a solution to this, while we were working on Prejudice Reduction: Progress and Challenges, Donald P. Green proposed a solution that treats those proportions as draws form a Bernoulli distribution and calculates variance and SD accordingly
+However, try to avoid converting odds ratios or log odds ratios to SMDs whenever possible. As [Gomilla (2021)](https://psycnet.apa.org/record/2020-71596-001) writes, any give odds ratio can correspond to multiple possible effect sizes depending on the variance of the dependent variable. As a solution to this, while we were working on Prejudice Reduction: Progress and Challenges, Donald P. Green proposed a solution that treats those proportions as draws form a Bernoulli distribution and calculates variance and SD accordingly
 
 (The following is lifted more or less verbatim from the appendix to [Preventing Sexual Violence —A Behavioral Problem Without a Behaviorally-Informed Solution](https://osf.io/preprints/psyarxiv/xgbzj).)
 
-### a novel estimator for difference in proportions
+### 3.3 A novel estimator for difference in proportions
 
 ...stuff from appendix, might need to redo this
 
