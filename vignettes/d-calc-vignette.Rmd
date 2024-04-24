@@ -11,47 +11,45 @@ vignette: >
 
 ## 1 Introduction
 
-This vignette walks through the process of converting a study's results into an estimate of standardized mean difference (SMD), and its associated variance, using the functions `d_calc` and `var_d_calc`. We demonstrate with examples from our prior meta-analyses — mostly [The Contact Hypothesis Re-evaluated](https://doi.org/10.1017/bpp.2018.25), with a few examples drawn from [Preventing Sexual Violence —A Behavioral Problem Without a Behaviorally-Informed Solution](https://osf.io/preprints/psyarxiv/xgbzj).
+This vignette explains how to use the `d_calc` and `var_d_calc` functions to convert a study's results into an estimate of standardized mean difference (SMD) and its associated variance. We demonstrate with examples from our prior meta-analyses — mostly [The Contact Hypothesis Re-evaluated](https://doi.org/10.1017/bpp.2018.25), with a few examples drawn from [Preventing Sexual Violence —A Behavioral Problem Without a Behaviorally-Informed Solution](https://osf.io/preprints/psyarxiv/xgbzj).
 
-The contact hypothesis meta-analytic dataset is included, with small modifications, in this package as `PaluckMetaSOP::contact_data`.
+The contact hypothesis meta-analytic dataset is included, with small modifications, in this package as `PaluckMetaSOP::contact_data`. That paper's supplementary materials are available on the [OSF](https://osf.io/ttpvy/?view_only=https://osf.io/ttpvy/?view_only=) and in a reproducible & executable format on [Code Ocean](https://codeocean.com/capsule/8235972/tree/v7).
 
 ### 1.1 Standardized Mean Difference and Variance
 
-SMD is the difference in average outcomes between the treatment and control groups divided by the standard deviation (SD) of the outcome.
+An SMD is the difference in average outcomes between the treatment and control groups divided by the standard deviation (SD) of the outcome.
 
 $$SMD = \frac{M_1-M_2}{SD}$$
 
-We calculate SMD via `d_calc`.
+We calculate SMD with `d_calc`.
 
-Once you have a study's SMD, you calculate its variance using `var_d_calc`. This tells you how precise your estimate is. The standard error of your SMD is the square root of its variance.
+Once you have a study's SMD, you calculate its variance using `var_d_calc`. This tells you how precise your estimate is. The standard error (SE) of your SMD is the square root of its variance. A vector of SMDs and and a vector of SEs are the core components of meta-analysis.
 
-Meta-analysis takes a vector of SMD and a vector of standard errors as inputs and returns a pooled average effect and standard error. This procedure gives more weight to more precise estimates.
-
-If you standardize your SMD with the estimated SD of the outcome for the entire population, your estimator is called [Cohen's d](https://resources.nu.edu/statsresources/cohensd). If you use an estimated SD from just the control group, you get [Glass's ∆](https://www.statisticshowto.com/glasss-delta/) (Delta). The Paluck lab generally prefers Glass's ∆ because we're interested in the efficacy of interventions relative to the population's baseline state.
-
-When the SD of the control group isn't available but the SD of the entire population is, we use the SD of the entire population. When neither is available, or can't be figured out from a paper's results, we have a problem.
+There are two basic ways to standardize your SMD. If you divide $$M_1 - M_2$$ by the SD of the entire sample, your estimator is called [Cohen's d](https://resources.nu.edu/statsresources/cohensd). If you use an estimated SD from just the control group, you get [Glass's ∆](https://www.statisticshowto.com/glasss-delta/) (Delta). The Paluck lab generally prefers Glass's ∆ because we're interested in the efficacy of interventions relative to the population's baseline state. (In the rest of this vignette, we'll use ∆ as a stand-in for SMD.) When the SD of the control group isn't available but the SD of the entire population is, we use the SD of the entire population. When neither is available, or can't be figured out from a paper's results, we have a problem.
 
 ### 1.2 Estimating SMD can be hard because of how studies report their results.
 
-Some studies report $M_1$, $M_2$, and $SD$, which makes calculating an SMD easy. Others report statistical summaries, which then need to be converted into SMDs using a variety of formulas. `d_calc` implements a selection of these formulas drawn from chapters 12 and 13 of [Cooper, Hedges, and Valentine (2009)](https://www.scholars.northwestern.edu/en/publications/the-handbook-of-research-synthesis-and-meta-analysis-2nd-edition).
+Some studies plainly report $M_1$, $M_2$, and $SD$, which makes calculating ∆ easy. Others report statistical summaries, which then need to be converted into ∆ using a variety of formulas. `d_calc` implements a selection of these formulas drawn from chapters 12 and 13 of [Cooper, Hedges, and Valentine (2009)](https://www.scholars.northwestern.edu/en/publications/the-handbook-of-research-synthesis-and-meta-analysis-2nd-edition).
 
-In one case — the difference in proportions estimator — we depart from those equations, which we'll explain when we get to it.
+In one case — the difference in proportions estimator — we depart from those equations, which we'll explain when in section XXX of this vignette.
 
-Converting statistical results into SMDs is an topic of debate among researchers. In some cases, our conversion formulas are going to imperfectly capture the true SMD because 1) we don't have access to the raw data and 2) the reported results don't accuaretely capture the underlying distribution of outcomes — for instance, if results are only reported via multivariate regression, where some of the variance is accounted for via control variables.
+The 'proper' way to convert statistical results into ∆ is a topic of debate among researchers. In some cases, our conversion formulas are going to imperfectly capture the true ∆ because 1) we don't have access to the raw data and 2) the reported results don't convey the underlying distribution of outcomes. Ior instance, if results are only reported via multivariate regression, Some of the variance might be accounted for by control variables.
 
 The meta-analyst faces a trade-off here. On the one hand, you can discard all such studies, or exclude them from your main analyses, and limit your analysis to studies that make your job easy. On the other, you can use imperfect and potentially biased estimation procedures that nevertheless capture something *directionally* important about an intervention's effects. In general, we make all available efforts to figure out a "good enough" estimate of ∆, but if we really can't figure something out, we'll omit it or just include the study as part of a vote counting procedure.
 
-See [this page on SMDs](https://handbook-5-1.cochrane.org/chapter_9/9_2_3_2_the_standardized_mean_difference.htm) from the Cochrane collaboration and the `escalc` documentation from Wolfgang Viechtbauer's `metafor` package for further reading.
+See [this page on SMDs](https://handbook-5-1.cochrane.org/chapter_9/9_2_3_2_the_standardized_mean_difference.htm) from the Cochrane collaboration for further reading, as well as the [`escalc` documentation](https://wviechtb.github.io/metafor/reference/escalc.html) from the `metafor` package for a statistical treatment of effect sizes.
 
-## 2 the functions
+We now explain the `d_calc` and `var_d_calc` functions in general, and then show you how to use them to convert studies into meta-analyzable data points.
+
+## 2 `d_calc` and `var_d_calc`
 
 ### 2.1 `d_calc`
 
-`d_calc` is a function that takes (up to) five parameters and returns an SMD. The first two are essential, and the next three are necessary depending on the value of the first parameter.
+`d_calc` is a function that takes (up to) five parameters and returns an estimate of either d or ∆ (depending on what you standardize by). The first two parameters are essential, and the next three are necessary depending on the value of the first parameter.
 
-Those parameters are:
+The five parameters are:
 
--   `stat_type` , where you put the kind of statistical results you're converting into SMD. its possible values are:
+-   1: `stat_type` , where you put the kind of statistical results you're converting into SMD. its possible values are:
 
     -   `d` or `s_m_d`, for when a paper provides its own estimate of d/∆/SMD.
 
@@ -73,29 +71,29 @@ Those parameters are:
 
     -   `unspecified_null` or `unspecified null` for when you can't figure out a precise estimate, but know that the overall effect was null.
 
--   `stat`, the value of the statistic that you're reporting or converting into SMD.
+-   2: `stat`, the value of the statistic that you're reporting or converting into SMD.
 
--   `sample_sd`, the standard deviation that you're using to standardize your estimate.
+-   3: `sample_sd`, the standard deviation that you're using to standardize your estimate.
 
     -   This is generally a necessary input, but not when the stat type already tells you something about the variance of the outcome (`d`, `SMD`, `F test`, `t test`, `odds ratio`, or `log odds ratio`).
 
--   `n_t` and `n_c`, the sample sizes for treatment and control.
+-   4: `n_t` and 5: `n_c`, the sample sizes for treatment and control.
 
     -   These are necessary only for converting `F test` and `t test` results into SMDs.
 
 Run `PaluckMetaSOP::d_calc` without parentheses to see all the conversion formulas.
 
-### 2.1 `var_d_calc`
+### 2.2 `var_d_calc`
 
 `var_d_calc` takes three inputs:
 
--   `d`, which is typically generated by `d_calc.`
+-   1: `d`, which is typically generated by `d_calc.`
 
 -   `n_t` and `n_c`, the sample sizes for treatment and control.
 
 The function first turns this into an (uncorrected) estimate of variance via
 
-${variance_{uncorrected}} = (\frac{n_t + n_c}{n_t * n_c}) + (\frac{d^2}{2} * (n_t + n_c))$
+${\sigma^2_1} = (\frac{n_t + n_c}{n_t * n_c}) + (\frac{d^2}{2} * (n_t + n_c))$
 
 And then applies a correction for small study variance called hedge's *g:*
 
@@ -103,25 +101,33 @@ $g = 1 - (3/((4 * (n_t + n_c - 2)) - 1))$
 
 And the final variance estimate is
 
-$variance = g^2 * variance_{uncorrected}$
+$\sigma^2 = g^2 * \sigma^2_1$
 
-## 3. Calculating SMD and variance using `d_calc` and `var_d_calc`
+## 3. Calculating $\Delta$ and $\sigma^2$ in practice
 
-Some papers present results that make calculating an SMD easy.
+Some papers present results that make calculating ∆ easy.
 
-**difference in means**: here is table X from Ditullio (1982), a study of workplace integration programs aimed at reducing prejudice towards people with developmental disabilities:
+**difference in means**: here is table 4.9 (p. 76) from [DiTullio (1982)](https://www.proquest.com/docview/303259182), a study of workplace integration programs aimed at reducing prejudice towards people with developmental disabilities:
 
-The SMD here is X1 minus X2 divided by SD. In code:
+![](images/DiTullio-results.png)
 
-`ditullio_effects <- d_calc(stat_type = "d_i_m", stat = X1 - X2, sample_sd = SD)`
+We took "CONCEPT--MENTALLY RETARDED WORKERS" to be the dependent variable that best captured attitudes towards the outgroup.[^1] $$M_1 = 5.708$$; $$M_2 = 3.0789$$; and $$SD_ctrl = 1.0381$$. $$SMD = \frac{5.708 - 3.0789}{1.0381} = 2.533$$
+
+[^1]: This step can be tricky because some papers present many outcomes that are all plausible measures of the true quantity of interest. Whenever possible, we advise pre-specifying which outcomes or categories of outcome to code before you start collecting data. But in situations like this, the meta-analyst needs to make a judgment call about which outcome is substantively closest to the true quantity of interest. Alternatively, you can average all measures together, or record them all separately. For the Contact Hypothesis Re-Evaluated, we took one dependent variable per study.
+
+In code:
+
+`DiTullio_results <- d_calc(stat_type = "d_i_m", stat = 5.708 - 3.0798, sample_sd = 1.0381)`
 
 Its variance is
 
-`ditullio_variance <- var_d_calc(d = ditullio_effects, n_t = whatever, n_c = whatever)`.
+`ditullio_variance <- var_d_calc(d =``DiTullio_results``, n_t = 38, n_c = 38)`.
 
 And its standard error is
 
 `ditullio_se <- sqrt(ditullio_variance)`
+
+(By the way, ∆ = 2.533 is a very large effect size**.** Most effect sizes across all meta-analyses we've written as a lab are between -1 and 1.)
 
 **difference in differences:** Some studies present the mean outcomes for each group at both baseline and posttest. Here is table X from Dessel (2010):
 
