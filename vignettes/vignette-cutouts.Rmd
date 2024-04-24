@@ -46,33 +46,11 @@ The introduction places that procedure in in the broader flow of a typical meta-
 
 6)  Write up your results.
 
-This vignette works through step 4: condensing a study's results to a point estimate and associated variance. It uses examples (mostly) from [*The contact hypothesis re-evaluated*](https://doi.org/10.1017/bpp.2018.25)to illustrate, and introduces two functions from `PaluckMetaSOP` that make this easier: `d_calc.R` and `var_d_calc.R`.
-
 ### 1.2 The problem of heterogeneous measurement strategies
 
 You might be wondering: why is a translation step necessary at all? Why can't you just record the results that the papers present? In some contexts you might be able to, particularly in medicine. If you're studying, say, [the effects of bed nets on malaria](https://www.cochrane.org/CD000363/INFECTN_insecticide-treated-nets-preventing-malaria), it's possible that all studies in the sample will present key results on the exact same scales, and in ways that any reader can make sense of: malaria cases, severe malaria cases, deaths, etc. In that situation, it probably *does* make sense to just record exactly what the authors do, and then meta-analyze that.
 
 This is not the case in the Paluck Lab's meta-analyses. Our outcomes, such as prejudice, don't typically have a universally-agreed on measurement strategy. But we still need to integrate results from many papers to come up with a pooled average effect. Moreover, statistical results come in many varieties, and we also need a way to integrate, say, a t-test to a difference in means or an odds ratio.
-
-### 1.3 Solution: standardized mean difference (SMD)
-
-A **standardized mean difference** (SMD) is an estimator that addresses these problems. It takes the following form:
-
-$$
-\frac{M1 - M2}{SD}
-$$
-
-It represents the difference in means between two groups divided by the standard deviation (SD) of the outcome. An SMD tells you how many standard deviations worth of change an intervention produces.
-
-See [this page on SMDs](https://handbook-5-1.cochrane.org/chapter_9/9_2_3_2_the_standardized_mean_difference.htm) from the Cochrane collaboration for further reading.
-
-### 1.4 Cohen's d vs. Glass's ∆
-
-If you standardize your effect size with an estimated SD of the outcome for entire population, your estimator is called [Cohen's d](https://resources.nu.edu/statsresources/cohensd). If you use an estimate SD from just the control group, you get [Glass's ∆](https://www.statisticshowto.com/glasss-delta/) (Delta).
-
-The Paluck lab generally prefers Glass's ∆ because we're interested in the efficacy of a given intervention relative to the population's baseline state, i.e. how they thought, felt, or behaved before they got the intervention. When the SD of the control group isn't available, ewe use the SD of the entire population. When neither is available, or can't be figured out from the statistics a paper presents, we have a problem (we'll get to that later).
-
-For the rest of this vignette, we'll be talking about Glass's ∆.
 
 ### 1.5 The next piece of the puzzle: variance (and standard error)
 
@@ -103,31 +81,3 @@ In practice, the Hedge's *g* correction increases the stated variance of a small
 Step 5 – combining and comparing studies – requires a standardized mean difference estimate and its associated variance. Any pooled estimates make use of both pieces of information, as do most of the graphs you might want to share with your readers and many of your potential checks for publication bias.
 
 Your meta-analytic dataset will (ideally) have one column for d/∆, one for variance, and one for standard error. Most meta-analytic functions, including those in this package, will expect your dataset to be structured this way.
-
-## 2. Calculating Delta, variance, and standard error from information presented in studies.
-
-Studies present their results in many different ways! Some of these are really easy to convert to an SMD, some are harder, and some are actually impossible. This section walks through some examples in each category and shows you how you can use the `d_calc` and `var_d_calc` to calculate ∆, variance, and standard error reproducibly.
-
-This vignette explains and demonstrates the `d_calc.R` and `var_d_calc.R` functions.
-
-`d_calc` is a calculator that converts a study's results into an estimate of a standardized mean effect, typically called `d` or ∆ (Delta); `var_d_calc` provides estimates of the variance of ∆. These variables are the foundation of a meta-analysis.
-
-This vignette is not an exhaustive overview of why, how and when to convert a study into a single point estimate -- see Cooper, Hedges, and Valentine for that. Instead, we show you how we've used these in the past to make meta-analyses go more smoothly.
-
-Most of our examples will be from [The Contact Hypothesis Re-evaluated](https://doi.org/10.1017/bpp.2018.25), with a few examples drawn from [Preventing Sexual Violence —A Behavioral Problem Without a Behaviorally-Informed Solution](https://osf.io/preprints/psyarxiv/xgbzj).
-
-This vignette first defines the functions' necessary inputs; then works through examples of each type of statistical information that `d_calc` is designed to interpret; then provides two examples of how to incorporate these functions into your workflow.
-
-### The core parameters:
-
-`d_calc` takes in between 2-5 inputs, depending on the value of the first input: \* `stat_type`, the type of statistical information that a study's results are reported as; `stat`, the value of that stat_type (e.g. F = 1.0 or reg_coef (regression coefficient) = 0.2); \* `sample_sd`, which is an estimate of the standard deviation of the dependent variable, drawn either from the entire sample (for cohen's d) or from the control group (for Glass's ∆). This parameter will not be necessary if the stat_type already conveys information about the variance (F-test, t-test, or `d`); `n_t`, the sample size for the treatment group; and `n_c`, the sample size for the control group.
-
-`d_calc` then returns a single number, which corresponds to Cohen's `d` or Glass's ∆ depending on what `sample_sd` you provided.
-
-`var_d_calc` takes as input:
-
--   d, typically the output of `d_calc`;
--   `n_t`, the sample size for the treatment group;
--   `n_c`, the sample size for the control group.
-
-We'll now work through each of the possible values of `stat_type`
