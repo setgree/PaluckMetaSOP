@@ -113,7 +113,7 @@ $\sigma^2 = g^2 * \sigma^2_1$
 
 ### 3.1 The easy cases: d_i_m, d_i_d, and simple regression coeffcients
 
-#### **3.1.1 d_i_m (difference in means)**: 
+#### **3.1.1 d_i_m (difference in means)**:
 
 Here is table 4.9 (p. 76) from [DiTullio (1982)](https://www.proquest.com/docview/303259182), a study of workplace integration programs aimed at reducing prejudice towards people with developmental disabilities:
 
@@ -210,13 +210,15 @@ Sometimes, papers report summary statistics that require more complex conversion
 
 #### 3.2.1 t-test
 
+The standard conversion from a t-test to Cohen's d is $d = t * \sqrt\frac{n_t + n_c}{n_t * n_c}$. Note that this is Cohen's d rather than Glass's Delta because the t-statistic is a measure of
+
 [Camargo, Stinebrickner, and Stinebrickner (2010)](https://doi.org/10.1086/653831) also study the effects of interracial roommate assignments, but in the special environment of Berea college, a tuition-free college in Kentucky that abjures the use of roommate questionnaires when assigning roommates. (Boisjoly et al., by contrast, worked with the admissions office of the studied school to control for all non-random determinants of roommate assignment.)
 
 Table 11 (p. 882) presents the following results on friendship composition over time:
 
 ![](images/camargo-results.png)
 
-We take the latest possible result (Middle of Third Year) and include the roommate assigned in first year (in a world where roommate assignment reduces prejudice, we would expect to see this partly manifesting as likelihood of white students' still being friends with their initially assigned black roommates). So our `stat` is `t = -3.705`, which we convert to an SMD estimate via $d = t * \sqrt\frac{n_t + n_c}{n_t * n_c}$. We take our Ns from that table as well: `n_t = 44` and `n_c = 214`.
+We take the latest possible result ("Middle of Third Year") for the effect that includes the roommate assigned in first year. (Iin a world where roommate assignment reduces prejudice, we would expect to see this partly manifesting as likelihood of white students' still being friends with their initially assigned black roommates.) So our `stat` is `t = -3.705`. We take our Ns from that table as well: `n_t = 44` and `n_c = 214`.
 
 In code:
 
@@ -231,23 +233,17 @@ camargo_se <- sqrt(camargo_var)
 
 #### 3.2.1 F-test
 
-When we are comparing two variances, the F testis equivalent to the square of the t-test. The conversion formula is the same as that which converts a t-test to ∆, except with the F inside the square root:
+When we are comparing (only) two variances, the F statistic is equivalent to the square of the t-test. As a result, the formula for converting F to ∆ is the same as with t to ∆ except with the F inside the square root:
 
 $d = \sqrt{F * \frac{n_t + n_c}{n_t * n_c}}$
 
 #### 3.2.4 log odds ratios and odds ratios
 
-Finally, **log odds ratios** can be converted to SMDs via
+Finally, **log odds ratios** can be converted to SMDs via $OR * \sqrt{\frac{3}{pi}}$, while **odds ratios** can be converted to SMDs via$log(OR) * \sqrt{\frac{3}{pi}}$
 
-$OR * \sqrt{\frac{3}{pi}}$
+However, try to avoid converting odds ratios or log odds ratios to SMDs whenever possible. As [Gomilla (2021)](https://psycnet.apa.org/record/2020-71596-001) writes, any give odds ratio can correspond to multiple possible effect sizes depending on the variance of the dependent variable. As a solution to this, while we were working on Prejudice Reduction: Progress and Challenges, Donald P. Green proposed a solution that treats those proportions as draws form a Bernoulli distribution and calculates variance and SD accordingly.
 
-and **odds ratios** can be converted to SMDs via
-
-$log(OR) * \sqrt{\frac{3}{pi}}$
-
-However, try to avoid converting odds ratios or log odds ratios to SMDs whenever possible. As [Gomilla (2021)](https://psycnet.apa.org/record/2020-71596-001) writes, any give odds ratio can correspond to multiple possible effect sizes depending on the variance of the dependent variable. As a solution to this, while we were working on Prejudice Reduction: Progress and Challenges, Donald P. Green proposed a solution that treats those proportions as draws form a Bernoulli distribution and calculates variance and SD accordingly
-
-(The following is lifted more or less verbatim from the appendix to [Preventing Sexual Violence —A Behavioral Problem Without a Behaviorally-Informed Solution](https://osf.io/preprints/psyarxiv/xgbzj).)
+The SD of the Bernoulli distribution is
 
 ### 3.3 A novel estimator for difference in proportions
 
