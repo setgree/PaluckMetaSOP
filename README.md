@@ -9,7 +9,8 @@ It was built with instructions in the [_R packages_](https://r-pkgs.org/) book a
 
 Install via `devtools::install_github("setgree/PaluckMetaSOP")`.
 
-I am currently writing vignettes; the functions are mostly done.
+I am currently writing vignettes; the functions are mostly done. 
+(broseVignettes() works so long as I install with build_vignettes = TRUE !)
 
 ### Package TODOs
 1. edit SMD vignette
@@ -17,5 +18,4 @@ I am currently writing vignettes; the functions are mostly done.
 3. write vignette on "write paper" and "summary statistics" functions
 4. write vignette on hard cases -> ∆
 5. double-check everything works as intended and also in a general way
-6. browseVignettes() should work? 
-7. double-check everything (get a second reader/user?)
+6. double-check everything (get a second reader/user?)
