@@ -15,6 +15,7 @@ I am currently writing vignettes; the functions are mostly done.
 1. edit SMD vignette
 2. write vignette on meta-analytic functions
 3. write vignette on "write paper" and "summary statistics" functions
-4. write vignette on d_i_p -> ∆
-5. write vignette on hard cases -> ∆
-6. double-check everything works as intended and also in a general way
+4. write vignette on hard cases -> ∆
+5. double-check everything works as intended and also in a general way
+6. browseVignettes() should work? 
+7. double-check everything (get a second reader/user?)

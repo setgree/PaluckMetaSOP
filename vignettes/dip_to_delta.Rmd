@@ -48,15 +48,15 @@ Using the conventional conversion formula for converting odds ratio to Cohen's d
 
 ```{r dip_vs_odds_ratio}
 library(PaluckMetaSOP)
-odds_ratio_to_d(.6, .3) # 0.382
-difference_in_proportion_calc(.6, .3) #.655
+odds_ratio_to_d(.6, .3)
+difference_in_proportion_calc(.6, .3) 
 # alternatively, use d_calc
-d_calc(stat_type = "d_i_p", stat = .6 - .3, sample_sd = .3) # 0.6546537
+d_calc(stat_type = "d_i_p", stat = .6 - .3, sample_sd = .3) 
 
-odds_ratio_to_d(.6, .3) == odds_ratio_to_d(.06, .03) # TRUE
-difference_in_proportion_calc(.6, .3) - difference_in_proportion_calc(.06, .03) # 0.479
+odds_ratio_to_d(.6, .3) == odds_ratio_to_d(.06, .03) 
+difference_in_proportion_calc(.6, .3) - difference_in_proportion_calc(.06, .03)
 ```
 
-Note that with this estimator, Glass's $\Delta$ is impossible to calculate if an event does not occur in the control group, because the numerator equals zero. In such cases, we calculated cohen's *d* instead by computing variance from the entire sample.
+Note that with this estimator, Glass's $\Delta$ is impossible to calculate if an event does not occur in the control group, because the numerator equals zero. In such cases, we calculated cohen's *d* instead by computing variance from the entire sample. If the event doesn't occur in either group, your effect size is zero. 
 
 
