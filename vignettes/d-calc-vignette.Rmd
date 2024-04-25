@@ -25,29 +25,31 @@ $$SMD = \frac{M_1-M_2}{SD}$$
 
 See [this page from the Cochrane Collaboration](https://handbook-5-1.cochrane.org/chapter_9/9_2_3_2_the_standardized_mean_difference.htm) for more discussion.
 
-We calculate SMD with `d_calc` and its variance using `var_d_calc`. The standard error (SE) of your SMD is the square root of its variance. A vector of SMDs and and a vector of SEs are the core components of meta-analysis.
+We calculate SMD with `d_calc` and its variance using `var_d_calc`. The standard error (SE) of an SMD is the square root of its variance.
 
-Some studies plainly report $M_1$, $M_2$, and $SD$, which makes calculating an SMD easy. Others report statistical summaries, which then need to be converted into an SMD using a variety of formulas. `d_calc` implements a selection of these formulas drawn from chapters 12 and 13 of [Cooper, Hedges, and Valentine (2009)](https://www.scholars.northwestern.edu/en/publications/the-handbook-of-research-synthesis-and-meta-analysis-2nd-edition).
+A vector of SMDs and and a vector of SEs are the core components of meta-analysis, which we discuss in our "doing meta-analysis" vignette.
+
+Some studies plainly report $M_1$, $M_2$, and $SD$, which makes calculating an SMD easy. Others report statistical summaries, which then need to be converted into an SMD using some formulas. `d_calc` implements a selection of these formulas drawn from chapters 12 and 13 of [Cooper, Hedges, and Valentine (2009)](https://www.scholars.northwestern.edu/en/publications/the-handbook-of-research-synthesis-and-meta-analysis-2nd-edition).
 
 In one case — the difference in proportions estimator — we depart from those equations, which we'll explain in section 3.2.4 of this vignette.
 
 ### 1.2 d vs ∆
 
-There are two basic ways to standardize your SMD. If you divide $M_1 - M_2$ by the SD of the entire sample, your estimator is called [Cohen's d](https://resources.nu.edu/statsresources/cohensd). If you use an estimated SD from just the control group, you get [Glass's ∆](https://www.statisticshowto.com/glasss-delta/) (Delta). The Paluck lab generally prefers Glass's ∆ because we're interested in the efficacy of interventions relative to the population's baseline state.
+There are two basic ways to standardize your SMD. If you divide $M_1 - M_2$ by the SD of the entire sample, your estimator is called [Cohen's d](https://resources.nu.edu/statsresources/cohensd). If you use an estimated SD from just the control group, you get [Glass's ∆](https://www.statisticshowto.com/glasss-delta/) (Delta). The Paluck lab generally prefers Glass's ∆ because we're interested in the efficacy of interventions relative to the population's baseline state, and we think that treatment might (in some cases) change the underlying distribution of the outcome.
 
 In the rest of this vignette, we'll use ∆ as our symbol for SMD.
 
-When the SD of the control group isn't available but the SD of the entire population is, we use the SD of the entire population. When neither is available, or can't be figured out from a paper's results, we might have a problem. We discuss "hard cases" more in a separate vignette.
+When the SD of the control group isn't available but the SD of the entire population is, we use the SD of the entire population. When neither is available, or can't be figured out from a paper's results, we might have a problem. We discuss these issues more in our "hard cases" vignette.
 
 ## 2 `d_calc` and `var_d_calc`
 
 ### 2.1 `d_calc`
 
-`d_calc` is a function that takes (up to) five parameters and returns an estimate of either d or ∆, depending on what you standardize by. The first two parameters are essential, and the next three are necessary depending on the value of the first parameter.
+`d_calc` is a function that takes (up to) five parameters and returns an estimate of either ∆ or d, depending on what you standardize by. The first two parameters are essential, and the next three are necessary depending on the value of the first parameter.
 
 The five parameters are:
 
--   1: `stat_type` , where you put the kind of statistical results you're converting into ∆. its possible values are:
+-   1: `stat_type`, where you put the kind of statistical results you're converting into ∆. its possible values are:
 
     -   `d` or `s_m_d`, for when a paper provides its own estimate of d/∆/SMD.
 
