@@ -14,3 +14,5 @@
 **/.DS_Store
 paper/*
 inst/doc
+/doc/
+/Meta/
