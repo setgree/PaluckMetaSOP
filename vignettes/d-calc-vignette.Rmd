@@ -1,5 +1,6 @@
 ---
-title: "d-calc-vignette"
+title: "Converting a study's results into SMD, variance, and standard error"
+author: Seth Ariel Green, John-Henry Pezzutto, Roni Porat, and Elizabeth Levy Paluck
 output: 
   rmarkdown::html_vignette:
     toc: true
@@ -11,12 +12,6 @@ vignette: >
 ---
 
 ## 1 Introduction
-
-```{r libraries_and_data}
-library(dplyr)
-library(PaluckMetaSOP)
-dat <- PaluckMetaSOP::contact_data
-```
 
 This vignette explains how to use the `d_calc` and `var_d_calc` functions to convert a study's results into an estimate of standardized mean difference (SMD), along with its associated variance and standard error.
 
@@ -110,7 +105,14 @@ And the final variance estimate is
 
 $\sigma^2 = g^2 * \sigma^2_u$
 
-## 3. Calculating $\Delta$ and $\sigma^2$ in practice
+## 3. Calculating $\Delta$ and $\sigma^2$ with d_calc and var_d_calc
+
+```{r libraries_and_data, message=F}
+# load necessary libraries and built-in dataset
+library(dplyr)
+library(PaluckMetaSOP)
+dat <- PaluckMetaSOP::contact_data
+```
 
 ### 3.1 The easy cases: difference in means, difference in differences, and, regression coefficients
 
@@ -120,7 +122,13 @@ $\sigma^2 = g^2 * \sigma^2_u$
 
 ![](images/DiTullio-results.png){width="500"}
 
-We took "CONCEPT--MENTALLY RETARDED WORKERS" to be the dependent variable that best captured attitudes towards the outgroup:[^1] $M_1 = 5.708$; $M_2 = 3.0789$; and $SD_C = 1.0381$.
+We took "CONCEPT--MENTALLY RETARDED WORKERS" to be the dependent variable that best captured attitudes towards the outgroup.[^1] 
+
+$$M_1 = 5.708 \\
+
+M_2 = 3.0789 \\
+
+SD_C = 1.0381$$
 
 [^1]: Figuring out what dependent variable is "best" can be tricky. Some papers present many outcomes that are all plausible measures of the true quantity of interest. Whenever possible, we advise pre-specifying which outcomes or categories of outcome to code before you start collecting data. But in situations like this, the meta-analyst needs to make a judgment call about which outcome is substantively closest to the true quantity of interest. Alternatively, you can average all measures together, or record them all separately. For TCHR, we took one dependent variable per study.
 
@@ -182,7 +190,7 @@ Instead of a difference in means, we have linear regression coefficients from ta
 
 We take the Row 1, column 3 (0.366\*) as our main measure of unstandardized mean difference.[^2]
 
-[^2]: Here, a reader might note that $\beta$ imperfectly captures the mean difference between groups because the model includes controls; the intercept here is a (perhaps hypothetical) person whose values are set to zero for all values, not just the treatment indicator. As part of a project that evolved into TCHR, we emailed the authors to ask to replicate the original data, but unfortunately data were not available due to the researchers' agreement with the university. (We thank Greg Duncan kindly for his help.) $\beta$ is the best thing we have given these limitations, we think, because converting [ordered probit](https://en.wikipedia.org/wiki/Ordered_probit) coefficients to ∆ is (as far as we know) an intractable problem. The resulting number might be an overestimate of the effect size, but not in a way that substantively changes our beliefs about the world. We get ∆ = 0.341, which is a small to moderate size by convention, and the coefficient is significant at the p \< 0.05 level. That's approximate correspondence. Effect size estimates are just that, estimates.
+[^2]: Here, a reader might note that $\beta$ imperfectly captures the mean difference between groups because the model includes controls; the intercept here is a (perhaps hypothetical) person whose values are set to zero for all parameters, not just the treatment indicator. As part of a project that evolved into TCHR, we emailed the authors to ask to replicate the original data, but unfortunately data were not available due to the researchers' agreement with the university. (We thank Greg Duncan kindly for his help.) $\beta$ is the best thing we have given these limitations, we think, because converting [ordered probit](https://en.wikipedia.org/wiki/Ordered_probit) coefficients to ∆ is (as far as we know) an intractable problem. The resulting number might be an overestimate of the effect size, but not in a way that substantively changes our beliefs about the world. We get ∆ = 0.341, which is a small to moderate size by convention, and the coefficient is significant at the p \< 0.05 level. That's approximate correspondence. Effect size estimates are just that, estimates.
 
 The authors tell us the size of the treatment and control groups on p. 1895: "of the 1,278 white respondents, 35 were assigned at least one black roommate, 98 were assigned at least one Asian roommate, 40 were assigned at least one Hispanic roommate, and 69 were assigned at least one “other race” roommate. The rest were assigned white roommates."
 
@@ -280,22 +288,19 @@ In code: `r d_calc("d_i_p", .05, .1)`.
 
 We discuss this estimator in more detail in a separate vignette.
 
-### 3.3 Unspecified nulls (for when you have nothing precise but a "no effect")
+### 3.3 Unspecified nulls
 
-Some studies, e.g. [Hall 1969](https://ir-api.ua.edu/api/core/bitstreams/8b53661b-99c5-4a2f-9e2d-603bfffb3eb0/content), don't tell you exactly what effect they find, just that it wasn't significant. We set all of these cases to ∆ = 0.01 so we can include them in our main analyses. You can set the null to 0.00, or 0.001, or anything that substantively communicates "there was no effect", and get basically the same result.
+Some studies, e.g. [Hall 1969](https://ir-api.ua.edu/api/core/bitstreams/8b53661b-99c5-4a2f-9e2d-603bfffb3eb0/content), don't tell you exactly what effect they find, just that it wasn not significant. We set all of these cases to ∆ = 0.01 so we can include them in our main analyses. You can set these nulls to 0.00, or 0.001, or anything that substantively communicates "there was no effect", and get basically the same result.
 
 `d_calc("unspecified_null")` will always return 0.01 no matter the values of the other parameters.
 
-## 4 How we use d_calc and var_d_calc in practice
+## 4 Incorporating d_calc and var_d_calc into your analysis scripts
 
 When we wrote TCHR, we had one function that combined the results of `d_calc` and `var_d_calc` into a table; we had a script that recorded the those calculations for every study; and we copied and pasted the resulting values into our final dataset.
 
 For our [next](https://www.annualreviews.org/content/journals/10.1146/annurev-psych-071620-030619) [two](https://osf.io/preprints/psyarxiv/xgbzj) meta-analyses, we incorporated `d_calc` and `var_d_calc` directly into our analysis scripts with the `mapply` and `dplyr::mutate` functions. Here is how that looks when applied to the contact hypothesis data:
 
 ```{r d_and_var_d_creation_script}
-
-library(dplyr)
-
 dat_with_new_ds <-  dat |> 
   select(-c(d, se_d, var_d)) |>  # delete vars and then reproduce them
   mutate(d = mapply(
