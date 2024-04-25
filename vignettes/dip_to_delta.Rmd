@@ -1,0 +1,62 @@
+---
+title: "converting a difference in proportions to Glass's ∆"
+authors: Seth Ariel Green, John-Henry Pezzuto, Roni Porat, Elizabeth Levy Paluck
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{converting a difference in proportions to Glass's ∆}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+### Overview
+
+This vignette introduces a novel estimator for converting a difference in proportions, e.g. the occurrence of some YES/NO variable, in a treatment and in a control to Glass's ∆ (Delta), a standardized mean difference. We touch on the estimator briefly in our SMD vignette. This piece builds the underlying intuition and provides examples of its desirable qualities compared to a conversion from an odds ratio.
+
+It is lifted almost entirely verbatim from the appendix and supplementary materials to "[Preventing Sexual Violence —A Behavioral Problem Without a Behaviorally-Informed Solution.](https://osf.io/preprints/psyarxiv/xgbzj)"
+
+### The problem of Synthesizing dichotomous and continuous dependent 
+
+Synthesizing binary and continuous outcomes in a meta-analysis is a well-understood challenge (e.g. it is discussThe standard method of integrating the two is to record an odds ratio or a log odds ratio and calculate Cohen's *d* as follows:
+
+$$
+\log{ OR }=\frac{d \pi}{\sqrt{3}}
+$$
+
+However, [as Gomila (2021) notes](Gomilla (2021)), any given odds ratio "can translate into different Cohen’s d values, depending on the probability'' of event incidence for the "dependent variable for control group participants'' (p. 8). In practice, this means that a reduction in sexual assault perpetration from 60 incidents to 30 would have the same odds ratio (2.0) as a reduction from six incidents to three, and would yield the same estimate of a standardized effect size, despite a tenfold difference in Average Treatment Effect. [Chen, Cohen & Chen (2010)](https://www.tandfonline.com/doi/full/10.1080/03610911003650383) proposethat if incidence of a disease is 1% within a control group, then "OR = 1.68, 3.47, and 6.71 are equivalent to Cohen's d = 0.2 (small), 0.5 (medium), and 0.8 (large), respectively'' (p. 862), with different proportions corresponding to equivalent effect sizes at a range of incidence rates. Our sample, however, has a wide range of populations, dependent variables, and measurement horizons, which are not amenable to simple rules of thumb.
+
+Instead, whenever possible, we use a **difference in proportions** estimator for binary dependent variables that treats outcomes as draws from a Bernoulli distribution. This was first suggested by Donald P. Green while we worked on on [Prejudice Reductions: Progress and Challenges.](#0) The variance of the distribution is $p(1-p)$, where p is the proportion of some event — for our purposes, the incidence of a behavioral outcome in the control group — and the standard deviation is the square root of variance. Our estimator is therefore:
+
+$$
+ \Delta = \frac{p_{1} - p_{2}}{\sqrt{p_{2} * (1 - p_{2)}}}
+$$
+
+The intuition for this estimator is that maximum variance for a binary variable is a 50% chance of occurring, the point at which the two events are equally likely; as the probability approaches either one or zero, the outcome becomes more predictable, which means that variance decreases.
+```{r Bernoulli_dist_visualization}
+# A visualization of the intuition behind this estimator: 
+# distribution of SDs drawn from Bernoulli distribution
+# SD gets larger as proportion approaches 50%, which is point of max randomness
+library(ggplot2)
+proportions <- seq(from = 0, to = 1, by = 0.01)
+SDs <- as.numeric(lapply(X = proportions, FUN = function(p){sqrt(p * (1 - p))}))
+
+ggplot() + geom_point(aes(proportions, SDs)) + theme_minimal()
+```
+
+Using the conventional conversion formula for converting odds ratio to Cohen's d, ATEs that correspond in reductions of incidence from 60% to 30% and from 6% to 3% both translate to a Cohen's *d* of 0.382; by contrast, the Difference in Proportion estimator computes Glass's $\Delta$ to be 0.655 for a decline from 60% to 30%, and $\Delta$ = 0.176 for a decline from 6% to 3%.
+
+```{r dip_vs_odds_ratio}
+library(PaluckMetaSOP)
+odds_ratio_to_d(.6, .3) # 0.382
+difference_in_proportion_calc(.6, .3) #.655
+# alternatively, use d_calc
+d_calc(stat_type = "d_i_p", stat = .6 - .3, sample_sd = .3) # 0.6546537
+
+odds_ratio_to_d(.6, .3) == odds_ratio_to_d(.06, .03) # TRUE
+difference_in_proportion_calc(.6, .3) - difference_in_proportion_calc(.06, .03) # 0.479
+```
+
+Note that with this estimator, Glass's $\Delta$ is impossible to calculate if an event does not occur in the control group, because the numerator equals zero. In such cases, we calculated cohen's *d* instead by computing variance from the entire sample.
+
+
