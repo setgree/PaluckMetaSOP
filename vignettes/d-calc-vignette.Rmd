@@ -57,11 +57,11 @@ The five parameters are:
 
     -   `d_i_d` for difference in differences.
 
-    -   `reg_coef`, `regression`, or `beta`, for when you have the regression coefficient associated with treatment.
+    -   `reg_coef`, `regression`, or `beta`, for the regression coefficient associated with treatment.
 
-    -   `t_test` or `T-test` for when you have a t-test.
+    -   `t_test` or `T-test` for a t-test.
 
-    -   `f_test` or `F-test` or `F` for when you have an F-test.
+    -   `f_test` or `F-test` or `F` for an F-test.
 
     -   `odds_ratio` for odds ratio.
 
@@ -69,13 +69,13 @@ The five parameters are:
 
     -   `d_i_p` for a difference in proportions.
 
-    -   `unspecified_null` or `unspecified null` for when you can't figure out a precise estimate, but know that the overall effect was null.
+    -   `unspecified_null` or `unspecified null` for when you can't figure out a precise estimate, but know that the overall effect is "not significant."
 
--   2: `stat`, the value of the statistic that you're reporting or converting into SMD.
+-   2: `stat`, the value of the statistic that you're recording or converting into SMD.
 
 -   3: `sample_sd`, the standard deviation that you're using to standardize your estimate.
 
-    -   This is generally a necessary input, but not when the stat type already tells you something about the variance of the outcome (`d`, `SMD`, `F test`, `t test`, `odds ratio`, or `log odds ratio`).
+    -   This is generally a necessary input, but not when the stat type already contains information about the variance of the outcome: `d`, `SMD`, `F test`, `t test`, `odds ratio`, or `log odds ratio`.
 
 -   4: `n_t` and 5: `n_c`, the sample sizes for treatment and control.
 
@@ -93,7 +93,7 @@ Run `PaluckMetaSOP::d_calc` without parentheses to see all the conversion formul
 
 The function first turns this into an (uncorrected) estimate of variance via
 
-${\sigma^2_1} = (\frac{n_t + n_c}{n_t * n_c}) + (\frac{d^2}{2} * (n_t + n_c))$
+${\sigma^2_u} = (\frac{n_t + n_c}{n_t * n_c}) + (\frac{d^2}{2} * (n_t + n_c))$
 
 And then applies a correction for small study variance called hedge's *g:*
 
@@ -101,11 +101,11 @@ $g = 1 - (3/((4 * (n_t + n_c - 2)) - 1))$
 
 And the final variance estimate is
 
-$\sigma^2 = g^2 * \sigma^2_1$
+$\sigma^2 = g^2 * \sigma^2_u$
 
 ## 3. Calculating $\Delta$ and $\sigma^2$ in practice
 
-### 3.1 The easy cases: difference in means, difference in differences, and, regression coeffcients
+### 3.1 The easy cases: difference in means, difference in differences, and, regression coefficients
 
 #### **3.1.1 difference in means**:
 
@@ -115,7 +115,7 @@ $\sigma^2 = g^2 * \sigma^2_1$
 
 We took "CONCEPT--MENTALLY RETARDED WORKERS" to be the dependent variable that best captured attitudes towards the outgroup:[^1] $M_1 = 5.708$; $M_2 = 3.0789$; and $SD_C = 1.0381$.
 
-[^1]: This step can be tricky because some papers present many outcomes that are all plausible measures of the true quantity of interest. Whenever possible, we advise pre-specifying which outcomes or categories of outcome to code before you start collecting data. But in situations like this, the meta-analyst needs to make a judgment call about which outcome is substantively closest to the true quantity of interest. Alternatively, you can average all measures together, or record them all separately. For TCHR, we took one dependent variable per study.
+[^1]: Figuring out what dependent variable is "best" can be tricky. Some papers present many outcomes that are all plausible measures of the true quantity of interest. Whenever possible, we advise pre-specifying which outcomes or categories of outcome to code before you start collecting data. But in situations like this, the meta-analyst needs to make a judgment call about which outcome is substantively closest to the true quantity of interest. Alternatively, you can average all measures together, or record them all separately. For TCHR, we took one dependent variable per study.
 
 Therefore,
 
@@ -124,16 +124,16 @@ $$\Delta = \frac{5.708 - 3.0789}{1.0381} = 2.533$$
 Here is code to calculate ∆, variance, and SE:
 
 ```         
-DiTullio_results <- d_calc(stat_type = "d_i_m", stat = 5.708 - 3.0798, sample_sd = 1.0381)
+ditullio_results <- d_calc(stat_type = "d_i_m", stat = 5.708 - 3.0798, sample_sd = 1.0381)
 
-ditullio_variance <- var_d_calc(d = DiTullio_results, n_t = 38, n_c = 38)
+ditullio_variance <- var_d_calc(d = ditullio_results, n_t = 38, n_c = 38)
 
 ditullio_se <- sqrt(ditullio_variance)
 ```
 
 Two notes about this effect size. First, you'll see a "what" column in our dataset that, for this study, says "Table 4.9 (p. 79)." This is a signpost for any interested readers about where in the paper to find the statistics you've converted into ∆, variance, and SE. Your future self will thank you for recording signposts like this!
 
-Second, ∆ = 2.533 is a very large effect size**.** Most effect sizes we've calculated have been between -1 and 1.
+Second, ∆ = 2.533 is a very large effect size. Δ ∈ [−1,1] is more typical in our experience.
 
 **3.1.2 d_i_d (difference in differences):**
 
@@ -161,19 +161,21 @@ dessel__school_a_se <- sqrt(dessel_school_a_var)
 
 #### **3.1.3 Regression coefficient (beta):**
 
-In a bivariate regression of the relationship between treatment status and outcome, the $\beta$ coefficient is is equivalent to the difference in means between the groups. Calculating the SD from a regression table can be tricky, but some studies report both $\beta$ and the standard deviation for the outcome.
+In a bivariate regression testing the relationship between treatment status and outcome, the $\beta$ coefficient is is equivalent to the difference in means between the groups. Calculating the SD from a regression table takes some guesswork (see the "hard cases" vignette), but some studies report both $\beta$ and the standard deviation for the outcome.
 
-[Boisjoly et al. (2006)](https://www.aeaweb.org/articles?id=10.1257/aer.96.5.1890) which tested the effects of being randomly assigned a black or other race roommate on four measures of political and social attitudes for white college students. Here is Appendix table 1 (p. 1903):\
+[Boisjoly et al. (2006)](https://www.aeaweb.org/articles?id=10.1257/aer.96.5.1890) tested the effects of being randomly assigned a black or "other minority" roommate on the attitudes and behaviors of white college students. Here is Appendix table 1 (p. 1903):
 
 ![](images/boisjoly-sd-results.png){width="500"}
 
-Here, for the main dependent variable ("Affirmative action in college admissions should be abolished (reversed)"), we have the SD for the entire population of white students who were randomly assigned roommates (1.073) rather than just the control group. For this study, our SMD estimate is going to be Cohen's d rather than Glass's ∆.
+Here, for what we selected as the main dependent variable ("Affirmative action in college admissions should be abolished (reversed)"), we have the SD for the entire population of white students who were randomly assigned roommates (1.073) rather than just the control group. For this study, our SMD estimate is therefore going to be Cohen's d rather than Glass's ∆.
 
-Instead of a difference in means, we have linear regression coefficients from table 3, column 3 (p. 1899):[^2]
-
-[^2]: Here, a reader might note that $\beta$ imperfectly captures the mean difference between groups because the model includes controls; the intercept here is a (perhaps hypothetical) person whose values are set to zero for all values, not just the treatment indicator. As part of a project that evolved into TCHR, we emailed the authors to ask to replicate the original data, but unfortunately data were not available due to the researchers' agreement with the university. (We thank Greg Duncan kindly for his help.) $\beta$ is the best thing we have given these limitations, we think, because converting [ordered probit](https://en.wikipedia.org/wiki/Ordered_probit) coefficients to ∆ is (as far as we know) an intractable problem. The resulting number might be an overestimate of the effect size, but not in a way that substantively changes our beliefs about the world. We get ∆ = 0.341, which is a small to moderate size by convention, and the coefficient is significant at the p \< 0.05 level. That's approximate correspondence. Effect size estimates are just that, estimates.
+Instead of a difference in means, we have linear regression coefficients from table 3, column 3 (p. 1899):
 
 ![](images/boisjoly-reg-results.png){width="500"}
+
+We take the Row 1, column 3 (0.366\*) as our main measure of unstandardized mean difference.[^2]
+
+[^2]: Here, a reader might note that $\beta$ imperfectly captures the mean difference between groups because the model includes controls; the intercept here is a (perhaps hypothetical) person whose values are set to zero for all values, not just the treatment indicator. As part of a project that evolved into TCHR, we emailed the authors to ask to replicate the original data, but unfortunately data were not available due to the researchers' agreement with the university. (We thank Greg Duncan kindly for his help.) $\beta$ is the best thing we have given these limitations, we think, because converting [ordered probit](https://en.wikipedia.org/wiki/Ordered_probit) coefficients to ∆ is (as far as we know) an intractable problem. The resulting number might be an overestimate of the effect size, but not in a way that substantively changes our beliefs about the world. We get ∆ = 0.341, which is a small to moderate size by convention, and the coefficient is significant at the p \< 0.05 level. That's approximate correspondence. Effect size estimates are just that, estimates.
 
 The authors tell us the size of the treatment and control groups on p. 1895: "of the 1,278 white respondents, 35 were assigned at least one black roommate, 98 were assigned at least one Asian roommate, 40 were assigned at least one Hispanic roommate, and 69 were assigned at least one “other race” roommate. The rest were assigned white roommates."
 
@@ -202,23 +204,25 @@ Bois_se_other_roommates <- sqrt(Bois_var_other_roomamtes)
 
 ### 3.2 Converting statistical summaries into SMDs
 
-Sometimes, papers report summary statistics that require more complex conversions. [Cooper, Hedges, and Valentine (2009)](https://www.scholars.northwestern.edu/en/publications/the-handbook-of-research-synthesis-and-meta-analysis-2nd-edition) provide formulas for converting t-tests, F-tests, log odds ratios, and odds ratios into ∆. Here we'll show examples for the t-test and F-statistic from TCHR. However, instead of presenting odds ratios and log odds ratios examples (for starters, there weren't any in our TCHR data), we'll introduce a novel estimator for converting differences in proportions to ∆. (We explore this estimator more in our d_i_p vignette.)
+Sometimes, papers report summary statistics that require more complex conversions. [Cooper, Hedges, and Valentine (2009)](https://www.scholars.northwestern.edu/en/publications/the-handbook-of-research-synthesis-and-meta-analysis-2nd-edition) provide formulas for converting t-tests, F-tests, log odds ratios, and odds ratios into an SMD. These conversions all produce estimates of cohen's d rather than Glass's ∆.
 
-#### 3.2.1 t-test
+Here we'll show examples for the t-test and F-statistic from TCHR. Instead of presenting odds ratios and log odds ratios examples, we'll introduce a novel estimator for converting differences in proportions to ∆, which we explore further in a separate vignette..
+
+#### 3.2.1 t-test:
 
 The standard conversion from a t-test to Cohen's d is $d = t * \sqrt\frac{n_t + n_c}{n_t * n_c}$.
 
-[Camargo, Stinebrickner, and Stinebrickner (2010)](https://doi.org/10.1086/653831) also study the effects of interracial roommate assignments, but in the special environment of Berea college, a tuition-free college in Kentucky that abjures the use of roommate questionnaires when assigning roommates.[^3]
+[Camargo, Stinebrickner, and Stinebrickner (2010)](https://doi.org/10.1086/653831) study the effects of interracial roommate assignments in the special environment of Berea college, a tuition-free college in Kentucky that assigns roommates in an unconditionally random way.[^3]
 
 [^3]: Boisjoly et al., by contrast, worked with the admissions office of the studied school to control for all non-random determinants of roommate assignment.
 
-Table 11 (p. 882) presents the following results on friendship composition over time:
+Table 11 (p. 882) presents the following results on friend network composition over time:
 
 ![](images/camargo-results.png){width="500"}
 
-We take the latest possible result ("Middle of Third Year") for the effect that includes the roommate assigned in first year.[^4] So our `stat` is `t = -3.705`. We take our Ns from that table as well: `n_t = 44` and `n_c = 214`.
+We take the latest possible result ("Middle of Third Year") for the effect that includes the roommate assigned in first year. (In a world where roommate assignment reduces prejudice, we would expect to see this partly manifesting as likelihood of white students' still being friends with their initially assigned black roommates.)
 
-[^4]: In a world where roommate assignment reduces prejudice, we would expect to see this partly manifesting as likelihood of white students' still being friends with their initially assigned black roommates.
+Our `stat` is `t = -3.705`. We take our Ns from that table as well: `n_t = 44` and `n_c = 214`.
 
 In code:
 
@@ -243,17 +247,23 @@ $d = \sqrt{F * \frac{n_t + n_c}{n_t * n_c}}$
 
 In code:
 
+```         
+sayler_results <- d_calc(stat_type = "F-test", stat = 0.87, n_t = 16, n_c = 19)
+sayler_var <- var_d_calc(sayler_results, 16, 19)
+sayler_se <- sqrt(sayler_var)
+```
+
 #### 3.2.4 log odds ratios, odds ratios, and a novel difference in proportions estimator
 
-Finally, **log odds ratios** can be converted to d via $OR * \sqrt{\frac{3}{pi}}$
+Finally, **log odds ratios** can be converted to d via $d = OR * \sqrt{\frac{3}{pi}}$
 
-while **odds ratios** can be converted to d via $log(OR) * \sqrt{\frac{3}{pi}}$.
+while **odds ratios** can be converted to d via $d = log(OR) * \sqrt{\frac{3}{pi}}$.
 
 Neither of these estimators came up in TCHR, though they did in subsequent meta-analyses. However, we try to avoid converting odds ratios or log odds ratios to ∆ whenever possible. As [Gomilla (2021)](https://psycnet.apa.org/record/2020-71596-001) writes, any give odds ratio can correspond to multiple possible effect sizes depending on the variance of the dependent variable. As a solution to this, while we were working on [Prejudice Reduction: Progress and Challenges](https://www.annualreviews.org/content/journals/10.1146/annurev-psych-071620-030619), Donald P. Green proposed a solution that treats those proportions as draws form a Bernoulli distribution and calculates variance and SD accordingly.
 
-The SD of the Bernoulli distribution $\sqrt{ p (1-p)}$, where p is the proportion of some event (for Glass's ∆, the proportion in the control group).
+The SD of the Bernoulli distribution $\sqrt{ p (1-p)}$, where p is the proportion of some event — for Glass's ∆, the proportion in the control group.
 
-Say some event occurs in 10% of control group participants and 15% of treatment group participants. In that case:
+Suppose an event occurs in 10% of control group participants and 15% of treatment group participants. In that case:
 
 $\Delta = \frac{.15  -.1}{\sqrt{.1 (1. - .1})} = \frac{.05}{\sqrt{.09}} = 0.166$.
 
@@ -265,21 +275,21 @@ We discuss this estimator in more detail in a separate vignette.
 
 ### 3.3 Unspecified nulls (for when you have nothing precise but a "no effect")
 
-Some studies, e.g. [Hall 1969](https://ir-api.ua.edu/api/core/bitstreams/8b53661b-99c5-4a2f-9e2d-603bfffb3eb0/content), don't tell you exactly what effect they find, just that it wasn't significant. We set all of these cases to ∆ = 0.01 so we can include them in our main analyses. You can set the null to 0.0, or 0.001, or anything that substantively communicates "there was no effect" and get basically the same result.
+Some studies, e.g. [Hall 1969](https://ir-api.ua.edu/api/core/bitstreams/8b53661b-99c5-4a2f-9e2d-603bfffb3eb0/content), don't tell you exactly what effect they find, just that it wasn't significant. We set all of these cases to ∆ = 0.01 so we can include them in our main analyses. You can set the null to 0.00, or 0.001, or anything that substantively communicates "there was no effect", and get basically the same result.
 
-`d_calc("unspecified_null")` will always return 0.01.
+`d_calc("unspecified_null")` will always return 0.01 no matter the values of the other parameters.
 
 ## 4 How we use `d_calc` and `var_d_calc` in practice
 
-When we wrote TCHR, we recorded every use of `d_calc` and `var_d_calc` for every study in a script, and then copied pasted the resulting values into our final dataset. That script looked like the above scripts in this vignette: a lot of objects whose results we manually copied and pasted into the dataset.
+When we wrote TCHR, we had one function that combined the results of `d_calc` and `var_d_calc` into a table; we had a script that recorded the those calculations for every study; and we copied and pasted the resulting values into our final dataset.
 
 For our [next](https://www.annualreviews.org/content/journals/10.1146/annurev-psych-071620-030619) [two](https://osf.io/preprints/psyarxiv/xgbzj) meta-analyses, we incorporated `d_calc` and `var_d_calc` directly into our analysis scripts with the `mapply` and `dplyr::mutate` functions. Here is how that looks when applied to the contact hypothesis data:
 
-```{r sv_d_var_d_se_d_creation_script, eval=F}
+```{r d_and_var_d_creation_script, eval=F}
 
 library(dplyr)
 
-dat_with_new_ds <-  PaluckMetaSOP::contact_data |> 
+dat_with_new_ds <-  dat |> 
   select(-c(d, se_d, var_d)) |>  # delete vars and then reproduce them
   mutate(d = mapply(
           FUN = d_calc,
@@ -298,7 +308,7 @@ dat_with_new_ds <-  PaluckMetaSOP::contact_data |>
 
 This script uses variables in the dataset as inputs for our two custom functions and returns a dataset with `d`, `var_d`, and `se_d`.
 
-This approach will ultimately save you a fair bit of time, reduce a possible source of user error by eliminating the copy and paste step, and make a larger portion of your workflow computationally reproducible.
+This approach will ultimately save you a fair bit of time, reduce a possible source of user error by eliminating the copy and paste step, and make a larger portion of your workflow computationally reproducible. To facilitate this step, it pays off to have columns in your dataset corresponding to `stat_type`, `stat`, `sample_sd`, `n_t`, and `n_c`.
 
 ## Further reading:
 
