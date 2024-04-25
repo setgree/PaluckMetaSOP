@@ -1,5 +1,5 @@
 ---
-title: "Converting a study into a point estimate, variance, and standard error"
+title: "d-calc-vignette"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{d-calc-vignette}
@@ -15,7 +15,7 @@ We demonstrate with examples from [The Contact Hypothesis Re-evaluated](https://
 
 The contact hypothesis meta-analytic dataset is included, with small adjustments, in this package as `PaluckMetaSOP::contact_data`.
 
-TCHR's supplementary materials are available on the [OSF](https://osf.io/ttpvy/?view_only=https://osf.io/ttpvy/?view_only=) if you want to read the studies this vignette talks bout.
+TCHR's supplementary materials are available on the [OSF](https://osf.io/ttpvy/?view_only=https://osf.io/ttpvy/?view_only=) if you want to read the studies this vignette talks about.
 
 ### 1.1 Standardized Mean Difference and Variance
 
