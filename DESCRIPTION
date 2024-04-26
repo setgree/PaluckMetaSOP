@@ -14,13 +14,9 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
 Imports:
     dplyr,
-    ggplot2,
-    here,
     metafor,
     RefManageR,
     rlang,
-    rmarkdown,
-    sessioninfo,
     tibble
 Config/testthat/edition: 3
 Depends: 
