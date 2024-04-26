@@ -34,14 +34,14 @@ $$
 
 The intuition for this estimator is that maximum variance for a binary variable is a 50% chance of occurring, the point at which the two events are equally likely; as the probability approaches either one or zero, the outcome becomes more predictable, which means that variance decreases.
 ```{r Bernoulli_dist_visualization}
-library(ggplot2)
 # A visualization of the intuition behind this estimator: 
 # distribution of SDs drawn from Bernoulli distribution
 # SD gets larger as proportion approaches 50%, which is point of max randomness
 proportions <- seq(from = 0, to = 1, by = 0.01)
 SDs <- as.numeric(lapply(X = proportions, FUN = function(p){sqrt(p * (1 - p))}))
 
-ggplot() + geom_point(aes(proportions, SDs)) + theme_minimal()
+plot(proportions, SDs, type = "p", pch = 20, xlab = "Proportion", ylab = "Standard Deviation", main = "SD of Bernoulli Distribution")
+
 ```
 
 Using the conventional conversion formula for converting odds ratio to Cohen's d, ATEs that correspond in reductions of incidence from 60% to 30% and from 6% to 3% both translate to a Cohen's *d* of 0.382; by contrast, the Difference in Proportion estimator computes Glass's $\Delta$ to be 0.655 for a decline from 60% to 30%, and $\Delta$ = 0.176 for a decline from 6% to 3%.

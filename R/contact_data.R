@@ -5,8 +5,10 @@
 #' can reduce prejudice and improve social relations. These studies are all
 #' Randomized Controlled Trials with at least a single day of delay between
 #' the commencement of treatment and outcome measurement.
-#'
-#' @format A data frame with 27 rows and 20 columns:
+#' @format A data frame with 27 rows and 20 columns
+#' @source This dataset was constructed by one author (SA Green) of the package
+#'  for "The contact hypothesis re-evaluated" by EL Paluck, SA Green, and DP Green,
+#'  published in 2018 in Behavioural Public Policy, Issue 3 (2), pages 129–155.
 #' \describe{
 #'   \item{Study}{Name of the study.}
 #'   \item{name_short}{Shortened or abbreviated name of the study.}
@@ -29,8 +31,5 @@
 #'   \item{days_delay}{Number of days between study assignment and treatment.}
 #'   \item{unique_study_id}{A unique numeric identifier for each study.}
 #' }
-#' @source This dataset was constructed by one author (SA Green) of the package
-#'  for "The contact hypothesis re-evaluated" by EL Paluck, SA Green, and DP Green,
-#'  published in 2018 in Behavioural Public Policy, Issue 3 (2), pages 129–155.
-#' @keywords datasets
+#' @keywords dataset
 "contact_data"
