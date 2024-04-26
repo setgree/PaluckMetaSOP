@@ -15,7 +15,7 @@ The tibble includes columns for unique observation count, beta coefficient, stan
 and p-value for the meta-analysis.
 }
 \description{
-This helper function combines the functionality of counting unique observations and
+Combines the functionality of counting unique studies and
 performing a robust meta-analysis on a dataset. It is designed to streamline the process
 of obtaining both counts and meta-analysis results for subsets of a dataset.
 The function utilizes the \code{study_count} function to count the number of unique observations,

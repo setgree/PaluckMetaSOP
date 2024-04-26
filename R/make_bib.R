@@ -7,22 +7,10 @@
 #' @param dat_with_dois The dataset containing DOIs (columns: title, author, year, doi, url)
 #' @param bib_file The file path to the BibTeX file
 #' @return A list of functions to manage BibTeX entries
+#' @importFrom RefManageR WriteBib GetBibEntryWithDOI
 #' @export
 
 manage_references <- function(dat_with_dois, bib_file = './refs.bib') {
-  # Check for required packages
-  missing_packages <- character(0)
-
-  if (!requireNamespace("dplyr", quietly = TRUE)) {
-    missing_packages <- c(missing_packages, "'dplyr'")
-  }
-  if (!requireNamespace("RefManageR", quietly = TRUE)) {
-    missing_packages <- c(missing_packages, "'RefManageR'")
-  }
-
-  if (length(missing_packages) > 0) {
-    stop(paste("Required package(s)", paste(missing_packages, collapse = ", "), "is/are not installed."))
-  }
 
   # Write bibs into bib file
   for (entry in dat_with_dois$doi) {
