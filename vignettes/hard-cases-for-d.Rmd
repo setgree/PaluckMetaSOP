@@ -1,8 +1,8 @@
 ---
-title: "Hard cases: non-standard conversions of studies into SMDs"
+title: "03: Hard cases: non-standard conversions of results into SMDs"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Hard cases: non-standard conversions of studies into SMDs}
+  %\VignetteIndexEntry{03: Hard cases: non-standard conversions of results into SMDs}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -39,7 +39,6 @@ n_c <- sum(dat$treatment_status == 0)
 n_t <- sum(dat$treatment_status == 1)
 simple_model <- summary(lm(formula = outcome ~ treatment_status, data = dat)); simple_model
 cov_model <- summary(lm(formula = outcome ~ treatment_status + cov_one + cov_two, data = dat)); cov_model
-
 
 
 # put in the numbers from simple_model and calculate distance from true d

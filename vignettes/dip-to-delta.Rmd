@@ -1,9 +1,9 @@
 ---
-title: "Converting a difference in proportions to Glass's ∆"
+title: "02: Converting a difference in proportions to Glass's ∆"
 authors: Seth Ariel Green, John-Henry Pezzuto, Roni Porat, Elizabeth Levy Paluck
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Converting a difference in proportions to Glass's ∆}
+  %\VignetteIndexEntry{02: Converting a difference in proportions to Glass's ∆}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 

@@ -9,8 +9,8 @@ It was built with instructions in the [_R packages_](https://r-pkgs.org/) book a
 
 Install via `devtools::install_github("setgree/PaluckMetaSOP")`.
 
-I am currently writing vignettes; the functions are mostly done. 
-(broseVignettes() works so long as I install with build_vignettes = TRUE !)
+I am currently writing vignettes; the functions are mostly done (though I am paring them down a bit -- the `utils.R` script can just be put into vignettes or something)
+(broseVignettes() works so long as I install with `build_vignettes = TRUE !`)
 
 ### Package TODOs
 1. edit SMD vignette
