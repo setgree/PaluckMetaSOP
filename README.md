@@ -19,3 +19,5 @@ I am currently writing vignettes; the functions are mostly done (though I am par
 4. write vignette on hard cases -> ∆
 5. double-check everything works as intended and also in a general way
 6. double-check everything (get a second reader/user?)
+7. where's the big PDF you want (it might be an error related to ∆)
+
