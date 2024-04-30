@@ -22,5 +22,10 @@ Config/testthat/edition: 3
 Depends: 
     R (>= 4.1)
 LazyData: true
-Suggests: knitr
+Suggests: 
+    ggplot2,
+    gt,
+    knitr,
+    purrr,
+    rmarkdown
 VignetteBuilder: knitr
