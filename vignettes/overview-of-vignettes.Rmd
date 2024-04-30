@@ -18,15 +18,15 @@ knitr::opts_chunk$set(
 
 1)  Identify a causal question where combining results from many papers will be useful.
 
-    1)  For instance, you might want to assess scope condition under which an effect can be expected; identify cross-study moderators that predict population- or setting-level effects that can be expected to strengthen or weaken effects; or put multiple theoretical approaches head to head to see which one works best.
+    -   For instance, you might want to assess scope condition under which an effect can be expected; identify cross-study moderators that predict population- or setting-level effects that can be expected to strengthen or weaken effects; or put multiple theoretical approaches head to head to see which one works best.
 
-    2)  The alternative to a meta-analysis, for assessing the relationship between X and Y, is to run an experiment (or otherwise well-identified study) on that relationship; but a meta-analysis can also be very helpful in figuring out what that experiment should look like.
+        -   The alternative to a meta-analysis for assessing the relationship between X and Y is to run an experiment. But a meta-analysis can be very helpful in figuring out what that experiment should look like by illuminating gaps in the literature.
 
 2)  Decide which papers shed light on that question.
 
-    1)  In practice this means operationalizing X and Y, which might not be straightforward: does imagined contact count as contact? What exactly is prejudice, and how do we measure it?
+    -   In practice this means operationalizing X and Y, which might not be straightforward: does imagined contact count as contact? What exactly is prejudice, and how do we measure it?
 
-    2)  It also means setting inclusion criteria related to, e.g., internal validity, measurement error, or population. For instance, your meta-analysis might be focused only on the results of [policy-relevant randomized controlled trials](https://www.cambridge.org/core/journals/behavioural-public-policy/article/contact-hypothesis-reevaluated/142C913E7FA9E121277B29E994124EC5), a [particular class of dependent variable](https://osf.io/a7g95/), or the effects of [sexual violence prevention programs on college campuses](https://www.jahonline.org/article/S1054-139X(23)00117-9/abstract).
+    -   It also means setting inclusion criteria related to, e.g., internal validity, measurement error, or population. For instance, your meta-analysis might be focused only on the results of [policy-relevant randomized controlled trials](https://www.cambridge.org/core/journals/behavioural-public-policy/article/contact-hypothesis-reevaluated/142C913E7FA9E121277B29E994124EC5), a [particular class of dependent variable](https://osf.io/a7g95/), or the effects of [sexual violence prevention programs on college campuses](https://www.jahonline.org/article/S1054-139X(23)00117-9/abstract).
 
 3)  Gather and read all such papers (re: conduct a systematic search).
 
