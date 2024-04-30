@@ -1,8 +1,8 @@
 ---
-title: "Performing meta-analysis (the Paluck Lab way)"
+title: "04: Performing meta-analysis the Paluck Lab way"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Performing meta-analysis (the Paluck Lab way)}
+  %\VignetteIndexEntry{04: Performing meta-analysis the Paluck Lab way}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
