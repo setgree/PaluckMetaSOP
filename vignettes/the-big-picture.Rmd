@@ -1,0 +1,51 @@
+---
+title: "00: The big picture"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{00: The big picture}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+### Meta-analysis is (more or less) a six step process.
+
+1)  Identify a causal question where combining results from many papers will be useful.
+
+    1)  For instance, you might want to assess scope condition under which an effect can be expected; identify cross-study moderators that predict population- or setting-level effects that can be expected to strengthen or weaken effects; or put multiple theoretical approaches head to head to see which one works best.
+
+    2)  The alternative to a meta-analysis, for assessing the relationship between X and Y, is to run an experiment (or otherwise well-identified study) on that relationship; but a meta-analysis can also be very helpful in figuring out what that experiment should look like.
+
+2)  Decide which papers shed light on that question.
+
+    1)  In practice this means operationalizing X and Y, which might not be straightforward: does imagined contact count as contact? What exactly is prejudice, and how do we measure it?
+
+    2)  It also means setting inclusion criteria related to, e.g., internal validity, measurement error, or population. For instance, your meta-analysis might be focused only on the results of [policy-relevant randomized controlled trials](https://www.cambridge.org/core/journals/behavioural-public-policy/article/contact-hypothesis-reevaluated/142C913E7FA9E121277B29E994124EC5), a [particular class of dependent variable](https://osf.io/a7g95/), or the effects of [sexual violence prevention programs on college campuses](https://www.jahonline.org/article/S1054-139X(23)00117-9/abstract).
+
+3)  Gather and read all such papers (re: conduct a systematic search).
+
+4)  Condense each study's results to a single point estimate, or a cluster of point estimates, and associated variance(s).
+
+5)  Aggregate those estimates into a pooled average effect and any relevant subgroup effects.
+
+6)  Write up your results.
+
+The vignettes in this package are designed to help you with steps 4-6.
+
+### The vignettes:
+
+Vignettes 1 and 2 are about standardizing effect sizes and variance. The first is for "easy" cases where you can use `d_calc` and `var_d_calc` without too much extra work; the second talks through a few edge cases we've encountered over time. are about calculating effect sizes from data in papers.
+
+The third vignette is about how to actually do meta-analysis, i.e. combine your point estimates into pooled estimates that tell you about overall effects and subgroup effects.
+
+The fourth walks through the other functions we've written to help write a meta-analysis paper.
+
+The fifth gives examples of some visualizations we've done for past meta-analyses.
+
+Here we go 😃

@@ -1,9 +1,9 @@
 ---
-title: "03: Hard cases: non-standard conversions of results into SMDs"
+title: "02: Hard cases: non-standard conversions of results into SMDs"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteEncoding{UTF-8}
-  %\VignetteIndexEntry{03: Hard cases: non-standard conversions of results into SMDs}
+  %\VignetteIndexEntry{02: Hard cases: non-standard conversions of results into SMDs}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
   chunk_output_type: console
