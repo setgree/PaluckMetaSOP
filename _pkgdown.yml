@@ -7,3 +7,15 @@ navbar:
   type: "auto"
 
 output_dir: "docs"
+
+articles:
+  - title: "Overview of Vignettes"
+    contents:
+      - overview-of-vignettes
+  - title: "Converting Study Results into SMDs"
+    contents:
+      - d-calc-vignette
+      - hard-cases-for-d
+  - title: "Meta-Analysis the Paluck Lab Way"
+    contents:
+      - meta-analysis-vignette
