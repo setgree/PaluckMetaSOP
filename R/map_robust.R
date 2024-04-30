@@ -1,6 +1,6 @@
-#' Apply metafor::robust in a pipe sequence or to subsets using purrr's split/map
+#' Perform robust meta-analysis (including in a pipe or split paradigm)
 #'
-#' Performs robust meta-analysis on either data subsets or the whole dataset..
+#' Performs robust meta-analysis on either data subsets or the whole dataset.
 #' Its intended usage is in in context of the  split/map & pipes paradigm:
 #' `dat |> split(~some_var) |> map(map_robust)`.
 #'

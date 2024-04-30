@@ -3,7 +3,7 @@
 \docType{data}
 \name{contact_data}
 \alias{contact_data}
-\title{Contact Data}
+\title{Data from 'The Contact Hypothesis Re-evaluated'}
 \format{
 A data frame with 27 rows and 20 columns
 }

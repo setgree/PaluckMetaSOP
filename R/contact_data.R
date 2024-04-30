@@ -1,4 +1,4 @@
-#' Contact Data
+#' Data from 'The Contact Hypothesis Re-evaluated'
 #'
 #' A dataset containing various studies related to the contact hypothesis.
 #' The contact hypothesis suggests that interpersonal contact between groups
