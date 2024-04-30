@@ -1,8 +1,8 @@
 ---
-title: "00: The big picture"
+title: "00: Overview of vignettes"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{00: The big picture}
+  %\VignetteIndexEntry{00: Overview of vignettes}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
