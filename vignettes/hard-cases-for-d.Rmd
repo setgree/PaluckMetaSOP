@@ -71,7 +71,6 @@ TODO: wait for Maya to write back and then do whatever simulations or graphs mak
 
 ```{r simulation}
 library(dplyr)
-library(gt)
 
 # Function to run a single simulation
 run_simulation <- function(n) {
@@ -138,13 +137,12 @@ num_simulations <- 100
 # Run simulations
 simulation_results <- simulate_effect_sizes(n_values, num_simulations)
 
-# Summarize the results and present in a table using gt()
 simulation_results |> 
   group_by(N) |> 
   summarise(
     Avg_True_d = round(mean(True_Glass_Delta), 3),
     avg_simple_delta = round(mean(simple_Delta),3),
-    Avg_Cov_d_Diff = round(mean(covs_Delta),3)) |> gt()
+    Avg_Cov_d_Diff = round(mean(covs_Delta),3))
 
 ```
 
@@ -152,7 +150,6 @@ as we can see, this method basically works only if there are no covariates. once
 
 ```{r t-test-sim}
 library(PaluckMetaSOP)
-library(gt)
 # Assuming this library has the d_calc function for converting t-test to Cohen's d
 
 # Function to run a single simulation
@@ -219,7 +216,7 @@ simulation_results |>
     Avg_True_Cohen_d = round(mean(True_Cohen_d), 3),
     t_to_d_simple = round(mean(Cohen_d_Simple), 3),
     t_to_d_with_covs = round(mean(Cohen_d_Covs), 3)
-  ) |> gt()
+  )
 ```
 
 This is closer,
