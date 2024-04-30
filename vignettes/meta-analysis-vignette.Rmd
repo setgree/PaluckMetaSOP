@@ -26,7 +26,7 @@ If you've gotten this far, you should already have a dataset with vectors of SMD
 
 For this vignette, we'll demonstrate our functions using a built-in dataset from the `PaluckMetaSOP` package called `sv_data`. This is the dataset for "[Preventing Sexual Violence —A Behavioral Problem Without a Behaviorally-Informed Solution](https://osf.io/preprints/psyarxiv/xgbzj)". See the package manual for more details on all the variables. (We'll also use `contact_data` from "[The Contact Hypothesis Re-evaluated](https://www.cambridge.org/core/journals/behavioural-public-policy/article/contact-hypothesis-reevaluated/142C913E7FA9E121277B29E994124EC5)" for a few examples.)
 
-# The easy case: combining all estimates into a single pooled effect size
+## The easy case: combining all estimates into a single pooled effect size
 
 The main function we'll use in this vignette is called `map_robust()`. 
 
@@ -47,7 +47,7 @@ robust(x = metafor::rma(yi = sv_data$d, vi = sv_data$var_d),
 
 Our function is different in a few respects. First, it's designed to take in a dataset via a piped operation (`|>`), which was actually the main reason we wrote it in the first place (we were in the habit of using a lot of pipes). Second, so long as your dataset contains variables called `d`, `var_d`, and `unique_study_id`, it's a lot easier to type. Third, it returns a truncated output that corresponds to the information we were actually recording in our results sections.
 
-#### a note about clustering
+### a note about clustering
 
 Our meta-analyses cluster at the level of study. You could also cluster at the level of a paper, or of a team of authors, or at no level at all. Also, if you run our function on a dataset where each unique_study_id corresponds to only one row in the dataset, it's equivalent to not clustering. We'll demonstrate that with `PaluckMetaSOP::contact_data`:
 
@@ -78,7 +78,7 @@ sv_data |> map_robust()
 
 If you want to cluster at a different level, or call your cluster variable something different and modify the function accordingly, go ahead! Every meta-analysis is different, and we encourage you to to modify these functions to serve your own needs. (We typically have a `functions` folder in our replication archives where we keep all our custom functions, which is a nice way to keep your function files organized separately from your scripts.)
 
-### subgroup analyses
+## subgroup analyses
 
 The second main way we use `map_robust` and `count_and_robust` is via subgroup analyses. For instance, in "Preventing Sexual Violence," we wanted to compare the results on ideas-based outcomes to our major categories of behavioral outcomes (perpetration, victimization, bystander behaviors, and involvement behaviors.) To do this,we use the `map` function from the `purrr` library to split the dataset and apply a function (Hadley Wickham calls this  "[The Split-Apply-Combine Strategy for Data Analysis](https://vita.had.co.nz/papers/plyr.pdf)").
 
@@ -91,7 +91,7 @@ sv_data |> split(~behavior_type) |> map(count_and_robust) |> bind_rows()
 
 A note about this: if your "group" (the thing you are running `purrr::split()` on) has only one data point, the resulting numbers won't be a pooled average effect, but instead will just be the ∆ and se and p-value of that individual estimate. If this comes up, you should explain that to your readers in a note on the table. 
 
-### Making publication-ready tables out of subgroup analyses
+## Making publication-ready tables out of subgroup analyses
 If we apply a few more functions, we can actually get pretty close to a publication-ready table. 
 
 `dplyr::bind_cols()` combines multiple data frames (in this case, a list of lists) into a single data frame.
