@@ -1,4 +1,4 @@
-#' Sexual Violence Interventions Data
+#' Data from 'Preventing Sexual Violence -- A behavioral Problem Without a Behaviorally-Informed Solution'
 #'
 #' A dataset containing detailed records of studies focused on interventions to prevent sexual violence.
 #' Each record includes comprehensive details about the study's methodology, intervention specifics, participant demographics,

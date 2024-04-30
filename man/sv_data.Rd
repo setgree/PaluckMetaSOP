@@ -3,7 +3,7 @@
 \docType{data}
 \name{sv_data}
 \alias{sv_data}
-\title{Sexual Violence Interventions Data}
+\title{Data from 'Preventing Sexual Violence -- A behavioral Problem Without a Behaviorally-Informed Solution'}
 \format{
 A data frame with 489 rows and 65 columns.
 }
