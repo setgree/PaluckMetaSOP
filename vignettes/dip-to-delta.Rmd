@@ -33,6 +33,7 @@ $$
 $$
 
 The intuition for this estimator is that maximum variance for a binary variable is a 50% chance of occurring, the point at which the two events are equally likely; as the probability approaches either one or zero, the outcome becomes more predictable, which means that variance decreases.
+
 ```{r Bernoulli_dist_visualization}
 # A visualization of the intuition behind this estimator: 
 # distribution of SDs drawn from Bernoulli distribution
@@ -44,14 +45,19 @@ plot(proportions, SDs, type = "p", pch = 20, xlab = "Proportion", ylab = "Standa
 
 ```
 
-Using the conventional conversion formula for converting odds ratio to Cohen's d, ATEs that correspond in reductions of incidence from 60% to 30% and from 6% to 3% both translate to a Cohen's *d* of 0.382; by contrast, the Difference in Proportion estimator computes Glass's $\Delta$ to be 0.655 for a decline from 60% to 30%, and $\Delta$ = 0.176 for a decline from 6% to 3%.
-'
 
 ```{r dip_vs_odds_ratio}
 # both of the following equations are implemented by d_calc, but here we spell them out
 
 odds_ratio_to_d <- function(p1, p2) {
-  odds_ratio <- p1 / p2
+  # Calculate odds for each probability
+  odds1 <- p1 / (1 - p1)
+  odds2 <- p2 / (1 - p2)
+  
+  # Calculate odds ratio
+  odds_ratio <- odds1 / odds2
+  
+  # Convert odds ratio to Cohen's d
   d <- log(odds_ratio) * sqrt(3) / pi
   return(d)
 }
@@ -63,14 +69,16 @@ difference_in_proportion_calc <- function(p1, p2) {
   return(d)
 }
 
-odds_ratio_to_d(.6, .3)
-difference_in_proportion_calc(.6, .3) 
+odds_ratio_to_d(.6, .3) 
+difference_in_proportion_calc(.6, .3)  # pretty similar
 # alternatively, use d_calc
 PaluckMetaSOP::d_calc("d_i_p", 0.6 - 0.3, 0.3)
-odds_ratio_to_d(.6, .3) == odds_ratio_to_d(.06, .03) 
-difference_in_proportion_calc(.6, .3) - difference_in_proportion_calc(.06, .03)
+
+# with smaller numbers?
+odds_ratio_to_d(p1 = 0.06, p2 = 0.03)
+PaluckMetaSOP::d_calc("d_i_p", 0.06 - 0.03, 0.03)
+# pretty different
+
 ```
 
 Note that with this estimator, Glass's $\Delta$, if an event does not occur in the control group, Glass's ∆ will be impossible to calculate because the numerator of the formula equals zero. In such cases, we calculated cohen's *d* instead by computing variance from the entire sample. (If the event doesn't occur in either group, your effect size is zero.)
-
-
