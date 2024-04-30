@@ -118,7 +118,7 @@ dat <- PaluckMetaSOP::contact_data
 
 #### 3.1.1 difference in means:
 
-[DiTullio (1982)](https://www.proquest.com/docview/303259182),is a study of workplace integration programs aimed at reducing prejudice towards people with developmental disabilities. Here is table 4.9 (p. 76):
+[DiTullio (1982)](https://www.proquest.com/docview/303259182) is a study of workplace integration programs aimed at reducing prejudice towards people with developmental disabilities. Here is table 4.9 (p. 76):
 
 ![](images/DiTullio-results.png){width="600"}
 

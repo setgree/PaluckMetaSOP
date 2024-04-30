@@ -2,3 +2,8 @@ url: ~
 template:
   bootstrap: 5
 
+navbar:
+  title: "PaluckMetaSOP"
+  type: "auto"
+
+output_dir: "docs"
