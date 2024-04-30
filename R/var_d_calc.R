@@ -1,12 +1,12 @@
-#' Calculate Variance of Cohen's D or Glass's ∆
+#' Calculate Variance of Cohen's D or Glass's Delta
 #'
-#' This function computes the variance of Cohen's D or Glass's ∆ based on the provided effect size
+#' This function computes the variance of Cohen's D or Glass's Delta based on the provided effect size
 #' and sample sizes, following the equation from Cooper, Hedges, and Valentine (2009).
 #'
 #' @param d Standardized effect size calculated using `d_calc.R`.
 #' @param n_t Treatment sample size.
 #' @param n_c Control group sample size.
-#' @return Variance of Cohen's D or Glass's ∆
+#' @return Variance of Cohen's D or Glass's Delta
 #' @export
 
 var_d_calc <- function(d, n_t, n_c) {

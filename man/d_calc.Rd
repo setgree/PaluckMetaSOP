@@ -2,7 +2,7 @@
 % Please edit documentation in R/d_calc.R
 \name{d_calc}
 \alias{d_calc}
-\title{Calculate Cohen's D or Glass's ∆}
+\title{Calculate Cohen's D or Glass's Delta}
 \usage{
 d_calc(stat_type, stat, sample_sd, n_t, n_c)
 }
@@ -20,10 +20,10 @@ Possible values are "d", "d_i_d", "d_i_m", "d_i_p", "f_test", "log_odds_ratio",
 \item{n_c}{Control group sample size.}
 }
 \value{
-Cohen's D or Glass's ∆ (Delta) value.
+Cohen's D or Glass's Delta value.
 }
 \description{
-This function converts raw effect sizes into Cohen's D or Glass's ∆
+This function converts raw effect sizes into Cohen's D or Glass's Delta
 based on the measure of sample variance for standardization.
 }
 \details{

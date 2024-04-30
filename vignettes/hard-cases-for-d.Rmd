@@ -11,7 +11,7 @@ editor_options:
 
 ### Introduction
 
-Our vignette on calculating ∆ from a given paper's results should, we hope, cover the vast majority of cases you're likely to encounter. However, our meta-analytic datasets have each had edge cases that required bespoke solutions. This vignette walks through two problem scenarios : figuring out ∆ when the meta-analytic outcome is different than the one the paper focuses on; and estimating $SD_C$ from a regression table. We'll illustrate with examples from [The Contact Hypothesis Re-evaluated](https://www.cambridge.org/core/journals/behavioural-public-policy/article/contact-hypothesis-reevaluated/142C913E7FA9E121277B29E994124EC5).
+Our d-calc vignette on calculating ∆ from a given paper's results should, we hope, cover the vast majority of cases you're likely to encounter. However, each of our meta-analyses have had edge cases that required bespoke solutions. This vignette walks through two problem scenarios: figuring out ∆ when the meta-analytic outcome is different than the one the paper focuses on; and estimating an SMD from a regression table. We'll illustrate with examples from [The Contact Hypothesis Re-evaluated](https://www.cambridge.org/core/journals/behavioural-public-policy/article/contact-hypothesis-reevaluated/142C913E7FA9E121277B29E994124EC5) (TCHR from here on out).
 
 In general, we make all available efforts to figure out a "good enough" estimate of ∆, imperfect data notwithstanding. However if we really can't figure something out, we'll omit a study or just include it as part of a vote counting procedure.[^1]
 
@@ -23,17 +23,51 @@ In general, we make all available efforts to figure out a "good enough" estimate
 
 ![](images/broockman-results.png){width="600"}
 
-These results are already presented in terms of SDs of change, which makes the meta-analyst's life much easier. However, our meta-analysis was specifically about the effects of intergroup contact, rather than intergroup contact + other treatments. Admittedly, many studies in our experiment tested intergroup contact in conjunction with other treatments, e.g. a conversation about race issues ([Sorensen 2010](https://www.proquest.com/docview/761442605?pq-origsite=gscholar&fromopenview=true)) or an invitation to ask a member of the outgroup questions about her life ([Evans 1976)](https://psycnet.apa.org/record/1976-27859-001). However, in this case, we already know from Figure 1 that most of the change in attitudes is independent of intergroup contact; at a 3 month follow-up, a conversation with a cis canvasser led to a reduction in transphobic attitudes of d = 0.32, vs. 0.43 for trans canvassers. So if we were to take the estimate of d = 0.43 as our estimate of the effects of intergroup contact, that would probably be an overestimate because it would also be capturing the effects of an independently effective treatment.
+These results are already presented in terms of fractions of an SD, which makes the analyst's life much easier. However, our meta-analysis was specifically about the effects of intergroup contact, rather than intergroup contact + other treatments, and this study features a canvassing component that, as this figure shows, influences the dependent outcome independent of intergroup contact.
 
-If whether a subject talked to a trans or cis canvasser was randomly assigned, then $d = 0.43-0.32 = 0.11$ would be an unbiased, simple estimate of the effects of talking to a trans person above and beyond the effects of the conversation. However, when we emailed David and Josh to ask about this, they told us that assignment wasn't so simple because it varied across places where conversations took place ("turfs" in the lingo of the paper), and that it would take several hours of work for the authors to recreate the randomizations and account for all of this with randomization inference. This did not seem to us like a reasonable request on our part just to get an answer that, in all likelihood, was going to be very similar to $d = 0.11$. So we did end up just taking as our estimate, imperfect though it may be.
+Admittedly, many studies in our experiment tested intergroup contact in conjunction with other treatments, e.g. a conversation about race issues ([Sorensen 2010](https://www.proquest.com/docview/761442605?pq-origsite=gscholar&fromopenview=true)) or an invitation to ask a member of the outgroup questions about her life ([Evans 1976)](https://psycnet.apa.org/record/1976-27859-001). However, in this case, we already know from Figure 1 that *most* of the change in attitudes is accounted for by the canvassing component; at a 3 month follow-up, a conversation with a cis canvasser led to a reduction in transphobic attitudes of d = 0.32, vs. 0.43 for trans canvassers. So the estimate of d = 0.43 as an estimate of the effects of intergroup contact would probably be an overestimate of the effects of intergroup contact by itself.
+
+If whether a subject talked to a trans or cis canvasser was randomly assigned, then $d = 0.43-0.32 = 0.11$ would be an unbiased estimate of the effects of talking to a trans person above and beyond the effects of the conversation. However, when we emailed David and Josh to ask about this, they told us that assignment varied across places where conversations took place ("turfs"), and that it would take a fair bit of work for the authors to recreate the randomizations and account for all possible assignments with randomization inference. This did not seem to us like a reasonable request on our part just to get an answer that, in all likelihood, was going to be very similar to $d = 0.11$. So we took that as our estimate, imperfect though it may be.
 
 A few notes on this. First, when in doubt, write to the authors; papers do not communicate everything researchers know about their subject. Second, although $d=0.11$ is a comparatively small effect size (the overall meta-analytic estimate in this paper was $∆ = 0.27$), we consider this one of the strongest pieces of evidence for when and where contact reduces prejudice for a few reasons:
 
--   Three months of measurement delay after treatment ends was an unusually long gap.
+-   Effects persisted for three months after treatment.
 
--   This article had open data and a detailed pre-analysis plan, which were both rarities in the assembled dataset.
+-   This article had open data and a detailed pre-analysis plan, which were both rarities in the assembled dataset and which increase our confidence in the estimate.
 
--   This paper's careful design allowed us to disentangle the effects of intergroup contact vs. the other elements of treatment. Other papers in our dataset did not allow for these kinds of fine-grained measurements, so they might be overestimates of the effects of contact (if the non-contact elements of treatment also meaningfully affected the outcomes). This is a tricky problem for meta-analysis because the standard meta-analytic models
+-   This paper's careful design allowed us to disentangle the effects of intergroup contact vs. the other elements of treatment. Other papers in our dataset did not allow for these kinds of fine-grained measurements, so they might be overestimates of the effects of contact if the non-contact elements of treatment also meaningfully affected the outcomes.
+
+    -   This is a tricky problem for meta-analysis because the standard meta-analytic models only account for *statistical* sources of uncertainty. In other words, if you have one study that is unusually attentive to validity (e.g. on measurement error, reproducibility, or constraining researcher degrees of freedom), and another that takes no such steps, when you combine them in a meta-analysis, those quality features will not be taken into account unless they happen to produce more precise point estimates, which is not guaranteed. We generally account for these sorts of issues by running subgroup analyses. For instance, in TCHR, we separately meta-analyzed studies with and without a pre-analysis plan and found a substantial difference: ∆ = 0.016 for studies with a pre-analysis plan and ∆ = 0.451 for studies without.
+
+Ultimately, a pooled effect is ultimately just one way to assess the quality of evidence produced by a literature and can be supplemented by other descriptions and analyses. One such strategy is to highlight the 'landmark' studies in depth, as we do in [Paluck et al. (2021)](https://www.annualreviews.org/content/journals/10.1146/annurev-psych-071620-030619). These studies "provide a glimpse of what a meta-analysis would reveal if we could weight studies by quality as well as quantity" (p. 14.19). If we had done so for TCHR, we would have highlighted this study as well.
+
+### Calculating standardized mean difference from regression output
+
+Some studies, particularly by economists, present results from a regression output. It can take some work to translate these results to a SMD.
+
+Here is the results table from [Boisjoly et al. (2006)](https://www.aeaweb.org/articles?id=10.1257/aer.96.5.1890)
+
+![](images/boisjoly-reg-results.png){width="600"}
+
+As a preliminary remark, we default to translating the OLS results to an SMD rather than ordered probit coefficients. However, if this table was all you had to work with, there would be no straightforward way to calculate the standard deviation of the outcome because of the presence of control variables which soak up some of the variance.
+
+We recommend you take the following steps.
+
+First, read the entire paper, because information about the outcome's standard deviation might be reported somewhere else. In this paper, it's in appendix table 1:
+
+![](images/boisjoly-sd-results.png){width="600"}
+
+The same was true for [Barnhardt (2009)](https://www.povertyactionlab.org/evaluation/near-and-dear-evaluating-impact-neighbor-diversity-inter-religious-attitudes), where the SD was reported in table 4 in the appendix (we've highlighted the relevant section because it's relatively easy to miss):
+
+![](images/barnhardt-results.png){width="600"}
+
+Second, if a simple regression model is reported without any controls, you can divide $\beta$ by $se$ to get the T-test, which can be converted to $d$ in a routinized way with `PaluckMetaSOP::d_calc`. (Alternatively, you can multiply the standard error of the intercept by the square root of N for the control group and get a reasonable estimate of the SD of the control group, but you're probably better off just converting to T.)
+
+Third, if you really don't have either piece of information, email the authors to ask if the data can be made available to you, or if not, if they can calculate the standard deviation of the dependent variable (for the entire population for Cohen's dor just the control group for Glass's ∆).
+
+Fourth, if you really can't find any of that and if the authors don't respond, you've come to a fork in the road. One answer is to discard the study on the grounds that you could not figure out a specific effect size. Another is to include it in a vote counting procedure. A third is to do your best with what you have, knowing that it might be a biased estimate.
+
+TODO: wait for Maya to write back and then do whatever simulations or graphs make sense. maybe we plot the distribution of t-values? I think not. I think that's responding to an imaginary problem.
 
 ```{r simulation}
 library(dplyr)
@@ -117,7 +151,9 @@ simulation_results |>
 as we can see, this method basically works only if there are no covariates. once you have informative covariates, no good.
 
 ```{r t-test-sim}
-library(PaluckMetaSOP)  # Assuming this library has the d_calc function for converting t-test to Cohen's d
+library(PaluckMetaSOP)
+library(gt)
+# Assuming this library has the d_calc function for converting t-test to Cohen's d
 
 # Function to run a single simulation
 run_simulation <- function(n) {

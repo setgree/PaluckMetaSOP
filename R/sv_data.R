@@ -3,7 +3,7 @@
 #' A dataset containing detailed records of studies focused on interventions to prevent sexual violence.
 #' Each record includes comprehensive details about the study's methodology, intervention specifics, participant demographics,
 #' outcome measures, and much more, supporting thorough meta-analytical studies.
-#' @format A data frame with 489r rows and 65 columns.
+#' @format A data frame with 489 rows and 65 columns.
 #' @source Porat et al. (2024). "Preventing Sexual Violence -- A Behavioral Problem Without a Behaviorally-Informed Solution"
 #' \describe{
 #'   \item{author}{Last name of the paper's first author.}

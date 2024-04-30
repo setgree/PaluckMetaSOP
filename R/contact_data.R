@@ -23,7 +23,7 @@
 #'   \item{n_c}{Sample size of the control group.}
 #'   \item{sd_c}{Standard deviation of the control group, if available.}
 #'   \item{what}{Reference to the location in the publication where the data or statistic is reported (e.g., page number, table number).}
-#'   \item{d}{Standardized effect size measure (Cohen’s d or Glass’s Δ, depending on the context).}
+#'   \item{d}{Standardized effect size measure (Cohen’s d or Glass’s Delta, depending on the context).}
 #'   \item{var_d}{Variance of the standardized effect size.}
 #'   \item{se_d}{Standard error of the standardized effect size.}
 #'   \item{p_a_p}{Indicates presence (1) or absence (0) of a pre-analysis plan.}

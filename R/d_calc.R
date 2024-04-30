@@ -1,6 +1,6 @@
-#' Calculate Cohen's D or Glass's ∆
+#' Calculate Cohen's D or Glass's Delta
 #'
-#' This function converts raw effect sizes into Cohen's D or Glass's ∆
+#' This function converts raw effect sizes into Cohen's D or Glass's Delta
 #' based on the measure of sample variance for standardization.
 #'
 #' All calculations derived from Cooper, Hedges, and Valentine (2009), except
@@ -15,7 +15,7 @@
 #' @param sample_sd Standard deviation of the relevant sample (preferably of the control group).
 #' @param n_t Treatment group sample size.
 #' @param n_c Control group sample size.
-#' @return Cohen's D or Glass's ∆ (Delta) value.
+#' @return Cohen's D or Glass's Delta value.
 #'
 #' @export
 #'
