@@ -48,6 +48,5 @@ We elaborate more on this estimator in the paper's appendix.
 # sample_sd = sd_c,
 # n_t = n_t,
 # n_c = n_c))
-# NOTE TO REVISIT THIS LAST EXAMPLE BC of standardized reg coef
 }
 }

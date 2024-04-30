@@ -35,9 +35,7 @@
 #' # sample_sd = sd_c,
 #' # n_t = n_t,
 #' # n_c = n_c))
-#' # NOTE TO REVISIT THIS LAST EXAMPLE BC of standardized reg coef
 #' }
-
 
 d_calc <- function(stat_type, stat, sample_sd, n_t, n_c) {
   # Calculate Cohen's D or Glass's $\Delta$ based on effect size and sample SD
