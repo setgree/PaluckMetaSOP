@@ -1,5 +1,5 @@
 ---
-title: "01: Converting a study's results into SMD, variance, and standard error"
+title: "02: Converting a study's results into SMD, variance, and standard error"
 author: Seth Ariel Green, John-Henry Pezzutto, Roni Porat, and Elizabeth Levy Paluck
 output: 
   rmarkdown::html_vignette:
@@ -180,21 +180,23 @@ dessel__school_a_se <- sqrt(dessel_school_a_var)
 
 In a bivariate regression testing the relationship between treatment status and outcome, the $\beta$ coefficient is is equivalent to the difference in means between the groups. Calculating the SD from a regression table takes some guesswork (see the "hard cases" vignette), but some studies report both $\beta$ and the standard deviation for the outcome.
 
-[Boisjoly et al. (2006)](https://www.aeaweb.org/articles?id=10.1257/aer.96.5.1890) tested the effects of being randomly assigned a black or "other minority" roommate on the attitudes and behaviors of white college students. Here is Appendix table 1 (p. 1903):
+[Boisjoly et al. (2006)](https://www.aeaweb.org/articles?id=10.1257/aer.96.5.1890) tested the effects of being randomly assigned a black or "other minority" roommate on the attitudes and behaviors of white college students.
 
-![](images/boisjoly-sd-results.png){width="600"}
-
-Here, for what we selected as the main dependent variable ("Affirmative action in college admissions should be abolished (reversed)"), we have the SD for the entire population of white students who were randomly assigned roommates (1.073) rather than just the control group. For this study, our SMD estimate is therefore going to be Cohen's d rather than Glass's ∆.
-
-Instead of a difference in means, we have linear regression coefficients from table 3, column 3 (p. 1899):
+Instead of a difference in means, we have linear regression coefficients from table 3, column 3 (p. 1899): 
 
 ![](images/boisjoly-reg-results.png){width="600"}
 
-We take the Row 1, column 3 (0.366\*) as our main measure of unstandardized mean difference.[^2]
+We took Row 1, column 3 (0.366\*)  as our main measure of unstandardized mean difference.[^2] 
 
-[^2]: Here, a reader might note that $\beta$ imperfectly captures the mean difference between groups because the model includes controls; the intercept here is a (perhaps hypothetical) person whose values are set to zero for all parameters, not just the treatment indicator. As part of a project that evolved into TCHR, we emailed the authors to ask to replicate the original data, but unfortunately data were not available due to the researchers' agreement with the university. (We thank Greg Duncan kindly for his help.) $\beta$ is the best thing we have given these limitations, we think, because converting [ordered probit](https://en.wikipedia.org/wiki/Ordered_probit) coefficients to ∆ is (as far as we know) an intractable problem. The resulting number might be an overestimate of the effect size, but not in a way that substantively changes our beliefs about the world. We get ∆ = 0.341, which is a small to moderate size by convention, and the coefficient is significant at the p \< 0.05 level. That's approximate correspondence. Effect size estimates are just that, estimates.
+[^2]: We always take OLS coefficients if they are available rather than Probit coefficients (See [Gomilla (2021)](https://psycnet.apa.org/record/2020-71596-001) for discussion).  However, a reader might note that $\beta$ imperfectly captures the mean difference between groups in this  because the model includes controls; the intercept here is a (perhaps hypothetical) person whose values are set to zero for all parameters, not just the treatment indicator. As part of a project that evolved into TCHR, we emailed the authors to ask to replicate the original data, but unfortunately data were not available due to the researchers' agreement with the university. (We thank Greg Duncan kindly for his help.) $\beta$ is the best thing we have given these limitations. The resulting number might be an overestimate of the effect size, but not in a way that substantively changes our beliefs about the world. We get ∆ = 0.341, which is a small to moderate size by convention, and the coefficient is significant at the p \< 0.05 level. That's approximate correspondence. Effect size estimates are just that: estimates.
 
-The authors tell us the size of the treatment and control groups on p. 1895: "of the 1,278 white respondents, 35 were assigned at least one black roommate, 98 were assigned at least one Asian roommate, 40 were assigned at least one Hispanic roommate, and 69 were assigned at least one “other race” roommate. The rest were assigned white roommates."
+While this table does not tell us what we need to know about the distribution of the dependent variable, we find what we're looking for in Appendix table 1 (p. 1903):
+
+![](images/boisjoly-sd-results.png){width="600"}
+
+For our main dependent variable ("Affirmative action in college admissions should be abolished (reversed)"), the SD for the entire population of white students who were randomly assigned roommates is 1.073. We don't have enough information to figure out the SD of the control group, so our SMD estimate here is of Cohen's d rather than Glass's ∆.
+
+Last, the authors tell us the size of the treatment and control groups on p. 1895: "of the 1,278 white respondents, 35 were assigned at least one black roommate, 98 were assigned at least one Asian roommate, 40 were assigned at least one Hispanic roommate, and 69 were assigned at least one “other race” roommate. The rest were assigned white roommates."
 
 We then calculated two separate SMDs, one corresponding to the effect on white students on being assigned a black roommate and one for being assigned "any other minority roommate:"
 
@@ -219,11 +221,13 @@ Bois_var_other_roomamtes <- var_d_calc(d = Bois_d_black_roommates,
 Bois_se_other_roommates <- sqrt(Bois_var_other_roomamtes)
 ```
 
+By the way, the fact that $\beta$, SD, and the Ns were all reported in separate places in the paper is not at all atypical You'll often have to read the entire paper carefully to find what you need to calculate ∆. However, even if everything you need is presented in a simple table, we still recommend that someone on the primary research team read every paper anyway -- it's the best way to figure out what a literature is really about.
+
 ### 3.2 Converting statistical summaries into SMDs
 
 Sometimes, papers report summary statistics that require more complex conversions. [Cooper, Hedges, and Valentine (2009)](https://www.scholars.northwestern.edu/en/publications/the-handbook-of-research-synthesis-and-meta-analysis-2nd-edition) provide formulas for converting t-tests, F-tests, log odds ratios, and odds ratios into an SMD. These conversions all produce estimates of cohen's d rather than Glass's ∆.
 
-Here we'll show examples for the t-test and F-statistic from TCHR. Instead of presenting odds ratios and log odds ratios examples, we'll introduce a novel estimator for converting differences in proportions to ∆, which we explore further in a separate vignette..
+Here we'll show examples for the t-test and F-statistic from TCHR. Instead of presenting odds ratios and log odds ratios examples, we'll introduce a novel estimator for converting differences in proportions to ∆.
 
 #### 3.2.1 t-test:
 
@@ -311,7 +315,6 @@ plot(proportions, SDs, type = "p", pch = 20, xlab = "Proportion", ylab = "Standa
 
 ```
 
-
 ```{r dip_vs_odds_ratio}
 # both of the following equations are implemented by d_calc, but here we spell them out
 
@@ -347,7 +350,7 @@ PaluckMetaSOP::d_calc("d_i_p", 0.06 - 0.03, 0.03)
 
 ```
 
-Note that with this estimator, Glass's $\Delta$, if an event does not occur in the control group, Glass's ∆ will be impossible to calculate because the numerator of the formula equals zero. In such cases, we calculated cohen's *d* instead by computing variance from the entire sample. (If the event doesn't occur in either group, your effect size is zero.)
+Note that with this estimator, if an event does not occur in the control group, Glass's ∆ will be impossible to calculate because the numerator of the formula equals zero. In such cases, we calculated cohen's d instead by computing variance from the entire sample. (If the event doesn't occur in either group, your effect size is zero.)
 
 ### 3.3 Unspecified nulls
 
@@ -355,7 +358,58 @@ Some studies, e.g. [Hall 1969](https://ir-api.ua.edu/api/core/bitstreams/8b53661
 
 `d_calc("unspecified_null")` will always return 0.01 no matter the values of the other parameters.
 
-## 4 Incorporating d_calc and var_d_calc into your analysis scripts
+## 4 Hard casses: non-standard conversions of results into SMDs
+
+Each of our meta-analyses has had edge cases that required bespoke solutions. Here we'll walk through two: figuring out ∆ when the meta-analytic outcome is different than the one the paper focuses on; and estimating an SMD from a regression table.
+
+In general, we make all available efforts to figure out a "good enough" estimate of ∆, imperfect data notwithstanding. However if we really can't figure something out, we'll omit a study or just include it as part of a vote counting procedure.[^1]
+
+[^1]: I.e., a tally of statistically significant positive, statistically significant negative, and null results. A recent paper called vote counting procedures "antiquated" ([Mathur & VanderWeele 2018](\^[Some meta-analytsts think that vote counting procedures are "antiquated" (Mathur & VanderWeele 2018))) and we agree that statistical significance is not obviously a good signal of whether a given piece of evidence is meaningful or substantive. However, vote counting can sometimes provide a novel way to look at things, e.g. a higher number of nulls than expected is a "hoop test" ([Collier 2011](https://polisci.berkeley.edu/sites/default/files/people/u3827/Understanding%20Process%20Tracing.pdf)) against publication bias.
+
+### 4.1 When *your* estimand isn't the paper's
+
+[Brookman and Kalla (2016)](science.org/doi/10.1126/science.aad9713) is a landmark study of how a brief conversation with canvassers on trans issues can durably alter transphobic attitudes. Figure 1 displays the main results:
+
+![](images/broockman-results.png){width="600"}
+
+These results are already presented in terms of fractions of an SD, which makes the analyst's life much easier. However, our meta-analysis was specifically about the effects of intergroup contact, rather than intergroup contact + other treatments, and this study features a canvassing component that, as this figure shows, influences the dependent outcome independent of intergroup contact.
+
+Admittedly, many studies in our experiment tested intergroup contact in conjunction with other treatments, e.g. a conversation about race issues ([Sorensen 2010](https://www.proquest.com/docview/761442605?pq-origsite=gscholar&fromopenview=true)) or an invitation to ask a member of the outgroup questions about her life ([Evans 1976)](https://psycnet.apa.org/record/1976-27859-001). However, in this case, we already know from Figure 1 that *most* of the change in attitudes is accounted for by the canvassing component; at a 3 month follow-up, a conversation with a cis canvasser led to a reduction in transphobic attitudes of d = 0.32, vs. 0.43 for trans canvassers. So the estimate of d = 0.43 as an estimate of the effects of intergroup contact would probably be an overestimate of the effects of intergroup contact by itself.
+
+If whether a subject talked to a trans or cis canvasser was randomly assigned, then $d = 0.43-0.32 = 0.11$ would be an unbiased estimate of the effects of talking to a trans person above and beyond the effects of the conversation. However, when we emailed David and Josh to ask about this, they told us that assignment varied across places where conversations took place ("turfs"), and that it would take a fair bit of work for the authors to recreate the randomizations and account for all possible assignments with randomization inference. This did not seem to us like a reasonable request on our part just to get an answer that, in all likelihood, was going to be very similar to $d = 0.11$. So we took that as our estimate, imperfect though it may be.
+
+A few notes on this. First, when in doubt, write to the authors; papers do not communicate everything researchers know about their subject. Second, although $d=0.11$ is a comparatively small effect size (the overall meta-analytic estimate in this paper was $∆ = 0.27$), we consider this one of the strongest pieces of evidence for when and where contact reduces prejudice for a few reasons:
+
+-   Effects persisted for three months after treatment.
+
+-   This article had open data and a detailed pre-analysis plan, which were both rarities in the assembled dataset and which increase our confidence in the estimate.
+
+-   This paper's careful design allowed us to disentangle the effects of intergroup contact vs. the other elements of treatment. Other papers in our dataset did not allow for these kinds of fine-grained measurements, so they might be overestimates of the effects of contact if the non-contact elements of treatment also meaningfully affected the outcomes.
+
+    -   This is a tricky problem for meta-analysis because the standard meta-analytic models only account for *statistical* sources of uncertainty. In other words, if you have one study that is unusually attentive to validity (e.g. on measurement error, reproducibility, or constraining researcher degrees of freedom), and another that takes no such steps, when you combine them in a meta-analysis, those quality features will not be taken into account unless they happen to produce more precise point estimates, which is not guaranteed. We generally account for these sorts of issues by running subgroup analyses. For instance, in TCHR, we separately meta-analyzed studies with and without a pre-analysis plan and found a substantial difference: ∆ = 0.016 for studies with a pre-analysis plan and ∆ = 0.451 for studies without.
+
+Ultimately, a pooled effect is ultimately just one way to assess the quality of evidence produced by a literature and can be supplemented by other descriptions and analyses. One such strategy is to highlight the 'landmark' studies in depth, as we do in [Paluck et al. (2021)](https://www.annualreviews.org/content/journals/10.1146/annurev-psych-071620-030619). These studies "provide a glimpse of what a meta-analysis would reveal if we could weight studies by quality as well as quantity" (p. 14.19). If we had done so for TCHR, we would have highlighted this study as well.
+
+### 4.2 Calculating standardized mean difference from regression output
+
+Some studies, particularly by economists, present results from a regression output. It can take some work to translate these results to a SMD.
+
+First, you should read the entire paper carefully to see if the data you need is reported somewhere you didn't expect. We touched on [Boisjoly et al. 2006)](https://www.aeaweb.org/articles?id=10.1257/aer.96.5.1890) in section 3.1.3; another is
+[Barnhardt (2009)](https://www.povertyactionlab.org/evaluation/near-and-dear-evaluating-impact-neighbor-diversity-inter-religious-attitudes), specifically table 4 in the appendix (we've highlighted the relevant section because it's relatively easy to miss):
+
+![](images/barnhardt-results.png){width="600"}
+
+Second, if a simple regression model is reported without any controls, you can divide $\beta$ by $se$ to get the T-test, which can be converted to $d$ in a routinized way with `d_calc`. [^4]
+
+[^4]: Alternatively, you can multiply the standard error of the intercept by the square root of N for the control group and get a reasonable estimate of the SD of the control group, but you're probably better off just converting to T.
+
+Third, if you can't find the data you need, email the authors to ask if the data can be made available to you, or if not, if they can calculate the standard deviation of the dependent variable (for the entire population for Cohen's dor just the control group for Glass's ∆).
+
+Fourth, if you can't find what you need and the authors don't respond, you've come to a fork in the road. One answer is to discard the study on the grounds that you could not figure out a specific effect size. Another is to include it in a vote counting procedure. A third is to do your best with what you have, knowing that it might be a biased estimate.
+
+TODO: wait for Maya to write back and then do whatever simulations or graphs make sense. maybe we plot the distribution of t-values? I think not. I think that's responding to an imaginary problem.
+
+## 5 Incorporating d_calc and var_d_calc into your analysis scripts
 
 When we wrote TCHR, we had one function that combined the results of `d_calc` and `var_d_calc` into a table; we had a script that recorded the those calculations for every study; and we copied and pasted the resulting values into our final dataset.
 
@@ -383,6 +437,6 @@ This script uses variables in the dataset as inputs for our two custom functions
 
 This approach will ultimately save you a fair bit of time, reduce a possible source of user error by eliminating the copy and paste step, and make a larger portion of your workflow computationally reproducible. To facilitate this step, it payss to have columns in your dataset corresponding to `stat_type`, `stat`, `sample_sd`, `n_t`, and `n_c`.
 
-## 5. Further reading
+## 6. Further reading
 
 See [this page on SMDs](https://handbook-5-1.cochrane.org/chapter_9/9_2_3_2_the_standardized_mean_difference.htm) from the Cochrane collaboration and the `escalc` [documentation](https://wviechtb.github.io/metafor/reference/escalc.html) from the `metafor` package for more information and discussion.

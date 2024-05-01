@@ -24,3 +24,9 @@ NOTE: If there is only one study in a cluster, this function will
 just reproduce that study's meta-analytic estimate verbatim. This is good for
 some circumstances but not others. Adapt to your needs.
 }
+\examples{
+\dontrun{
+PaluckMetaSOP::sv_data |> map_robust()
+PaluckMetaSOP::sv_data |> split(~behavior_type) |> purrr::map(map_robust) |> dplyr::bind_rows(.id = "behavior_type")
+}
+}
