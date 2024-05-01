@@ -19,7 +19,8 @@
 #' @examples
 #' \dontrun{
 #' PaluckMetaSOP::sv_data |> map_robust()
-#' PaluckMetaSOP::sv_data |> split(~behavior_type) |> purrr::map(map_robust) |> dplyr::bind_rows(.id = "behavior_type")
+#' library(dplyr); library(purrr)
+#' sv_data |> split(~behavior_type) |> map(map_robust) |> bind_rows(.id = "behavior_type")
 #' }
 #' @export
 map_robust <- function(x) {

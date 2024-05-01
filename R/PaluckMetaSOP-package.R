@@ -1,3 +1,8 @@
+#' @keywords internal
+"_PACKAGE"
+
+## usethis namespace: start
+## usethis namespace: end
 #' @title PaluckMetaSOP: Standard Operating Procedures for Meta-Analysis
 #' @description
 #' This package provides a collection of functions and datasets for conducting meta-analyses,
@@ -11,8 +16,9 @@
 #'
 #' @name PaluckMetaSOP-package
 #' @aliases PaluckMetaSOP
-#' @seealso \code{\link{d_calc}}, \code{\link{count_and_robust}}, \code{\link{manage_references}},
+#' @seealso \code{\link{d_calc}}, \code{\link{manage_references}},
 #'   \code{\link{map_robust}}, \code{\link{study_count}}, \code{\link{sum_lm}}, \code{\link{sum_tab}},
 #'   \code{\link{sv_data}}
 #' @keywords package
 NULL
+
