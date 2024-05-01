@@ -6,7 +6,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-This package documents the [Paluck lab’s](www.betsylevypaluck.com/)
+This package documents the [Paluck lab’s](http://www.betsylevypaluck.com/)
 approach to meta-analysis.
 
 It was built with instructions in the [*R
