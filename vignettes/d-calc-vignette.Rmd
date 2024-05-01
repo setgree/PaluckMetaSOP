@@ -6,7 +6,7 @@ output:
     toc: true
     toc_depth: 4 
 vignette: >
-  %\VignetteIndexEntry{01: Converting a study's results into SMD, variance, and standard error}
+  %\VignetteIndexEntry{02: Converting a study's results into SMD, variance, and standard error}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -362,9 +362,9 @@ Some studies, e.g. [Hall 1969](https://ir-api.ua.edu/api/core/bitstreams/8b53661
 
 Each of our meta-analyses has had edge cases that required bespoke solutions. Here we'll walk through two: figuring out ∆ when the meta-analytic outcome is different than the one the paper focuses on; and estimating an SMD from a regression table.
 
-In general, we make all available efforts to figure out a "good enough" estimate of ∆, imperfect data notwithstanding. However if we really can't figure something out, we'll omit a study or just include it as part of a vote counting procedure.[^1]
+In general, we make all available efforts to figure out a "good enough" estimate of ∆, imperfect data notwithstanding. However if we really can't figure something out, we'll omit a study or just include it as part of a vote counting procedure.[^5]
 
-[^1]: I.e., a tally of statistically significant positive, statistically significant negative, and null results. A recent paper called vote counting procedures "antiquated" ([Mathur & VanderWeele 2018](\^[Some meta-analytsts think that vote counting procedures are "antiquated" (Mathur & VanderWeele 2018))) and we agree that statistical significance is not obviously a good signal of whether a given piece of evidence is meaningful or substantive. However, vote counting can sometimes provide a novel way to look at things, e.g. a higher number of nulls than expected is a "hoop test" ([Collier 2011](https://polisci.berkeley.edu/sites/default/files/people/u3827/Understanding%20Process%20Tracing.pdf)) against publication bias.
+[^5]: I.e., a tally of statistically significant positive, statistically significant negative, and null results. A recent paper called vote counting procedures "antiquated" ([Mathur & VanderWeele 2018](\^[Some meta-analytsts think that vote counting procedures are "antiquated" (Mathur & VanderWeele 2018))) and we agree that statistical significance is not obviously a good signal of whether a given piece of evidence is meaningful or substantive. However, vote counting can sometimes provide a novel way to look at things, e.g. a higher number of nulls than expected is a "hoop test" ([Collier 2011](https://polisci.berkeley.edu/sites/default/files/people/u3827/Understanding%20Process%20Tracing.pdf)) against publication bias.
 
 ### 4.1 When *your* estimand isn't the paper's
 
