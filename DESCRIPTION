@@ -18,6 +18,7 @@ Imports:
     tibble (>= 3.2)
 Suggests: 
     forcats (>= 1.0),
+    ggthemes (>= 5.1),
     ggplot2 (>= 3.5),
     ggrepel(>= 0.5),
     ggtext (>= 0.1.2),

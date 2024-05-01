@@ -1,6 +1,9 @@
 ---
 title: "Writing your meta-analytic paper"
-output: rmarkdown::html_vignette
+output:
+  rmarkdown::html_vignette:
+    fig_width: 10
+    fig_height: 10
 vignette: >
   %\VignetteIndexEntry{Writing your meta-analytic paper}
   %\VignetteEncoding{UTF-8}
