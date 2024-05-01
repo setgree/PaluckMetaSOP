@@ -214,7 +214,7 @@ target_labels <- c("Age", "Disability", "Foreigners", "Gender",
 
 ```
 
-Fair warning that a perfectionist could spend the rest of her natural life tinkering with ggplot code. At some point, the plot is good enough 😃
+Fair warning that a perfectionist could spend the rest of her natural life tinkering with ggplot code. At some point, you just have to decide that the plot is good enough for publication 😃
 
 ### 3.3 Descriptive figures
 
