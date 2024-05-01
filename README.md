@@ -18,6 +18,5 @@ packages*](https://r-pkgs.org/) should get you pretty far on the "building a pac
 
 ### Package TODOs
 1. finish d-calc vignette when I hear back from more expert colleague
-2. why do all the vignettes look so bad when they're browsed -- figures are tiny and math mode isn't rendered
-3. put down for a week and then read over everything
-4. get a second reader to double-check everything works as intended and also in a general way
+2. put down for a week and then read over everything
+3. get a second reader to double-check everything works as intended and also in a general way
