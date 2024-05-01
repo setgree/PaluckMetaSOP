@@ -12,12 +12,12 @@ articles:
   - title: "Overview of Vignettes"
     contents:
       - overview-of-vignettes
-  - title: "Converting Study Results into SMDs"
+  - title: "Converting Study Results into standardized mean differences"
     contents:
       - d-calc-vignette
-  - title: "Meta-Analysis the Paluck Lab Way"
+  - title: "Doing Meta-Analysis"
     contents:
       - meta-analysis-vignette
-  - title: "Writing meta-analytic papers"
+  - title: "Writing the paper"
     contents:
       - writing-metas-vignette
