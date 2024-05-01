@@ -20,19 +20,15 @@ knitr::opts_chunk$set(
 library(PaluckMetaSOP)
 ```
 
-This vignette walks through the Paluck Lab's approach to meta-analysis itself, i.e. the statistical procedure by which the results of many studies are pooled. 
+Now that we [have our vectors of ∆, variance, and standard errors for each paper](d-calc-vignette.html), it's time to perform a meta-analysis, i.e. the statistical procedure by which the results of many studies are pooled. 
 
-If you've gotten this far, you should already have a dataset with vectors of SMDs, varainces, and standard errors, which we explain further in the previous vignettes.
-
-For this vignette, we'll demonstrate our functions using a built-in dataset from the `PaluckMetaSOP` package called `sv_data`. This is the dataset for "[Preventing Sexual Violence —A Behavioral Problem Without a Behaviorally-Informed Solution](https://osf.io/preprints/psyarxiv/xgbzj)". See the package manual for more details on all the variables. (We'll also use `contact_data` from "[The Contact Hypothesis Re-evaluated](https://www.cambridge.org/core/journals/behavioural-public-policy/article/contact-hypothesis-reevaluated/142C913E7FA9E121277B29E994124EC5)" for a few examples.)
+The main function in this vignette is called `map_robust`. We'll demonstrate how to use it with our built-in datasets, primarily `sv_data`. This is the dataset for "[Preventing Sexual Violence —A Behavioral Problem Without a Behaviorally-Informed Solution](https://osf.io/preprints/psyarxiv/xgbzj)". (We'll also use `contact_data` from "[The Contact Hypothesis Re-evaluated](https://doi.org/10.1017/bpp.2018.25)" for a few examples.)
 
 ## The easy case: combining all estimates into a single pooled effect size
 
-The main function we'll use in this vignette is called `map_robust()`. 
+`map_robust` is a wrapepr around a pre-existing function from the `metafor` package called `robust`, which is itself a wrapped around the function `rma`. See the `man` pages for those functions for full details.
 
-It's a wrapped around a pre-exixsting function from the `metafor` package called `robust`, which is itself a wrapped around the function `rma`. See the `man` pages for those functions for full details.
-
-`map_robust` takes a dataset and returns a tibble with an N of the number of data points; an N for the number of studies; a ∆ signifying the pooled effect size; a standard error; and a p value.
+`map_robust` takes a dataset and returns a data frame with an N of the number of data points; an N for the number of studies; a ∆ signifying the pooled effect size; a standard error; and a p value.
 
 ```{r single_pooled_eff_size}
 sv_data |> map_robust()
@@ -155,3 +151,5 @@ gt() |>
 `gt` has a function called `as_latex()` that will convert this all into latex code directly.
 
 (By the way, the above table-making code is a little more sophisticated than anything we did in our published meta-analyses to date, but the ideas for all this were germinating during "Preventing Sexual Violence.")
+
+Next up: [Writing your meta-analytic paper](writing-metas-vignette.html).

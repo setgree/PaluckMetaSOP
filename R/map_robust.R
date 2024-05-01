@@ -15,7 +15,7 @@
 #' @importFrom tibble as_tibble
 #'
 #' @param x The dataset or subset to perform meta-analysis on.
-#' @return A tibble/data frame with meta-analysis results.
+#' @return A tibble with meta-analysis results.
 #' @examples
 #' \dontrun{
 #' PaluckMetaSOP::sv_data |> map_robust()

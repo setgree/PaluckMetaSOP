@@ -16,17 +16,9 @@ knitr::opts_chunk$set(
 
 ### Meta-analysis is (more or less) a six step process.
 
-1)  Identify a causal question where combining results from many papers will be useful.
+1)  Identify a causal question where combining results from many papers will be useful.[^1]
 
-    -   For instance, you might want to assess scope condition under which an effect can be expected; identify cross-study moderators that predict population- or setting-level effects that can be expected to strengthen or weaken effects; or put multiple theoretical approaches head to head to see which one works best.
-
-        -   The alternative to a meta-analysis for assessing the relationship between X and Y is to run an experiment. But a meta-analysis can be very helpful in figuring out what that experiment should look like by illuminating gaps in the literature.
-
-2)  Decide which papers shed light on that question.
-
-    -   In practice this means operationalizing X and Y, which might not be straightforward: does imagined contact count as contact? What exactly is prejudice, and how do we measure it?
-
-    -   It also means setting inclusion criteria related to, e.g., internal validity, measurement error, or population. For instance, your meta-analysis might be focused only on the results of [policy-relevant randomized controlled trials](https://www.cambridge.org/core/journals/behavioural-public-policy/article/contact-hypothesis-reevaluated/142C913E7FA9E121277B29E994124EC5), a [particular class of dependent variable](https://osf.io/a7g95/), or the effects of [sexual violence prevention programs on college campuses](https://www.jahonline.org/article/S1054-139X(23)00117-9/abstract).
+2)  Decide which papers shed light on that question.[^2]
 
 3)  Gather and read all such papers (re: conduct a systematic search).
 
@@ -36,6 +28,10 @@ knitr::opts_chunk$set(
 
 6)  Write up your results.
 
+[^1]: For instance, you might want to assess scope condition under which an effect can be expected; identify cross-study moderators that predict population- or setting-level effects that can be expected to strengthen or weaken effects; or put multiple theoretical approaches head to head to see which one works best. (The alternative to a meta-analysis for assessing the relationship between X and Y is to run an experiment. But a meta-analysis can be very helpful in figuring out what that experiment should look like by illuminating gaps in the literature.)
+
+[^2]: In practice this means operationalizing X and Y, which might not be straightforward: does imagined contact count as contact? What exactly is prejudice, and how do we measure it? It also means setting inclusion criteria related to, e.g., internal validity, measurement error, or population. For instance, your meta-analysis might be focused only on the results of [policy-relevant randomized controlled trials](https://www.cambridge.org/core/journals/behavioural-public-policy/article/contact-hypothesis-reevaluated/142C913E7FA9E121277B29E994124EC5), a [particular class of dependent variable](https://osf.io/a7g95/), or the effects of [sexual violence prevention programs on college campuses](https://www.jahonline.org/article/S1054-139X(23)00117-9/abstract).
+
 The vignettes in this package are designed to help you with steps 4-6.
 
 ### The vignettes:
@@ -44,6 +40,6 @@ The [first vignette](d-calc-vignette.html) is about effect sizes and variance. I
 
 The [second vignette](meta-analysis-vignette.html) is about how to actually do meta-analysis, i.e. combine your point estimates into pooled estimates that tell you about overall effects and subgroup effects.
 
-The [third vignette](writing-metas-vignette.html) walks through the other functions we've written to help write a meta-analysis paper. Specifically, it covers summary statistics, turning your meta-analytic database into a bibliography, and ggplot2-based visualizations. 
+The [third vignette](writing-metas-vignette.html) walks through the other functions we've written to help write a meta-analysis paper. Specifically, it covers summary statistics, turning your meta-analytic database into a bibliography, and ggplot2-based visualizations.
 
 Next up: [Converting a study's results into SMD, variance, and standard error](d-calc-vignette.html).

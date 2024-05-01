@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 library(PaluckMetaSOP)
 ```
 
-This vignette covers three topics: functions for summary statistics, a function that help you turn your database into a bibliography, and some ggplot2-based visualizations that we've founf useful.
+Now that we've [conducted our meta-analyses](meta-analysis-vignette.html), it's time to write the paper. This vignette covers three topics that help with taht: functions for summary statistics, a function that help you turn your database into a bibliography, and some ggplot2-based visualizations that we've founf useful.
 
 
 

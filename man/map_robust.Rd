@@ -10,7 +10,7 @@ map_robust(x)
 \item{x}{The dataset or subset to perform meta-analysis on.}
 }
 \value{
-A tibble/data frame with meta-analysis results.
+A tibble with meta-analysis results.
 }
 \description{
 Performs robust meta-analysis on either data subsets or the whole dataset.

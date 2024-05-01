@@ -6,7 +6,7 @@ output:
     toc: true
     toc_depth: 4 
 vignette: >
-  %\VignetteIndexEntry{02: Converting a study's results into SMD, variance, and standard error}
+  %\VignetteIndexEntry{Converting a study's results into SMD, variance, and standard error}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -440,3 +440,5 @@ This approach will ultimately save you a fair bit of time, reduce a possible sou
 ## 6. Further reading
 
 See [this page on SMDs](https://handbook-5-1.cochrane.org/chapter_9/9_2_3_2_the_standardized_mean_difference.htm) from the Cochrane collaboration and the `escalc` [documentation](https://wviechtb.github.io/metafor/reference/escalc.html) from the `metafor` package for more information and discussion.
+
+Next up: [Performing meta-analysis the Paluck Lab way](meta-analysis-vignette.html).
