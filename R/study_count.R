@@ -10,6 +10,13 @@
 #' @importFrom dplyr n_distinct
 #' @importFrom rlang sym
 #' @export
+#' @examples
+#' \dontrun{
+#' sv_data |> study_count()
+#' library(purrr)
+#' sv_data |> split(~study_design) |> map(study_count) |> bind_rows(.id = "study_design")
+#' }
+#'
 study_count <- function(dataset, counting_var = "unique_study_id") {
   # Convert the string into a symbol
   counting_var_sym <- sym(counting_var)

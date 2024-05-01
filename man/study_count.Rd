@@ -18,3 +18,11 @@ A tibble with the count of distinct observations.
 This function simplifies the process of counting the number of unique observations in a dataset
 or a subset by avoiding repetitive use of \code{summarise('N (unique)' = n_distinct(counting_var))}.
 }
+\examples{
+\dontrun{
+sv_data |> study_count()
+library(purrr)
+sv_data |> split(~study_design) |> map(study_count) |> bind_rows(.id = "study_design")
+}
+
+}
