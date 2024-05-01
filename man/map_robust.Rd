@@ -19,8 +19,9 @@ Its intended usage is in in context of the  split/map & pipes paradigm:
 }
 \details{
 \code{dat |> map_robust()} will return the meta-analytic estimate for the whole dataset.
-
-NOTE: If there is only one study in a cluster, this function will
+}
+\note{
+If there is only one study in a cluster, this function will
 just reproduce that study's meta-analytic estimate verbatim. This is good for
 some circumstances but not others. Adapt to your needs.
 }

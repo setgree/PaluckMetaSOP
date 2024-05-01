@@ -38,10 +38,8 @@ published in 2018 in Behavioural Public Policy, Issue 3 (2), pages 129–155.
 contact_data
 }
 \description{
-A dataset containing various studies related to the contact hypothesis.
-The contact hypothesis suggests that interpersonal contact between groups
-can reduce prejudice and improve social relations. These studies are all
-Randomized Controlled Trials with at least a single day of delay between
-the commencement of treatment and outcome measurement.
+A dataset containing contact hypothesis RCTs with at least a single day
+of delay between the commencement of treatment and outcome measurement.
+Studies span 1969 to 2018.
 }
 \keyword{dataset}

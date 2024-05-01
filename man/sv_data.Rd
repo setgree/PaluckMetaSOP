@@ -81,8 +81,8 @@ Porat et al. (2024). "Preventing Sexual Violence -- A Behavioral Problem Without
 sv_data
 }
 \description{
-A dataset containing detailed records of studies focused on interventions to prevent sexual violence.
-Each record includes comprehensive details about the study's methodology, intervention specifics, participant demographics,
-outcome measures, and much more, supporting thorough meta-analytical studies.
+A dataset of primary prevention studies aimed at reducing sexual violence.
+Each record includes details about the study's methods, intervention specifics, participant demographics,
+outcome measures, design and more.
 }
 \keyword{dataset}
