@@ -4,14 +4,11 @@
 \name{PaluckMetaSOP-package}
 \alias{PaluckMetaSOP-package}
 \alias{PaluckMetaSOP}
-\title{PaluckMetaSOP: Standard Operating Procedures for meta-analyses by the Paluck Lab}
+\title{PaluckMetaSOP: Standard Operating Procedures for Paluck Lab meta-analyses}
 \description{
-This functions in this package implement the Paluck lab's approach to meta-analysis, e.g. for creating SMDs, variance, standard errors, for meta-analyzing many papers, and for writing papers with a meta-analytic compoment. For help, see `browseVignettes("PaluckMetaSOP")`.
+This package implements the Paluck lab's Standard Operating Procedures for meta-analysis.
 
-This package provides functions for conducting meta-analyses,
-with a focus on standard operating procedures developed by the Paluck Lab.
-
-It currently includes six functions: \code{\link{d_calc}}, \code{\link{map_robust}}, \code{\link{study_count}},
+This package currently includes six functions: \code{\link{d_calc}}, \code{\link{map_robust}}, \code{\link{study_count}},
 \code{\link{sum_lm}}, \code{\link{sum_tab}}, and \code{\link{var_d_calc}}.
 
 It also includes two datasets from the Paluck Lab's meta-analyses:
@@ -24,9 +21,18 @@ provides an overview of the meta-analytic procedure and what these functions
 are meant to help with. The second is about converting a study's results into
 an estimate of standardized mean difference. The third is about doing meta-analysis.
 The fourth is about how we write meta-analysis papers.
+
+Make sure you install with vignettes included:
+\code{remotes::install('setgree/PaluckMetaSOP', build_vignettes = T)}
+and then run \code{browseVignettes('PaluckMetaSOP')}.
 }
 \author{
-\strong{Maintainer}: Seth Green \email{setgree@gmail.com} (\href{https://orcid.org/0000-0003-3909-1969}{ORCID})
+\strong{Maintainer}: Seth Green \email{sag2212@columbia.edu} (\href{https://orcid.org/0000-0003-3909-1969}{ORCID})
+
+Authors:
+\itemize{
+  \item John-Henry Pezzuto (\href{https://orcid.org/0000-0001-5213-4201}{ORCID})
+}
 
 }
 \keyword{internal}

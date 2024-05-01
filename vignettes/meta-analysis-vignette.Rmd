@@ -1,8 +1,8 @@
 ---
-title: "03: Performing meta-analysis the Paluck Lab way"
+title: "Performing meta-analysis the Paluck Lab way"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{03: Performing meta-analysis the Paluck Lab way}
+  %\VignetteIndexEntry{Performing meta-analysis the Paluck Lab way}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
@@ -88,14 +88,16 @@ If we apply a few more functions, we can actually get pretty close to a publicat
 
 ```{r split_plus_bind_cols}
 
-sv_data |> split(~behavior_type) |> map(map_robust) |> bind_rows(.id = "behavior_type")
+sv_data |> split(~behavior_type) |> map(map_robust) |> 
+  bind_rows(.id = "behavior_type")
 ```
 
 Which you can turn into a variety of formats, e.g LaTex or markdown, via `knitr::kable()`:
 
 ```{r split_plus_kable}
 library(knitr)
-sv_data |> split(~behavior_type) |> map(map_robust) |> bind_rows() |> kable('markdown')
+sv_data |> split(~behavior_type) |> map(map_robust) |> 
+  bind_rows() |> kable('markdown')
 ```
 
 Here is a small function that add stars to text corresponding to p values:

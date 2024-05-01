@@ -13,16 +13,12 @@ It was built with instructions in the [*R
 packages*](https://r-pkgs.org/) book and accompanies a forthcoming
 paper.
 
-Install via `devtools::install_github("setgree/PaluckMetaSOP")`.
+Install via 
+`devtools::install_github('setgree/PaluckMetaSOP', build_vignettes = T)`.
 
-I am currently writing vignettes; the functions are mostly done (though
-I am paring them down a bit – the `utils.R` script can just be put into
-vignettes or something) (broseVignettes() works so long as I install
-with `build_vignettes = TRUE` – and I finally have a manual after doing
-a lot of *manual* fixes of html issues and whatever)
+I am currently finishing the vignettes; the functions are mostly done.
 
 ### Package TODOs
-1. write vignette on "write paper" and "summary statistics" functions
+1. write final vignette on "write paper" and "summary statistics" functions
 2. finish d-calc vignette when I hear back from expert friend
 3. double-check everything works as intended and also in a general way (get a second reader)
-4. Lots more examples for functions in the documentation! 

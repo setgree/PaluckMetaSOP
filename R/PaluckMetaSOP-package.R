@@ -5,10 +5,8 @@
 ## usethis namespace: end
 #' @title PaluckMetaSOP: Standard Operating Procedures for Meta-Analysis
 #' @description
-#' This package provides functions for conducting meta-analyses,
-#' with a focus on standard operating procedures developed by the Paluck Lab.
 #'
-#' It currently includes six functions: \code{\link{d_calc}}, \code{\link{map_robust}}, \code{\link{study_count}},
+#' This package currently includes six functions: \code{\link{d_calc}}, \code{\link{map_robust}}, \code{\link{study_count}},
 #' \code{\link{sum_lm}}, \code{\link{sum_tab}}, and \code{\link{var_d_calc}}.
 #'
 #' It also includes two datasets from the Paluck Lab's meta-analyses:
@@ -21,6 +19,10 @@
 #' are meant to help with. The second is about converting a study's results into
 #' an estimate of standardized mean difference. The third is about doing meta-analysis.
 #' The fourth is about how we write meta-analysis papers.
+#'
+#' Make sure you install with vignettes included:
+#' `remotes::install('setgree/PaluckMetaSOP', build_vignettes = T)`
+#' and then run `browseVignettes('PaluckMetaSOP')`.
 #'
 #' @name PaluckMetaSOP-package
 #' @aliases PaluckMetaSOP

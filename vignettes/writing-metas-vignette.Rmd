@@ -1,8 +1,8 @@
 ---
-title: "04: Writing your meta-analytic paper"
+title: "Writing your meta-analytic paper"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{04: Writing your meta-analytic paper}
+  %\VignetteIndexEntry{Writing your meta-analytic paper}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -23,6 +23,7 @@ This vignette covers three topics: functions for summary statistics, a function 
 
 
 ```{r bib_stuff}
+library(RefManageR)
 manage_references <- function(dat_with_dois, bib_file = './refs.bib') {
 
   # Write bibs into bib file
