@@ -12,10 +12,11 @@ Install via
 
 I am currently finishing the vignettes; the functions are mostly done.
 
-### If you are a member of the Paluck Lab extending this package:
+### If you are a member of the Paluck Lab who is extending this package:
 I recommend you clone this package and begin by adding or amending R packages and/or vignettes. The instructions in the first chapter of [*R
-packages*](https://r-pkgs.org/) should get you pretty far.
+packages*](https://r-pkgs.org/) should get you pretty far on the "building a package" side of things.
 
 ### Package TODOs
-1. finish d-calc vignette when I hear back from expert friend
-2. get a second reader to double-check everything works as intended and also in a general way
+1. finish d-calc vignette when I hear back from more expert colleague
+2. put down for a week and then read over everything
+3. get a second reader to double-check everything works as intended and also in a general way
