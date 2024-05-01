@@ -1,6 +1,6 @@
 #' Print Core Results from summary(lm()) in a Neat Table
 #'
-#' This function translates the output of summary(lm()) into a format that can be used with piping,
+#' This function translates the output of `summary(lm())` into a format that can be used with piping,
 #' such as `dat |> filter(some_var) |> sum_lm()` or `dat |> split(~some_var) |> map(sum_lm)`,
 #' presenting the results in an easily transcribable table.
 #'

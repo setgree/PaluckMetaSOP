@@ -1,10 +1,8 @@
 #' Data from 'The Contact Hypothesis Re-evaluated'
 #'
-#' A dataset containing various studies related to the contact hypothesis.
-#' The contact hypothesis suggests that interpersonal contact between groups
-#' can reduce prejudice and improve social relations. These studies are all
-#' Randomized Controlled Trials with at least a single day of delay between
-#' the commencement of treatment and outcome measurement.
+#' A dataset containing contact hypothesis RCTs with at least a single day
+#' of delay between the commencement of treatment and outcome measurement.
+#' Studies span 1969 to 2018.
 #' @format A data frame with 27 rows and 20 columns
 #' @source This dataset was constructed by one author (SA Green) of the package
 #'  for "The contact hypothesis re-evaluated" by EL Paluck, SA Green, and DP Green,
