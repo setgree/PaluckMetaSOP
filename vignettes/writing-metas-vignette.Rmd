@@ -312,3 +312,42 @@ country_fig / setting_fig / tt_gender_fig
 
 ### 3.4 correlation between ideas-based and behavioral outcomes
 
+For `sv_meta`, we wanted to check whether changes in ideas were linked to changes in behavior. We first subset the data to just studies that measured change in both directions, and then made a scatterplot with changes in one dimension plotted against changes in the other. The black line represents what a 1-to-1 correlation between the two outcomes would have looked like, and the gray line is what we actually observed.
+
+```{r attitude_behavioral_scatterplot}
+
+sv_data |> filter(has_both == 'both') |>
+  group_by(author, year, study_design, unique_study_id, scale_type) |>
+  filter(delay == min(delay)) |>
+  summarise(mean_d = mean(d),
+         mean_var_d = mean(var_d),
+         mean_se_d = mean(se_d)) |>
+  pivot_wider(id_cols = c(author, year, unique_study_id, study_design),
+    names_from = c(scale_type),
+    values_from = c(mean_d, mean_var_d, mean_se_d)) |>
+  ggplot(aes(x = mean_d_ideas,
+             y = mean_d_behavior)) +
+  geom_point(aes(color = study_design),
+             size = 3) +
+  geom_abline(slope = 1,
+              lty = 'dashed') +
+  geom_smooth(lty = "dashed",
+              method = "lm",
+              se = FALSE,
+              color = 'grey') +
+  labs(title = "Correlation between ideas and behavioral change",
+       x = "Effect size (ideas)",
+       y = "Effect size (behaviors)",
+       color = "Study Design") +
+ guides(color = guide_legend(title = "")) +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5),
+        axis.text = element_text(size = 14),
+        axis.title = element_text(size = 14),
+        legend.text = element_text(size = 14),
+        legend.title = element_text(size = 14),
+        legend.position = "bottom",
+        legend.box = "vertical")
+
+
+```
