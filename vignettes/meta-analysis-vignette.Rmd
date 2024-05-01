@@ -151,4 +151,5 @@ gt() |>
 ```
 
 `gt` has a function called `as_latex()` that will convert this all into latex code directly.
-(By the way, the above table-making code is a little more sophisticated than anything we did in our  published meta-analyses to date, but the ideas were germinating during "Preventing Sexual Violence.")
+
+(By the way, the above table-making code is a little more sophisticated than anything we did in our published meta-analyses to date, but the ideas for all this were germinating during "Preventing Sexual Violence.")
