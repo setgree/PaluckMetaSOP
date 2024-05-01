@@ -1,9 +1,9 @@
 #' Create a Frequency Table for a Variable in a Data Frame
 #'
-#' This function generates a frequency table for a  variable in a dataset.
-#' It's equivalent to `table(data$some_var)`, but reworked so you can use it
-#' in a sequence of pipes, e.g. `data |> filter(var_one) |> sum_tab(var_two)`.
-#' This is useful when you want to use the split-apply-combine paradigm.
+#' `sum_tab` takes a built in function (table) and turns it into something
+#' that can be integrated into a sequence of pipes. As with `sum_lm`,
+#' this is useful for when you want to see many tables at once,
+#' or put a few tables into a bigger table.
 #' Writing this was surprisingly complicated -- it uses enquo() to capture
 #'  the unquoted variable name and !! to unquote it within the function.
 #' @param data A data frame or tibble.

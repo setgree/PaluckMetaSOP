@@ -1,8 +1,8 @@
 #' Count the Number of Unique Observations in a Dataset or Subset
 #'
-#' This function simplifies the process of counting the number of unique observations in a dataset
-#' or a subset by avoiding repetitive use of `summarise('N (unique)' = n_distinct(counting_var))`.
-#'
+#' This simple function counts how many studies are in a dataset
+#' or in different subsets of your data. It assumes your dataset
+#' has a variable called `unique_study_id`.
 #' @param dataset The dataset or subset.
 #' @param counting_var The variable to count unique observations (default: "unique_study_id").
 #' @return A tibble with the count of distinct observations.

@@ -21,9 +21,11 @@ sum_lm(dataset, y = NULL, x = NULL, coefs_only = TRUE, dgts = 5)
 If coefs_only is TRUE, returns a rounded coefficients table; otherwise, returns the full summary.
 }
 \description{
-This function translates the output of \code{summary(lm())} into a format that can be used with piping,
-such as \code{dat |> filter(some_var) |> sum_lm()} or \code{dat |> split(~some_var) |> map(sum_lm)},
-presenting the results in an easily transcribable table.
+\code{sum_lm} takes the built in R functions \code{summary(lm())}
+and lets you use them in a sequence of pipes.
+In particular this is useful when you want to test for
+the magnitude of a relationship between two variables in
+many different subsets of data at once.
 }
 \note{
 \code{dat} is the default dataset name, but you can put in whatever

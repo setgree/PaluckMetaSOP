@@ -15,8 +15,9 @@ study_count(dataset, counting_var = "unique_study_id")
 A tibble with the count of distinct observations.
 }
 \description{
-This function simplifies the process of counting the number of unique observations in a dataset
-or a subset by avoiding repetitive use of \code{summarise('N (unique)' = n_distinct(counting_var))}.
+This simple function counts how many studies are in a dataset
+or in different subsets of your data. It assumes your dataset
+has a variable called \code{unique_study_id}.
 }
 \examples{
 \dontrun{
