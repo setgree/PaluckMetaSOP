@@ -28,3 +28,11 @@ presenting the results in an easily transcribable table.
 \note{
 \code{dat} is the default dataset name, but you can put in whatever
 }
+\examples{
+ \dontrun{
+PaluckMetaSOP::contact_data |> sum_lm()
+library(dplyr); library(purrr)
+PaluckMetaSOP::sv_data |> split(~study_design) |> map(sum_lm)
+}
+
+}

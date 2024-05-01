@@ -13,6 +13,14 @@
 #' @importFrom stats lm as.formula
 #' @note `dat` is the default dataset name, but you can put in whatever
 #' @export
+#'
+#' @examples
+#'  \dontrun{
+#' PaluckMetaSOP::contact_data |> sum_lm()
+#' library(dplyr); library(purrr)
+#' PaluckMetaSOP::sv_data |> split(~study_design) |> map(sum_lm)
+#' }
+#'
 
 sum_lm <- function(dataset, y = NULL, x = NULL, coefs_only = TRUE, dgts = 5) {
   if (missing(dataset)) {
@@ -35,11 +43,14 @@ sum_lm <- function(dataset, y = NULL, x = NULL, coefs_only = TRUE, dgts = 5) {
     }
   }
 
-  print_obj <- summary(lm(formula = as.formula(paste(rlang::quo_name(y), '~', rlang::quo_name(x))),
+  print_obj <- summary(lm(formula = as.formula(paste(rlang::quo_name(y),
+                                                     '~',
+                                                     rlang::quo_name(x))),
                           data = dataset))
 
   if (coefs_only) {
-    return(round(print_obj$coefficients, digits = dgts))
+    coef_table <- as.data.frame(print_obj$coefficients)
+    return(round(coef_table, digits = dgts))
   } else {
     return(print_obj)
   }

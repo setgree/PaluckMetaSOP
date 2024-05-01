@@ -1,0 +1,53 @@
+---
+title: "04: Writing your meta-analytic paper"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{04: Writing your meta-analytic paper}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(PaluckMetaSOP)
+```
+
+This vignette covers three topics: functions for summary statistics, a function that help you turn your database into a bibliography, and some ggplot2-based visualizations that we've founf useful.
+
+
+
+```{r bib_stuff}
+manage_references <- function(dat_with_dois, bib_file = './refs.bib') {
+
+  # Write bibs into bib file
+  for (entry in dat_with_dois$doi) {
+    RefManageR::WriteBib(bib = RefManageR::GetBibEntryWithDOI(doi = entry),
+                         file = bib_file,
+                         append = TRUE)
+  }
+
+  # Function to add DOI to the BibTeX file
+  add_doi_to_bib <- function(new_doi) {
+    RefManageR::WriteBib(bib = RefManageR::GetBibEntryWithDOI(new_doi),
+                         file = bib_file,
+                         append = TRUE)
+  }
+
+  # Return the function to add DOIs to the BibTeX file
+  return(list(add_doi_to_bib = add_doi_to_bib))
+}
+
+```
+
+
+```{r graphing_stuff}
+
+bold_labels <- function(x) {
+  ifelse(x == "RE Estimate", "<b>RE Estimate</b>", x)
+}

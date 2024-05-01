@@ -23,8 +23,6 @@ a lot of *manual* fixes of html issues and whatever)
 
 ### Package TODOs
 1. write vignette on "write paper" and "summary statistics" functions
-2. finish vignette on hard cases -> delta
-3. double-check everything works as intended and also in a general way
-4. look at all the notes which are weird but whatevs
-5. Lots more examples for functions in the documentation! 
-6. double-check everything (get a second reader/user?)
+2. finish d-calc vignette when I hear back from expert friend
+3. double-check everything works as intended and also in a general way (get a second reader)
+4. Lots more examples for functions in the documentation! 

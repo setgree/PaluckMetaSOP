@@ -15,7 +15,9 @@ articles:
   - title: "Converting Study Results into SMDs"
     contents:
       - d-calc-vignette
-      - hard-cases-for-d
   - title: "Meta-Analysis the Paluck Lab Way"
     contents:
       - meta-analysis-vignette
+  - title: "Writing meta-analytic papers"
+    contents:
+      - writing-metas-vignette

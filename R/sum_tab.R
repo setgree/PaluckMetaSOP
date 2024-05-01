@@ -1,17 +1,28 @@
 #' Create a Frequency Table for a Variable in a Data Frame
 #'
-#' This function generates a frequency table for a specific variable in a dataset.
-#'
-#' It uses enquo() to capture the unquoted variable name and !! to unquote it
-#' within the function.
+#' This function generates a frequency table for a  variable in a dataset.
+#' It's equivalent to `table(data$some_var)`, but reworked so you can use it
+#' in a sequence of pipes, e.g. `data |> filter(var_one) |> sum_tab(var_two)`.
+#' This is useful when you want to use the split-apply-combine paradigm.
+#' Writing this was surprisingly complicated -- it uses enquo() to capture
+#'  the unquoted variable name and !! to unquote it within the function.
 #' @param data A data frame or tibble.
 #' @param var_name The name of the variable/column to generate the frequency table.
-#'
 #' @return A table showing the frequency of each unique value in the specified variable.
 #'#'
 #' @importFrom dplyr pull
 #' @importFrom rlang !! enquo
 #' @export
+#' @examples
+#'  \dontrun{
+#' # simple example
+#' PaluckMetaSOP::sv_data |> sum_tab(behavior_type)
+#' # example with split by some other factor
+#' library(purrr)
+#' PaluckMetaSOP::sv_data |> split(~study_design) |>
+#' map(~ sum_tab(., behavior_type)) |> bind_rows(.id = "study_design")
+#' }
+#'
 
 sum_tab <- function(data, var_name) {
   var_name <- enquo(var_name)
