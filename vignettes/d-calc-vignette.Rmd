@@ -36,11 +36,13 @@ In one case — the difference in proportions estimator — we depart from those
 
 ### 1.2 d vs ∆
 
-There are two basic ways to standardize your SMD. If you divide $M_1 - M_2$ by the $SD$ of the entire sample, your estimator is called [Cohen's d](https://resources.nu.edu/statsresources/cohensd). If you use an estimated $SD$ from just the control group, you get [Glass's ∆](https://www.statisticshowto.com/glasss-delta/) (Delta). The Paluck lab generally prefers Glass's ∆ because we're interested in the efficacy of interventions relative to the population's baseline state, and we think that treatment might sometimes change the distribution of the outcome (i.e. heterogeneous treatment effects).
+There are two basic ways to standardize your SMD. If you divide $M_1 - M_2$ by the $SD$ of the entire sample, your estimator is called [Cohen's d](https://resources.nu.edu/statsresources/cohensd). If you use an estimated $SD$ from just the control group, you get [Glass's ∆](https://www.statisticshowto.com/glasss-delta/) (Delta). 
 
-In the rest of this vignette, we'll use ∆ as our symbol for SMD.
+The Paluck lab generally prefers Glass's ∆ because we're interested in the efficacy of interventions relative to the population's baseline state, and we think that treatment might sometimes change the distribution of the outcome (i.e. heterogeneous treatment effects).
 
 When the $SD$ of the control group isn't available but the $SD$ of the entire population is, we use the $SD$ of the entire population. When neither is available, or can't be figured out from a paper's results, we might have a problem. We discuss these issues more in section 4.
+
+In the rest of this vignette, we'll use ∆ as our symbol for SMD.
 
 ## 2 d_calc and var_d_calc
 
