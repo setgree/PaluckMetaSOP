@@ -17,6 +17,6 @@ I recommend you clone this package and begin by adding or amending R packages an
 packages*](https://r-pkgs.org/) should get you pretty far on the "building a package" side of things.
 
 ### Package TODOs
-1. finish d-calc vignette when I hear back from more expert colleague
+1. tests. I think my examples all work
 2. put down for a week and then read over everything
 3. get a second reader to double-check everything works as intended and also in a general way
