@@ -187,7 +187,7 @@ A standard check for publication bias is to see if effect size is positively cor
 
 Here's a simplified version of figure 1 from 'The Contact Hypothesis Re-Evaluated'.
 
-```{r se_d_plot, tidy=TRUE, warning=FALSE, message=FALSE}
+```{r se_d_plot, warning=FALSE, message=FALSE}
 library(ggrepel)
 shape_orders <- c(19, 17, 15, 18)
 target_labels <- c("Age", "Disability", "Foreigners", "Gender", 
