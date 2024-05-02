@@ -40,6 +40,6 @@ contact_data
 \description{
 A dataset containing contact hypothesis RCTs with at least a single day
 of delay between the commencement of treatment and outcome measurement.
-Studies span 1969 to 2018.
+Studies span 1969 to 2016.
 }
 \keyword{dataset}

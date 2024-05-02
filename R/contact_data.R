@@ -2,7 +2,7 @@
 #'
 #' A dataset containing contact hypothesis RCTs with at least a single day
 #' of delay between the commencement of treatment and outcome measurement.
-#' Studies span 1969 to 2018.
+#' Studies span 1969 to 2016.
 #' @format A data frame with 27 rows and 20 columns
 #' @source This dataset was constructed by one author (SA Green) of the package
 #'  for "The contact hypothesis re-evaluated" by EL Paluck, SA Green, and DP Green,
