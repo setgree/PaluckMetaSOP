@@ -26,4 +26,10 @@ the unquoted variable name and !! to unquote it within the function.
 \examples{
 # simple example: entire dataset
 PaluckMetaSOP::sv_data |> sum_tab(behavior_type)
+\dontrun{
+# example with split and apply to many subsets
+library(purrr)
+PaluckMetaSOP::sv_data |> split(~study_design) |>
+map(~ sum_tab(., behavior_type)) |> bind_rows(.id = "study_design")
+}
 }

@@ -29,4 +29,9 @@ some circumstances but not others. Adapt to your needs.
 # example 1: meta-analyze entire dataset
 PaluckMetaSOP::sv_data |> map_robust()
 # example 2: meta-analyze many subsetes and create overall table
+\dontrun{
+library(dplyr); library(purrr)
+sv_data |> split(~behavior_type) |> map(map_robust) |>
+ bind_rows(.id = "behavior_type")
+ }
 }

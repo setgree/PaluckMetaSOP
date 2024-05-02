@@ -25,7 +25,7 @@
 #' # Example: Calculate d for a study that provides an F-test
 #' f_test_result <- d_calc(stat_type = "f_test", stat = 1, n_t = 50, n_c = 40)
 #' # Example: Use mapply to calculate d from rows in dataset
-#' @dontrun{
+#' \dontrun{
 #' library(dplyr)
 #' PaluckMetaSOP::contact_data |>
 #' select(-d) |>.# remove d in order to recalculate it

@@ -29,4 +29,14 @@ ditullio_variance <- var_d_calc(d = ditullio_results, n_t = 38, n_c = 38)
 ditullio_se <- sqrt(ditullio_variance)
 
 # example 2: calculating d, var_d, and se_d for an entire dataset
+\dontrun{
+PaluckMetaSOP::contact_data |>
+select(-var_d)
+mutate(var_d = mapply(
+FUN = var_d_calc,
+d = d,
+n_t = n_t,
+n_c = n_c)) |>
+mutate(se_d = sqrt(var_d))
+}
 }

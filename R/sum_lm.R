@@ -20,7 +20,7 @@
 #' # example 1: entire dataset
 #' PaluckMetaSOP::contact_data |> sum_lm()
 #' # example 2: split and apply to many subsets
-#' @dontrun{
+#' \dontrun{
 #' library(purrr)
 #' PaluckMetaSOP::sv_data |> split(~study_design) |> map(sum_lm)
 #'}

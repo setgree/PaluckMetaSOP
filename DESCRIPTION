@@ -29,8 +29,7 @@ Suggests:
     RefManageR (>= 1.4),
     rmarkdown (>= 2.26),
     stringr (>= 1.5),
-    tidyr (>= 1.3),
-    testthat (>= 3.0.0)
+    tidyr (>= 1.3)
 VignetteBuilder: 
     knitr
 Config/testthat/edition: 3

@@ -23,4 +23,10 @@ has a variable called \code{unique_study_id}.
 # simple example: entire datasets
 PaluckMetaSOP::sv_data |> study_count()
 # example with split, apply to many datasets, and create summary table
+\dontrun{
+library(purrr)
+PaluckMetaSOP::sv_data |> split(~study_design) |>
+map(study_count) |> bind_rows(.id = "study_design")
+}
+
 }

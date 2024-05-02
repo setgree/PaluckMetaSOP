@@ -16,7 +16,7 @@
 #' @examples
 #' # simple example: entire dataset
 #' PaluckMetaSOP::sv_data |> sum_tab(behavior_type)
-#' @dontrun{
+#' \dontrun{
 #' # example with split and apply to many subsets
 #' library(purrr)
 #' PaluckMetaSOP::sv_data |> split(~study_design) |>

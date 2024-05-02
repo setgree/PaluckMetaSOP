@@ -17,7 +17,7 @@
 #' ditullio_se <- sqrt(ditullio_variance)
 #'
 #' # example 2: calculating d, var_d, and se_d for an entire dataset
-#' @dontrun{
+#' \dontrun{
 #' PaluckMetaSOP::contact_data |>
 #' select(-var_d)
 #' mutate(var_d = mapply(
