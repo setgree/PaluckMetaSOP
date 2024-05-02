@@ -17,11 +17,14 @@
 #' @param x The dataset or subset to perform meta-analysis on.
 #' @return A tibble with meta-analysis results.
 #' @examples
-#' \dontrun{
+#' # example 1: meta-analyze entire dataset
 #' PaluckMetaSOP::sv_data |> map_robust()
+#' # example 2: meta-analyze many subsetes and create overall table
+#' @dontrun{
 #' library(dplyr); library(purrr)
-#' sv_data |> split(~behavior_type) |> map(map_robust) |> bind_rows(.id = "behavior_type")
-#' }
+#' sv_data |> split(~behavior_type) |> map(map_robust) |>
+#'  bind_rows(.id = "behavior_type")
+#'  }
 #' @export
 map_robust <- function(x) {
   # Function to format p-values without leading zeroes or unnecessary detail

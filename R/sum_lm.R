@@ -17,12 +17,13 @@
 #' @export
 #'
 #' @examples
-#'  \dontrun{
+#' # example 1: entire dataset
 #' PaluckMetaSOP::contact_data |> sum_lm()
-#' library(dplyr); library(purrr)
+#' # example 2: split and apply to many subsets
+#' @dontrun{
+#' library(purrr)
 #' PaluckMetaSOP::sv_data |> split(~study_design) |> map(sum_lm)
-#' }
-#'
+#'}
 
 sum_lm <- function(dataset, y = NULL, x = NULL, coefs_only = TRUE, dgts = 5) {
   if (missing(dataset)) {

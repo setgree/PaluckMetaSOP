@@ -31,10 +31,7 @@ many different subsets of data at once.
 \code{dat} is the default dataset name, but you can put in whatever
 }
 \examples{
- \dontrun{
+# example 1: entire dataset
 PaluckMetaSOP::contact_data |> sum_lm()
-library(dplyr); library(purrr)
-PaluckMetaSOP::sv_data |> split(~study_design) |> map(sum_lm)
-}
-
+# example 2: split and apply to many subsets
 }

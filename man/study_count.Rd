@@ -20,10 +20,7 @@ or in different subsets of your data. It assumes your dataset
 has a variable called \code{unique_study_id}.
 }
 \examples{
-\dontrun{
-sv_data |> study_count()
-library(purrr)
-sv_data |> split(~study_design) |> map(study_count) |> bind_rows(.id = "study_design")
-}
-
+# simple example: entire datasets
+PaluckMetaSOP::sv_data |> study_count()
+# example with split, apply to many datasets, and create summary table
 }

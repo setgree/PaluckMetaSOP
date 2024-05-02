@@ -14,15 +14,14 @@
 #' @importFrom rlang !! enquo
 #' @export
 #' @examples
-#'  \dontrun{
-#' # simple example
+#' # simple example: entire dataset
 #' PaluckMetaSOP::sv_data |> sum_tab(behavior_type)
-#' # example with split by some other factor
+#' @dontrun{
+#' # example with split and apply to many subsets
 #' library(purrr)
 #' PaluckMetaSOP::sv_data |> split(~study_design) |>
 #' map(~ sum_tab(., behavior_type)) |> bind_rows(.id = "study_design")
-#' }
-#'
+#'}
 
 sum_tab <- function(data, var_name) {
   var_name <- enquo(var_name)

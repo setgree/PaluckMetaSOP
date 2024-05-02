@@ -11,27 +11,21 @@
 #' @return Variance of Cohen's D or Glass's Delta
 #' @export
 #' @examples
-#' \dontrun{
-#' # example 1: calculating d, var_d, and se_d for a single study
-#' # ditullio_results <- d_calc(stat_type = "d_i_m", stat = 5.708 - 3.0798, sample_sd = 1.0381)
-#' # ditullio_variance <- var_d_calc(d = ditullio_results, n_t = 38, n_c = 38)
-#' # ditullio_se <- sqrt(ditullio_variance)
+#' #  example 1: calculating d, var_d, and se_d for a single study
+#' ditullio_results <- d_calc(stat_type = "d_i_m", stat = 5.708 - 3.0798, sample_sd = 1.0381)
+#' ditullio_variance <- var_d_calc(d = ditullio_results, n_t = 38, n_c = 38)
+#' ditullio_se <- sqrt(ditullio_variance)
 #'
 #' # example 2: calculating d, var_d, and se_d for an entire dataset
-#' # PaluckMetaSOP::contact_data |>
-#' # mutate(d = mapply(
-#' # FUN = d_calc,
-#' # stat_type = statistic,
-#' # stat =  unstand,
-#' # sample_sd = sd_c,
-#' # n_t = n_t,
-#' # n_c = n_c),
-#' # var_d = mapply(
-#' # FUN = var_d_calc,
-#' # d = d,
-#' # n_t = n_t,
-#' # n_c = n_c)) |>
-#' # mutate(se_d = sqrt(var_d))
+#' @dontrun{
+#' PaluckMetaSOP::contact_data |>
+#' select(-var_d)
+#' mutate(var_d = mapply(
+#' FUN = var_d_calc,
+#' d = d,
+#' n_t = n_t,
+#' n_c = n_c)) |>
+#' mutate(se_d = sqrt(var_d))
 #'}
 
 var_d_calc <- function(d, n_t, n_c) {

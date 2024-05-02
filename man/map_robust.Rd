@@ -26,9 +26,7 @@ just reproduce that study's meta-analytic estimate verbatim. This is good for
 some circumstances but not others. Adapt to your needs.
 }
 \examples{
-\dontrun{
+# example 1: meta-analyze entire dataset
 PaluckMetaSOP::sv_data |> map_robust()
-library(dplyr); library(purrr)
-sv_data |> split(~behavior_type) |> map(map_robust) |> bind_rows(.id = "behavior_type")
-}
+# example 2: meta-analyze many subsetes and create overall table
 }
