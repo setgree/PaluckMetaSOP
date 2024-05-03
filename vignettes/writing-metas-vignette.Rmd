@@ -179,13 +179,13 @@ plot_dat |> ggplot(aes(x = d, y = name_short)) +
         axis.line = element_line(colour = "black")) 
 ```
 
-We didn't actually *use* this in *The Contact Hypothesis Re-evaluated*, but we probably would have if we were writing that paper now. (At the time, we used a function in Stata.)
+We didn't actually use this code in "The Contact Hypothesis Re-evaluated", but we probably would have if we were writing that paper now.
 
 ### 3.2 Relationship between Standard Error and D
 
-A standard check for publication bias is to see if effect size is positively correlated with the size of the standard error. The idea is that in the presence of publication bias, smaller studies are more likely to get shelved if they produce null results, whereas large, well-powered studies are more likely to get published no matter what.
+A standard check for publication bias is to see if effect size is positively correlated with the size of the standard error. The idea is that in the presence of publication bias, smaller studies are more likely to get shelved if they produce null results, whereas large, well-powered studies are more likely to get published no matter what. In that case, you'd expect for small studies to be an inaccurate estimate of the true population effect size, and for larger studies to produce systematically smaller estimates.
 
-Here's a simplified version of figure 1 from 'The Contact Hypothesis Re-Evaluated'.
+Here's a slightly simplified version of figure 1 from "The Contact Hypothesis Re-Evaluated:"
 
 ```{r se_d_plot, warning=FALSE, message=FALSE}
 library(ggrepel)
@@ -214,11 +214,9 @@ target_labels <- c("Age", "Disability", "Foreigners", "Gender",
 
 ```
 
-Fair warning that a perfectionist could spend the rest of her natural life tinkering with ggplot code. At some point, you just have to decide that the plot is good enough for publication 😃
-
 ### 3.3 Descriptive figures
 
-This code produces figures that display descriptive characteristics of `sv_data`. (The following was all writtten by John-Henry Pezzuto.)
+This code produces figures that display descriptive characteristics of `sv_data` for "Preventing Sexual Violence. As you can see, this required a lot of custom code to account for particular things about how we put the dataset together, so it won't perfectly generalize to a new project; but we think the overall ideas are worth preserving and communicating. (The following was all written by John-Henry Pezzuto.)
 
 ```{r sv_data_descriptive_figs, warning=FALSE, message=FALSE, fig.show='hold'}
 library(forcats)
@@ -271,23 +269,27 @@ setting_fig = sv_data |>
           legend.text = element_text(size = 14),
           plot.title = element_markdown())
 
-dat_participant_sex <- sv_data |># participant sex lines
-  mutate(participant_sex = if_else(participant_sex %in% 
-                                     c("male and female in mixed groups", 
-                                       "male and female in separate groups and also in combined groups",
-                                       "male and female in separate groups",
-                                       "male and female with group composition not specified",
-                                       "general population"), 
-                                   "mixed gender groups", 
-                                   participant_sex)) |>
+dat_participant_sex <- sv_data |> # participant sex lines
+  mutate(participant_sex = 
+           if_else(participant_sex %in% 
+                     c("male and female in mixed groups", 
+                       "male and female in separate groups and also in combined groups",
+                       "male and female in separate groups",
+                       "male and female with group composition not specified",
+                       "general population"), 
+                   "mixed gender groups", 
+                   participant_sex)) |>
   distinct(year, unique_study_id, participant_sex) |>
-  filter(participant_sex %in% c("mixed gender groups", "only male", "only female")) |>
+  filter(participant_sex %in% 
+           c("mixed gender groups", "only male", "only female")) |>
   count(year, participant_sex) |>
   add_row(year = 1985, participant_sex = "mixed gender groups") |>
   complete(year, participant_sex, fill = list(n = 0)) |>
   mutate(participant_sex = str_to_title(participant_sex)) |>
-  mutate(participant_sex = factor(participant_sex, levels = c("Mixed Gender Groups", "Only Male", "Only Female")))
-
+  mutate(participant_sex = factor(participant_sex,
+                                  levels = c("Mixed Gender Groups",
+                                             "Only Male", 
+                                             "Only Female")))
 tt_gender_fig = dat_participant_sex |>
     ggplot(aes(year, n, col = participant_sex)) +
     geom_line(linewidth = 2) +
@@ -311,12 +313,13 @@ tt_gender_fig = dat_participant_sex |>
       col = NULL
     )
 
-country_fig / setting_fig / tt_gender_fig
+# The patchwork library enables this arrangement:
+country_fig / setting_fig / tt_gender_fig 
 ```
 
 ### 3.4 correlation between ideas-based and behavioral outcomes
 
-For `sv_meta`, we wanted to check whether changes in ideas were linked to changes in behavior. We first subset the data to just studies that measured change in both directions, and then made a scatterplot with changes in one dimension plotted against changes in the other. The black line represents what a 1-to-1 correlation between the two outcomes would have looked like, and the gray line is what we actually observed.
+For "Preventing Sexual Violence," we wanted to check whether changes in ideas were linked to changes in behavior. We first created a subset of our dataset with just studies that measured both categories, and then made a scatterplot that plotted changes in one dimension against changes in the other. The black line represents what a 1-to-1 correlation between the two outcomes would have looked like, and the gray line is what we actually observed.
 
 ```{r attitude_behavioral_scatterplot}
 
@@ -352,6 +355,4 @@ sv_data |> filter(has_both == 'both') |>
         legend.title = element_text(size = 14),
         legend.position = "bottom",
         legend.box = "vertical")
-
-
 ```
