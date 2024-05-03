@@ -404,7 +404,7 @@ Second, if a simple regression model is reported without any controls, you can d
 
 Third, if you can't find the data you need, email the authors to ask if the data can be made available to you, or if not, if they can calculate the standard deviation of the dependent variable (for the entire population for Cohen's dor just the control group for Glass's ∆).
 
-Fourth, if you can't find what you need and the authors don't respond, you've come to a fork in the road. One answer is to discard the study on the grounds that you could not figure out a specific effect size. Another is to include it in a vote counting procedure. A third is to do your best with what you have, e.g. converting $\frac{\beta}{SE}$ to T and then to d regardless of the controls. If you go that route, you might wish to run simulations to see how far off your estimate is under different scenarios, for instance if the other control variables have little or substantial explanatory power.
+Fourth, if you can't find what you need and the authors can't provide it, you've come to a fork in the road. One answer is to discard the study on the grounds that you could not figure out a specific effect size. Another is to include it in a vote counting procedure. A third is to do your best with what you have, e.g. converting $\frac{\beta}{SE}$ to T and then to d regardless of the controls. (If you go that route, you might wish to run simulations to see how far off your estimate is under different scenarios, for instance if the other control variables have little or substantial explanatory power.)
 
 No matter what you choose for a case like this, we recommend you document your choices carefully for inclusion in your supplementary materials.
 
