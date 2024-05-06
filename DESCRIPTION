@@ -1,6 +1,6 @@
 Package: PaluckMetaSOP
 Title: Standard Operating Procedures for Paluck Lab meta-analyses
-Version: 0.8
+Version: 0.9
 Authors@R: 
     c(person("Seth", "Green", , "sag2212@columbia.edu", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-3909-1969")),
