@@ -6,27 +6,36 @@
 \alias{PaluckMetaSOP}
 \title{PaluckMetaSOP: Standard Operating Procedures for Paluck Lab meta-analyses}
 \description{
-This package implements the Paluck lab's Standard Operating Procedures for meta-analysis.
+This package implements the Paluck lab's approach to meta-analysis.
 
 It comprises six functions, two datasets, and four vignettes.
 
 The main documentation for this package is in its vignettes.
-\href{vignettes/overview-of-vignettes.html}{The first}, provides an overview
-of the next three  vignettes and where they fit into the overall structure
-of a meta-analysis. \href{vignettes/d-calc-vignette.html}{The second} is about
+
+\href{vignettes/overview-of-vignettes.html}{The first} provides an overview
+of the next three vignettes and where they fit into the overall structure
+of a meta-analysis.
+
+\href{vignettes/d-calc-vignette.html}{The second} is about
 converting a study's results into an estimate of standardized mean
 difference, variance, and standard error.
+
 \href{vignettes/meta-analysis-vignette.html}{The third} is about actually
-doing meta-analysis. \href{vignettes/writing-metas-vignette.html}{The fourth}
+doing meta-analysis.
+
+\href{vignettes/writing-metas-vignette.html}{The fourth}
 is about writing meta-analysis papers.
 
 The six functions are \code{\link{d_calc}}, \code{\link{map_robust}},
 \code{\link{study_count}}, \code{\link{sum_lm}}, \code{\link{sum_tab}}, and
-\code{\link{var_d_calc}}. The two datasets are \code{\link{contact_data}}
+\code{\link{var_d_calc}}.
+
+The two datasets are \code{\link{contact_data}}
 and \code{\link{sv_data}}. These datasets are used in the vignettes and
 function documentation as examples. They come from our papers
-'The Contact Hypothesis Re-evaluated' and 'Preventing Sexual Violence
-—A Behavioral Problem Without a Behaviorally-Informed Solution', respectively.
+'\href{https://doi.org/10.1017/bpp.2018.25}{The Contact Hypothesis Re-evaluated}'
+and '\href{https://osf.io/preprints/psyarxiv/xgbzj}{Preventing Sexual Violence — A Behavioral Problem Without a Behaviorally-Informed Solution}',
+respectively.
 
 Please install this package with vignettes included via
 \code{remotes::install('setgree/PaluckMetaSOP', build_vignettes = T)}.

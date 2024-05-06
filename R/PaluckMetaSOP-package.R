@@ -9,22 +9,31 @@
 #' It comprises six functions, two datasets, and four vignettes.
 #'
 #' The main documentation for this package is in its vignettes.
-#' [The first](vignettes/overview-of-vignettes.html), provides an overview
-#' of the next three  vignettes and where they fit into the overall structure
-#' of a meta-analysis. [The second](vignettes/d-calc-vignette.html) is about
+#'
+#' [The first](vignettes/overview-of-vignettes.html) provides an overview
+#' of the next three vignettes and where they fit into the overall structure
+#' of a meta-analysis.
+#'
+#' [The second](vignettes/d-calc-vignette.html) is about
 #' converting a study's results into an estimate of standardized mean
 #' difference, variance, and standard error.
+#'
 #' [The third](vignettes/meta-analysis-vignette.html) is about actually
-#' doing meta-analysis. [The fourth](vignettes/writing-metas-vignette.html)
+#' doing meta-analysis.
+#'
+#' [The fourth](vignettes/writing-metas-vignette.html)
 #' is about writing meta-analysis papers.
 #'
 #' The six functions are \code{\link{d_calc}}, \code{\link{map_robust}},
 #'  \code{\link{study_count}}, \code{\link{sum_lm}}, \code{\link{sum_tab}}, and
-#'  \code{\link{var_d_calc}}. The two datasets are \code{\link{contact_data}}
+#'  \code{\link{var_d_calc}}.
+#'
+#'  The two datasets are \code{\link{contact_data}}
 #'  and \code{\link{sv_data}}. These datasets are used in the vignettes and
 #'  function documentation as examples. They come from our papers
-#' 'The Contact Hypothesis Re-evaluated' and 'Preventing Sexual Violence
-#' —A Behavioral Problem Without a Behaviorally-Informed Solution', respectively.
+#' '[The Contact Hypothesis Re-evaluated](https://doi.org/10.1017/bpp.2018.25)'
+#' and '[Preventing Sexual Violence — A Behavioral Problem Without a Behaviorally-Informed Solution](https://osf.io/preprints/psyarxiv/xgbzj)',
+#' respectively.
 #'
 #' Please install this package with vignettes included via
 #' `remotes::install('setgree/PaluckMetaSOP', build_vignettes = T)`.

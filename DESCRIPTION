@@ -7,7 +7,7 @@ Authors@R:
     person("John-Henry", "Pezzuto", role = c("aut"),
            comment = c(ORCID = "0000-0001-5213-4201")))
 Maintainer: Seth Green <sag2212@columbia.edu>
-Description: This package implements the Paluck lab's Standard Operating Procedures for meta-analysis.
+Description: This package implements the Paluck lab's approach to meta-analysis.
 License: MIT + file LICENSE
 Depends: 
     R (>= 4.1)
