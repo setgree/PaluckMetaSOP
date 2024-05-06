@@ -9,18 +9,18 @@
 #' It comprises six functions, two datasets, and four vignettes.
 #' The main documentation for this package is in its vignettes.
 #'
-#' [The first vignette](doc/overview-of-vignettes.html) provides an overview
+#' [The first vignette](../doc/overview-of-vignettes.html) provides an overview
 #' of the next three and where they fit into the overall structure
 #' of a meta-analysis.
 #'
-#' [The second vignette](doc/d-calc-vignette.html) is about
+#' [The second vignette](../doc/d-calc-vignette.html) is about
 #' converting a study's results into an estimate of standardized mean
 #' difference, variance, and standard error.
 #'
-#' [The third vignette](doc/meta-analysis-vignette.html) is about actually
+#' [The third vignette](../doc/meta-analysis-vignette.html) is about actually
 #' doing meta-analysis.
 #'
-#' [The fourth vignette](doc/writing-metas-vignette.html)
+#' [The fourth vignette](../doc/writing-metas-vignette.html)
 #' is about writing meta-analysis papers.
 #'
 #' The six functions are \code{\link{d_calc}}, \code{\link{map_robust}},
