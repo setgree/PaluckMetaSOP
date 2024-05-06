@@ -401,7 +401,7 @@ First, you should read the entire paper carefully to see if the data you need is
 
 ![](images/barnhardt-results.png){width="600"}
 
-Second, if a simple regression model is reported without any controls, you can divide $\beta$ by $se$ to get the T-statitic, which can be converted to $d$ in a routinized way with `d_calc`. [^8]
+Second, if a simple regression model is reported without any controls, you can divide $\beta$ by $se$ to get the t-statistic, which can be converted to $d$ in a routinized way with `d_calc`. [^8]
 
 [^8]: Alternatively, you can multiply the standard error of the intercept by the square root of N for the control group and get a reasonable estimate of the $SD$ of the control group, but you're probably better off just converting to T.
 
