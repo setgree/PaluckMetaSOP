@@ -22,7 +22,7 @@ The main function in this vignette is called `map_robust`. We'll demonstrate how
 
 ## 1 The easy case: combining all estimates into a single pooled effect size
 
-`map_robust` is a wrapepr around a pre-existing function from the `metafor` package called `robust`, which is itself a wrapped around the function `rma`. See the `man` pages for those functions for full details.
+`map_robust` is a wrapper around a pre-existing function from the `metafor` package called `robust`, which is itself a wrapped around the function `rma`. See the `man` pages for those functions for full details.
 
 `map_robust` takes a dataset and returns a data frame with an N of the number of data points; an N for the number of studies; a ∆ signifying the pooled effect size; a standard error; and a p value.
 
@@ -85,7 +85,7 @@ sv_data |> split(~behavior_type) |> map(map_robust) |>
   bind_rows(.id = "behavior_type")
 ```
 
-Which you can turn into a variety of formats, e.g LaTex or markdown, via `knitr::kable()`:
+Which you can turn into a variety of formats, e.g LateX or markdown, via `knitr::kable()`:
 
 ```{r split_plus_kable}
 library(knitr)
