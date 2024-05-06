@@ -8,7 +8,7 @@ Install via
 
 ### If you are a member of the Paluck Lab who is extending this package:
 You can 
-* clone this package (`https://github.com/setgree/PaluckMetaSOP.git`)
+* clone this package (` git clone https://github.com/setgree/PaluckMetaSOP.git`)
 * add or amend functions and vignettes 
 * then either open a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) for this package or create your own fork and work from there. 
 
