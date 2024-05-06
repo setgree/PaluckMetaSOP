@@ -11,18 +11,18 @@ This package implements the Paluck lab's approach to meta-analysis.
 It comprises six functions, two datasets, and four vignettes.
 The main documentation for this package is in its vignettes.
 
-\href{vignettes/overview-of-vignettes.html}{The first vignette} provides an overview
+\href{doc/overview-of-vignettes.html}{The first vignette} provides an overview
 of the next three and where they fit into the overall structure
 of a meta-analysis.
 
-\href{vignettes/d-calc-vignette.html}{The second vignette} is about
+\href{doc/d-calc-vignette.html}{The second vignette} is about
 converting a study's results into an estimate of standardized mean
 difference, variance, and standard error.
 
-\href{vignettes/meta-analysis-vignette.html}{The third vignette} is about actually
+\href{doc/meta-analysis-vignette.html}{The third vignette} is about actually
 doing meta-analysis.
 
-\href{vignettes/writing-metas-vignette.html}{The fourth vignette}
+\href{doc/writing-metas-vignette.html}{The fourth vignette}
 is about writing meta-analysis papers.
 
 The six functions are \code{\link{d_calc}}, \code{\link{map_robust}},
