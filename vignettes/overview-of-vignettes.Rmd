@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-### Meta-analysis is (more or less) a six step process.
+## 1 Meta-analysis is (more or less) a six step process.
 
 1)  Identify a causal question where combining results from many papers will be informative.[^1]
 
@@ -32,7 +32,7 @@ knitr::opts_chunk$set(
 
 [^2]: In practice this means operationalizing X and Y, which might not be straightforward: does imagined contact count as contact? What exactly is prejudice, and how do we measure it? It also means setting inclusion criteria related to, e.g., internal validity, measurement error, or population. For instance, your meta-analysis might be focused only on the results of [policy-relevant randomized controlled trials](https://www.cambridge.org/core/journals/behavioural-public-policy/article/contact-hypothesis-reevaluated/142C913E7FA9E121277B29E994124EC5), a [particular class of dependent variable](https://osf.io/a7g95/), or the effects of [sexual violence prevention programs on college campuses](https://www.jahonline.org/article/S1054-139X(23)00117-9/abstract).
 
-### These vignettes are aimed at helping with steps 4-6.
+## 2 These vignettes are aimed at steps 4-6.
 
 The [first vignette](d-calc-vignette.html) is about **step 4**, effect sizes and variance. It covers "easy" cases where you can use `d_calc` and `var_d_calc` without too much extra work, then walks through a few edge cases we've encountered over time. Finally, it demonstrates how to incorporate these functions into your analysis scripts in a reproducible way.
 
@@ -40,4 +40,6 @@ The [second vignette](meta-analysis-vignette.html) is about **step 5**, how to a
 
 The [third vignette](writing-metas-vignette.html) is about **step 6**, and walks through the other functions we've written to help write a meta-analysis paper. Specifically, it covers `sum_lm`, `sum_tab`, and `study_count`, as well as a few smaller functions for turning a meta-analytic database into a bibliography and creating ggplot2-based visualizations.
 
-Next up: [Converting a study's results into SMD, variance, and standard error](d-calc-vignette.html).
+## 3 Next up
+
+[Converting a study's results into SMD, variance, and standard error](d-calc-vignette.html).
