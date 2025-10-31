@@ -11,16 +11,18 @@ Run the following R Command:
 `remotes::install_github('setgree/PaluckMetaSOP', build_vignettes = T)`.
 
 ## What you'll find:
-This package mainly consists of two things: functions and vignettes.The vignettes walk through how to use the functions.
+This package, functions, vignettes, and two datasets.
 
-It also provides two datasets, `sv_data` and `contact_data`, that accompany the two example metas. The vignettes explain the functions by using them on the provided datasets.
+The functions implement the Paluck lab approach to meta-analyiss.
+
+The vignettes walk through how to use the functions.
+
+The datasets (`sv_data` and `contact_data`) accompany the two example metas and are used in the vignettes.
 
 ## Getting started
-I recommend running the following:
-`browseVignettes(package = "PaluckMetaSOP")`
-and then going through the vignettes in order. 
+I recommend running `browseVignettes(package = "PaluckMetaSOP")` and then going through the vignettes in order. 
 
-You can also pick and choose based on what seems most relevant.
+You can also pick and choose based on what seems relevant.
 
 ## The functions
 ### For calculating effect size and variance:
