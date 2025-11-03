@@ -56,7 +56,8 @@ contact_data |> select(-unique_study_id) |> # remove unique study id to reconstr
 #' (and probably a few other small differences)
 
 # now robust analysis
-robust(x = metafor::rma(yi = contact_data$d, vi = contact_data$var_d), cluster = contact_data$unique_study_id)
+robust(x = metafor::rma(yi = contact_data$d, vi = contact_data$var_d), 
+       cluster = contact_data$unique_study_id)
 
 # same as if we drop the clustering information
 rma(yi = d, vi = var_d, data = contact_data)
@@ -117,7 +118,8 @@ get_significance_stars <- function(pval) {
 Here we apply this function directly to the R code, and modify the columns to combine the ∆ and se into one column with the format `∆ (se)`: 
 
 ```{r closer_to_pub_ready_table}
-sv_data |> split(~behavior_type) |> map(map_robust) |> bind_rows(.id = "behavior_type") |> 
+sv_data |> split(~behavior_type) |> map(map_robust) |> 
+  bind_rows(.id = "behavior_type") |> 
   mutate(delta_se = sprintf("%.3f%s (%.3f)", 
                             Delta, 
                             get_significance_stars(pval), se)) |> 
