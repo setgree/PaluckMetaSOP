@@ -16,7 +16,7 @@ Imports:
     metafor (>= 4.6),
     rlang (>= 1.1),
     tibble (>= 3.2)
-Suggests: 
+Suggests:
     forcats (>= 1.0),
     ggthemes (>= 5.1),
     ggplot2 (>= 3.5),
@@ -29,6 +29,7 @@ Suggests:
     RefManageR (>= 1.4),
     rmarkdown (>= 2.26),
     stringr (>= 1.5),
+    testthat (>= 3.0.0),
     tidyr (>= 1.3)
 VignetteBuilder: 
     knitr
