@@ -1,7 +1,12 @@
 bibentry(
-  key = "PaluckMetaSOP",
-  bibtype  = "Manual",
-  title    = "PaluckMetaSOP: Standard Operating Procedures for Meta-analyses in the Paluck Lab",
-  author = "Seth A Green and John-Henry Pezzuto",
-  year     = 2024,
-  url = "https://github.com/setgree/paluckMetaSOP")
+  bibtype = "Manual",
+  title = "PaluckMetaSOP: Standard Operating Procedures for Paluck Lab meta-analyses",
+  author = c(
+    person("Seth", "Green", email = "sag2212@columbia.edu", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-3909-1969")),
+    person("John-Henry", "Pezzuto", role = "aut", comment = c(ORCID = "0000-0001-5213-4201"))
+  ),
+  year = "2024",
+  note = "R package version 0.9",
+  url = "https://github.com/setgree/PaluckMetaSOP",
+  header = "To cite PaluckMetaSOP in publications, please use:"
+)
