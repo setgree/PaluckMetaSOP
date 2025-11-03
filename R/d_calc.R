@@ -16,6 +16,8 @@
 #' @param n_t Treatment group sample size.
 #' @param n_c Control group sample size.
 #' @return Cohen's D or Glass's Delta value.
+#' @family effect size functions
+#' @seealso \code{\link{var_d_calc}} for calculating the variance of effect sizes
 #'
 #' @export
 #'

@@ -13,7 +13,10 @@
 #' @param dgts Number of digits for rounding coefficients (default: 5).
 #' @return If coefs_only is TRUE, returns a rounded coefficients table; otherwise, returns the full summary.
 #' @importFrom stats lm as.formula
-#' @note `dat` is the default dataset name, but you can put in whatever
+#' @note The function defaults to using `d` as the response variable and `se_d` as the predictor
+#' if these columns exist in the dataset. You can override these by specifying `y` and `x` parameters.
+#' @family summary functions
+#' @seealso \code{\link{sum_tab}} for frequency tables, \code{\link{study_count}} for counting studies
 #' @export
 #'
 #' @examples
