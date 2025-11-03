@@ -156,9 +156,9 @@ plot_dat |> ggplot(aes(x = d, y = name_short)) +
              shape = 18) + # shape = 5 for a transparent diamond 
   geom_point(data = subset(plot_dat, name_short != "RE Estimate"), 
              aes(color = target_spelled_out), shape = 18) +
-  geom_errorbarh(data = subset(plot_dat, name_short != "RE Estimate"), 
-                 aes(xmin = lower_bound, xmax = upper_bound, color = target_spelled_out),
-                 height = .1) +
+  geom_errorbar(data = subset(plot_dat, name_short != "RE Estimate"),
+                aes(xmin = lower_bound, xmax = upper_bound, color = target_spelled_out),
+                height = .1, orientation = "y") +
   geom_vline(xintercept = 0, color = "black", alpha = .5) +
   geom_vline(xintercept = model$Delta, 
              color = 'black', lty = 'dashed') +
