@@ -126,7 +126,7 @@ sv_data |> split(~behavior_type) |> map(map_robust) |>
   select(behavior_type, N_studies, delta_se)
 ```
 
-Finally, we can use the "[great table"](https://gt.rstudio.com/)" library (`gt`) library to format everything nicely and add explanatory notes:
+Finally, we can use the [great table](https://gt.rstudio.com/) library (`gt`) library to format everything nicely and add explanatory notes:
 
 ```{r pub_ready_table_with_gt}
 library(gt) 
@@ -150,8 +150,6 @@ gt() |>
 ```
 
 `gt` has a function called `as_latex()` that will convert this all into latex code directly.
-
-(By the way, the above table-making code is a little more sophisticated than anything we did in our published meta-analyses to date, but the ideas for all this were germinating during "Preventing Sexual Violence.")
 
 ## 4 Next up
 [Writing your meta-analytic paper](04-writing-metas-vignette.html).
