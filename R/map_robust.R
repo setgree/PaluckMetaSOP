@@ -16,6 +16,7 @@
 #'
 #' @param x The dataset or subset to perform meta-analysis on.
 #' @return A tibble with meta-analysis results.
+#' @seealso \code{\link{d_calc}} and \code{\link{var_d_calc}} for preparing data before meta-analysis
 #' @examples
 #' # example 1: meta-analyze entire dataset
 #' PaluckMetaSOP::sv_data |> map_robust()

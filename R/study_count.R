@@ -6,6 +6,8 @@
 #' @param dataset The dataset or subset.
 #' @param counting_var The variable to count unique observations (default: "unique_study_id").
 #' @return A tibble with the count of distinct observations.
+#' @family summary functions
+#' @seealso \code{\link{sum_tab}} for frequency tables, \code{\link{sum_lm}} for regression summaries
 #' @importFrom dplyr summarise
 #' @importFrom dplyr n_distinct
 #' @importFrom rlang sym

@@ -35,8 +35,8 @@
 #' respectively.
 #'
 #' Please install this package with vignettes included via
-#' `remotes::install('setgree/PaluckMetaSOP', build_vignettes = T)`.
-#' You can then browse the vignettes with  `browseVignettes('PaluckMetaSOP')`.
+#' `remotes::install_github('setgree/PaluckMetaSOP', build_vignettes = TRUE)`.
+#' You can then browse the vignettes with `browseVignettes('PaluckMetaSOP')`.
 #'
 #' @name PaluckMetaSOP-package
 #' @aliases PaluckMetaSOP

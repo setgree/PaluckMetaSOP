@@ -9,7 +9,9 @@
 #' @param data A data frame or tibble.
 #' @param var_name The name of the variable/column to generate the frequency table.
 #' @return A table showing the frequency of each unique value in the specified variable.
-#'#'
+#' @family summary functions
+#' @seealso \code{\link{sum_lm}} for regression summaries, \code{\link{study_count}} for counting studies
+#'
 #' @importFrom dplyr pull
 #' @importFrom rlang !! enquo
 #' @export
