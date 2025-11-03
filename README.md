@@ -3,7 +3,7 @@
 This package documents the [Paluck lab’s](http://www.betsylevypaluck.com/)
 approach to meta-analysis, focusing on two papers in particular:
 
-* “[Preventing Sexual Violence —A Behavioral Problem Without a Behaviorally-Informed Solution](https://doi.org/10.1177/1529100623122197)” 
+* “[Preventing Sexual Violence —A Behavioral Problem Without a Behaviorally-Informed Solution](https://doi.org/10.1177/15291006231221978)"
 * “[The Contact Hypothesis Re-evaluated](https://doi.org/10.1017/bpp.2018.25).”
 
 ## Installation
