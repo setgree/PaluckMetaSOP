@@ -28,7 +28,7 @@
 #' \dontrun{
 #' library(dplyr)
 #' PaluckMetaSOP::contact_data |>
-#' select(-d) |>.# remove d in order to recalculate it
+#' select(-d) |> # remove d in order to recalculate it
 #' mutate(d = mapply(
 #' FUN = d_calc,
 #' stat_type = statistic,

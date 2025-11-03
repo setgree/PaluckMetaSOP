@@ -182,7 +182,7 @@ Notice that we record the DiD calculation in the code itself for reproducibility
 
 #### 3.1.3 Regression coefficient (beta):
 
-In a bivariate regression testing the relationship between treatment status and outcome, the $\beta$ coefficient is is equivalent to the difference in means between the groups. Calculating the $SD$ from a regression table takes some guesswork (see [section 4](#section4)), but some studies report both $\beta$ and the $SD$ for the outcome.
+In a bivariate regression testing the relationship between treatment status and outcome, the $\beta$ coefficient is equivalent to the difference in means between the groups. Calculating the $SD$ from a regression table takes some guesswork (see [section 4](#section4)), but some studies report both $\beta$ and the $SD$ for the outcome.
 
 [Boisjoly et al. (2006)](https://www.aeaweb.org/articles?id=10.1257/aer.96.5.1890) tested the effects of being randomly assigned a black or "other minority" roommate on the attitudes and behaviors of white college students.
 

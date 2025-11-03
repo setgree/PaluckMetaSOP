@@ -60,11 +60,11 @@ robust(x = metafor::rma(yi = contact_data$d, vi = contact_data$var_d), cluster =
 rma(yi = d, vi = var_d, data = contact_data)
 ```
 
-If you want to cluster at a different level, or call your cluster variable something different and modify the function accordingly, go ahead! Every meta-analysis is different, and we encourage you to to modify these functions to serve your own needs. (We typically have a `functions` folder in our replication archives where we keep all our custom functions, which is a nice way to keep your function files organized separately from your scripts.)
+If you want to cluster at a different level, or call your cluster variable something different and modify the function accordingly, go ahead! Every meta-analysis is different, and we encourage you to modify these functions to serve your own needs. (We typically have a `functions` folder in our replication archives where we keep all our custom functions, which is a nice way to keep your function files organized separately from your scripts.)
 
 ## 2 subgroup analyses
 
-The second way we use `map_robust` is via subgroup analyses. For instance, in "Preventing Sexual Violence," we wanted to compare the results on ideas-based outcomes to our major categories of behavioral outcomes (perpetration, victimization, bystander behaviors, and involvement behaviors.) To do this,we use the `map` function from the `purrr` library to split the dataset and apply a function (Hadley Wickham calls this  "[The Split-Apply-Combine Strategy for Data Analysis](https://vita.had.co.nz/papers/plyr.pdf)").
+The second way we use `map_robust` is via subgroup analyses. For instance, in "Preventing Sexual Violence," we wanted to compare the results on ideas-based outcomes to our major categories of behavioral outcomes (perpetration, victimization, bystander behaviors, and involvement behaviors.) To do this, we use the `map` function from the `purrr` library to split the dataset and apply a function (Hadley Wickham calls this  "[The Split-Apply-Combine Strategy for Data Analysis](https://vita.had.co.nz/papers/plyr.pdf)").
 
 
 ```{r split_by_behavioral_ideas_outcomes}
