@@ -448,4 +448,4 @@ See [this page on SMDs](https://handbook-5-1.cochrane.org/chapter_9/9_2_3_2_the_
 
 ## 7 Next up
 
-[Performing meta-analysis the Paluck Lab way](03-meta-analysis-vignette.html).
+[Performing meta-analysis the Paluck Lab way](meta-analysis-vignette.html).

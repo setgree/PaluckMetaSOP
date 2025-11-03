@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-Now that we [have our vectors of ∆, variance, and standard errors for each paper](02-d-calc-vignette.html), it's time to perform a meta-analysis, i.e. the statistical procedure by which the results of many studies are pooled. 
+Now that we [have our vectors of ∆, variance, and standard errors for each paper](d-calc-vignette.html), it's time to perform a meta-analysis, i.e. the statistical procedure by which the results of many studies are pooled. 
 
 The main function in this vignette is called `map_robust`. We'll demonstrate how to use it with our built-in datasets, primarily `sv_data`. This is the dataset for "[Preventing Sexual Violence —A Behavioral Problem Without a Behaviorally-Informed Solution](https://osf.io/preprints/psyarxiv/xgbzj)". (We'll also use `contact_data` from "[The Contact Hypothesis Re-evaluated](https://doi.org/10.1017/bpp.2018.25)" for a few examples.)
 
@@ -152,4 +152,4 @@ gt() |>
 `gt` has a function called `as_latex()` that will convert this all into latex code directly.
 
 ## 4 Next up
-[Writing your meta-analytic paper](04-writing-metas-vignette.html).
+[Writing your meta-analytic paper](writing-metas-vignette.html).

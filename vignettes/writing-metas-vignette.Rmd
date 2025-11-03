@@ -12,7 +12,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-Now that we've [conducted our meta-analyses](03-meta-analysis-vignette.html), it's time to write the paper. This vignette covers three topics that help with that: functions for summary statistics, a function that help you turn your database into a bibliography, and some ggplot2-based visualizations that we've found useful.
+Now that we've [conducted our meta-analyses](meta-analysis-vignette.html), it's time to write the paper. This vignette covers three topics that help with that: functions for summary statistics, a function that help you turn your database into a bibliography, and some ggplot2-based visualizations that we've found useful.
 
 Once again, we'll illustrate with data from two previous meta-analyses: `sv_data` from "[Preventing Sexual Violence —A Behavioral Problem Without a Behaviorally-Informed Solution](https://osf.io/preprints/psyarxiv/xgbzj)" and `contact_data` from "[The Contact Hypothesis Re-evaluated](https://doi.org/10.1017/bpp.2018.25)."
 
