@@ -40,9 +40,11 @@ robust(x = metafor::rma(yi = sv_data$d, vi = sv_data$var_d),
 
 Our function is different in a few respects. First, it's designed to take in a dataset via a piped operation (`|>`), which was actually the main reason we wrote it in the first place (we were in the habit of using a lot of pipes). Second, so long as your dataset contains variables called `d`, `var_d`, and `unique_study_id`, it's a lot easier to type. Third, it returns a truncated output that corresponds to the information we were actually recording in our results sections.
 
-### 1.1 a note about clustering
+### 1.1 A note about clustering
 
-Our meta-analyses cluster at the level of study. You could also cluster at the level of a paper, or of a team of authors, or at no level at all. Also, if you run our function on a dataset where each unique_study_id corresponds to only one row in the dataset, it's equivalent to not clustering. We'll demonstrate that with `PaluckMetaSOP::contact_data`:
+Clustering accounts for the fact that multiple effect sizes from the same study are not independent—they share the same participants, setting, and research team. By clustering at the study level, we get more accurate standard errors that account for this dependence.
+
+Our meta-analyses cluster at the level of study. You could also cluster at the level of a paper, or of a team of authors, or at no level at all. If you run our function on a dataset where each unique_study_id corresponds to only one row in the dataset, it's equivalent to not clustering. We'll demonstrate that with `PaluckMetaSOP::contact_data`:
 
 ```{r contact_data_demonstration}
 library(dplyr)
