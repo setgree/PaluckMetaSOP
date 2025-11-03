@@ -14,11 +14,13 @@ editor_options:
 
 ## 1 Introduction
 
-To do meta-analysis, you must first extract two pieces of information from each study in your database: a standardized mean difference (SMD) and its associated variance (or standard error). This vignette walks through that process using the functions `d_calc` and `var_d_calc`, with examples drawn from [The Contact Hypothesis Re-evaluated](https://doi.org/10.1017/bpp.2018.25).
+To do meta-analysis, you must first extract two pieces of information from each study in your database: a standardized mean difference (SMD) and its associated variance (or standard error). These numbers allow you to compare results across studies that may have used different outcome measures or scales.
+
+This vignette walks through that process using the functions `d_calc` and `var_d_calc`, with examples drawn from [The Contact Hypothesis Re-evaluated](https://doi.org/10.1017/bpp.2018.25).
 
 The contact hypothesis meta-analytic dataset is included, with small adjustments, in this package as `PaluckMetaSOP::contact_data`. [The Contact Hypothesis Re-evaluated](https://doi.org/10.1017/bpp.2018.25)'s supplementary materials, including all studies discussed here, are available on the [Open Science Framework](https://osf.io/ttpvy/?view_only=https://osf.io/ttpvy/?view_only=).
 
-Before we do that, let's talk about what we're calculating.
+Before we show you how to calculate these numbers, let's talk about what they mean.
 
 ### 1.1 Standardized Mean Difference (SMD) and Variance
 
