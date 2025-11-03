@@ -72,7 +72,7 @@ d_calc <- function(stat_type, stat, sample_sd, n_t, n_c) {
     # Calculate Glass's Delta for difference in proportions
     # "SD" as an input is a misnomer here; input the _proportion_ of the incident
     # in the control group as the variance estimate, and then this calculator
-    # treats that as draws from a Bernoulli distribution. Variance ouf Bernoulli
+    # treats that as draws from a Bernoulli distribution. Variance of Bernoulli
     # is $p(1-p)$; so the estimator in total is
     #  $$\Delta = \frac{p_{1} - p_{2}}{\sqrt{p_{2} * (1 - p_{2)}}}$$
     d = stat / (sqrt(sample_sd * (1 - sample_sd)))
