@@ -417,7 +417,7 @@ No matter what you choose for a case like this, we recommend you document your c
 
 When we wrote TCHR, we had one function that combined the results of `d_calc` and `var_d_calc` into a table and a script that recorded the those calculations for every study. We then copied and pasted that script's results into our final dataset.
 
-For our [next](https://www.annualreviews.org/content/journals/10.1146/annurev-psych-071620-030619) [two](https://osf.io/preprints/psyarxiv/xgbzj) meta-analyses, we incorporated `d_calc` and `var_d_calc` directly into our analysis scripts with the `mapply` and `dplyr::mutate` functions. Here is how that looks when applied to the contact hypothesis data:
+For our [next](https://www.annualreviews.org/content/journals/10.1146/annurev-psych-071620-030619) [two](https://doi.org/10.1177/15291006231221978) meta-analyses, we incorporated `d_calc` and `var_d_calc` directly into our analysis scripts with the `mapply` and `dplyr::mutate` functions. Here is how that woudl have looked if applied to the contact hypothesis data:
 
 ```{r d_and_var_d_creation_script}
 library(dplyr, warn.conflicts = F) 
