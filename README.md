@@ -7,22 +7,27 @@ approach to meta-analysis, focusing on two papers in particular:
 * “[The Contact Hypothesis Re-evaluated](https://doi.org/10.1017/bpp.2018.25).”
 
 ## Installation
-Run the following R Command:
-`remotes::install_github('setgree/PaluckMetaSOP', build_vignettes = T)`.
+Run the following R command:
+```r
+remotes::install_github('setgree/PaluckMetaSOP', build_vignettes = TRUE)
+```
 
-## What you'll find:
-This package, functions, vignettes, and two datasets.
+## What you'll find
 
-The functions implement the Paluck lab approach to meta-analysis.
+This package contains:
 
-The vignettes walk through how to use the functions.
-
-The datasets (`sv_data` and `contact_data`) accompany the two example metas and are used in the vignettes.
+- **Functions** that implement the Paluck lab approach to meta-analysis
+- **Vignettes** that walk through how to use the functions
+- **Datasets** (`sv_data` and `contact_data`) that accompany the two example metas and are used in the vignettes
 
 ## Getting started
-I recommend running `browseVignettes(package = "PaluckMetaSOP")` and then going through the vignettes in order. 
 
-You can also pick and choose based on what seems relevant.
+After installation, run:
+```r
+browseVignettes(package = "PaluckMetaSOP")
+```
+
+We recommend going through the vignettes in order, but you can also pick and choose based on what seems relevant.
 
 ## The functions
 ### For calculating effect size and variance:
@@ -37,12 +42,16 @@ You can also pick and choose based on what seems relevant.
 * `sum_lm`: a tidyverse-friendly wrapper around `summary(lm())`. 
 * `sum_tab`: a tidyverse-friendly version of R's built-in `table` function.
 
-For more documentation, either see the vignettes or add a `?` before any of the functions (e.g `?PaluckMetaSOP::sum_tab`).
+For more documentation, either see the vignettes or add a `?` before any of the functions (e.g., `?PaluckMetaSOP::sum_tab`).
 
-## If you are a member of the Paluck Lab who is extending this package:
-You can 
-* clone this package (` git clone https://github.com/setgree/PaluckMetaSOP.git`)
-* add or amend functions and vignettes 
-* then either open a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) for this package or create your own fork and work from there. 
+## For Paluck Lab members extending this package
+
+To contribute:
+1. Clone this package:
+   ```bash
+   git clone https://github.com/setgree/PaluckMetaSOP.git
+   ```
+2. Add or amend functions and vignettes
+3. Open a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) or create your own fork 
 
 The instructions in the first chapter of [*R packages*](https://r-pkgs.org/) should get you pretty far on the "building a package" side of things.
