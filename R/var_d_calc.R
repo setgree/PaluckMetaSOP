@@ -5,7 +5,7 @@
 #' You can calculate variance on an individual basis by manually putting in a d value
 #' from d_calc(), or you can do so in a batch way based on an entire dataset.
 #'
-#' @param d Standardized effect size calculated using `d_calc.R`.
+#' @param d Standardized effect size calculated using `d_calc()`.
 #' @param n_t Treatment sample size.
 #' @param n_c Control group sample size.
 #' @return Variance of Cohen's D or Glass's Delta

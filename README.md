@@ -13,7 +13,7 @@ Run the following R Command:
 ## What you'll find:
 This package, functions, vignettes, and two datasets.
 
-The functions implement the Paluck lab approach to meta-analyiss.
+The functions implement the Paluck lab approach to meta-analysis.
 
 The vignettes walk through how to use the functions.
 
