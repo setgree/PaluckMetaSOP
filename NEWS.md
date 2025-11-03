@@ -1,3 +1,35 @@
+# PaluckMetaSOP 0.95 "Post-Claude-Intervention-Edition"
+
+## Improvements and Bug Fixes
+
+### Testing
+* Added comprehensive unit test suite with 77 tests covering core functions:
+  - `d_calc()`: 20 tests for all stat_types and edge cases
+  - `var_d_calc()`: 10 tests for variance calculations
+  - `sum_tab()`: 27 tests for frequency tables
+  - `study_count()`: 20 tests for counting unique studies
+* Added testthat to package dependencies
+
+### Documentation
+* Improved vignette organization with proper ordering (0-3)
+* Fixed vignette file naming to comply with R package standards
+* Enhanced clarity and examples throughout vignettes
+* Improved function documentation with better cross-references
+* Added comprehensive package best practices
+
+### Code Quality
+* Fixed R CMD check NOTEs and warnings
+* Improved README with clearer installation instructions
+* Enhanced CITATION file with proper formatting
+* Fixed statistical formula documentation
+* Better error handling and input validation
+
+### Vignettes
+* "0. An overview of these vignettes"
+* "1. Converting a study's results into SMD, variance, and standard error"
+* "2. Performing meta-analysis the Paluck Lab way"
+* "3. Writing your meta-analytic paper"
+
 # PaluckMetaSOP 0.9
 
 ## Initial Release
