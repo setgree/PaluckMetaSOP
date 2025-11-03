@@ -94,9 +94,9 @@ To see all the conversion formulas, run `PaluckMetaSOP::d_calc` (without parenth
 
 The function first turns this into an (uncorrected) estimate of variance via
 
-${\sigma^2_1} = (\frac{n_t + n_c}{n_t * n_c}) + (\frac{d^2}{2} * (n_t + n_c))$
+${\sigma^2_1} = \frac{n_t + n_c}{n_t \cdot n_c} + \frac{d^2}{2(n_t + n_c)}$
 
-And then applies a correction for small study variance called hedge's *g:*
+And then applies a correction for small sample size called Hedge's *g:*
 
 $g = 1 - (3/((4 * (n_t + n_c - 2)) - 1))$
 
@@ -288,7 +288,7 @@ Neither of these estimators came up in [The Contact Hypothesis Re-evaluated](htt
 
 [^6]: [Chen, Cohen & Chen (2010)](https://www.tandfonline.com/doi/full/10.1080/03610911003650383) propose that if incidence of a disease is 1% within a control group, then "OR = 1.68, 3.47, and 6.71 are equivalent to Cohen's \$d\$ = 0.2 (small), 0.5 (medium), and 0.8 (large), respectively'' (p. 862), with different proportions corresponding to equivalent effect sizes at a range of incidence rates. However, the populations and dependent variables in our meta-analyses are generally too heterogeneous for these sorts of heuristics.
 
-As a solution to this, while we were working on [Prejudice Reduction: Progress and Challenges](https://www.annualreviews.org/content/journals/10.1146/annurev-psych-071620-030619), Donald P. Green proposed a solution that treats those proportions as draws form a Bernoulli distribution and calculates variance and $SD$ accordingly.
+As a solution to this, while we were working on [Prejudice Reduction: Progress and Challenges](https://www.annualreviews.org/content/journals/10.1146/annurev-psych-071620-030619), Donald P. Green proposed treating those proportions as draws from a Bernoulli distribution and calculating variance and $SD$ accordingly.
 
 The $SD$ of the Bernoulli distribution is $$
 \sqrt{ p (1-p)}
