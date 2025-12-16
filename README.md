@@ -1,4 +1,4 @@
-# This package is superceded by https://github.com/setgree/BLPlabtools
+## Note: This package is superceded by [BLPlabtools](https://github.com/setgree/BLPlabtools)
 Check that instead please :) 
 Anyway,
 ## PaluckMetaSOP
