@@ -1,4 +1,7 @@
-# PaluckMetaSOP
+# This package is superceded by https://github.com/setgree/BLPlabtools
+Check that instead please :) 
+Anyway,
+## PaluckMetaSOP
 
 This package documents the [Paluck lab’s](http://www.betsylevypaluck.com/)
 approach to meta-analysis, focusing on two papers in particular:
